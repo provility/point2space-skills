@@ -6,21 +6,23 @@ Assume there are problems. Your job is to find them.
 
 ### Validate
 
-Use the MCP `validate_expressions` tool:
+Use the MCP `validate_expressions` tool to validate every expression you generate:
 
 ```
-validate_expressions({ expressions: ["expr1", "expr2"] })
+validate_expressions({ expressions: ["expr1", "expr2", ...] })
 ```
 
 Response format:
 ```json
 {
   "results": [
-    {"expression": "...", "status": "valid", "detail": ""},
-    {"expression": "...", "status": "error", "detail": "unknown function 'foo'", "type": "unknown-function", "keyword": "foo"}
+    {"expression": "...", "status": "valid", "detail": null},
+    {"expression": "...", "status": "error", "detail": "Unknown function or command: \"foo\"", "type": "unknown-function", "keyword": "foo"}
   ]
 }
 ```
+
+**This step is mandatory.** Never present expressions to the user without validating them first.
 
 ### Classify and Fix Errors
 
@@ -28,16 +30,16 @@ For each failed expression, classify by error type:
 
 | Error Type | Action |
 |---|---|
-| `unknown-function` | The `keyword` field tells you what failed. Search `expression-rag-source/` for the correct function name: `find expression-rag-source -name "*.json" \| grep -i "<keyword>"`. Read the doc. Fix. |
-| `invalid-arguments` | Re-read the JSON doc for that function — check `arguments` and `alternates` for correct signatures. |
-| `syntax-error` | DSL grammar violation — check against the grammar rules in foundation.md. Common causes: missing LHS variable, LaTeX instead of AsciiMath, bare function call without assignment. |
-| `unknown-variable` | A variable is referenced before it's defined. Check expression ordering — dependencies must come first. |
+| Unknown function | The `keyword` field tells you what failed. Search `expression-rag-source/` for the correct function name: `find expression-rag-source -name "*.json" \| grep -i "<keyword>"`. Read the doc. Fix. |
+| Wrong arguments | Re-read the JSON doc for that function — check `arguments` and `alternates` for correct signatures. |
+| Syntax error | DSL grammar violation — check against the grammar rules in foundation.md. Common causes: missing LHS variable, LaTeX instead of AsciiMath, bare function call without assignment. |
+| Undefined variable | A variable is referenced before it's defined. Check expression ordering — dependencies must come first. |
 
 ### Correction Loop
 
-1. Validate all expressions
+1. Call `validate_expressions` with all expressions
 2. For each error: read the relevant documentation from `expression-rag-source/`, understand WHY it failed, fix with correct syntax from the docs
-3. Re-validate the corrected expressions
+3. Call `validate_expressions` again with the corrected expressions
 4. Repeat up to **3 rounds**
 
 **Don't retry blindly** — understand WHY each error occurred and fix using the docs.
@@ -111,10 +113,10 @@ For each slide, verify that every variable referenced is defined in a preceding 
 
 ## Verification Loop
 
-1. Generate expressions → Validate → Fix errors → Re-validate
+1. Generate expressions → `validate_expressions` → Fix errors → Re-validate
 2. Run text best-practices check
 3. Run structural QA checklist (for lessons)
 4. Fix any issues found
-5. Re-verify affected expressions
+5. Re-validate affected expressions
 
 **Do not declare success until you've completed at least one fix-and-verify cycle.**

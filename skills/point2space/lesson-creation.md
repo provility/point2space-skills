@@ -51,13 +51,13 @@ Create DSL expressions for each slide:
 
 ### 5. Validate
 
-Validate ALL expressions using the MCP `validate_expressions` tool. Read [validation.md](validation.md) for the full error correction loop and QA checklist.
+Call the MCP `validate_expressions` tool on ALL expressions. Read [validation.md](validation.md) for the full error correction loop and QA checklist.
 
 ```
 validate_expressions({ expressions: ["expr1", "expr2", ...] })
 ```
 
-**Do not declare success until you've completed at least one fix-and-verify cycle.**
+**Do not declare success until validation passes. Fix errors and re-validate.**
 
 ### 6. Write lesson.json
 

@@ -15,7 +15,7 @@ The `point2space` skill enables Claude Code to generate, edit, and validate Poin
 ## Installation
 
 ```bash
-npx skills add point2space-skills
+npx skills add provility/point2space-skills
 ```
 
 Or clone directly:

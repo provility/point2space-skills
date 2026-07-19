@@ -27,4 +27,4 @@ L = line(G, A, B, c(red))
 3. Load [foundation.md](foundation.md) for DSL rules
 4. If using new functions, read their docs from `expression-rag-source/`
 5. Generate the modified expression set
-6. Validate all expressions using `validate_expressions` MCP tool — read [validation.md](validation.md) if errors occur
+6. Call `validate_expressions` MCP tool on ALL expressions — read [validation.md](validation.md) if errors occur

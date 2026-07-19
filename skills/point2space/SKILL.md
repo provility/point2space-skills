@@ -132,13 +132,11 @@ When planning code, read the docs for **every function you plan to use** plus th
 
 ## Validation
 
-Validate all generated expressions before declaring success using the MCP `validate_expressions` tool:
+**Mandatory:** Call the MCP `validate_expressions` tool on every expression before presenting to the user. Read [validation.md](validation.md) for the full error correction loop and QA checklist.
 
 ```
-validate_expressions({ expressions: ["expr1", "expr2"] })
+validate_expressions({ expressions: ["expr1", "expr2", ...] })
 ```
-
-Read [validation.md](validation.md) for the full error correction loop and QA checklist.
 
 ---
 
@@ -148,14 +146,9 @@ This skill is designed to work with the Point2Space MCP server. Use these tools:
 
 | Tool | Purpose |
 |------|---------|
-| `validate_expressions` | Validate DSL expressions against the grammar |
-| `generate_expressions` | Generate expressions from natural language |
-| `search_expression_docs` | Search expression documentation |
-| `search_samples` | Search sample prompts for inspiration |
-| `list_sample_categories` | List available sample categories |
-| `create_lesson` | Create a new lesson with slides |
-| `update_lesson` | Update lesson metadata |
-| `get_lesson` | Retrieve a lesson by ID |
-| `list_my_lessons` | List user's lessons |
-| `add_slide` | Add a slide to an existing lesson |
-| `update_slide_expressions` | Update expressions on a slide |
+| `validate_expressions` | Validate DSL expressions against the grammar — **must be called before presenting any expressions** |
+| `create_lesson` | Create a new lesson (title, tags, content) |
+| `update_lesson` | Update an existing lesson (title, tags, content, visibility) |
+| `delete_lesson` | Delete a lesson by ID |
+| `get_lesson` | Retrieve a specific lesson by ID |
+| `list_my_lessons` | List the authenticated user's lessons (with search, sort, pagination) |

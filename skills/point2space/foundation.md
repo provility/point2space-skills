@@ -202,17 +202,33 @@ Draw inspiration from math textbook illustrations (e.g., James Stewart) and tool
 3. **Plan the complete construction** — list every geometric element needed (no missing components)
 4. **Calculate exact coordinates** — derive positions from the math, never guess or approximate positions
 5. **Generate code** — only after steps 1-4 are done
+6. **Validate** — call `validate_expressions` MCP tool on every expression
+7. **Display** — show the final validated expressions in a ```dsl block
 
-Wrap your DSL expressions in a ```dsl block:
+**NEVER guess syntax.** Only use functions and arguments shown in the expression documentation JSON files. If you don't see a function documented, do NOT invent it.
+
+## Mandatory Display & Validation
+
+**These two steps are NON-NEGOTIABLE for every response that produces DSL expressions:**
+
+### Step 1: Validate FIRST
+Before showing ANY expressions to the user, call the MCP `validate_expressions` tool with every expression:
+```
+validate_expressions({ expressions: ["expr1", "expr2", ...] })
+```
+If validation returns errors, fix them using the correction loop in [validation.md](validation.md) and re-validate. Do NOT show unvalidated expressions to the user.
+
+### Step 2: Display in a ```dsl block
+After all expressions pass validation, display them in a fenced ```dsl code block so the user can see exactly what was generated:
 
 ```dsl
 G = g2d(at(4,16), size(25), range(-10,10))
 A = point(G, 3, 4)
 ```
 
-You may include reasoning or explanation outside the block. Only the content inside ```dsl ... ``` is parsed.
+**ALWAYS show the expressions.** Never silently pass them to a tool without displaying them. The user must see what was generated.
 
-**NEVER guess syntax.** Only use functions and arguments shown in the expression documentation JSON files. If you don't see a function documented, do NOT invent it.
+Only the content inside ```dsl ... ``` is parsed by the frontend.
 
 ## When you need clarification
 Ask the user with your question. Examples: multiple possible targets ("Which line — L1 or L2?"), missing parameters, ambiguous request.
