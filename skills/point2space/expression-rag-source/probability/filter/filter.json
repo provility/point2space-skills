@@ -1,0 +1,14 @@
+{
+  "expression": "filter",
+  "_requires": ["sspace"],
+  "description": "Evaluates a custom boolean expression on outcome values. Used as a predicate inside event(). The expression string supports operators: and, or, not, mod. Variables x, y, z, w refer to outcome positions 1-4 respectively. The special variable 'values' is an array of all numeric outcome values.",
+  "utility": "Custom boolean filter on outcomes",
+  "arguments": [
+    {"name": "expression", "type": "quoted string", "required": true, "description": "Boolean expression using x, y, z, w and operators (and, or, not, mod, <, >, <=, >=, ==)"}
+  ],
+  "examples": [
+    {"scenario": "Sum is even", "expression": "S = sspace(at(4,4), view(14,20), dice(2))\nE = event(S, filter(\"(x + y) mod 2 == 0\"), fc(steelblue))"},
+    {"scenario": "Both greater than 3", "expression": "S = sspace(at(4,4), view(14,20), dice(2))\nE = event(S, filter(\"x > 3 and y > 3\"), fc(coral))"},
+    {"scenario": "At least one is 6", "expression": "S = sspace(at(4,4), view(14,20), dice(2))\nE = event(S, filter(\"x == 6 or y == 6\"), fc(gold))"}
+  ]
+}

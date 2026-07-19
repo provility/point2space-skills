@@ -1,0 +1,39 @@
+{
+  "expression": "rotate (point)",
+  "_requires": ["g2d", "point"],
+  "description": "Creates a point by rotating an existing point by a given angle in degrees about the origin or an optional center point.",
+  "utility": "Rotate a point by an angle about the origin or a center",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "Point to rotate"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": true,
+      "description": "Rotation angle in degrees"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point from rotation",
+      "syntax": "rotate(G, point, angle)",
+      "description": "Point rotated by angle degrees about origin (or optional center)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Rotate point 90 degrees",
+      "expression": "P2 = rotate(G, P1, 90)"
+    }
+  ]
+}

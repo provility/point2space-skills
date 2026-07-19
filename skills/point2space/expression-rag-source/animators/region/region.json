@@ -1,0 +1,28 @@
+{
+  "expression": "region",
+  "_requires": ["g2d"],
+  "description": "Define region bounded by curves or lines",
+  "utility": "Create filled regions for area visualization",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "Coordinate system"},
+    {"name": "boundary", "type": "curve | line", "required": true, "description": "Region boundary"}
+  ],
+  "examples": [
+    {
+      "scenario": "Region for disk method solid of revolution around y-axis with animated bounds",
+      "expression": "varanim_1=variableanimator(at(3,20),\"a\",0.5,2)\nvaranim_2=variableanimator(at(5,20),\"b\",-1,0)\ngraph_1=g2d(at(4,30),19.4,21.4,range(-2,5),range(-4,4),type(plotting))\nplot_1=implicitplot(graph_1,\"x = y^2 + 1\",c(teal))\nline_1=line(graph_1,\"y = a\")\nline_2=line(graph_1,\"y = b\")\nline_3=line(graph_1,\"x = 0\")\nregion_1=region(graph_1, plot_1, line_1, line_2, line_3)\nrevolve_1=revolvedisk(at(2,1),view(17,16.9),region_1,axis(y),fc(red),rulings3d(64),sweep(0,360),slice(0.5),range(-3,3))"
+    },
+    {
+      "scenario": "Region for disk method revolution of x^2 around x-axis",
+      "expression": "graph_1=g2d(at(4,30),19.4,21.4,range(-2,2),range(-2,2),type(plotting))\nplot_1=plot(graph_1,\"x^2\",c(teal))\nline_1=line(graph_1,\"y = 0\")\nline_2=line(graph_1,\"x = 0\")\nline_3=line(graph_1,\"x = 1\")\nregion_1=region(graph_1, plot_1, line_1, line_2, line_3)\nrevolve_1=revolvedisk(at(2,1),view(21,26),region_1,axis(x),fc(blue),rulings3d(64),sweep(0,360),slice(0.5))"
+    },
+    {
+      "scenario": "Two regions for shell method revolution with outer and inner boundaries",
+      "expression": "graph_1=g2d(at(4,30),19.4,21.4,range(-1,5),range(-1,3),type(plotting))\nplot_1=plot(graph_1,\"sqrt(x)\",c(teal))\nplot_2=plot(graph_1,\"x/4\",c(orange))\nline_1=line(graph_1,\"x = 0\")\nline_2=line(graph_1,\"x = 4\")\nline_3=line(graph_1,\"y = 0\")\nregion_1=region(graph_1, plot_1, line_1, line_2, line_3)\nregion_2=region(graph_1, plot_2, line_1, line_2, line_3, fc(pink))\nrevolve_1=revolveshell(at(2,1),view(17,16.9),region_1,region_2,axis(x),fc(purple),rulings3d(64),sweep(0,360),slice(0.5))"
+    },
+    {
+      "scenario": "Two regions for washer method revolution around x-axis",
+      "expression": "graph_1=g2d(at(4,30),19.4,21.4,range(-1,3),range(-2,2),type(plotting))\nplot_1=plot(graph_1,\"x^2\",c(teal))\nplot_2=plot(graph_1,\"x\",c(orange))\nline_1=line(graph_1,\"x = 0\")\nline_2=line(graph_1,\"x = 1\")\nline_3=line(graph_1,\"y = 0\")\nregion_1=region(graph_1, plot_1, line_1, line_2, line_3)\nregion_2=region(graph_1, plot_2, line_1, line_2, line_3, fc(pink))\nrevolve_1=revolvewasher(at(2,1),view(17,16.9),region_1,region_2,axis(x),fc(red),rulings3d(64),sweep(0,360),slice(0.5))"
+    }
+  ]
+}

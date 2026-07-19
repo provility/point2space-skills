@@ -1,0 +1,48 @@
+{
+  "expression": "parallelshift3d",
+  "_requires": ["g3d"],
+  "description": "Creates a parallel copy of a 3D vector shifted perpendicular to both the vector direction and an axis vector. Uses cross product to determine the perpendicular direction.",
+  "utility": "Shift a 3D vector perpendicular to its direction by a specified distance.",
+  "arguments": [
+    {
+      "name": "vector",
+      "type": "vector3d",
+      "required": true,
+      "description": "The vector to shift"
+    },
+    {
+      "name": "distance",
+      "type": "number",
+      "required": true,
+      "description": "Distance to shift in the perpendicular direction. Positive or negative"
+    },
+    {
+      "name": "axis",
+      "type": "vector3d | point3d | three numbers (ax, ay, az)",
+      "required": true,
+      "description": "Axis vector used to determine perpendicular direction (via cross product)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with vector axis",
+      "syntax": "parallelshift3d(vec, distance, vector3d)",
+      "description": "Use a vector expression as the axis"
+    },
+    {
+      "variant": "with three numbers",
+      "syntax": "parallelshift3d(vec, distance, ax, ay, az)",
+      "description": "Use three separate coordinates as the axis"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Shift vector perpendicular to both its direction and z-axis",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 1, 0, 0); V2 = parallelshift3d(V, 2, 0, 0, 1)"
+    },
+    {
+      "scenario": "Shift with a vector axis",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 1, 0, 0); A = vector3d(G, 0, 0, 0, 0, 0, 1); V2 = parallelshift3d(V, 1.5, A)"
+    }
+  ]
+}

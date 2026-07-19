@@ -1,0 +1,53 @@
+{
+  "expression": "plotpoint",
+  "_requires": ["g2d", "plot"],
+  "description": "Creates a point on an explicit plot function at a given x-value. Evaluates f(x) at the specified x to determine the y coordinate.",
+  "utility": "Place a point on a plot curve at a specific x-value",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "plot",
+      "type": "plot",
+      "required": true,
+      "description": "A plot expression reference"
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "required": true,
+      "description": "X-value at which to evaluate the plot function"
+    },
+    {
+      "name": "styles",
+      "type": "c() | s() | icon()",
+      "required": false,
+      "description": "Color, size, or marker icon"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point on plot at x",
+      "syntax": "plotpoint(G, pl, x)",
+      "description": "Point on a plot curve at x-value"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Point on sine curve at x=0",
+      "expression": "y = plot(G, \"sin(x)\")\nP = plotpoint(G, y, 0)"
+    },
+    {
+      "scenario": "Point on sine curve at x=pi/2",
+      "expression": "y = plot(G, \"sin(x)\")\nQ = plotpoint(G, y, pi/2)"
+    },
+    {
+      "scenario": "Point on parabola at x=2",
+      "expression": "pl = plot(G, \"x^2\")\nP = plotpoint(G, pl, 2)"
+    }
+  ]
+}

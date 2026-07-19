@@ -1,0 +1,75 @@
+{
+  "expression": "tangentplane",
+  "_requires": ["g3d"],
+  "description": "Computes and displays the tangent plane to a 3D surface at a given point. Works with plot3d (explicit surfaces) and paraplot3d (parametric surfaces). Uses partial derivatives for linear approximation.",
+  "utility": "Display the tangent plane to a 3D surface at a given point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container"
+    },
+    {
+      "name": "surface",
+      "type": "plot3d | paraplot3d reference | string",
+      "required": true,
+      "description": "The surface to compute tangent plane for — a plot3d/paraplot3d variable or a quoted equation string"
+    },
+    {
+      "name": "x",
+      "type": "number | point3d",
+      "required": true,
+      "description": "x-coordinate (or u for parametric surfaces) of tangent point, or a point3d reference"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "required": false,
+      "description": "y-coordinate (or v for parametric surfaces) of tangent point (omit when using point3d)"
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "required": false,
+      "description": "Visual size of the tangent plane (default: 4)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From string equation",
+      "syntax": "tangentplane(G, \"x^2 + y^2\", 1, 1)",
+      "description": "Tangent plane using inline string equation at (x, y)"
+    },
+    {
+      "variant": "From plot3d reference",
+      "syntax": "tangentplane(G, surface, x, y)",
+      "description": "Tangent plane at coordinates (x, y) on a plot3d surface"
+    },
+    {
+      "variant": "From surface reference with size",
+      "syntax": "tangentplane(G, surface, x, y, size)",
+      "description": "Tangent plane with custom visual size"
+    },
+    {
+      "variant": "At a point3d",
+      "syntax": "tangentplane(G, surface, pt)",
+      "description": "Tangent plane at a point3d location (uses x, y from point)"
+    },
+    {
+      "variant": "On parametric surface",
+      "syntax": "tangentplane(G, parasurface, u, v)",
+      "description": "Tangent plane at parameter values (u, v) on a paraplot3d surface"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Tangent plane to paraboloid with animated x position",
+      "expression": "G = g3d(at(1,9), view(21.1, 22.2))\nf(x, y) = x^2 + y^2\nP = plot3d(G, f, range(-3, 3), range(-3, 3))\nvaranim_1 = variableanimator(at(6,37), \"x0\", 1, -2, \"text(Tangent At)\")\ny0 = 1\npt = point3d(G, x0, y0, f(x0, y0))\nT = tangentplane(G, P, x0, y0)"
+    },
+    {
+      "scenario": "Tangent plane from string equation with size",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nT = tangentplane(G, \"x^2 + y^2\", 1, 1, 5)"
+    }
+  ]
+}

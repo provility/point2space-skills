@@ -1,0 +1,54 @@
+{
+  "expression": "pointsplane3d",
+  "_requires": ["g3d", "point3d"],
+  "description": "Creates a plane in 3D space through three non-collinear points.",
+  "utility": "Create a plane through three points in 3D space",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "point1",
+      "type": "point3d",
+      "required": true,
+      "description": "First point on the plane"
+    },
+    {
+      "name": "point2",
+      "type": "point3d",
+      "required": true,
+      "description": "Second point on the plane"
+    },
+    {
+      "name": "point3",
+      "type": "point3d",
+      "required": true,
+      "description": "Third point on the plane (must not be collinear with the first two)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Inline points",
+      "syntax": "pointsplane3d(G, point3d(1,0,0), point3d(0,1,0), point3d(0,0,1))",
+      "description": "Plane through three inline point definitions"
+    },
+    {
+      "variant": "From variables",
+      "syntax": "pointsplane3d(G, A, B, C)",
+      "description": "Plane through three previously defined point3d variables"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plane through intercept points on each axis",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = point3d(G, 1, 0, 0)\nB = point3d(G, 0, 1, 0)\nC = point3d(G, 0, 0, 1)\npl = pointsplane3d(G, A, B, C)"
+    },
+    {
+      "scenario": "Plane through three arbitrary points with styling",
+      "expression": "G = g3d(at(4,23), view(30, 30))\npl = pointsplane3d(G, point3d(G, 2, 0, 0), point3d(G, 0, 3, 0), point3d(G, 0, 0, 4), fc(lightgreen), fo(0.2))"
+    }
+  ]
+}

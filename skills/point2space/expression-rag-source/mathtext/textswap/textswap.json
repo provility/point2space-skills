@@ -1,0 +1,69 @@
+{
+  "expression": "textswap",
+  "description": "Exchange two text elements with a crossing animation, placing new content at each other's position. Ideal for algebraic transposition, commutative demonstrations, and term rearrangement with sign changes. Clicking the mutator icon opens the Explorer side panel with full AsciiMath editing, live preview, and symbol picker. String editing is done in the side panel, not the toolbar dropdown.",
+  "utility": "Swap two texts with crossing animation and new content",
+  "arguments": [
+    {
+      "name": "dest",
+      "type": "variable",
+      "required": true,
+      "description": "First text object (receives sourceString after swap)"
+    },
+    {
+      "name": "source",
+      "type": "variable",
+      "required": true,
+      "description": "Second text object (receives destString after swap)"
+    },
+    {
+      "name": "destString",
+      "type": "string",
+      "required": true,
+      "description": "New content to place at dest position"
+    },
+    {
+      "name": "sourceString",
+      "type": "string",
+      "required": true,
+      "description": "New content to place at source position"
+    },
+    {
+      "name": "destBuff",
+      "type": "buff(row, col)",
+      "required": true,
+      "description": "Position offset for dest"
+    },
+    {
+      "name": "sourceBuff",
+      "type": "buff(row, col)",
+      "required": true,
+      "description": "Position offset for source"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic swap with buffs",
+      "syntax": "textswap(dest, source, \"destStr\", \"srcStr\", buff(0, 0), buff(0, 0))",
+      "description": "Swap with zero offsets"
+    },
+    {
+      "variant": "Swap with different offsets",
+      "syntax": "textswap(dest, source, \"d\", \"s\", buff(r1, c1), buff(r2, c2))",
+      "description": "Swap with independent position adjustments"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Swap terms in equation rearrangement",
+      "expression": "text_swap_5=textswap(select_2,select_1,\"-b\",\"-c\",buff(-0.1,0.6),buff(0,0))"
+    },
+    {
+      "scenario": "Swap x and x^2 terms in Vieta's formula",
+      "expression": "text_swap_1=textswap(select_2,select_1,\"x\",\"x^2\",buff(0.3,-0.1),buff(-0.2,0.4))"
+    },
+    {
+      "scenario": "Swap a and theta selections in trig substitution simplification",
+      "expression": "select_10=select(write_11,\"a\",1)\nselect_11=select(write_12,\"theta\",1)\ntext_swap_1 = textswap(select_10, select_11, \"theta\", \"a\", buff(0, 0), buff(0, 0))"
+    }
+  ]
+}

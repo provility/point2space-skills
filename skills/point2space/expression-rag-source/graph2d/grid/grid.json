@@ -1,0 +1,98 @@
+{
+  "expression": "grid",
+  "description": "Configures grid line visibility and styling on a 2D graph. Used as an argument inside g2d(). grid() shows grid lines; grid(noaxes) hides all axes, ticks, labels, and grid lines for a bare canvas.",
+  "utility": "Show grid lines on a g2d graph with optional color, stroke, and axis visibility control",
+  "arguments": [
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Grid line color, e.g., c(gray), c(lightblue)"
+    },
+    {
+      "name": "strokeWidth",
+      "type": "s(width)",
+      "required": false,
+      "description": "Grid line stroke width, e.g., s(0.5)"
+    },
+    {
+      "name": "noaxes",
+      "type": "noaxes",
+      "required": false,
+      "description": "Hides all axes, ticks, labels, and grid lines entirely (bare canvas)"
+    },
+    {
+      "name": "nolines",
+      "type": "nolines",
+      "required": false,
+      "description": "Hides grid lines but keeps axes and labels visible"
+    },
+    {
+      "name": "noticks",
+      "type": "noticks",
+      "required": false,
+      "description": "Hides tick marks and numeric labels but keeps axis arrows"
+    },
+    {
+      "name": "axisLabels",
+      "type": "\"label1\", \"label2\"",
+      "required": false,
+      "description": "Custom axis labels as strings, e.g., \"Re\", \"Im\" for complex plane"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Default grid (with axes)",
+      "syntax": "grid()",
+      "description": "Show grid lines with default styling, axes visible"
+    },
+    {
+      "variant": "Bare canvas (no axes, no grid)",
+      "syntax": "grid(noaxes)",
+      "description": "Hides all axes, ticks, labels, and grid lines entirely"
+    },
+    {
+      "variant": "Grid with custom axis labels",
+      "syntax": "grid(\"Re\", \"Im\")",
+      "description": "Label axes for complex plane (Real, Imaginary)"
+    },
+    {
+      "variant": "Axes without grid lines",
+      "syntax": "grid(nolines)",
+      "description": "Shows axes and labels but hides grid lines"
+    },
+    {
+      "variant": "No tick marks",
+      "syntax": "grid(noticks)",
+      "description": "Hides tick marks and numeric labels, keeps axis arrows"
+    },
+    {
+      "variant": "Styled grid",
+      "syntax": "grid(c(gray), s(0.5))",
+      "description": "Grid lines with custom color and stroke width"
+    },
+    {
+      "variant": "Used inside g2d",
+      "syntax": "g2d(at(row, col), height, width, range(-5, 5), range(-5, 5), grid(), type(plotting))",
+      "description": "Enable grid lines on a plotting graph"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Graph with default grid lines",
+      "expression": "G = g2d(at(4,37), 16.6, 16.1, range(-1, 2, 0.5), range(-1, 2, 0.5), grid(), type(plotting))"
+    },
+    {
+      "scenario": "Bare canvas with no axes or grid",
+      "expression": "graph_1 = g2d(at(5,26), 13.3, 20.6, range(-1, 5, 1), range(-1, 5, 1), grid(noaxes), type(plotting))"
+    },
+    {
+      "scenario": "Complex plane with Re/Im axis labels",
+      "expression": "G = g2d(at(2,2), 20, 20, range(-5, 5), range(-5, 5), type(complex), grid(\"Re\", \"Im\"))"
+    },
+    {
+      "scenario": "Graph with grid on a single range",
+      "expression": "G2 = g2d(at(0,30), 20, 20, range(-5, 5), grid(), type(plotting))"
+    }
+  ]
+}

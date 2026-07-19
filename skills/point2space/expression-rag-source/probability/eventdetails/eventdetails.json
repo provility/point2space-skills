@@ -1,0 +1,19 @@
+{
+    "expression": "eventdetails",
+    "_requires": ["event"],
+    "description": "Displays the expanded step-by-step working for an event probability. Shows individual sample point probabilities summed to the result. For conditional type, shows P(E|F) = P(E∩F)/P(F) with substituted values.",
+    "utility": "Show expanded probability working steps",
+    "arguments": [
+        {"name": "event", "type": "event variable", "required": true, "description": "Reference to an event() expression"},
+        {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+        {"name": "type", "type": "type(conditional|given|intersection|event|sample)", "required": false, "description": "Which probability to expand: event (P(E)), given (P(F)), intersection (P(E∩F)), conditional (P(E|F) formula, default), sample (1/|S|)"},
+        {"name": "display", "type": "display(\"label\")", "required": false, "description": "Custom AsciiMath label for the left-hand side"},
+        {"name": "color", "type": "c(color)", "required": false, "description": "Text color"},
+        {"name": "fontSize", "type": "fs(size)", "required": false, "description": "Font size"}
+    ],
+    "examples": [
+        {"scenario": "Expanded P(E) working", "expression": "S = sspace(coin(3), at(4,10), view(10,10))\nE = event(S, \"at least 2 H\", given(\"first = T\", c(steelblue)), fc(red))\neventdetails(E, at(22,10), type(event), display(\"P(E)\"))"},
+        {"scenario": "Full conditional breakdown", "expression": "eventdetails(E, at(22,10), type(event), display(\"P(E)\"))\neventdetails(E, at(24,10), type(given), display(\"P(F)\"))\neventdetails(E, at(26,10), type(intersection), display(\"P(E nn F)\"))\neventdetails(E, at(28,10), type(conditional), display(\"P(E|F)\"))"},
+        {"scenario": "Sample point probability", "expression": "eventdetails(E, at(20,10), type(sample), display(\"P(omega)\"))"}
+    ]
+}

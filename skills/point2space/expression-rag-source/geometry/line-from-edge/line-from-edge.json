@@ -1,0 +1,49 @@
+{
+  "expression": "line (from edge)",
+  "_requires": ["g2d"],
+  "description": "Creates a line segment from a polygon edge by extracting edge data using item(). Useful for highlighting or working with individual edges of triangles and polygons.",
+  "utility": "Create a line from a polygon edge",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "edge",
+      "type": "item(polygon, type(edge), index)",
+      "required": true,
+      "description": "Edge extracted from a polygon using item()"
+    },
+    {
+      "name": "lineType",
+      "type": "type(segment)",
+      "required": false,
+      "description": "Typically type(segment) for edge lines"
+    },
+    {
+      "name": "options",
+      "type": "c(color) | dash() | stroke(width)",
+      "required": false,
+      "description": "Color, dashed style, or stroke width"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Line from edge data",
+      "syntax": "line(G, item(polygon, type(edge), index), type(segment))",
+      "description": "Line segment created from polygon edge extraction"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Colored segment from polygon edge",
+      "expression": "line_a = line(graph_1, item(triangle_1, type(edge), 1), type(segment), c(blue))"
+    },
+    {
+      "scenario": "Segment from second edge of a polygon",
+      "expression": "line_b = line(G, item(poly, type(edge), 2), type(segment))"
+    }
+  ]
+}

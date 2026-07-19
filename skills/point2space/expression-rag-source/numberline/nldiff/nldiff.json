@@ -1,0 +1,50 @@
+{
+  "expression": "nldiff",
+  "_requires": ["nl"],
+  "description": "Computes set difference A \\ B on a number line. Exactly 2 operands required — first is the base set, second is subtracted. Order matters.",
+  "utility": "Compute and visualize set difference on a number line",
+  "arguments": [
+    {
+      "name": "numberLine",
+      "type": "nl variable",
+      "required": true,
+      "description": "Number line variable"
+    },
+    {
+      "name": "operandA",
+      "type": "variable ref",
+      "required": true,
+      "description": "Base set (minuend)"
+    },
+    {
+      "name": "operandB",
+      "type": "variable ref",
+      "required": true,
+      "description": "Set to subtract (subtrahend)"
+    },
+    {
+      "name": "color",
+      "type": "c(color)",
+      "required": false,
+      "description": "Result color"
+    },
+    {
+      "name": "offset",
+      "type": "buff(offset)",
+      "required": false,
+      "description": "Vertical offset from axis"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Custom label text"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Set difference of two intervals",
+      "expression": "N = nl(at(5, 2), range(-2, 10))\nI1 = interval(N, 1, 7, type(closed), c(blue))\nI2 = interval(N, 3, 5, type(closed), c(green))\nR = nldiff(N, I1, I2, c(green), buff(-1))"
+    }
+  ]
+}

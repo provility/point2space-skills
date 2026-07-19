@@ -1,0 +1,62 @@
+{
+  "expression": "pan",
+  "description": "Creates an interactive pan button that pans the 2D graph viewport to center on a coordinate, point, or geometric object. Requires at() as the first argument for button placement.",
+  "utility": "Create an interactive button that pans the graph viewport to a target point or object",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Logical position for the pan button using at(row, col)"
+    },
+    {
+      "name": "graph",
+      "type": "g2d variable",
+      "required": true,
+      "description": "The g2d graph to pan"
+    },
+    {
+      "name": "target",
+      "type": "x, y | point | object",
+      "required": true,
+      "description": "Target to center on: x,y coordinates, a point variable, or an object with a center (circle, polygon)"
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "required": false,
+      "description": "Animation duration in seconds (default 0.5)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Pan to coordinates",
+      "syntax": "pan(at(row, col), graph, x, y)",
+      "description": "Button that pans to center on the given x, y coordinates"
+    },
+    {
+      "variant": "Pan to point variable",
+      "syntax": "pan(at(row, col), graph, pointVar)",
+      "description": "Button that pans to center on a previously defined point"
+    },
+    {
+      "variant": "Pan to object center",
+      "syntax": "pan(at(row, col), graph, objectVar)",
+      "description": "Button that pans to center on a circle, polygon, or other object"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Pan button to specific coordinates",
+      "expression": "G = g2d(at(2,2), 20, 20, range(-5, 5), range(-5, 5), type(plotting))\npan(at(25,2), G, 5, 5)"
+    },
+    {
+      "scenario": "Pan button to a point variable",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nP = point(G, 7, 3)\npan(at(25,2), G, P)"
+    },
+    {
+      "scenario": "Pan button to center on a circle",
+      "expression": "C = circle(G, 3, point(G, 5, 5))\npan(at(25,2), G, C)"
+    }
+  ]
+}

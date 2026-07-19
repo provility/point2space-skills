@@ -1,0 +1,75 @@
+{
+  "expression": "rect",
+  "_requires": ["g2d"],
+  "description": "Create a rectangle from a corner point, width, and height. The corner must be a point variable or inline point() expression. Automatically generates four vertices and four edges accessible by index.",
+  "utility": "Create rectangle from corner point, width, and height",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "corner",
+      "type": "point",
+      "required": true,
+      "description": "Top-left corner as a point variable or point(G, x, y) expression"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": true,
+      "description": "Width of rectangle (extends right from corner). Must be positive."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": true,
+      "description": "Height of rectangle (extends down from corner). Must be positive."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From point variable",
+      "syntax": "rect(G, P, width, height)",
+      "description": "Rectangle with corner at point variable P"
+    },
+    {
+      "variant": "From inline point",
+      "syntax": "rect(G, point(G, 1, 5), 4, 3)",
+      "description": "Rectangle with inline point definition"
+    },
+    {
+      "variant": "With styling",
+      "syntax": "rect(G, P, 4, 3, c(blue), fc(lightblue))",
+      "description": "Colored rectangle with stroke and fill"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic rectangle at origin",
+      "expression": "rect_1 = rect(graph_1, point(graph_1, 0, 4), 4, 3)"
+    },
+    {
+      "scenario": "Rectangle using a point variable",
+      "expression": "rect_2 = rect(graph_1, P, 6, 4)"
+    },
+    {
+      "scenario": "Extract an edge as a line segment",
+      "expression": "top_edge = line(graph_1, item(rect_1, type(edge), 1), type(segment))"
+    },
+    {
+      "scenario": "Extract a corner vertex",
+      "expression": "corner = point(graph_1, item(rect_1, type(vertex), 1))"
+    },
+    {
+      "scenario": "Get rectangle area",
+      "expression": "a = p(rect_1, type(area))"
+    },
+    {
+      "scenario": "Get rectangle diagonal length",
+      "expression": "diag = p(rect_1, type(diagonal))"
+    }
+  ]
+}

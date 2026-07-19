@@ -1,0 +1,39 @@
+{
+    "expression": "variance",
+    "_requires": [
+        "pmf",
+        "binomial"
+    ],
+    "description": "Draws a shaded band showing one standard deviation around the mean on a PMF or binomial chart. Computes Var(X) = E(X^2) - [E(X)]^2 and displays sigma and variance values.",
+    "utility": "Show variance/standard deviation band on a chart",
+    "arguments": [
+        {
+            "name": "chart",
+            "type": "pmf/binomial variable",
+            "required": true,
+            "description": "Reference to a PMF or binomial chart"
+        },
+        {
+            "name": "fillColor",
+            "type": "fc(color)",
+            "required": false,
+            "description": "Color for the sigma-band and label (default: steelblue)"
+        },
+        {
+            "name": "label",
+            "type": "quoted string",
+            "required": false,
+            "description": "Custom label override"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Variance band on PMF",
+            "expression": "S = sspace(dice(2), at(4,10), view(12,12))\nP = pmf(S, sum, at(4,24), view(10,10))\nvariance(P, fc(steelblue))"
+        },
+        {
+            "scenario": "Variance band on binomial",
+            "expression": "B = binomial(20, 0.3, at(4,10), view(10,10))\nvariance(B, fc(lightblue))"
+        }
+    ]
+}

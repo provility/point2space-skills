@@ -1,0 +1,43 @@
+{
+  "expression": "tracepoint3d",
+  "_requires": ["g3d"],
+  "description": "Places a point on a curve3d at a given parameter value and traces the curve from start to that position.",
+  "utility": "Trace a point along a 3D parametric curve",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container"
+    },
+    {
+      "name": "curve",
+      "type": "curve3d reference",
+      "required": true,
+      "description": "The curve3d to trace along"
+    },
+    {
+      "name": "t",
+      "type": "number (0–1)",
+      "required": true,
+      "description": "Parameter value as a 0–1 ratio along the curve's t range"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Trace point on curve",
+      "syntax": "tracepoint3d(G, curve, t)",
+      "description": "Place and trace a point at parameter ratio t on a curve3d"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Trace point at midpoint of a helix",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nC = curve3d(G, \"cos(t)\", \"sin(t)\", \"0.3*t\", range(0, 4*pi))\ntracepoint3d(G, C, 0.5)"
+    },
+    {
+      "scenario": "Animated trace point along a curve",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nC = curve3d(G, \"cos(t)\", \"sin(t)\", \"t\", range(0, 2*pi))\nvaranim = variableanimator(at(4,35), \"p\", 0, 1)\ntracepoint3d(G, C, p)\nplayanimator(varanim)"
+    }
+  ]
+}

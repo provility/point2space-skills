@@ -1,0 +1,60 @@
+{
+  "expression": "reflect",
+  "_requires": ["g2d"],
+  "description": "Reflects a geometric shape across a line of symmetry to create its mirror image.",
+  "utility": "Create a mirror image of a shape reflected across a line",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The graph container"
+    },
+    {
+      "name": "line",
+      "type": "line",
+      "required": true,
+      "description": "The line to reflect across (axis of symmetry)"
+    },
+    {
+      "name": "shape",
+      "type": "point | line | circle | polygon",
+      "required": true,
+      "description": "The shape to reflect"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Reflect point across line",
+      "syntax": "reflect(G, mirrorLine, point)",
+      "description": "Reflect a point across a line of symmetry"
+    },
+    {
+      "variant": "Reflect polygon across line",
+      "syntax": "reflect(G, mirrorLine, polygon)",
+      "description": "Reflect an entire polygon across a line"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Reflect a point across the x-axis",
+      "expression": "A = point(G, -5, 0)\nB = point(G, 5, 0)\nxAxis = line(G, A, B)\nP = point(G, 2, 3)\nR = reflect(G, xAxis, P)"
+    },
+    {
+      "scenario": "Reflect a triangle across a vertical line",
+      "expression": "A = point(G, 0, -5)\nB = point(G, 0, 5)\nmirror = line(G, A, B)\nT = sas(G, 4, 60, 4, point(G, 1, 1))\nR = reflect(G, mirror, T)"
+    },
+    {
+      "scenario": "Reflect a circle across a diagonal line",
+      "expression": "A = point(G, 0, 0)\nB = point(G, 5, 5)\nL = line(G, A, B)\nC = circle(G, 2, point(G, 3, 0))\nR = reflect(G, L, C)"
+    },
+    {
+      "scenario": "Create a symmetric design by reflecting a polygon",
+      "expression": "A = point(G, 0, -5)\nB = point(G, 0, 5)\naxis = line(G, A, B)\nP = polygon(G, point(G, 1, 0), point(G, 3, 2), point(G, 2, 4))\nR = reflect(G, axis, P, c(blue))"
+    },
+    {
+      "scenario": "Reflect a line segment across another line",
+      "expression": "A = point(G, -3, -3)\nB = point(G, 3, 3)\nmirror = line(G, A, B)\nL = line(G, point(G, 1, 0), point(G, 4, 0))\nR = reflect(G, mirror, L)"
+    }
+  ]
+}

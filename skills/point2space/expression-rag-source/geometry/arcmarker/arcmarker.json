@@ -1,0 +1,12 @@
+{
+  "expression": "arcmarker",
+  "_requires": ["g2d"],
+  "description": "Arc with optional text label between two points",
+  "utility": "Mark angles or distances with labeled arcs",
+  "arguments": [
+    {"name": "from", "type": "point", "required": true, "description": "Start point"},
+    {"name": "to", "type": "point", "required": true, "description": "End point"},
+    {"name": "text", "type": "string", "required": false, "description": "Label text"}
+  ],
+  "examples": [{"scenario": "Labeled arc", "expression": "arcmarker(A, B, \"45°\")"}]
+}

@@ -1,0 +1,10 @@
+{
+  "expression": "arrowhead",
+  "_requires": [],
+  "description": "Specifies arrowhead placement on lines",
+  "utility": "Add arrowheads to angles and directional lines",
+  "arguments": [
+    {"name": "position", "type": "start | end | both | none", "required": true, "description": "Arrowhead position"}
+  ],
+  "examples": [{"scenario": "Arrow at end", "expression": "arrowhead(end)"}]
+}

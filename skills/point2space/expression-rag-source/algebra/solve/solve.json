@@ -1,0 +1,21 @@
+{
+  "expression": "solve",
+  "_requires": [],
+  "description": "Solves equations algebraically. Returns the solution value for use in subsequent expressions.",
+  "utility": "Find solutions to polynomial and algebraic equations",
+  "arguments": [
+    {"name": "equation", "type": "string", "required": true, "description": "Equation string to solve"},
+    {"name": "variable", "type": "string", "required": true, "description": "Variable to solve for"},
+    {"name": "initialGuess", "type": "number", "required": false, "description": "Initial guess for numerical methods"}
+  ],
+  "examples": [
+    {
+      "scenario": "Solve equation and plot root on graph",
+      "expression": "f(x) = cos(x) - x\nplot_1 = plot(G, f)\ns1 = solve(f, \"x\", 1)\nP = point(G, s1, 0)"
+    },
+    {
+      "scenario": "Solve quadratic equation",
+      "expression": "s1 = solve(\"x^2 - 5x + 6 = 0\", \"x\")"
+    }
+  ]
+}

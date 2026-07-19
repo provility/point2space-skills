@@ -1,0 +1,24 @@
+{
+  "expression": "cross3d",
+  "_requires": ["g3d", "vector3d"],
+  "description": "There is no standalone cross3d() function. To compute a cross product of two 3D vectors, use trace3d with a vector operation or compute it manually. The cross product produces a vector perpendicular to both inputs following the right-hand rule.",
+  "utility": "Cross product of two 3D vectors (no standalone function -- use vector operations)",
+  "arguments": [],
+  "alternates": [
+    {
+      "variant": "Manual cross product via coordinates",
+      "syntax": "vector3d(G, 0, 0, 0, ay*bz - az*by, az*bx - ax*bz, ax*by - ay*bx)",
+      "description": "Compute cross product manually from known component values"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Cross product of x-axis and y-axis unit vectors gives z-axis",
+      "expression": "G = g3d(at(4,23), view(30, 30))\ni = vector3d(G, 0, 0, 0, 1, 0, 0, c(red))\nj = vector3d(G, 0, 0, 0, 0, 1, 0, c(green))\nk = vector3d(G, 0, 0, 0, 0, 0, 1, c(blue))"
+    },
+    {
+      "scenario": "Normal vector to two direction vectors computed manually",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = vector3d(G, 0, 0, 0, 2, 1, 0)\nB = vector3d(G, 0, 0, 0, 0, 1, 3)\nN = vector3d(G, 0, 0, 0, 1*3 - 0*1, 0*0 - 2*3, 2*1 - 1*0, c(purple))"
+    }
+  ]
+}

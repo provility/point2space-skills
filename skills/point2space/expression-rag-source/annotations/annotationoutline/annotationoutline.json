@@ -1,0 +1,22 @@
+{
+  "expression": "annotationoutline",
+  "_requires": ["g2d"],
+  "description": "Outline annotation connecting multiple anchor points",
+  "utility": "Highlight multi-point paths or regions",
+  "arguments": [
+    {"name": "point1", "type": "point", "required": true, "description": "First point"},
+    {"name": "point2", "type": "point", "required": true, "description": "Second point"},
+    {"name": "point3", "type": "point", "required": true, "description": "Third point"},
+    {"name": "point4", "type": "point", "required": true, "description": "Fourth point"}
+  ],
+  "examples": [
+    {
+      "scenario": "Outline around a matrix with lightsalmon color (matrices lesson)",
+      "expression": "aoutline_1 = annotationoutline(at(3,10), at(3,15), at(4,15), at(4,10), c(lightsalmon))"
+    },
+    {
+      "scenario": "Larger annotation outline region (matrices lesson)",
+      "expression": "aoutline_2 = annotationoutline(at(6,27), at(6,48), at(14,48), at(14,27))"
+    }
+  ]
+}

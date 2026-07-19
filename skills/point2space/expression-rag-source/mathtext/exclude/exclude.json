@@ -1,0 +1,21 @@
+{
+  "expression": "exclude",
+  "description": "Used inside write() to specify which parts of the math text to skip or isolate during animation. Takes an ASCII math term and an occurrence index. When used alone, matching parts appear instantly without animation. When combined with type(invert), only the excluded parts are animated.",
+  "utility": "Select specific terms to skip or isolate animation in write()",
+  "arguments": [
+    { "name": "pattern", "type": "string", "required": true, "description": "ASCII math term to match in the math text content" },
+    { "name": "index", "type": "number", "required": true, "description": "1-based occurrence index — which match to target (1 = first, 2 = second, etc.)" }
+  ],
+  "alternates": [
+    { "variant": "Skip animation for a term", "syntax": "write(at(r, c), \"equation\", exclude(\"term\", 1))", "description": "Animate everything except the excluded term" },
+    { "variant": "Animate only the excluded term", "syntax": "write(at(r, c), \"equation\", exclude(\"term\", 1), type(invert))", "description": "Only animate the excluded term (invert mode)" },
+    { "variant": "Multiple excludes", "syntax": "write(at(r, c), \"equation\", exclude(\"a\", 1), exclude(\"b\", 1))", "description": "Skip multiple terms" }
+  ],
+  "examples": [
+    { "scenario": "Exclude second x^2 occurrence in fraction for color highlighting", "expression": "write_2=write(at(8,8),\"sqrt(x^2 + 1) / (a + b) = x^2+1\",exclude(\"x^2\",2),c(red),fc(yellow))" },
+    { "scenario": "Exclude first part of distance formula for later reveal", "expression": "write_1=write(at(14,24),\"d = sqrt((x_2 - x_1)^2 + (y_2 - y_1)^2)\",exclude(\"(x_2 - x_1)^2\",1))" },
+    { "scenario": "Exclude x^2+1 for separate reveal with offset", "expression": "writewithout_1=write(at(15,8),\"(a+x^2 + 1) / (x^2 + 1)\",exclude(\"x^2 + 1\",1),fs(24))" },
+    { "scenario": "Multiple excludes for placeholder variables in where-clause", "expression": "write_2=write(at(11,22),\"text(where ) a, b, c\",exclude(\"a\",1),exclude(\"b\",1),exclude(\"c\",1),fadein(0.5))" },
+    { "scenario": "Exclude entire expression for step-by-step reveal in linear equation", "expression": "write_3=write(at(8,7),\"2y=20 - 5x\",exclude(\"2y=20 - 5x\",1))" }
+  ]
+}

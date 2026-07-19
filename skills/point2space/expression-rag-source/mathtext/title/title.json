@@ -1,0 +1,128 @@
+{
+  "expression": "title",
+  "_requires": [],
+  "description": "Displays heading or title text at a specified position. For slide headings, section titles, and prominent labels. Content is in PLAIN TEXT mode by default — math expressions must be wrapped in math() to render as math. t(0) = permanent, t(N) = fadeout after N seconds. Supports text effects: typewrite, reveal, slideup, fadescale, highlight, and blur.",
+  "utility": "Display headings, titles, and prominent labels — use instead of write() for non-math headings",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Position on canvas (row, col)"
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "required": true,
+      "description": "Plain text content (quoted string)"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Text color"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Background color"
+    },
+    {
+      "name": "fontSize",
+      "type": "fs(size)",
+      "required": false,
+      "description": "Font size in pixels"
+    },
+    {
+      "name": "fontFamily",
+      "type": "ff(familyName)",
+      "required": false,
+      "description": "Font family name"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Background opacity (0-1)"
+    },
+    {
+      "name": "padding",
+      "type": "pd(pixels)",
+      "required": false,
+      "description": "Padding around text"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Fadeout delay in seconds (t(0) = permanent)"
+    },
+    {
+      "name": "effect",
+      "type": "type(effectName)",
+      "required": false,
+      "description": "Animation effect: typewrite, reveal, slideup, fadescale, highlight, or blur"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Simple text",
+      "syntax": "title(at(row, col), \"Content\")",
+      "description": "Display plain text at position"
+    },
+    {
+      "variant": "With color",
+      "syntax": "title(at(row, col), \"Content\", c(blue))",
+      "description": "Colored text"
+    },
+    {
+      "variant": "With background",
+      "syntax": "title(at(row, col), \"Content\", c(blue), fc(yellow))",
+      "description": "Text with background color"
+    },
+    {
+      "variant": "With font styling",
+      "syntax": "title(at(row, col), \"Content\", fs(20), ff(Arial))",
+      "description": "Custom font size and family"
+    },
+    {
+      "variant": "With animation effect",
+      "syntax": "title(at(row, col), \"Content\", type(typewrite))",
+      "description": "Typewriter character-by-character animation"
+    },
+    {
+      "variant": "With reveal effect",
+      "syntax": "title(at(row, col), \"Content\", type(reveal), c(blue))",
+      "description": "Gradual opacity fade-in animation"
+    },
+    {
+      "variant": "With slideup effect",
+      "syntax": "title(at(row, col), \"Content\", type(slideup), fs(24))",
+      "description": "Slide up with fade animation"
+    },
+    {
+      "variant": "Full styling",
+      "syntax": "title(at(row, col), \"Content\", type(highlight), c(blue), fc(yellow), fs(24), pd(10), t(3))",
+      "description": "All styling options: highlight effect, colors, font, padding, and fadeout after 3 seconds"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Lesson title with lavender background and transparent border (equation of a circle lesson)",
+      "expression": "title_1=title(at(1,20),\" Two Dimensional Analytical Geometry-II\",fc(lavender),pd(12),border(transparent,s(4),radius(12),shadow(2)),fs(29),ff(\"Gill Sans\"))"
+    },
+    {
+      "scenario": "Example number title with lavender fill and shadow (axis intercepts lesson)",
+      "expression": "title_1=title(at(2,4),\"Example 5.6\",fc(lavender),pd(10),border(black,radius(18),shadow(18)),fs(25),ff(\"Gill Sans\"))"
+    },
+    {
+      "scenario": "Example title with slideup effect and wheat background (Point and Circle lesson)",
+      "expression": "title_1=title(at(1,4),\"Example 5.5\",type(slideup),fc(wheat),pd(12),border(black,radius(10),shadow(22)),fs(24),ff(\"Gill Sans\"),c(black))"
+    },
+    {
+      "scenario": "Limits lesson title with typewrite effect",
+      "expression": "title_1=title(at(1,1), \"Limits: When Does a Function Approach a Value?\", type(typewrite), fs(26), c(steelblue))"
+    }
+  ]
+}

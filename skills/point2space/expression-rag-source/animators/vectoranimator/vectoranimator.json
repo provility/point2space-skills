@@ -1,0 +1,14 @@
+{
+  "expression": "vectoranimator",
+  "description": "Interactive animator that transforms a vector from its current state to a target vector",
+  "utility": "Animate vector transformations and rotations with play/reset control",
+  "arguments": [
+    {"name": "sourceVector", "type": "variable reference", "required": true, "description": "Variable reference to an existing vector to animate"},
+    {"name": "targetVector", "type": "vector", "required": true, "description": "Target vector expression (can be inline or variable reference)"},
+    {"name": "styles", "type": "style expressions", "required": false, "description": "Optional styling: c(), s(), t(), defer(), etc."}
+  ],
+  "examples": [
+    {"scenario": "Animate a vector to a new direction", "expression": "G = g2d(at(4,19), size(16), range(-5, 5), type(geometry))\nA = point(G, 0, 0)\nB = point(G, 3, 1)\nC = point(G, 1, 4)\nV1 = vector(G, A, B)\nvanim_1 = vectoranimator(V1, vector(G, A, C))"},
+    {"scenario": "Animate vector to another named vector", "expression": "G = g2d(at(4,19), size(16), range(-5, 5), type(geometry))\nV1 = vector(G, point(G, 0, 0), point(G, 3, 0))\nV2 = vector(G, point(G, 0, 0), point(G, 0, 4))\nvanim_1 = vectoranimator(V1, V2)"}
+  ]
+}

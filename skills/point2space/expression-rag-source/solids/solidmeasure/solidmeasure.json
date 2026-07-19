@@ -1,0 +1,18 @@
+{
+  "expression": "solidmeasure",
+  "_requires": ["loc3d"],
+  "description": "Measurement on solid surface between two 3D points. Uses loc3d() for coordinates, either inline or as variable references.",
+  "utility": "Show measurement between two points on a solid",
+  "arguments": [
+    {"name": "solidRef", "type": "variable", "required": true, "description": "Reference to solid shape"},
+    {"name": "point1", "type": "loc3d or variable", "required": true, "description": "First measurement point (inline loc3d or variable reference)"},
+    {"name": "point2", "type": "loc3d or variable", "required": true, "description": "Second measurement point (inline loc3d or variable reference)"},
+    {"name": "text", "type": "string", "required": false, "description": "Label text"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Line color"},
+    {"name": "buff", "type": "buff(perpBuff, labelBuff)", "required": false, "description": "Perpendicular and label offsets"}
+  ],
+  "examples": [
+    {"scenario": "Measure with inline loc3d", "expression": "C = cube3d(at(10,10), view(25,25), 3)\nM = solidmeasure(C, loc3d(C, 0, 0, 0), loc3d(C, 0, 100, 0), \"3 cm\", c(dodgerblue))"},
+    {"scenario": "Measure with variable references", "expression": "C = cube3d(at(10,10), view(25,25), 3)\nP1 = loc3d(C, 0, 0, 0, c(magenta))\nP2 = loc3d(C, 0, 100, 0, c(magenta))\nM = solidmeasure(C, P1, P2, \"3 cm\", c(dodgerblue))"}
+  ]
+}

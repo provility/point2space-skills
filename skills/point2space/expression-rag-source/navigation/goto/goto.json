@@ -1,0 +1,51 @@
+{
+  "expression": "goto",
+  "description": "Navigate to a target slide's section during playback with an interactive icon placed on a shape",
+  "utility": "Create navigation links between slides and sections",
+  "arguments": [
+    {
+      "name": "targetSlide",
+      "type": "string",
+      "required": true,
+      "description": "Quoted name of the target slide to navigate to"
+    },
+    {
+      "name": "sectionName",
+      "type": "string",
+      "required": false,
+      "description": "Quoted name of the section within the target slide (optional)"
+    },
+    {
+      "name": "shapeRef",
+      "type": "ref(shape)",
+      "required": true,
+      "description": "Reference to shape where the navigation icon is placed"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Go to slide with icon on shape",
+      "syntax": "goto(\"targetSlide\", ref(shape))",
+      "description": "Navigate to target slide, place icon on specified shape"
+    },
+    {
+      "variant": "Go to slide section with icon on shape",
+      "syntax": "goto(\"targetSlide\", \"section\", ref(shape))",
+      "description": "Navigate to specific section of target slide, place icon on shape"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Navigate to explanation section",
+      "expression": "goto_1 = goto(\"Explanation\", \"explanation\", ref(anchor_1))"
+    },
+    {
+      "scenario": "Navigate to 3D revolve section",
+      "expression": "goto_1 = goto(\"3d-revolve\", \"revolve solid\", ref(anchor_1))"
+    },
+    {
+      "scenario": "Navigate to formula section",
+      "expression": "goto_1 = goto(\"Slide 2\", \"formula\", ref(anchor_3))"
+    }
+  ]
+}

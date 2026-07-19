@@ -1,0 +1,36 @@
+{
+  "expression": "expand",
+  "_requires": [],
+  "description": "Expands algebraic expressions using Algebrite symbolic computation",
+  "utility": "Expand products and powers: (x+1)^2 → x^2+2*x+1, (a+b)(a-b) → a^2-b^2",
+  "arguments": [
+    {
+      "name": "expression",
+      "type": "string",
+      "required": true,
+      "description": "Quoted mathematical expression to expand, may contain variables from context"
+    }
+  ],
+  "alternates": [
+    "expand(\"(x+a)^2\") - uses current value of variable a",
+    "expand(\"(a+b)(a-b)\") - product expansion"
+  ],
+  "examples": [
+    {
+      "scenario": "Expand binomial square",
+      "expression": "E = expand(\"(x+1)^2\")"
+    },
+    {
+      "scenario": "Expand with context variables",
+      "expression": "a = 2; result = expand(\"(x+a)^2\")"
+    },
+    {
+      "scenario": "Difference of squares",
+      "expression": "E = expand(\"(a+b)(a-b)\")"
+    },
+    {
+      "scenario": "Display result as LaTeX",
+      "expression": "E = expand(\"(x+1)^2\"); desc(0, 0, E)"
+    }
+  ]
+}

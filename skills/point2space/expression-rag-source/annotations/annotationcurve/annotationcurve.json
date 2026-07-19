@@ -1,0 +1,60 @@
+{
+  "expression": "annotationcurve",
+  "_requires": ["g2d"],
+  "description": "Draws a curved annotation passing through at least three anchor points. Creates a smooth curve connecting the specified points with optional styling.",
+  "utility": "Highlight or annotate curved paths in diagrams with multiple anchor points",
+  "arguments": [
+    {
+      "name": "point1",
+      "type": "at() expression",
+      "required": true,
+      "description": "First anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point2",
+      "type": "at() expression",
+      "required": true,
+      "description": "Second anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point3",
+      "type": "at() expression",
+      "required": true,
+      "description": "Third anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "additionalPoints",
+      "type": "at() expression",
+      "required": false,
+      "description": "Additional anchor points for the curve"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "three points",
+      "syntax": "annotationcurve(at(r1, c1), at(r2, c2), at(r3, c3))",
+      "description": "Curve through three points"
+    },
+    {
+      "variant": "multiple points",
+      "syntax": "annotationcurve(at(r1, c1), at(r2, c2), at(r3, c3), at(r4, c4), c(red))",
+      "description": "Curve through four or more points with color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic three-point curve",
+      "expression": "annotationcurve(at(1,1), at(2,3), at(3,2))"
+    },
+    {
+      "scenario": "Four-point styled curve",
+      "expression": "annotationcurve(at(1,1), at(2,4), at(3,3), at(4,1), c(green))"
+    }
+  ]
+}

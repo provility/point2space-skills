@@ -1,0 +1,244 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_1775797872594_vodtnxmox": {
+      "id": "slide_1775797872594_vodtnxmox",
+      "name": "Slide 1",
+      "expressions": [
+        "paragraph_1=paragraph(at(1.1,2.8),49.1,4,para_str_3,effect(fadein))",
+        "write_3=desc(at(4.8,3),\"text(Given :)\",fs(20))",
+        "graph_1=g2d(at(6,35),14.9,20.2,range(-6,6,2),range(-6,6,2),type(plotting),t(0.5))",
+        "write_4=write(at(6.1,6.6),\"(x^(2))/(4)+(y^(2))/(25)=1\",defer(),notes(\"Standard form of ellipse\"),fs(20),t(1))",
+        "ellipse_1=ellipse(graph_1,\"x^2/4 + y^2/25 = 1\",defer())",
+        "play_1 = play(ellipse_1, write_4, type(parallel))",
+        "write_5=write(at(9.4,6.5),\"text(Since ) 25>4⇒\",defer(),notes(\"Larger denominator decides major axis\"),fs(20),t(1))",
+        "write_6=write(at(9.4,13.9),\"text(major axis is along the Y-axis)\",notes(\"Example: The area of a circle is math(A = pi r^2).\"),defer(),fs(20),c(blue),t(1))",
+        "arrow_2=arrow(at(17.6,45),at(18.2,41),\"text(major axis is y axis)\",buff(10,2.5),c(orange),t(1),s(3))",
+        "play_2 = play(write_5, write_6, type(parallel))",
+        "write_7=desc(at(11,2.4),\"text(Finding major axis length :)\",fs(20))",
+        "aline_1=annotationline(at(12.3,6.2),at(12.2,13.6),c(red),s(2))",
+        "write_8=write(at(12.9,5.3),\"text(compare with standard ellipse) :(x^(2))/b^(2)+(y^(2))/(a^(2))=1\",fs(20),fadein(0.9),stay(2),comment(\"Compare given equation with known form\"))",
+        "line_1=line(graph_1,0,-5,0,5,type(segment),s(4),c(cyan),t(1))",
+        "",
+        "write_9=write(at(16,16),\"text(given) :(x^(2))/(4)+(y^(2))/(25)=1\",fs(20),t(1))",
+        "select_1 = select(write_9, \"4\", 1)",
+        "select_2 = select(write_9, \"25\", 1)",
+        "write_10=desc(at(19.7,18.5),\"b^2=4text(,)\",fs(20),notes(\"Match corresponding denominators\"),stay(1))",
+        "line_2=line(graph_1,0,0,-2,0,type(segment),c(red),s(4),t(1))",
+        "outline_1=outline(select_1,t(0.5))",
+        "write_11=desc(at(19.6,22),\"a^2=25\",fs(20),notes(\"Match corresponding denominators\"),stay(1))",
+        "line_3=line(graph_1,0,5,0,0,type(segment),s(4),c(indigo),t(1))",
+        "outline_2=outline(select_2,t(0.5))",
+        "hide_1 = hide(line_2)",
+        "hide_2 = hide(line_3)",
+        "write_12=desc(at(21.7,18.9),\"b=±2,a=±5\",fs(20),stay(2),comment(\"Take square roots of both values\"))",
+        "point_1=point(graph_1,0,5,s(4),defer(),notes(\"Endpoints of major axis\"))",
+        "label_1=label(graph_1,at(point_1),\"(0,5)\",buff(-1,0.5),s(3),t(0.5),fs(12),defer())",
+        "point_2=point(graph_1,0,-5,s(4),defer())",
+        "label_2=label(graph_1,at(point_2),\"(0,-5)\",buff(0,0.5),rotation(0),t(0.5),fs(12),defer())",
+        "play_3 = play(point_2, point_1,label_2,label_1, type(parallel))",
+        "arect_1=annotationrect(at(19.2,17.6),at(19.2,26.4),at(23.3,26.4),at(23.3,17.6),c(purple),fc(pink),t(1))",
+        "write_13=desc(at(23.8,15.1),\"thereforetext(major axis length=10)\",defer())",
+        "dm_2=distancemarker(at(7,44.1),at(20,44.1),c(teal),s(3))",
+        "arrow_1=arrow(at(11.7,44.2),at(9.2,39.6),\"text(major axis length is 10)\",buff(10,-3.5),s(3),c(darkblue),defer(),t(1))",
+        "play_4 = play(arrow_1, write_13, type(parallel))",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Find the coordinates of the foci, the vertices, the length of major axis, the minor axis, the eccentricity and the length of Latus rectum of ellipse"
+        },
+        {
+          "name": "para_str_2",
+          "value": "text(Find the coordinates of the foci, the vertices, the length of major axis, the minor axis, the eccentricity and the length of Latus rectum of ellipse)(x^(2))/(4)+(y^(2))/(25)=1."
+        },
+        {
+          "name": "para_str_3",
+          "value": "Find the coordinates of the foci, the vertices, the length of major axis, the minor axis, the eccentricity and the length of Latus rectum of ellipse math((x^(2))/(4)+(y^(2))/(25)=1)."
+        }
+      ]
+    },
+    "slide_1776056396573_myz0dl7hl": {
+      "id": "slide_1776056396573_myz0dl7hl",
+      "name": "Slide 2",
+      "expressions": [
+        "write_1=write(at(5.5,4.1),\"b=±2\",fs(24),t(0.5),comment(\"b is semi-minor axis\"))",
+        "graph_1=g2d(at(4.4,19.7),14.9,20.2,range(-6,6,2),range(-6,6,2),type(plotting),t(0.5),defer())",
+        "play_1 = play(graph_1, type(parallel))",
+        "ellipse_1=ellipse(graph_1,\"x^2/4 + y^2/25 = 1\",notes(\"Same ellipse from previous step\"))",
+        "arrow_1=arrow(at(12.3,39),at(8.1,39),s(3.5),buff(1.5,-7.5))",
+        "desc_1=desc(at(7.3,33.9),\"text(minor axis is X axis)\",fs(20),notes(\"Minor axis lies along shorter direction\"))",
+        "point_1=point(graph_1,-2,0,s(5),defer())",
+        "point_2=point(graph_1,2,0,s(5),defer())",
+        "label_1=label(graph_1,at(point_2),\"text((2,0))\",buff(0.5,0.5),rotation(0),defer(),fs(14))",
+        "label_2=label(graph_1,at(point_1),\"(-2,0)\",buff(0.5,-2.5),rotation(0),defer(),fs(14))",
+        "play_2 = play(label_2, point_1, point_2, label_1, type(parallel))",
+        "paragraph_1=paragraph(at(12.4,33.4),7.3,2.7,para_str_3,fs(17),defer())",
+        "paragraph_2=paragraph(at(3.8,29.3),7.7,3.3,para_str_4,fs(19),defer())",
+        "play_3 = play(paragraph_1, paragraph_2, type(parallel))",
+        "line_1=line(graph_1,2,0,-2,0,type(segment),s(4),c(cyan),t(1),notes(\"Minor axis joins both endpoints\"))",
+        "ubrace_1 = underbrace(at(12.5, 25.9), at(12.5, 33.5))",
+        "focus_1 = focus(line_1)",
+        "arrow_2=arrow(at(13.1,30.8),at(17.9,37.1),\"text(minor axis length is 4)\",c(teal),s(3),notes(\"Minor axis length = 2b=4\"))",
+        "",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Enter text here..."
+        },
+        {
+          "name": "para_str_2",
+          "value": "Enter text here..."
+        },
+        {
+          "name": "para_str_3",
+          "value": "(a,0)"
+        },
+        {
+          "name": "para_str_4",
+          "value": "(0,b)"
+        }
+      ]
+    },
+    "slide_1776063904623_gsdwkhf26": {
+      "id": "slide_1776063904623_gsdwkhf26",
+      "name": "Slide 3",
+      "expressions": [
+        "write_1=write(at(5,4.5),\"c^2=a^2−b^2 => 25-4=21\",t(1),notes(\"Formula to find distance of focus from centre\"))",
+        "graph_1=g2d(at(4.4,30.3),14.9,20.2,range(-6,6),range(-6,6),type(plotting),t(0.5),defer())",
+        "ellipse_1=ellipse(graph_1,\"x^2/4 + y^2/25 = 1\",defer())",
+        "play_1 = play( graph_1,ellipse_1, type(parallel))",
+        "select_1=select(write_1,\"21\",1,notes(\"Example: The area of a circle is math(A = pi r^2).\"))",
+        "select_2 = select(write_1, \"c^2=\", 1)",
+        "anchor_1 = anchor(at(8.8, 7))",
+        "text_copy_1=textcopy(anchor_1,select_2,notes(\"Now solve for c\"))",
+        "anchor_2 = anchor(at(9.2, 10.1))",
+        "text_copy_2=textcopy(anchor_2,select_1,buff(-0.2,-0.3))",
+        "",
+        "write_2=write(at(10.8,6.7),\"c=+- sqrt(21)\",t(1),comment(\"Take square root of both sides\"))",
+        "point_1=point(graph_1,0,4.6,s(3),defer())",
+        "point_2=point(graph_1,0,-4.6,s(3),defer())",
+        "write_3=write(at(15.2,4.7),\"Foci (0,±c)=Foci ( 0 , ± 21 ) =(0,sqrt(21))(0,-sqrt(21))\",t(2),stay(2),comment(\"For vertical ellipse: (0,±c)\"))",
+        "play_2 = play(point_2, point_1, type(parallel))",
+        "write_4=write(at(3.5,45.9),\"text(Foci)\",notes(\"Points inside ellipse called foci\"),stay(1))",
+        "outline_1 = outline(write_4)",
+        "label_1=label(graph_1,at(point_1),\"text(Focus)(0,sqrt(21))\",buff(0,0.5),rotation(0),fs(12),defer())",
+        "label_2=label(graph_1,at(point_2),\"text(Focus)(0,-sqrt(21))\",buff(-0.5,0.5),rotation(0),fs(12),defer())",
+        "play_3 = play(label_2, label_1, type(parallel))",
+        "",
+        "",
+        ""
+      ],
+      "paraVariables": []
+    },
+    "slide_1776070709674_mw2juvdzw": {
+      "id": "slide_1776070709674_mw2juvdzw",
+      "name": "Slide 4",
+      "expressions": [
+        "desc_1=desc(at(6,4),\"text(Vertices):\",notes(\"Vertices are end points of major axis\"),stay(2))",
+        "graph_1=g2d(at(4.2,18.2),17.3,21.5,range(-6,6),range(-6,6),type(plotting),defer())",
+        "play_1 = play(graph_1,ellipse_1, type(parallel))",
+        "ellipse_1=ellipse(graph_1,\"x^2/4 + y^2/25 = 1\",notes(\"Same ellipse from previous slides\"),stay(2))",
+        "point_1=point(graph_1,0,5,s(5),defer())",
+        "point_2=point(graph_1,0,-5,s(4),defer())",
+        "label_1=label(graph_1,at(point_1),\"(0,5)\",buff(-1,0.3),rotation(0),fs(14),defer())",
+        "label_2=label(graph_1,at(point_2),\"(0,-5)\",buff(0.3,0.3),rotation(0),fs(14),defer())",
+        "play_2 = play(label_2, point_2, point_1, label_1, type(parallel))",
+        "point_3=point(graph_1,2,0,s(5),defer())",
+        "point_4=point(graph_1,-2,0,s(5),defer())",
+        "label_3=label(graph_1,at(point_4),\"(-2,0)\",buff(-1,-2.5),rotation(0),fs(14),defer())",
+        "label_4=label(graph_1,at(point_3),\"(2,0)\",buff(-1,0),rotation(0),fs(14),defer())",
+        "play_3 = play(label_4, point_3, label_3, point_4, type(parallel))"
+      ],
+      "paraVariables": []
+    },
+    "slide_1776073470623_wbeih69hy": {
+      "id": "slide_1776073470623_wbeih69hy",
+      "name": "Slide 5",
+      "expressions": [
+        "write_1=write(at(6.5,6.5),\"text(eccentricity ) e=c/a\",t(1),notes(\"Eccentricity measures shape of ellipse\"))",
+        "write_2=write(at(11,11),\"e =(sqrt(21))/5\",t(1),notes(\"Substitute c=21\t​, a=5cle is math(A = pi r^2).\"),comment(\"Final value of eccentricity\"))",
+        "arect_1=annotationrect(at(10.6,10.6),at(10.6,16.1),at(14.2,16.1),at(14.2,10.6),c(brown),fc(red),fo(0.1))"
+      ],
+      "paraVariables": []
+    },
+    "slide_1776073817012_2o9wapuja": {
+      "id": "slide_1776073817012_2o9wapuja",
+      "name": "Slide 6",
+      "expressions": [
+        "write_1=write(at(6.5,6.5),\"text(Length of Latus rectum ) (2b^(2))/(a)=(2xx4)/(5)\",t(2),notes(\"Chord through focus perpendicular to major axis\"))",
+        "write_2=write(at(10,21.8),\"=(8)/(5)\",comment(\"Length of latus rectum\"))",
+        "graph_1=g2d(at(2.6,32.3),20.5,22.4,range(-6,6),range(-6,6),type(plotting),snap(false),t(1))",
+        "ellipse_1=ellipse(graph_1,\"x^2/4 + y^2/25 = 1\",t(1))",
+        "point_1=point(graph_1,0,4.6,s(3),t(0.5))",
+        "label_1=label(graph_1,at(point_1),\"text(Focus)\",buff(0,0),rotation(0),fs(11),t(0.5))",
+        "line_1=line(graph_1,point(graph_1,-0.8,4.6),point(graph_1,0.8,4.6),type(segment),c(blue),t(0.5))",
+        "obrace_1=overbrace(at(4.6,41.7),at(4.6,45))",
+        "arrow_1=arrow(at(3.7,43.5),at(3.6,48.6),s(3),c(brown))",
+        "paragraph_1=paragraph(at(1.6,47.8),6.5,4.4,para_str_1,ff(\"Gill Sans\"),effect(fadein),t(1))"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "8/5 length of \nlatus rectum"
+        }
+      ]
+    },
+    "slide_1776076169147_aieo93ngr": {
+      "id": "slide_1776076169147_aieo93ngr",
+      "name": "Slide 7",
+      "expressions": [
+        "desc_1=desc(at(0.1,1.2),\"text( Concept and Formulae)\",notes(\"Quick revision of all ellipse results\",0.5))",
+        "mathexpr_1=datatable(at(1.5,1.9),data(\"(x^(2))/(b^(2))+(y^(2))/(a^(2))=1\",\"(x^(2))/(4)+(y^(2))/(25)=1\"),data(\"text(y axis )\",\"text(y axis )\"),data(\"c^(2)=a^(2)-b^(2)\",\"c^2 = 21\"),data(\"(0,+-c)\",\"(0,+-sqrt(21))\"),data(\"2b\",\"4\"),data(\"2a\",\"10\"),data(\"e=(c)/(a)\",\"e=(sqrt(21))/(5)\"),data(\"(2b^(2))/(a)\",\"(8)/(5)\"),data(\"(0,+-a)\",\"(0,+-5)\"),header(\"text(   Equation )\",\"text(major axis)\",\"text(         )c^2text(         )\",\"text(foci)\",\"text(length of )-text(minor axis)\",\"text(length of)-text( major axis)\",\"text(eccentricity)\",\"text(LLR)\",\"text(Vertices)\"),c(black),notes(\"Compare standard formula with solved values\"))",
+        "graph_1=g2d(at(10.3,14.1),15.1,27.3,range(-6,6),range(-6,6),type(plotting))",
+        "ellipse_1=ellipse(graph_1,\"x^2/4 + y^2/25 = 1\",notes(\"Visual summary of all important parts\"))",
+        "point_1=point(graph_1,0,5,s(5),defer())",
+        "point_2=point(graph_1,0,-5,s(4),defer())",
+        "label_7=label(graph_1,at(point_1),\"text(vertex)\",buff(-2,0),rotation(0),c(black),fs(14),defer())",
+        "label_8=label(graph_1,at(point_2),\"text(vertex)\",buff(1,0.3),rotation(0),c(black),fs(14),defer())",
+        "label_1=label(graph_1,at(point_1),\"(0,5)\",buff(-1,0.3),rotation(0),fs(14),defer())",
+        "label_2=label(graph_1,at(point_2),\"(0,-5)\",buff(0.3,0.3),rotation(0),fs(14),defer())",
+        "play_2 = play(label_2, point_2, point_1, label_1,label_7,label_8, type(parallel))",
+        "point_3=point(graph_1,2,0,s(5),defer())",
+        "point_4=point(graph_1,-2,0,s(5),defer())",
+        "label_3=label(graph_1,at(point_4),\"(-2,0)\",buff(-1,-2.5),rotation(0),fs(14),defer())",
+        "label_4=label(graph_1,at(point_3),\"(2,0)\",buff(-1,0),rotation(0),fs(14),defer())",
+        "play_3 = play(label_4, point_3, label_3, point_4, type(parallel))",
+        "point_5=point(graph_1,0,4.6,s(3),defer(),c(blue))",
+        "point_6=point(graph_1,0,-4.6,s(3),defer(),c(blue))",
+        "label_5=label(graph_1,at(point_5),\"text(Focus)(0,sqrt(21))\",buff(-0.3,-4.5),rotation(0),fs(12),defer())",
+        "label_6=label(graph_1,at(point_6),\"text(Focus)(0,-sqrt(21))\",buff(-0.5,-5),rotation(0),fs(12),defer())",
+        "play_1 = play(label_5, point_5, point_6, label_6, type(parallel))",
+        "line_1=line(graph_1,point_4,point_3,type(segment),c(purple),s(3),notes(\"Length = 4\"))",
+        "line_2=line(graph_1,point_2,point_1,type(segment),c(magenta),s(3),notes(\"Length = 10\"))",
+        "obrace_1=overbrace(at(11.5,28.1),at(24.2,28.1),c(orange))",
+        "ubrace_1=underbrace(at(18.6,23.3),at(18.5,32.2),c(orange))",
+        "arrow_3=arrow(at(19.3,28.2),at(21.8,22.7),\"text(minor axis)\",s(3),buff(5.5,3.5),notes(\"minor axis is horizontal\"))",
+        "arrow_2=arrow(at(17.9,28.4),at(14.6,33.7),\"text(major axis)\",s(3),buff(0.5,-1),notes(\"Major axis is vertical\"))",
+        ""
+      ],
+      "paraVariables": []
+    }
+  },
+  "settings": {
+    "theme": "light"
+  },
+  "slideOrder": [
+    "slide_1775797872594_vodtnxmox",
+    "slide_1776056396573_myz0dl7hl",
+    "slide_1776063904623_gsdwkhf26",
+    "slide_1776070709674_mw2juvdzw",
+    "slide_1776073470623_wbeih69hy",
+    "slide_1776073817012_2o9wapuja",
+    "slide_1776076169147_aieo93ngr"
+  ],
+  "activeSlideId": "slide_1775797872594_vodtnxmox",
+  "id": "d3007927-4a9a-4523-9cbf-7006562ad41f",
+  "name": "Ellipse and Concepts"
+}

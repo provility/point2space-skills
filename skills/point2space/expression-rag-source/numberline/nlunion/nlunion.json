@@ -1,0 +1,48 @@
+{
+  "expression": "nlunion",
+  "_requires": ["nl"],
+  "description": "Merges all operand intervals into a single union set on a number line. Accepts 2 or more operands which can be interval, ray, ineq, absineq, or other set operation results.",
+  "utility": "Compute and visualize union of interval sets on a number line",
+  "arguments": [
+    {
+      "name": "numberLine",
+      "type": "nl variable",
+      "required": true,
+      "description": "Number line variable"
+    },
+    {
+      "name": "operands",
+      "type": "variable refs (2+)",
+      "required": true,
+      "description": "Two or more interval/ray/ineq/absineq/set-op variables"
+    },
+    {
+      "name": "color",
+      "type": "c(color)",
+      "required": false,
+      "description": "Result color"
+    },
+    {
+      "name": "offset",
+      "type": "buff(offset)",
+      "required": false,
+      "description": "Vertical offset from axis"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Custom label text (overrides auto-generated label)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Union of two closed intervals",
+      "expression": "N = nl(at(5, 2), range(-2, 10))\nI1 = interval(N, 1, 4, type(closed), c(blue))\nI2 = interval(N, 3, 7, type(closed), c(green))\nU = nlunion(N, I1, I2, c(purple), buff(1))"
+    },
+    {
+      "scenario": "Union of inequality results",
+      "expression": "N = nl(at(5, 2), range(-5, 10))\nA = ineq(N, \"x > 3\", c(blue))\nB = ineq(N, \"x < -1\", c(green))\nU = nlunion(N, A, B, c(red), buff(1))"
+    }
+  ]
+}

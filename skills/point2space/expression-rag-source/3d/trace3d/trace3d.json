@@ -1,0 +1,60 @@
+{
+  "expression": "trace3d",
+  "_requires": ["g3d"],
+  "description": "Traces and visualizes 3D vector and point operations with various representations",
+  "utility": "Show component decomposition, vector operations, or coordinate system visualization in 3D",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "The 3D graph container"},
+    {"name": "target", "type": "vector3d|line3d|point3d", "required": true, "description": "The vector, line, or point to trace"}
+  ],
+  "alternates": [
+    {
+      "variant": "vector component decomposition (default)",
+      "syntax": "trace3d(graph, vector)",
+      "description": "Show x, y, z component vectors"
+    },
+    {
+      "variant": "vector forward/backward sliding",
+      "syntax": "trace3d(graph, vector, type(forward), distance) or type(backward)",
+      "description": "Slide vector along its direction"
+    },
+    {
+      "variant": "vector operations",
+      "syntax": "trace3d(graph, vector, type(reverse)) or type(chain), type(sum), type(diff), type(norm), type(scale)",
+      "description": "Show reverse, tip-to-tail chaining, addition, subtraction, normalization, or scaling"
+    },
+    {
+      "variant": "point projection visualization",
+      "syntax": "trace3d(graph, point)",
+      "description": "Show projection lines to x, y, z axes"
+    },
+    {
+      "variant": "point distance between two points",
+      "syntax": "trace3d(graph, point1, type(distance), point2) or type(length)",
+      "description": "Show distance between two 3D points"
+    },
+    {
+      "variant": "point coordinate system visualization",
+      "syntax": "trace3d(graph, point, type(spherical)) or type(cylindrical), type(rectangular)",
+      "description": "Show spherical, cylindrical, or rectangular coordinate system"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Trace point projection with spherical coordinate type and buffered display",
+      "expression": "G = g3d(at(3,1), view(28, 24))\nP = point3d(G, 2, 1, 1)\ntrace3d(G, P, type(5),buff(-2,15))"
+    },
+    {
+      "scenario": "vector component decomposition",
+      "expression": "V = vector3d(g, 0, 0, 0, 3, 2, 1); trace3d(g, V)"
+    },
+    {
+      "scenario": "point projection visualization",
+      "expression": "P = point3d(g, 3, 4, 5); trace3d(g, P)"
+    },
+    {
+      "scenario": "point distance between two points",
+      "expression": "P1 = point3d(g, 0, 0, 0); P2 = point3d(g, 3, 4, 5); trace3d(g, P1, type(distance), P2)"
+    }
+  ]
+}

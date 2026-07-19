@@ -1,0 +1,16 @@
+{
+  "expression": "vx",
+  "description": "Vertex point with normalized coordinates clamped to [0, 1]. Used to define vertices for template shapes.",
+  "utility": "Define a normalized vertex point",
+  "arguments": [
+    { "name": "x", "type": "number", "required": true, "description": "X coordinate, clamped to [0, 1]" },
+    { "name": "y", "type": "number", "required": true, "description": "Y coordinate, clamped to [0, 1]" }
+  ],
+  "alternates": [
+    { "variant": "Corner vertex", "syntax": "vx(0, 0)", "description": "Bottom-left corner" },
+    { "variant": "Midpoint vertex", "syntax": "vx(0.5, 0.5)", "description": "Center of the sheet" }
+  ],
+  "examples": [
+    { "scenario": "Define four vertices for a rectangle", "expression": "vx(0, 0), vx(1, 0), vx(1, 1), vx(0, 1)" }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "expression": "trial",
+  "_requires": [],
+  "description": "Defines success/failure labels and probability for a binary tree. Used inside btree().",
+  "utility": "Define a binary trial",
+  "arguments": [
+    {"name": "successLabel", "type": "quoted string", "required": false, "description": "Success outcome label (default: S)"},
+    {"name": "failureLabel", "type": "quoted string", "required": false, "description": "Failure outcome label (default: F)"},
+    {"name": "numerator", "type": "number", "required": false, "description": "Probability numerator (default: 1)"},
+    {"name": "denominator", "type": "number", "required": false, "description": "Probability denominator (default: 2)"}
+  ],
+  "examples": [
+    {"scenario": "Fair coin trial", "expression": "trial(\"H\", \"T\", 1, 2)"},
+    {"scenario": "Biased trial", "expression": "trial(\"Win\", \"Lose\", 3, 10)"}
+  ]
+}

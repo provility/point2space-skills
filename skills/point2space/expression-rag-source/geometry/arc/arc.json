@@ -1,0 +1,80 @@
+{
+  "expression": "arc",
+  "_requires": ["g2d"],
+  "description": "Draws a 2D arc on a graph defined by a center point, radius, and optional angle range in degrees.",
+  "utility": "Creates circular arcs with customizable center, radius, angle range, and styling",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "center",
+      "type": "point | point(G, x, y)",
+      "required": true,
+      "description": "Center point of the arc — a point variable or inline point() expression"
+    },
+    {
+      "name": "radius",
+      "type": "radius(number)",
+      "required": true,
+      "description": "Arc radius wrapped in radius(), e.g. radius(4)"
+    },
+    {
+      "name": "range",
+      "type": "range(startAngle, endAngle)",
+      "required": false,
+      "description": "Angle range in degrees, e.g. range(0, 90). Supports variable expressions. Default: full circle range(0, 360)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Full circle arc (no range)",
+      "syntax": "arc(G, center, radius(4))",
+      "description": "Full 360-degree arc — equivalent to a circle"
+    },
+    {
+      "variant": "Partial arc with angle range",
+      "syntax": "arc(G, center, radius(4), range(30, 150))",
+      "description": "Arc from 30 to 150 degrees"
+    },
+    {
+      "variant": "Arc with point variable center",
+      "syntax": "arc(G, O, radius(4), range(a, b))",
+      "description": "Arc centered at point O with variable angle range"
+    },
+    {
+      "variant": "Arc with inline center",
+      "syntax": "arc(G, point(G, 3, 3), radius(4), range(0, 90))",
+      "description": "Arc centered at inline point"
+    },
+    {
+      "variant": "Styled arc",
+      "syntax": "arc(G, O, radius(4), range(0, 120), c(orange), s(4))",
+      "description": "Arc with color and stroke width"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Highlight minor arc between two angle-positioned points on a circle",
+      "expression": "O = point(G, 0, 0); circ = circle(G, O, radius(4)); A = anglepoint(G, circ, 30); B = anglepoint(G, circ, 150); arc_AB = arc(G, O, radius(4), range(30, 150), c(orange), s(4))"
+    },
+    {
+      "scenario": "Animated arc using variable angles",
+      "expression": "varanim_a = variableanimator(at(1, 30), \"a\", 20, 80); varanim_b = variableanimator(at(2, 30), \"b\", 120, 200); O = point(G, 0, 0); arc_1 = arc(G, O, radius(4), range(a, b), c(orange), s(4))"
+    },
+    {
+      "scenario": "Quarter circle arc",
+      "expression": "G = g2d(at(3, 1), size(20), range(-6, 6), type(geometry)); O = point(G, 0, 0); arc_1 = arc(G, O, radius(5), range(0, 90), c(red))"
+    },
+    {
+      "scenario": "Semicircle arc with inline center point",
+      "expression": "G = g2d(at(3, 1), size(20), range(-6, 6), type(geometry)); arc_1 = arc(G, point(G, 0, 0), radius(4), range(0, 180), c(blue), s(3))"
+    }
+  ],
+  "notes": [
+    "For angle marking (showing an angle at a vertex between two rays), prefer angle() instead of arc(). angle() supports arrowhead(), arcsize(), and angle types (interior, exterior, reflex, right). Use arc() only for geometric circular arcs (minor/major arcs on circles, semicircles, etc.)."
+  ]
+}

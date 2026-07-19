@@ -1,0 +1,14 @@
+{
+  "expression": "spline",
+  "_requires": ["g2d"],
+  "description": "Smooth curve interpolation through control points",
+  "utility": "Create smooth curves through specified points",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "Coordinate system"},
+    {"name": "points", "type": "point array", "required": true, "description": "Control points"}
+  ],
+  "examples": [
+    {"scenario": "Spline through points", "expression": "spline(g, [P1, P2, P3, P4])"},
+    {"scenario": "Spline curve for ball trajectory with point at ratio", "expression": "G = g2d(at(4,5), 26, 30, range(-2,10),type(plotting)); S = spline(G, point(G, 0, 8), point(G, 1, 6), point(G, 2, 3), point(G, 3, 0)); P = ratiopoint(G, S, t)"}
+  ]
+}

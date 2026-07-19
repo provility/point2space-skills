@@ -1,0 +1,54 @@
+{
+  "expression": "vectortrace",
+  "_requires": ["g2d", "vector"],
+  "description": "Traces vectors head-to-tail in 2D. Requires at least 2 vectors.",
+  "utility": "Draw a head-to-tail chain of 2D vectors",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "vectors",
+      "type": "vector references",
+      "required": true,
+      "description": "Two or more vector variable references to chain head-to-tail"
+    },
+    {
+      "name": "arrowSize",
+      "type": "size(number)",
+      "required": false,
+      "description": "Arrow head size. Default: 0.5"
+    },
+    {
+      "name": "styles",
+      "type": "style expressions",
+      "required": false,
+      "description": "Optional: c(), s() for color and stroke styling"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic head-to-tail trace",
+      "syntax": "vectortrace(G, v1, v2)",
+      "description": "Trace two vectors head-to-tail"
+    },
+    {
+      "variant": "With arrow size and styling",
+      "syntax": "vectortrace(G, v1, v2, v3, size(0.3), c(red))",
+      "description": "Trace with custom arrow size and color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Head-to-tail trace of two vectors",
+      "expression": "G = g2d(at(10,10), size(25), range(-6, 6), type(geometry))\nv1 = vector(G, point(G, 0, 0), point(G, 3, 1))\nv2 = vector(G, point(G, 0, 0), point(G, 1, 2))\nvectortrace(G, v1, v2)"
+    },
+    {
+      "scenario": "Three vectors traced with styling",
+      "expression": "G = g2d(at(10,10), size(25), range(-6, 6), type(geometry))\nv1 = vector(G, point(G, 0, 0), point(G, 2, 0))\nv2 = vector(G, point(G, 0, 0), point(G, 0, 3))\nv3 = vector(G, point(G, 0, 0), point(G, 1, 1))\nvectortrace(G, v1, v2, v3, size(0.3), c(red))"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "expression": "polygonanimator",
+  "description": "Interactive animator that transforms a polygon from its current shape to a target polygon",
+  "utility": "Animate polygon shape changes and transformations with play/reset control",
+  "arguments": [
+    {"name": "sourcePolygon", "type": "variable reference", "required": true, "description": "Variable reference to an existing polygon to animate"},
+    {"name": "targetPolygon", "type": "polygon", "required": true, "description": "Target polygon expression (can be inline or variable reference)"},
+    {"name": "styles", "type": "style expressions", "required": false, "description": "Optional styling: c(), s(), t(), defer(), etc."}
+  ],
+  "examples": [
+    {"scenario": "Animate polygon morph with deferred playback", "expression": "G = g2d(at(4,19), size(16), range(-5, 5), type(geometry))\npolygon_1 = polygon(G, point(G, 0, 0), point(G, 4, 0), point(G, 4, 4), point(G, 0, 4))\npolygon_2 = polygon(G, point(G, 1, 1), point(G, 3, 0), point(G, 3, 3), point(G, 0, 3))\npolyanim_1 = polygonanimator(polygon_2, polygon_1, defer())"},
+    {"scenario": "Animate triangle to new shape", "expression": "G = g2d(at(4,19), size(16), range(-5, 5), type(geometry))\ntri_1 = polygon(G, point(G, 0, 0), point(G, 4, 0), point(G, 2, 3))\ntri_2 = polygon(G, point(G, -1, -1), point(G, 5, -1), point(G, 2, 5))\npolyanim_1 = polygonanimator(tri_1, tri_2)"}
+  ]
+}

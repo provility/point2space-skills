@@ -1,0 +1,27 @@
+{
+  "expression": "lh",
+  "description": "Sets the line height (vertical spacing between lines) for multi-line text",
+  "utility": "Control text line spacing using a unitless multiplier (like CSS)",
+  "arguments": [
+    {
+      "name": "multiplier",
+      "type": "number",
+      "required": true,
+      "description": "Line height multiplier (e.g., 1.5, 2.0) relative to font size"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Tight line spacing",
+      "expression": "text(\"Line 1\\nLine 2\") | lh(1.2)"
+    },
+    {
+      "scenario": "Standard line spacing",
+      "expression": "text(\"Paragraph\") | lh(1.5)"
+    },
+    {
+      "scenario": "Loose line spacing",
+      "expression": "text(\"Multi\\nline\\ntext\") | lh(2.5)"
+    }
+  ]
+}

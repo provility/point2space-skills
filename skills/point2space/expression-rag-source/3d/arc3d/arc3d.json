@@ -1,0 +1,38 @@
+{
+  "expression": "arc3d",
+  "_requires": ["g3d"],
+  "description": "Draws a 3D arc between two points around a center point. Unlike angle3d which measures angles, arc3d draws a curved path from point1 to point2 centered at a given point.",
+  "utility": "Draw a curved arc in 3D space between two points around a center",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "The 3D graph container"},
+    {"name": "center", "type": "point3d", "required": true, "description": "Center point of the arc (point3d reference or inline)"},
+    {"name": "point1", "type": "point3d", "required": true, "description": "Start point of the arc"},
+    {"name": "point2", "type": "point3d", "required": true, "description": "End point of the arc"},
+    {"name": "arcsize", "type": "arcsize(value)", "required": false, "description": "Override arc radius (value / 10)"},
+    {"name": "arrowhead", "type": "arrowhead(position)", "required": false, "description": "Add arrowhead at start or end of arc"},
+    {"name": "color", "type": "c(colorName)", "required": false, "description": "Arc color"},
+    {"name": "stroke", "type": "s(value)", "required": false, "description": "Stroke width"}
+  ],
+  "alternates": [
+    {
+      "variant": "Basic arc",
+      "syntax": "arc3d(G, center, P1, P2)",
+      "description": "Arc from P1 to P2 around center"
+    },
+    {
+      "variant": "Arc with arrowhead and styling",
+      "syntax": "arc3d(G, center, P1, P2, arcsize(15), c(black), arrowhead(end), s(0.03))",
+      "description": "Styled arc with custom size and arrowhead"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Azimuthal angle arc in spherical coordinate system (phi arc in xy-plane)",
+      "expression": "pOrigin = point3d(G, 0, 0, 0)\npXAxis = point3d(G, 2, 0, 0, defer())\npYAxis = point3d(G, 0, 2, 0, defer())\nphiArc = arc3d(G, pOrigin, pXAxis, pYAxis, arcsize(15), c(black), arrowhead(end), s(0.03), t(2))"
+    },
+    {
+      "scenario": "Simple arc between two points",
+      "expression": "C = point3d(G, 0, 0, 0)\nA = point3d(G, 3, 0, 0)\nB = point3d(G, 0, 3, 0)\narc = arc3d(G, C, A, B)"
+    }
+  ]
+}

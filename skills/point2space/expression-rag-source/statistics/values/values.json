@@ -1,0 +1,13 @@
+{
+  "expression": "values",
+  "_requires": ["stattable"],
+  "description": "Raw data values for a stattable. Each value is a quoted string.",
+  "utility": "Define raw data values for statistical table",
+  "arguments": [
+    {"name": "values", "type": "quoted strings", "required": true, "description": "Variadic quoted string values"}
+  ],
+  "examples": [
+    {"scenario": "Numeric values", "expression": "values(\"5\",\"3\",\"7\",\"5\",\"3\",\"5\")"},
+    {"scenario": "Category values", "expression": "values(\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\")"}
+  ]
+}

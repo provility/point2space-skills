@@ -1,0 +1,40 @@
+{
+  "expression": "sector3d",
+  "_requires": ["g3d"],
+  "description": "Creates a filled 3D angle sector (pie slice) showing the angle between two rays",
+  "utility": "Draw a filled angle sector by specifying vertex and two points defining the angle",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "The 3D graph container"},
+    {"name": "vertex_x", "type": "number", "required": true, "description": "X coordinate of the sector vertex"},
+    {"name": "vertex_y", "type": "number", "required": true, "description": "Y coordinate of the sector vertex"},
+    {"name": "vertex_z", "type": "number", "required": true, "description": "Z coordinate of the sector vertex"},
+    {"name": "point1_x", "type": "number", "required": true, "description": "X coordinate of the first ray endpoint"},
+    {"name": "point1_y", "type": "number", "required": true, "description": "Y coordinate of the first ray endpoint"},
+    {"name": "point1_z", "type": "number", "required": true, "description": "Z coordinate of the first ray endpoint"},
+    {"name": "point2_x", "type": "number", "required": true, "description": "X coordinate of the second ray endpoint"},
+    {"name": "point2_y", "type": "number", "required": true, "description": "Y coordinate of the second ray endpoint"},
+    {"name": "point2_z", "type": "number", "required": true, "description": "Z coordinate of the second ray endpoint"}
+  ],
+  "alternates": [
+    {
+      "variant": "with custom radius",
+      "syntax": "sector3d(graph, vertex_x, vertex_y, vertex_z, point1_x, point1_y, point1_z, point2_x, point2_y, point2_z, radius)",
+      "description": "Specify a custom radius for the sector (default is computed from point distances)"
+    },
+    {
+      "variant": "using point3d expressions",
+      "syntax": "sector3d(graph, point3d(vertex), point3d(point1), point3d(point2))",
+      "description": "Use point3d expressions instead of separate coordinates"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "sector from vertex at origin",
+      "expression": "sector3d(g, 0, 0, 0, 1, 0, 0, 0, 1, 0)"
+    },
+    {
+      "scenario": "sector with custom radius",
+      "expression": "sector3d(g, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2)"
+    }
+  ]
+}

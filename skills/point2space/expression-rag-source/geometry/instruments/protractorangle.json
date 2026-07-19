@@ -1,0 +1,58 @@
+{
+  "expression": "protractorangle",
+  "_requires": ["g2d", "point"],
+  "description": "Measures and draws an angle using the protractor instrument. The protractor auto-positions at the vertex, aligns its base to the first arm, and sweeps an arc to the second arm. The result behaves as an angle geometry.",
+  "utility": "Measure and visualize an angle with protractor animation — result is compatible with angle() output",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph to draw on"
+    },
+    {
+      "name": "vertex or L1",
+      "type": "point | line",
+      "required": true,
+      "description": "Vertex point (three-point form) or first line (two-line form)"
+    },
+    {
+      "name": "armEnd1 or L2",
+      "type": "point | line",
+      "required": true,
+      "description": "First arm endpoint (three-point form) or second line (two-line form)"
+    },
+    {
+      "name": "armEnd2",
+      "type": "point",
+      "required": false,
+      "description": "Second arm endpoint (only in three-point form)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "three points",
+      "syntax": "protractorangle(G, vertex, armEnd1, armEnd2)",
+      "description": "Measure angle at vertex between two arm endpoints"
+    },
+    {
+      "variant": "two lines",
+      "syntax": "protractorangle(G, L1, L2)",
+      "description": "Measure angle between two intersecting lines"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Measure the angle between two line segments using protractor",
+      "expression": "G = g2d(at(-0.9, 6.6), 30, range(-3, 8), type(geometry)); L1 = line(G, point(G, 1, 1), point(G, 5, 1), type(segment)); L2 = line(G, point(G, 1, 1), point(G, 3, 5), type(segment)); ang = protractorangle(G, L1, L2, t(6))"
+    },
+    {
+      "scenario": "Measure all three angles of an equilateral triangle with protractor",
+      "expression": "G = g2d(at(5,6), size(20), range(-1, 8), type(geometry)); line_a = rulerline(G, point_A, point_B, t(2)); line_b = rulerline(G, point_A, point_C, t(2)); line_c = rulerline(G, point_C, point_B, t(2)); angle_1 = protractorangle(G, line_a, line_b, c(black)); angle_2 = protractorangle(G, line_b, line_c, c(black)); angle_3 = protractorangle(G, line_c, line_a, c(black))"
+    },
+    {
+      "scenario": "Measure angle and label it in an equilateral triangle lesson",
+      "expression": "G = g2d(at(5,6), size(20), range(-1, 8), type(geometry)); angle_1 = protractorangle(G, line_a, line_b, c(black)); label_ang1 = label(G, at(angle_1), \"theta_1=60^o\", buff(-1, 1), fs(14), c(black))"
+    }
+  ]
+}

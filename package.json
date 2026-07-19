@@ -1,0 +1,22 @@
+{
+  "name": "point2space-skills",
+  "version": "1.0.0",
+  "description": "Claude Code skills for Point2Space DSL — interactive math visualization",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/provility/point2space-skills.git"
+  },
+  "author": "Sharfudeen Ashraf <ashraf@provility.com>",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "point2space",
+    "dsl",
+    "math",
+    "visualization",
+    "geometry",
+    "graphing"
+  ]
+}

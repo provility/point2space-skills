@@ -1,0 +1,12 @@
+{
+  "expression": "ref",
+  "_requires": [],
+  "description": "Reference or retrieve value from variable",
+  "utility": "Access stored variable value",
+  "arguments": [
+    {"name": "variable", "type": "variable | reference", "required": true, "description": "Variable to reference"}
+  ],
+  "examples": [
+    {"scenario": "Reference variable", "expression": "value = ref(x)"}
+  ]
+}

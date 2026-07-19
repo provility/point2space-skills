@@ -1,0 +1,20 @@
+{
+  "expression": "sheetrect",
+  "_requires": [],
+  "description": "Rectangular sheet material for folding",
+  "utility": "Define rectangular regions in wireframe patterns",
+  "arguments": [
+    {"name": "width", "type": "number", "required": true, "description": "Width"},
+    {"name": "height", "type": "number", "required": true, "description": "Height"}
+  ],
+  "examples": [
+    {
+      "scenario": "Sheet rectangle for box optimization",
+      "expression": "sh_1=sheetrect(at(6,9),view(12.2,19.3),10,8,c(crimson),fc(cyan),fo(0.2),so(0.4))"
+    },
+    {
+      "scenario": "Sheet rectangle for folding",
+      "expression": "sheetrect_1=sheetrect(at(2,10),view(11.1,12),10,8,c(navy),fc(lightyellow),fo(0.5))"
+    }
+  ]
+}

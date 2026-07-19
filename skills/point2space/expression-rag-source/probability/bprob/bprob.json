@@ -1,0 +1,16 @@
+{
+  "expression": "bprob",
+  "_requires": ["pmf", "binomial"],
+  "description": "Highlights a probability region on a PMF or binomial chart. Shows the probability of a range or comparison.",
+  "utility": "Highlight probability region on a chart",
+  "arguments": [
+    {"name": "chart", "type": "pmf/binomial variable", "required": true, "description": "Reference to a PMF or binomial chart"},
+    {"name": "bounds", "type": "numbers or comparison", "required": false, "description": "Lower and upper bounds, or comparison operator with value"},
+    {"name": "label", "type": "quoted string", "required": false, "description": "Custom probability label"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Highlight color"}
+  ],
+  "examples": [
+    {"scenario": "P(X >= 3)", "expression": "B = binomial(at(4,4), view(10,16), 10, 0.5)\nbprob(B, \">=3\", fc(coral))"},
+    {"scenario": "P(2 <= X <= 5)", "expression": "bprob(B, 2, 5, fc(steelblue))"}
+  ]
+}

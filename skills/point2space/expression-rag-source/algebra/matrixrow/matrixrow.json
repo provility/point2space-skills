@@ -1,0 +1,13 @@
+{
+  "expression": "matrixrow",
+  "_requires": [],
+  "description": "Creates a single row of a matrix. Each argument becomes a column value. Used inside matrixdef().",
+  "utility": "Define a matrix row",
+  "arguments": [
+    {"name": "values", "type": "numbers", "required": true, "description": "Column values for the row"}
+  ],
+  "examples": [
+    {"scenario": "Row of 3 values", "expression": "matrixrow(1, 2, 3)"},
+    {"scenario": "Row with expressions", "expression": "matrixrow(cos(pi/4), -sin(pi/4))"}
+  ]
+}

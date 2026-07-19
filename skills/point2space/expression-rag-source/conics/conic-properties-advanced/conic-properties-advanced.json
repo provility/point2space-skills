@@ -1,0 +1,82 @@
+{
+  "expression": "conic properties (advanced)",
+  "_requires": ["g2d"],
+  "description": "Advanced conic section properties including co-vertices, directrices, eccentricity, and latus rectum extraction from ellipses, parabolas, and hyperbolas.",
+  "utility": "Extract eccentricity, directrix, co-vertex, and latus rectum from conic sections",
+  "arguments": [
+    {
+      "name": "conic",
+      "type": "ellipse | parabola | hyperbola",
+      "required": true,
+      "description": "Conic section variable to extract property from"
+    },
+    {
+      "name": "propertyType",
+      "type": "covertex, n | directrix, n | eccentricity | latus_rectum",
+      "required": true,
+      "description": "Property name to extract, with optional 1-based index"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Ellipse co-vertex (point)",
+      "syntax": "p(ellipse, covertex, n)",
+      "description": "Get nth co-vertex of ellipse (n = 1 or 2)"
+    },
+    {
+      "variant": "Ellipse directrix (line)",
+      "syntax": "p(ellipse, directrix, n)",
+      "description": "Get nth directrix line of ellipse (n = 1 or 2)"
+    },
+    {
+      "variant": "Parabola directrix (line)",
+      "syntax": "p(parabola, directrix, 1)",
+      "description": "Get the directrix line of parabola"
+    },
+    {
+      "variant": "Hyperbola directrix (line)",
+      "syntax": "p(hyperbola, directrix, n)",
+      "description": "Get nth directrix line of hyperbola (n = 1 or 2)"
+    },
+    {
+      "variant": "Eccentricity (any conic)",
+      "syntax": "p(conic, eccentricity)",
+      "description": "Get eccentricity value (0 < e < 1 for ellipse, e = 1 for parabola, e > 1 for hyperbola)"
+    },
+    {
+      "variant": "Latus rectum (any conic)",
+      "syntax": "p(conic, latus_rectum)",
+      "description": "Get latus rectum length"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Draw co-vertex of an ellipse",
+      "expression": "CV1 = point(G, p(E, covertex, 1), c(blue))"
+    },
+    {
+      "scenario": "Draw directrix of an ellipse",
+      "expression": "D1 = line(G, p(E, directrix, 1))"
+    },
+    {
+      "scenario": "Get eccentricity of an ellipse",
+      "expression": "ecc = p(E, eccentricity)"
+    },
+    {
+      "scenario": "Get latus rectum of an ellipse",
+      "expression": "lr = p(E, latus_rectum)"
+    },
+    {
+      "scenario": "Draw directrix of a parabola",
+      "expression": "D = line(G, p(parabola_1, directrix, 1))"
+    },
+    {
+      "scenario": "Get eccentricity of a hyperbola",
+      "expression": "ecc = p(H, eccentricity)"
+    },
+    {
+      "scenario": "Draw directrix of a hyperbola",
+      "expression": "D1 = line(G, p(H, directrix, 1))"
+    }
+  ]
+}

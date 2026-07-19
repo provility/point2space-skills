@@ -1,0 +1,22 @@
+{
+  "expression": "xor",
+  "_requires": ["g2d"],
+  "description": "Computes the symmetric difference (XOR) of clippable shapes. Returns the non-overlapping regions — areas in one shape but not in both. Useful for highlighting differences between shapes and creating crescent or complementary regions.",
+  "utility": "Find non-overlapping regions of shapes (symmetric difference)",
+  "arguments": [
+    { "name": "G", "type": "g2d reference", "required": true, "description": "The 2D grapher container" },
+    { "name": "shape1", "type": "clippable shape", "required": true, "description": "First shape for XOR operation" },
+    { "name": "shape2", "type": "clippable shape", "required": true, "description": "Second shape for XOR operation" },
+    { "name": "shapeN", "type": "clippable shape", "required": false, "description": "Additional shapes for XOR operation (optional)" }
+  ],
+  "alternates": [
+    { "variant": "Two circles", "syntax": "xor(G, C1, C2)", "description": "Crescent shapes on both sides" },
+    { "variant": "Two overlapping rectangles", "syntax": "xor(G, R1, R2)", "description": "Two L-shaped regions" },
+    { "variant": "Multiple shapes", "syntax": "xor(G, shape1, shape2, shape3)", "description": "XOR of three or more shapes" }
+  ],
+  "examples": [
+    { "scenario": "Crescent from two overlapping circles", "expression": "G = g2d()\nC1 = circle(G, 3, 0, 0)\nC2 = circle(G, 3, 4, 0)\nX = xor(G, C1, C2)" },
+    { "scenario": "XOR of two overlapping squares", "expression": "G = g2d()\nR1 = rect(G, 0, 0, 4, 4)\nR2 = rect(G, 2, 2, 4, 4)\nX = xor(G, R1, R2)" },
+    { "scenario": "Symmetric difference of three circles", "expression": "G = g2d()\nC1 = circle(G, 3, -2, 0)\nC2 = circle(G, 3, 2, 0)\nC3 = circle(G, 3, 0, 2)\nX = xor(G, C1, C2, C3)" }
+  ]
+}

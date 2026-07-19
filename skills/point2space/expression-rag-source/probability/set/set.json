@@ -1,0 +1,13 @@
+{
+  "expression": "set",
+  "_requires": [],
+  "description": "Defines an element set for permutation or combination. Elements can be strings, numbers, or experiment references (dice, coin, cards).",
+  "utility": "Define elements for permutations/combinations",
+  "arguments": [
+    {"name": "elements", "type": "strings, numbers, or references", "required": true, "description": "One or more element values"}
+  ],
+  "examples": [
+    {"scenario": "String elements", "expression": "set(\"A\", \"B\", \"C\")"},
+    {"scenario": "Numeric elements", "expression": "set(1, 2, 3, 4, 5)"}
+  ]
+}

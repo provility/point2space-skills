@@ -1,0 +1,96 @@
+{
+  "expression": "measure",
+  "_requires": ["g2d"],
+  "description": "Displays a dimensioned measurement indicator showing the distance between two points or along a line, with end markers and an optional centered text label. Supports perpendicular offset positioning for clean diagram layout. Preferred for measuring shapes inside 2D graphs. For measurements outside of 2D graphs (annotation layer), use distancemarker instead.",
+  "utility": "Create measurement indicator between two points or along a line inside a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "line or points",
+      "type": "line | point1, point2",
+      "required": true,
+      "description": "Line variable or two points to measure between"
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": false,
+      "description": "Label text for measurement (optional, displays length if omitted)"
+    },
+    {
+      "name": "buff",
+      "type": "buff(markerOffset, labelOffset)",
+      "required": false,
+      "description": "First value: perpendicular offset of entire marker from the referenced edge in model units. Second value: perpendicular offset of label from the marker line in model units."
+    },
+    {
+      "name": "rot",
+      "type": "rot(degrees)",
+      "required": false,
+      "description": "Label rotation in degrees. Overrides the default auto-rotation that aligns the label with the marker line. Use rot(0) for horizontal labels."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Measure a line",
+      "syntax": "measure(G, line_a)",
+      "description": "Measurement indicator on existing line"
+    },
+    {
+      "variant": "Measure with offset",
+      "syntax": "measure(G, line_a, buff(0, -1))",
+      "description": "Measurement indicator offset from line"
+    },
+    {
+      "variant": "Measure with label",
+      "syntax": "measure(G, line_a, \"5 cm\", buff(0, -0.5))",
+      "description": "Measurement with custom text label"
+    },
+    {
+      "variant": "Measure between points",
+      "syntax": "measure(G, P1, P2)",
+      "description": "Measurement between two point variables"
+    },
+    {
+      "variant": "Colored measurement",
+      "syntax": "measure(G, line_a, buff(0, -1), c(black))",
+      "description": "Measurement with specific color"
+    },
+    {
+      "variant": "Measurement with horizontal label",
+      "syntax": "measure(G, line_a, \"5\", buff(2, 1), rot(0))",
+      "description": "Measurement with label rotated to horizontal"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Measure side a with offset below",
+      "expression": "measure_a = measure(graph_1, line_a, buff(0, -1), c(black))"
+    },
+    {
+      "scenario": "Measure side b with offset",
+      "expression": "measure_b = measure(graph_1, line_b, buff(0, -0.5))"
+    },
+    {
+      "scenario": "Measure side c with offset",
+      "expression": "measure_c = measure(graph_1, line_c, buff(0, -0.5))"
+    },
+    {
+      "scenario": "Hide measurements initially",
+      "expression": "hide(measure_a, measure_b, measure_c)"
+    },
+    {
+      "scenario": "Measure between two points directly",
+      "expression": "measure_1 = measure(graph_1, point_A, point_B, buff(0, 0.5))"
+    },
+    {
+      "scenario": "Measure extracted edge",
+      "expression": "edge_measure = measure(graph_1, line(graph_1, item(triangle_1, type(edge), 1), type(segment)), buff(0, -0.5))"
+    }
+  ]
+}

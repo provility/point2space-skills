@@ -1,0 +1,11 @@
+{
+  "expression": "face",
+  "_requires": ["cards"],
+  "description": "Tests if an outcome contains any face card (J, Q, K). Used as a predicate inside event() with card sample spaces. Takes no arguments.",
+  "utility": "Filter face cards",
+  "arguments": [],
+  "examples": [
+    {"scenario": "Face cards event", "expression": "S = sspace(at(4,4), view(14,20), cards())\nE = event(S, face(), fc(gold))"},
+    {"scenario": "Face cards from hearts", "expression": "S = sspace(at(4,4), view(14,20), cards(hearts))\nE = event(S, face(), fc(coral))"}
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "expression": "write",
+  "description": "Animates math text with pen-tracing. Content is in MATH MODE by default — every non-mathematical word or phrase MUST be wrapped in text(). Every non-mathematical word or phrase MUST be wrapped in text(). Example: \"text(Centre =) (-3, -4)\". Example: \"text(Generating curve:) x = 2 + sin(y)\". Supports creating new text, animating existing text, animating selections from select/selectexcept, cloning text to new positions, and animating table cells. Supports exclude() for selective animation and sub() for substitution.",
+  "utility": "Animate math text with pen-tracing (math mode default, use text() for plain text)",
+  "arguments": [
+    { "name": "position", "type": "at(row, col) | at(shape, anchor)", "required": false, "description": "Position on canvas. Required for create mode and textitem_expr mode with cloning" },
+    { "name": "content", "type": "string | variable | item() | collection", "required": true, "description": "ASCII math string for create mode, variable reference for existing/collection/textitem modes, or item() for textitem_expr mode" },
+    { "name": "exclude", "type": "exclude(\"pattern\", index)", "required": false, "description": "Skip animation for parts matching pattern. Multiple exclude() args allowed" },
+    { "name": "type(invert)", "type": "type(invert)", "required": false, "description": "Invert exclude behavior: animate ONLY the excluded parts" },
+    { "name": "sub", "type": "sub(\"find\", \"replace\")", "required": false, "description": "Substitution pairs — find pattern is replaced with new value during animation. Multiple sub() args allowed" },
+    { "name": "rotation", "type": "rotation(degrees)", "required": false, "description": "Rotation angle in degrees" },
+    { "name": "color", "type": "c(colorName)", "required": false, "description": "Text color" },
+    { "name": "fontSize", "type": "fs(size)", "required": false, "description": "Font size in pixels" },
+    { "name": "fillColor", "type": "fc(colorName)", "required": false, "description": "Fill/background color" },
+    { "name": "fillOpacity", "type": "fo(value)", "required": false, "description": "Fill opacity (0-1)" },
+    { "name": "duration", "type": "t(seconds)", "required": false, "description": "Animation duration" },
+    { "name": "media", "type": "media(\"name\")", "required": false, "description": "Sync with audio/video media" }
+  ],
+  "alternates": [
+    { "variant": "Create new text", "syntax": "write(at(row, col), \"latex\")", "description": "Create new math text and animate with pen-tracing" },
+    { "variant": "Animate existing", "syntax": "write(M)", "description": "Re-animate existing math text" },
+    { "variant": "Animate collection", "syntax": "write(S)", "description": "Animate all selected text from select() or selectexcept()" },
+    { "variant": "Animate TextItem", "syntax": "write(itemVar)", "description": "Animate a single text selection by variable" },
+    { "variant": "Clone TextItem to position", "syntax": "write(at(row, col), item(i))", "description": "Clone text to a new position and animate it" },
+    { "variant": "Animate table cell", "syntax": "write(item(T, row, col))", "description": "Animate a specific table cell" },
+    { "variant": "Selective exclude (skip parts)", "syntax": "write(at(row, col), \"x^2 + 2x + 1\", exclude(\"2x\", 1))", "description": "Animate everything except the matched pattern" },
+    { "variant": "Invert exclude (only parts)", "syntax": "write(at(row, col), \"x^2 + 2x + 1\", exclude(\"2x\", 1), type(invert))", "description": "Animate ONLY the matched pattern" },
+    { "variant": "Substitution", "syntax": "write(at(row, col), \"x^2 + 2x + 1\", sub(\"x\", \"3\"))", "description": "Animate with substitution — replaces x with 3" },
+    { "variant": "With styling", "syntax": "write(at(row, col), \"E = mc^2\", c(blue), fs(28))", "description": "Colored text with custom font size" },
+    { "variant": "With media sync", "syntax": "write(at(row, col), \"int f(x) dx\", media(\"audio\"))", "description": "Pen-trace synchronized with audio playback" },
+    { "variant": "Rotated text", "syntax": "write(at(row, col), \"y-axis\", rotation(90))", "description": "Text rotated 90 degrees" }
+  ],
+  "examples": [
+    { "scenario": "Write standard form of a circle equation with fadein and comment (equation of a circle lesson)", "expression": "write_1=write(at(16,7),\"(x−h)^2+(y−k)^2=r^2\",fadein(0.5),comment(\"standard form of a circle\"))" },
+    { "scenario": "Write center value with text() prefix and font size (equation of a circle lesson)", "expression": "write_2=write(at(19,5),\"text(Centre =) (−3,−4),\",fs(20),fadein(0.5))" },
+    { "scenario": "Write substitution step with multiple excludes (equation of a circle lesson)", "expression": "write_4=write(at(22,8),\"( x - − h )^2+( y - − k )^2= r^2\",exclude(\"−\",2),exclude(\"−\",1),fadein(0.5))" },
+    { "scenario": "Write diameter form equation with fadein and comment (circle from diameter lesson)", "expression": "write_1=write(at(14,7),\"(x-x_1)(x-x_2)+(y-y_1)(y-y_2) =0 \",fadein(0.5),comment(\"diameter end-points form\"))" },
+    { "scenario": "Write with sub() for substituting multiple variables (axis intercepts lesson)", "expression": "write_4=write(at(20,9),\"(x-x_1)(x-x_2)+(y-y_1)(y-y_2)=0\",sub(\"x_1\",\"4\"),sub(\"y_1\",\"0\"),sub(\"x_2\",\"0\"),sub(\"y_2\",\"3\"),fadein(0.5))" },
+    { "scenario": "Write general equation result with notes (circle from diameter lesson)", "expression": "write_10=write(at(36,6),\"x^2+y^2+3x+y-6=0\",fadein(0.5),notes(\"general equation of the circle\"))" },
+    { "scenario": "Write matrix with matrix() modifier and multiple excludes (matrices lesson)", "expression": "write_1=write(at(3,11),\"A=[[1,2,3],[4,5,6],[7,8,9]]\",matrix(3,3),exclude(\"1\",1),exclude(\"2\",1),exclude(\"3\",1),exclude(\"5\",1),exclude(\"9\",1),exclude(\"8\",1),exclude(\"7\",1),exclude(\"5\",1),exclude(\"4\",1))" },
+    { "scenario": "Write with type(invert) to animate only excluded parts (matrices lesson)", "expression": "write_3=write(at(17,11),\"x^2+y^2=a^2\",exclude(\"x^2\",1),type(invert))" },
+    { "scenario": "Write substitution with multiple excludes for point analysis (Point and Circle lesson)", "expression": "write_4=write(at(33,9),\"xc^2+yd^2−6ax−8by+12=0\",sub(\"x\",\"(2)\"),sub(\"y\",\"(3)\"),exclude(\"a\",1),exclude(\"b\",1),exclude(\"c\",1),exclude(\"d\",1),fadein(0.5))" },
+    { "scenario": "Write negative result with notes (Point and Circle lesson)", "expression": "write_6=write(at(39,9),\"=−11\",notes(\"negative — the point is inside the circle\"))" },
+    { "scenario": "Write mixed text and math with text() wrapper", "expression": "write_7=write(at(5,5),\"text(Given:) a^2 + b^2 = c^2\",fs(18))" }
+  ],
+  "rules": [
+    "write() is for MATH EXPRESSIONS with pen-tracing animation — equations, formulas, derivations, substitutions. NEVER use write() to label shapes or display computed values.",
+    "All non-mathematical words must be wrapped in text(). Example: \"text(Generating curve:) x = 2 + sin(y)\"",
+    "Multiple text() wrappers can appear in one string: \"text(Area =) pi r^2 text( sq. units)\"",
+    "Wrap only plain English words and phrases in text() — math symbols, variables, operators, and equations render directly"
+  ]
+}

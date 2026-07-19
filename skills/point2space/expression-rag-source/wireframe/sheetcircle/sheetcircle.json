@@ -1,0 +1,15 @@
+{
+  "expression": "sheetcircle",
+  "_requires": [],
+  "description": "Circular sheet material for folding",
+  "utility": "Define circular regions in wireframe patterns",
+  "arguments": [
+    {"name": "radius", "type": "number", "required": true, "description": "Radius of circle"}
+  ],
+  "examples": [
+    {
+      "scenario": "Circular sheet for cone construction",
+      "expression": "sheetcircle_1=sheetcircle(at(1,33),view(11.7,14.7),5,c(navy),fc(lightyellow),fo(0.5))"
+    }
+  ]
+}

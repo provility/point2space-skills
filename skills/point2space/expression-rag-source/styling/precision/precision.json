@@ -1,0 +1,27 @@
+{
+  "expression": "p",
+  "description": "Sets the number of decimal places displayed in table cells",
+  "utility": "Control numeric precision in table output",
+  "arguments": [
+    {
+      "name": "decimalPlaces",
+      "type": "number",
+      "required": true,
+      "description": "Number of decimal places to display (e.g., 2, 4)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Two decimal places",
+      "expression": "table([[1, 2], [3, 4]]) | p(2)"
+    },
+    {
+      "scenario": "Four decimal places for precision",
+      "expression": "table([[1.234, 2.567]]) | p(4)"
+    },
+    {
+      "scenario": "No decimal places (integer display)",
+      "expression": "table([[1.9, 2.1]]) | p(0)"
+    }
+  ]
+}

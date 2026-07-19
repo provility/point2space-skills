@@ -1,0 +1,68 @@
+{
+  "expression": "rotate3d",
+  "_requires": ["g3d"],
+  "description": "Animates rotating a 3D shape around an axis by a specified angle. Supports both g3d mode (creates a new rotated shape with arc animation) and s3d mode (directly mutates the Three.js object rotation).",
+  "utility": "Rotate 3D shapes around an axis with animation.",
+  "arguments": [
+    {
+      "name": "container",
+      "type": "g3d | s3d",
+      "required": true,
+      "description": "The 3D graph or space context"
+    },
+    {
+      "name": "shape",
+      "type": "vector3d | line3d | point3d | polygon3d",
+      "required": true,
+      "description": "The shape to rotate"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": true,
+      "description": "Rotation angle in degrees"
+    },
+    {
+      "name": "axis",
+      "type": "vector3d | point3d | three numbers (ax, ay, az)",
+      "required": true,
+      "description": "The rotation axis as a direction vector or three coordinates"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "g3d with vector axis",
+      "syntax": "rotate3d(G, shape, angle, vector3d)",
+      "description": "Rotate shape around axis defined by a vector"
+    },
+    {
+      "variant": "g3d with point axis",
+      "syntax": "rotate3d(G, shape, angle, point3d)",
+      "description": "Rotate shape around axis given as point3d coordinates"
+    },
+    {
+      "variant": "g3d with three numbers",
+      "syntax": "rotate3d(G, shape, angle, ax, ay, az)",
+      "description": "Rotate shape around axis defined by three separate values"
+    },
+    {
+      "variant": "s3d mode",
+      "syntax": "rotate3d(S, shape, angle, ax, ay, az) or rotate3d(S, shape, angle, point3d(S,x,y,z))",
+      "description": "Directly mutate Three.js object rotation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Rotate a vector around z-axis",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 3, 0, 0); rotate3d(G, V, 90, 0, 0, 1)"
+    },
+    {
+      "scenario": "Rotate in s3d mode around y-axis",
+      "expression": "S = s3d(at(4,20), 10, 10); g = group(); rotate3d(S, g, 90, 0, 1, 0)"
+    },
+    {
+      "scenario": "Rotate using an axis vector",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 3, 0, 0); A = vector3d(G, 0, 0, 0, 0, 0, 1); rotate3d(G, V, 45, A)"
+    }
+  ]
+}

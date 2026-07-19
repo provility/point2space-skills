@@ -1,0 +1,91 @@
+{
+  "expression": "hatch",
+  "_requires": ["g2d"],
+  "description": "Fill a polygon interior with a repeating line pattern. Supports diagonal, reverse diagonal, vertical, and horizontal directions with adjustable spacing.",
+  "utility": "Create hatched shading pattern inside a polygon",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "polygon",
+      "type": "polygon | triangle | rect | square",
+      "required": true,
+      "description": "Polygon variable to fill with hatch pattern. Must have at least 3 vertices."
+    },
+    {
+      "name": "spacing",
+      "type": "number",
+      "required": false,
+      "description": "Distance between hatch lines in model units (default 0.5)"
+    },
+    {
+      "name": "direction",
+      "type": "string: \"/\" | \"/-\" | \"|\" | \"-\"",
+      "required": false,
+      "description": "Hatch line direction: / (diagonal), /- (reverse diagonal), | (vertical), - (horizontal). Default is /."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Default diagonal hatch",
+      "syntax": "hatch(G, polygon)",
+      "description": "Diagonal hatching with default spacing"
+    },
+    {
+      "variant": "Custom spacing",
+      "syntax": "hatch(G, polygon, 0.3)",
+      "description": "Closer hatch lines"
+    },
+    {
+      "variant": "Diagonal direction",
+      "syntax": "hatch(G, polygon, 0.5, \"/\")",
+      "description": "Explicit diagonal direction"
+    },
+    {
+      "variant": "Reverse diagonal",
+      "syntax": "hatch(G, polygon, 0.5, \"/-\")",
+      "description": "Reverse diagonal hatch lines"
+    },
+    {
+      "variant": "Vertical stripes",
+      "syntax": "hatch(G, polygon, 0.5, \"|\")",
+      "description": "Vertical hatch lines"
+    },
+    {
+      "variant": "Horizontal stripes",
+      "syntax": "hatch(G, polygon, 0.5, \"-\")",
+      "description": "Horizontal hatch lines"
+    },
+    {
+      "variant": "Colored hatch",
+      "syntax": "hatch(G, polygon, 0.3, \"/\", c(blue))",
+      "description": "Blue hatch lines"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Blue diagonal hatching on feasible region polygon (linear programming lesson)",
+      "expression": "hatch(G, P, 0.3, \"/\", c(blue))"
+    },
+    {
+      "scenario": "Dense diagonal hatching",
+      "expression": "hatch_2 = hatch(graph_1, triangle_1, 0.3, \"/\")"
+    },
+    {
+      "scenario": "Vertical stripes on rectangle",
+      "expression": "hatch_3 = hatch(graph_1, rect_1, 0.5, \"|\", c(blue))"
+    },
+    {
+      "scenario": "Horizontal stripes on square",
+      "expression": "hatch_4 = hatch(graph_1, square_1, 0.4, \"-\")"
+    },
+    {
+      "scenario": "Hatch polygon region",
+      "expression": "hatch_poly = hatch(graph_1, polygon_1, 0.5, \"/\")"
+    }
+  ]
+}

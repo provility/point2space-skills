@@ -1,0 +1,20 @@
+{
+  "expression": "nolabel",
+  "_requires": ["g3d"],
+  "description": "Flag sub-expression consumed by g3d to suppress tick labels and axis name labels. Takes no arguments.",
+  "utility": "Suppress 3D axis labels on a g3d graph",
+  "arguments": [],
+  "alternates": [
+    {
+      "variant": "Suppress axis labels",
+      "syntax": "nolabel()",
+      "description": "Hide tick labels and axis name labels on the g3d graph"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "3D graph without axis labels",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", nolabel())"
+    }
+  ]
+}

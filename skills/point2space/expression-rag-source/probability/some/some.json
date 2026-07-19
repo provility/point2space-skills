@@ -1,0 +1,13 @@
+{
+  "expression": "some",
+  "_requires": [],
+  "description": "Limits the number of displayed outcomes without filtering actual data. Used in sspace, pick, permutation, combination.",
+  "utility": "Limit displayed outcomes",
+  "arguments": [
+    {"name": "limit", "type": "number", "required": true, "description": "Maximum outcomes to display (max: 10000)"}
+  ],
+  "examples": [
+    {"scenario": "Show first 20 outcomes", "expression": "S = sspace(at(4,4), view(14,20), dice(3), some(20))"},
+    {"scenario": "Limit permutation display", "expression": "P = permutation(at(4,4), view(14,20), set(1,2,3,4,5), choose(4), some(50))"}
+  ]
+}

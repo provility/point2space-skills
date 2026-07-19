@@ -1,0 +1,14 @@
+{
+  "expression": "complement",
+  "_requires": ["g2d"],
+  "description": "Set complement visualization in a 2D graph.",
+  "utility": "Visualize the complement of a set",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "2D graph container"},
+    {"name": "set", "type": "variable", "required": true, "description": "Set reference to complement"}
+  ],
+  "examples": [
+    {"scenario": "Complement of set A", "expression": "comp = complement(G, setA)"},
+    {"scenario": "Complement with styling", "expression": "comp = complement(G, setA, fc(lightgray), fo(0.3))"}
+  ]
+}

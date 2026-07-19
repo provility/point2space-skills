@@ -1,0 +1,98 @@
+{
+  "expression": "plot",
+  "_requires": ["g2d"],
+  "description": "Renders an explicit function y = f(x) on a 2D graph. Plots y=f(x) over the visible x-range with optional color and stroke styling. For other plot types use the dedicated expressions: paraplot (parametric), implicitplot (implicit), polarplot (polar), piecewiseplot (piecewise), inequalityplot (inequality).",
+  "utility": "Plot an explicit function y = f(x) on a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "equation",
+      "type": "string | function | variable",
+      "required": true,
+      "description": "Explicit function expression as a quoted ASCII math string, a function reference, or a string variable. The independent variable is auto-detected (x, t, n, etc.) — any variable not already defined in context is treated as the plot parameter."
+    },
+    {
+      "name": "range",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Optional domain restriction for the x range"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color - e.g., c(blue), c(red)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Simple explicit plot",
+      "syntax": "plot(G, \"f(x)\")",
+      "description": "Plot y = f(x) over the full visible x-range"
+    },
+    {
+      "variant": "With color styling",
+      "syntax": "plot(G, \"f(x)\", c(blue))",
+      "description": "Plot with a custom stroke color"
+    },
+    {
+      "variant": "From a function definition",
+      "syntax": "f(x) = x^2\nplot(G, f)",
+      "description": "Plot a previously defined function reference"
+    },
+    {
+      "variant": "With domain restriction",
+      "syntax": "plot(G, \"f(x)\", range(-2, 2))",
+      "description": "Plot over a restricted x-domain"
+    },
+    {
+      "variant": "Using variable t",
+      "syntax": "plot(G, \"sin(t)\")",
+      "description": "Plot with t as the independent variable — auto-detected"
+    },
+    {
+      "variant": "Function product with user-defined function",
+      "syntax": "f(x) = piecewise(\"1\", \"x >= -0.5 and x <= 0.5\", \"0\")\nw = 3\nplot(G, \"f(x)*cos(w*x)\")",
+      "description": "Plot a product of a piecewise function and a cosine. User-defined functions and variables (f, w) are available in the equation."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plot x squared on a plotting graph",
+      "expression": "graph_1 = g2d(at(3,9), 17.5, 27.5, range(-5, 5), range(-5, 5), type(plotting))\nplot_1 = plot(graph_1, \"x^2\")"
+    },
+    {
+      "scenario": "Plot using a function definition reference",
+      "expression": "graph_1 = g2d(at(3,9), 17.5, 27.5, range(-5, 5), range(-5, 5), type(plotting))\nf(x) = x^3 - 3*x + 1\nplot_2 = plot(graph_1, f)"
+    },
+    {
+      "scenario": "Plot 1/x with explicit range on a plotting graph",
+      "expression": "graph_1 = g2d(at(3,7), 21.5, 32.4, range(-5, 5), range(-5, 5), type(plotting))\nplot_1 = plot(graph_1, \"1/(x)\", range(-5, 5))"
+    },
+    {
+      "scenario": "Plot from function with evaluated point",
+      "expression": "graph_2 = g2d(at(2,26), 20, 20, type(plotting))\nf(x) = 1/x^2\nplot_2 = plot(graph_2, f)\nk = point(graph_2, 2, f(2))"
+    },
+    {
+      "scenario": "Plot a function reference h defined inline and evaluate at a point",
+      "expression": "G1 = g2d(at(4,32), 12, 18, range(-1, 5, 1), range(-1, 15, 2), type(plotting))\nh(x) = sin(x) + 2cos(x)\nplot(G1, h)\npoint(G1, 1, h(1))"
+    },
+    {
+      "scenario": "Plot a step function (floor)",
+      "expression": "G1 = g2d(at(5,12), 20.3, 30.6, type(plotting))\nplot_1 = plot(G1, \"floor(x)\", c(blue))"
+    },
+    {
+      "scenario": "Plot using t as the independent variable",
+      "expression": "graph_1 = g2d(at(3, 9), 17.5, 27.5, range(-5, 5), range(-1.5, 1.5), type(plotting))\nplot_1 = plot(graph_1, \"sin(t)\", c(teal))"
+    },
+    {
+      "scenario": "Plot product of piecewise function and cosine (windowed signal)",
+      "expression": "w = 3\nf(x) = piecewise(\"1\", \"x >= -0.5 and x <= 0.5\", \"0\")\ngraph_1 = g2d(at(4, 4), 19, 50, range(-25, 25), range(-0.5, 1.2), type(plotting))\nplot_1 = plot(graph_1, \"f(x)*cos(w*x)\", c(teal))"
+    }
+  ]
+}

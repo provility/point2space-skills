@@ -1,0 +1,115 @@
+{
+  "expression": "tracetable",
+  "description": "Live data-logger table that tracks shape properties or function values as they change during animation. Each column is defined by a field() expression specifying what to track. Combined with slidingwindow() to show only the last N rows.",
+  "utility": "Track and display changing shape properties or function values in a live table during animation",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Position on canvas using logical row, col coordinates"
+    },
+    {
+      "name": "slidingwindow",
+      "type": "slidingwindow(N)",
+      "required": false,
+      "description": "Limits visible rows to the last N entries. Default: 10"
+    },
+    {
+      "name": "fields",
+      "type": "field(...) (one or more)",
+      "required": true,
+      "description": "One or more field() expressions defining table columns. Each field specifies a shape reference, property name, and display label."
+    },
+    {
+      "name": "precision",
+      "type": "prec(N)",
+      "required": false,
+      "description": "Decimal places for numeric formatting. Default: 1"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Table text color — e.g., c(steelblue)"
+    },
+    {
+      "name": "fontSize",
+      "type": "fs(size)",
+      "required": false,
+      "description": "Font size for table cells — e.g., fs(16)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Track point coordinates",
+      "syntax": "tt = tracetable(at(10, 6), slidingwindow(10), field(A, 'x', \"X\"), field(A, 'y', \"Y\"))",
+      "description": "Tracks x and y coordinates of point A as it moves during animation"
+    },
+    {
+      "variant": "Track circle properties",
+      "syntax": "tt = tracetable(at(10, 6), slidingwindow(8), field(C, 'radius', \"Radius\"), field(C, 'area', \"Area\"))",
+      "description": "Tracks radius and area of circle C as it changes"
+    },
+    {
+      "variant": "Track angle and trig ratios",
+      "syntax": "tt = tracetable(at(10, 6), slidingwindow(10), field(angle_1, 'degrees', \"θ°\"), field(angle_1, 'sin', \"sin θ\"), field(angle_1, 'cos', \"cos θ\"))",
+      "description": "Tracks angle measure and its sine/cosine as the angle changes"
+    },
+    {
+      "variant": "Track mixed shapes",
+      "syntax": "tt = tracetable(at(10, 6), slidingwindow(10), field(V, 'magnitude', \"|v|\"), field(L, 'slope', \"Slope\"), field(angle_1, 'degrees', \"Angle\"))",
+      "description": "Tracks properties from different shapes in the same table"
+    },
+    {
+      "variant": "Track function values",
+      "syntax": "f(x) = x^2 + 3\ntt = tracetable(at(10, 6), slidingwindow(10), field(f, 'x', \"f(x)\"))",
+      "description": "Tracks f(x) as variable x changes during animation. The second argument is the variable name to evaluate the function with."
+    },
+    {
+      "variant": "Track with interpolate (point tracing a plot)",
+      "syntax": "G = g2d(at(10, 2), 22, 22, range(-1, 11, 1), range(-10, 110, 10))\npl = plot(G, \"20 + 8*x\", c(steelblue), s(2))\nA = interpolate(G, pl, 0, 1)\ntt = tracetable(at(10, 6), slidingwindow(10), field(A, 'x', \"text(Day)\"), field(A, 'y', \"text(Savings)\"), fs(16))",
+      "description": "Point A traces along plot during animation; tracetable logs coordinates with sliding window"
+    },
+    {
+      "variant": "All six trig ratios",
+      "syntax": "tt = tracetable(at(10, 6), slidingwindow(10), field(angle_1, 'sin', \"sin\"), field(angle_1, 'cos', \"cos\"), field(angle_1, 'tan', \"tan\"), field(angle_1, 'csc', \"csc\"), field(angle_1, 'sec', \"sec\"), field(angle_1, 'cot', \"cot\"))",
+      "description": "Tracks all six trigonometric ratios of an angle as it changes"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Pocket money savings over days (linear equation)",
+      "expression": "G1 = g2d(at(10, 2), 22, 22, range(-1, 11, 1), range(-10, 110, 10), type(plotting), grid(\"text(Days)\", \"text(Total Money)\"))\npl_1 = plot(G1, \"20 + 8*x\", c(steelblue), s(2))\nA = interpolate(G1, pl_1, 0, 1)\ntt_1 = tracetable(at(10, 6), slidingwindow(10), field(A, 'x', \"text(Day)\"), field(A, 'y', \"text(Saved)\"), fs(16))"
+    },
+    {
+      "scenario": "Track circle radius and area as it grows",
+      "expression": "G = g2d(at(10, 2), 25, 25)\nC = circle(G, 0, 0, 1, c(blue))\ntt = tracetable(at(10, 6), slidingwindow(8), field(C, 'radius', \"R\"), field(C, 'area', \"Area\"), field(C, 'circumference', \"Circ\"), prec(2))"
+    },
+    {
+      "scenario": "Trig ratios table as angle changes",
+      "expression": "G = g2d(at(10, 2), 25, 25)\nT = sss(G, 3, 4, 5)\nangle_1 = angledef(G, T, type(interior), arcsize(35))\ntt = tracetable(at(10, 6), slidingwindow(10), field(angle_1, 'degrees', \"θ°\"), field(angle_1, 'sin', \"sin θ\"), field(angle_1, 'cos', \"cos θ\"), field(angle_1, 'tan', \"tan θ\"), prec(3))"
+    },
+    {
+      "scenario": "Track function value as variable changes",
+      "expression": "f(x) = sin(x) * x\ntt = tracetable(at(10, 6), slidingwindow(10), field(f, 'x', \"f(x)\"), prec(3))"
+    },
+    {
+      "scenario": "Vector magnitude and direction",
+      "expression": "G = g2d(at(10, 2), 25, 25)\nV = vector(G, 0, 0, 3, 4, c(red))\ntt = tracetable(at(10, 6), slidingwindow(10), field(V, 'magnitude', \"|V|\"), field(V, 'direction', \"dir°\"), prec(2))"
+    },
+    {
+      "scenario": "Unit circle: track cos and sin as point traces the circle",
+      "expression": "varanim_t = variableanimator(at(2, 30), \"t\", 0, 360)\nG = g2d(at(4, 1), size(20), range(-2, 2), type(geometry), grid())\nO = point(G, 0, 0, s(3))\nuc = circle(G, O, radius(1), c(steelblue), s(2))\nP = anglepoint(G, uc, t, c(crimson), s(5))\nradius_line = line(G, O, P, type(segment), c(gray))\nxaxis_pt = point(G, 1, 0, defer())\nangle_1 = angle(G, O, xaxis_pt, P, arcsize(35), arrowhead(start), c(orange), s(3))\ncos_line = line(G, P, point(G, cos(rad(t)), 0, defer()), type(segment), c(dodgerblue), s(2))\nsin_line = line(G, P, point(G, 0, sin(rad(t)), defer()), type(segment), c(tomato), s(2))\ncos_pt = point(G, cos(rad(t)), 0, c(dodgerblue), s(4))\nsin_pt = point(G, 0, sin(rad(t)), c(tomato), s(4))\ntrace_1 = tracepoint(G, P)\ntt = tracetable(at(4, 24), slidingwindow(10), field(P, 'x', \"cos theta\"), field(P, 'y', \"sin theta\"), prec(3))\nplay_anim = playanimator(varanim_t, t(8), display(\"Play\", \"Playing...\"))"
+    }
+  ],
+  "notes": [
+    "Each column is defined by a field() expression — no separate header() or ref() needed",
+    "field() works in two modes: shape property mode field(shape, 'property', \"label\") and function mode field(func, 'variable', \"label\")",
+    "The table only adds a new row when at least one tracked value changes by more than 0.001",
+    "slidingwindow() defaults to 10 if omitted",
+    "Display labels in field() support AsciiMath notation — e.g., field(A, 'x', \"x^2\") renders x² in the header",
+    "Works with any shape that has numeric properties: points, lines, circles, vectors, angles, polygons, triangles, conics, plots",
+    "Angle trig properties available: degrees, sin, cos, tan, csc, sec, cot"
+  ]
+}

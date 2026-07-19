@@ -1,0 +1,42 @@
+{
+  "expression": "intersect3d",
+  "_requires": ["g3d"],
+  "description": "Finds the intersection of 3D geometric objects (lines, planes)",
+  "utility": "Calculate intersection point or line between geometric objects",
+  "arguments": [
+    {"name": "object1", "type": "line3d|plane3d", "required": true, "description": "First geometric object"},
+    {"name": "object2", "type": "line3d|plane3d", "required": true, "description": "Second geometric object"}
+  ],
+  "alternates": [
+    {
+      "variant": "line-line intersection",
+      "syntax": "intersect3d(line1, line2)",
+      "description": "Returns point3d if lines intersect (within tolerance), invalid otherwise"
+    },
+    {
+      "variant": "line-plane intersection",
+      "syntax": "intersect3d(line, plane)",
+      "description": "Returns point3d where line crosses plane"
+    },
+    {
+      "variant": "plane-plane intersection",
+      "syntax": "intersect3d(plane1, plane2)",
+      "description": "Returns line3d where planes intersect (if not parallel)"
+    },
+    {
+      "variant": "with index for specific intersection",
+      "syntax": "intersect3d(object1, object2, index)",
+      "description": "Select specific intersection by 0-based index"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line of intersection of two planes",
+      "expression": "line_1=intersect3d(G,plane_1,plane_2,c(brown),s(3))"
+    },
+    {
+      "scenario": "Intersection line of two planes with full setup",
+      "expression": "G=g3d(at(2,0), view(27.46, 47.94),range(-3,3),viewtransform(40,-105,0),type(lhs),noplanes(0,0,0),grid(nolines,noticks,noaxes))\nplane_1=plane3d(G,\"x + 1y + 2z = 5\",size(4.9),fo(0.2))\nplane_2=plane3d(G,\"x = 1\",size(5.1),fc(yellow),c(gold))\nline_1=intersect3d(G,plane_1,plane_2,c(brown),s(3))"
+    }
+  ]
+}

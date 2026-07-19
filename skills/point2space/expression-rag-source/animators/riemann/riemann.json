@@ -1,0 +1,16 @@
+{
+  "expression": "riemann",
+  "_requires": ["g2d", "plot"],
+  "description": "Riemann sum approximation visualization",
+  "utility": "Display rectangular approximations for integration",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "Coordinate system"},
+    {"name": "function", "type": "function", "required": true, "description": "Function to approximate"},
+    {"name": "from", "type": "number", "required": true, "description": "Left bound"},
+    {"name": "to", "type": "number", "required": true, "description": "Right bound"},
+    {"name": "rectangles", "type": "number", "required": false, "description": "Number of rectangles"}
+  ],
+  "examples": [
+    {"scenario": "Riemann sum", "expression": "riemann(g, f, 0, 2, 8)"}
+  ]
+}

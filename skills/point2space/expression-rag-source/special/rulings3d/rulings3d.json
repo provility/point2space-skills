@@ -1,0 +1,12 @@
+{
+  "expression": "rulings3d",
+  "_requires": ["g3d"],
+  "description": "Show ruling lines on 3D surfaces",
+  "utility": "Display line patterns on cones, cylinders, etc.",
+  "arguments": [
+    {"name": "count", "type": "number", "required": false, "description": "Number of rulings (default: 32)"}
+  ],
+  "examples": [
+    {"scenario": "With rulings", "expression": "rulings3d(24)"}
+  ]
+}

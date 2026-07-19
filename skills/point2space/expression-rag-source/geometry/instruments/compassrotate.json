@@ -1,0 +1,26 @@
+{
+  "expression": "compassrotate",
+  "_requires": ["g2d"],
+  "description": "Animates rotating the entire compass around its center point by a given angle in degrees",
+  "utility": "Rotate the compass orientation before drawing",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph containing the compass"
+    },
+    {
+      "name": "angleDegrees",
+      "type": "number",
+      "required": true,
+      "description": "The rotation angle in degrees"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Rotate compass 90 degrees then draw an arc",
+      "expression": "G = g2d(-10, 10, -10, 10); compassrotate(G, 90); compassarc(G, range(0, 120))"
+    }
+  ]
+}

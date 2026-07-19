@@ -1,0 +1,18 @@
+{
+  "expression": "matrixdef",
+  "_requires": ["matrixrow"],
+  "description": "Defines a complete matrix from matrixrow() expressions. Each argument is a row of the matrix.",
+  "utility": "Define a matrix",
+  "arguments": [
+    {"name": "rows", "type": "matrixrow()", "required": true, "description": "One or more matrixrow expressions"}
+  ],
+  "alternates": [
+    {"variant": "Literal syntax (preferred)", "syntax": "M = [[a, b], [c, d]]", "description": "Direct matrix literal assignment"},
+    {"variant": "Using matrixdef", "syntax": "M = matrixdef(matrixrow(a, b), matrixrow(c, d))", "description": "Explicit matrixdef construction"}
+  ],
+  "examples": [
+    {"scenario": "2x2 matrix", "expression": "M = matrixdef(matrixrow(1, 2), matrixrow(3, 4))"},
+    {"scenario": "Rotation matrix (preferred literal)", "expression": "M = [[cos(pi/4), -sin(pi/4)], [sin(pi/4), cos(pi/4)]]"},
+    {"scenario": "3x3 identity", "expression": "I = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]"}
+  ]
+}

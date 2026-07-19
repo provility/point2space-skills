@@ -1,0 +1,33 @@
+{
+  "expression": "dash",
+  "description": "Creates a dashed stroke pattern for shape outlines",
+  "utility": "Apply dashed line style with configurable dash and gap lengths",
+  "arguments": [
+    {
+      "name": "length",
+      "type": "number",
+      "required": false,
+      "description": "Length of each dash segment in pixels (default: 5)"
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "required": false,
+      "description": "Length of gap between dashes in pixels (default: 3)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Default dashed pattern",
+      "expression": "circle(0, 1) | dash()"
+    },
+    {
+      "scenario": "Custom dash and gap",
+      "expression": "line([0, 0], [2, 2]) | dash(10, 5)"
+    },
+    {
+      "scenario": "Equal dash and gap",
+      "expression": "polygon([[0, 0], [1, 0], [1, 1]]) | dash(8)"
+    }
+  ]
+}

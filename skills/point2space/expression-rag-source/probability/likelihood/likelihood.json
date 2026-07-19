@@ -1,0 +1,26 @@
+{
+    "expression": "likelihood",
+    "_requires": [
+        "bayestable"
+    ],
+    "description": "Specifies the likelihood P(A|E_i) for a hypothesis in bayestable(). One likelihood per hypothesis, in matching order. Uses probability(num, den) for the fraction.",
+    "utility": "Define likelihood for a Bayes hypothesis",
+    "arguments": [
+        {
+            "name": "value",
+            "type": "probability(num, den)",
+            "required": true,
+            "description": "Likelihood as a fraction num/den"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Likelihood of 3/7",
+            "expression": "likelihood(probability(3, 7))"
+        },
+        {
+            "scenario": "High likelihood",
+            "expression": "likelihood(probability(9, 10))"
+        }
+    ]
+}

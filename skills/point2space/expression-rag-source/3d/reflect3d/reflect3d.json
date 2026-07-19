@@ -1,0 +1,25 @@
+{
+  "expression": "reflect3d",
+  "_requires": ["g3d"],
+  "description": "Reflects a 3D shape across a plane",
+  "utility": "Create a mirror image of a point, line, vector, or polygon across a plane",
+  "arguments": [
+    {"name": "plane", "type": "plane3d", "required": true, "description": "The plane to reflect across"},
+    {"name": "shape", "type": "point3d|line3d|vector3d|polygon3d", "required": true, "description": "The shape to reflect"}
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "reflect point across xy-plane",
+      "expression": "P = plane3d(g, 0, 0, 1, 0); A = point3d(g, 3, 4, 5); reflect3d(P, A)"
+    },
+    {
+      "scenario": "reflect vector across a plane",
+      "expression": "P = plane3d(g, 1, 0, 0, 0); V = vector3d(g, 0, 0, 0, 1, 1, 1); reflect3d(P, V)"
+    },
+    {
+      "scenario": "reflect polygon across a plane",
+      "expression": "P = plane3d(g, 0, 1, 0, 0); poly = polygon3d(g, point3d(g, 0, 0, 0), point3d(g, 1, 0, 0), point3d(g, 1, 0, 1)); reflect3d(P, poly)"
+    }
+  ]
+}

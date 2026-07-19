@@ -1,0 +1,17 @@
+{
+  "expression": "cdfchart",
+  "_requires": ["stattable"],
+  "description": "Standalone cumulative distribution function chart from stattable data.",
+  "utility": "Create a CDF chart",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "table", "type": "stattable variable", "required": true, "description": "Reference to stattable"},
+    {"name": "col", "type": "col(n)", "required": false, "description": "Value column"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Line color"}
+  ],
+  "examples": [
+    {"scenario": "CDF chart", "expression": "cdfchart(at(14,4), view(10,8), T, col(2), c(purple))"},
+    {"scenario": "Simple CDF", "expression": "cdfchart(at(14,4), T)"}
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "expression": "media",
+  "description": "Attaches an audio or video asset to an expression for synchronized media playback during animation.",
+  "utility": "Attach audio or video media to an expression for synchronized playback",
+  "arguments": [
+    {
+      "name": "assetName",
+      "type": "string",
+      "required": true,
+      "description": "Name of the audio/video asset in the lesson's asset library, in quotes"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Inline on write expression",
+      "syntax": "write(at(row, col), \"content\", media(\"asset-name\"))",
+      "description": "Play audio while pen-tracing the expression"
+    },
+    {
+      "variant": "Media with duration control",
+      "syntax": "write(at(row, col), \"content\", media(\"asset-name\"), t(3))",
+      "description": "Media with custom animation duration"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Narrated trig substitution introduction",
+      "expression": "write_2 = write(at(3,2), \"int sqrt(a^2-x^2) dx\", media(\"trig-sub-intro\"))"
+    },
+    {
+      "scenario": "Write expression with media and custom duration",
+      "expression": "write_5 = write(at(12,3), \"2 hat(i) - hat(j) + 3 hat(k)\", media(\"vector-intro\"), t(5))"
+    }
+  ]
+}

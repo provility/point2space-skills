@@ -1,0 +1,167 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_1776407320083_cs8v2cjgy": {
+      "id": "slide_1776407320083_cs8v2cjgy",
+      "name": "Slide 1",
+      "expressions": [
+        "title_1=title(at(2.4,4.4),\"Example 5.6\",fc(lavender),pd(10),border(black,radius(18),shadow(18)),fs(25),ff(\"Gill Sans\"))",
+        "paragraph_1=paragraph(at(5.3,5.7),44.1,4.4,para_str_3,ff(\"Gill Sans\"),effect(slideup),notes(\"Circle on a Line's Axis Intercepts\"))",
+        "graph_1=g2d(at(9.8,36.9),size(14.3),range(-1,5,2),type(geometry))",
+        "fragment_1 = fragment(paragraph_1, range(1, 2), effect(highlight), c(black), fc(gold), t(1))",
+        "line_1=line(graph_1,\"3x+4y-12=0\")",
+        "label_1=label(graph_1,at(line_1),\"3x+4y-12=0\",buff(2.5,3),fs(16),c(black),rotation(35))",
+        "point_1=point(graph_1,0,0,defer())",
+        "point_2=point(graph_1,0,4,defer())",
+        "line_2=line(graph_1,point_1,point_2,type(line),c(steelblue),defer())",
+        "point_4=point(graph_1,5,0,defer())",
+        "line_3=line(graph_1,point_1,point_4,type(line),c(steelblue),defer())",
+        "fragment_2 = fragment(paragraph_1, range(5, 10), effect(highlight), c(black), fc(gold), t(1))",
+        "point_3 = intersect(graph_1, line_1, line_2, 1)",
+        "label_2=label(graph_1,at(point_3),\"A\",buff(-0.5,-1.5),rotation(0),c(black),fs(18))",
+        "point_5 = intersect(graph_1, line_3, line_1, 1)",
+        "label_3=label(graph_1,at(point_5),\"B\",buff(0.5,0),rotation(0),c(black),fs(18))",
+        "hidehighlight_1 = hidehighlight(fragment_1,fragment_2)",
+        "fragment_3 = fragment(paragraph_1, range(12, 21), effect(highlight), c(black), fc(gold), t(1))",
+        "circle_1 = circle(graph_1, point_3, point_5, type(diameter), c(mediumvioletred),notes(\"A and B are the diameter endpoints\"))",
+        "paragraph_2=paragraph(at(11.6,4.8),21.5,5.1,para_str_4,ff(\"Gill Sans\"),c(teal),fc(honeydew),effect(slideleft))",
+        "hidehighlight_2 = hidehighlight(fragment_3)",
+        "paragraph_3=paragraph(at(17.7,4),25.7,2.3,para_str_5,ff(\"Gill Sans\"),fs(25),c(darkgreen),effect(slideleft))",
+        "outline_1 = outline(point_3,label_2)",
+        "paragraph_4=paragraph(at(20,4.3),9.9,2.6,para_str_6,ff(\"Gill Sans\"),effect(slideup))",
+        "outline_2 = outline(point_5,label_3)",
+        "paragraph_5=paragraph(at(20.1,15),13.1,2.3,para_str_7,ff(\"Gill Sans\"),effect(slideup))",
+        "write_1=write(at(24.7,8),\"3x+4y−12=0\",exclude(\"3x+4y−12=0\",1))",
+        "text_copy_1=textcopy(write_1,label_1,buff(-0.1,-0.1))",
+        "paragraph_6=paragraph(at(24.1,17.7),10.6,2.5,para_str_8,ff(\"Gill Sans\"),lh(0),fs(23),c(blue),effect(slideright))",
+        "paragraph_7=paragraph(at(27,4.1),13.3,3,para_str_9,ff(\"Gill Sans\"),c(darkgreen),effect(slideleft))",
+        "write_2=write(at(30.5,8),\"3x+ 4ayb -12=0\",sub(\"y\",\"(0)\"),exclude(\"a\",1),exclude(\"b\",1),fadein(0.5))",
+        "write_3=write(at(33,8),\"3x = 12\",fadein(0.5))",
+        "write_4=write(at(35,8),\"3x =  12 / 3 => 4\",exclude(\"3\",2),exclude(\"=> 4\",1),fadein(0.5))",
+        "select_1 = select(write_4, \"3\", 1)",
+        "text_move_1 = textmove(write_4_select_1, select_1, buff(-0.2, -0.1))",
+        "text_reveal_1 = textreveal(write_4_select_2)",
+        "write_5=write(at(39,8.5),\"B = (4,0)\")",
+        "arect_1=annotationrect(at(38.7,7.5),at(38.7,14.6),at(40.7,14.6),at(40.7,7.5),fc(lightblue))",
+        "aline_1 = annotationline(at(27.9, 22.9), at(41.4, 22.9))",
+        "paragraph_8=paragraph(at(27.2,25),17.7,2.8,para_str_10,ff(\"Gill Sans\"),lh(0.1),c(darkgreen),effect(slideright))",
+        "write_6=write(at(30.5,25),\"3axb+ 4y -12=0\",exclude(\"a\",1),exclude(\"b\",1),sub(\"x\",\"(0)\"),fadein(0.5))",
+        "write_7=write(at(32.8,25.7),\"4y = 12\",fadein(0.5))",
+        "write_8=write(at(34.8,25.7),\"4y = 12/4 => 3\",exclude(\"4\",2),exclude(\"=> 3\",1),fadein(0.5))",
+        "select_2 = select(write_8, \"4\", 1)",
+        "text_move_2=textmove(write_8_select_1,select_2,buff(-0.2,0))",
+        "text_reveal_2 = textreveal(write_8_select_2)",
+        "write_9=write(at(39,25.5),\"A = (0,3)\")",
+        "arect_2=annotationrect(at(38.7,25),at(38.7,31.4),at(40.8,31.4),at(40.8,25),fc(lightblue))",
+        "",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Enter text here..."
+        },
+        {
+          "name": "para_str_2",
+          "value": "Enter text here..."
+        },
+        {
+          "name": "para_str_3",
+          "value": "The line math(3x+4y−12=0) meets the coordinate axes at A and B. Find the equation of the circle drawn on AB as diameter."
+        },
+        {
+          "name": "para_str_4",
+          "value": "Objective:\n        We need to find the equation of the circle."
+        },
+        {
+          "name": "para_str_5",
+          "value": "First, we need to find the intercepts of the line on the axes."
+        },
+        {
+          "name": "para_str_6",
+          "value": "Point A (on the x-axis)"
+        },
+        {
+          "name": "para_str_7",
+          "value": " Point B (on the y-axis)"
+        },
+        {
+          "name": "para_str_8",
+          "value": "( Given line equation )"
+        },
+        {
+          "name": "para_str_9",
+          "value": "For x-intercept, set math( y=0 ) :"
+        },
+        {
+          "name": "para_str_10",
+          "value": "For y-intercept, set math(x = 0)"
+        }
+      ]
+    },
+    "slide_1776672915431_b2q9su8jg": {
+      "id": "slide_1776672915431_b2q9su8jg",
+      "name": "equation of circle",
+      "expressions": [
+        "paragraph_1=paragraph(at(0.6,3.8),17.6,2.9,para_str_1,ff(\"Gill Sans\"),fs(25),c(teal),fc(lavenderblush))",
+        "write_1=write(at(4.9,7.3),\"text (Point A) = (0,3)\",fadein(0.5))",
+        "write_2=write(at(5.1,18),\"text (Point B) = (4,0)\",fadein(0.5))",
+        "",
+        "section_1 = section(\"slide-2\", t(2), ref(paragraph_1))",
+        "paragraph_2=paragraph(at(7,3.4),25.9,4.1,para_str_2,ff(\"Gill Sans\"),c(darkgreen),effect(slideleft))",
+        "write_3=write(at(12.5,8.5),\"(x-x_1)(x-x_2)+(y-y_1)(y-y_2)=0\",fadein(0.5))",
+        "paragraph_3=paragraph(at(11.8,31.2),24.5,2.6,para_str_4,fs(22),ff(\"Gill Sans\"),c(blue),effect(slideright))",
+        "arect_1=annotationrect(at(11.8,7.2),at(11.8,30.8),at(14.7,30.8),at(14.7,7.2),fc(lightyellow),c(orange))",
+        "paragraph_4=paragraph(at(16,3.4),15.5,2.8,para_str_5,ff(\"Gill Sans\"),c(darkgreen),effect(slideleft))",
+        "paragraph_5=paragraph(at(18.8,30.3),20.7,1.9,para_str_6,ff(\"Gill Sans\"),c(blue),effect(slideright))",
+        "write_4=write(at(19.5,8.5),\"(x-x_1)(x-x_2)+(y-y_1)(y-y_2)=0\",sub(\"x_1\",\"4\"),sub(\"y_1\",\"0\"),sub(\"x_2\",\"0\"),sub(\"y_2\",\"3\"),fadein(0.5))",
+        "write_5=write(at(23.3,7.6),\"x(x−4)+y(y−3)=0 => x^2−4x+y^2−3y=0\",exclude(\"=> x^2−4x+y^2−3y=0\",1),fadein(0.5))",
+        "paragraph_6=paragraph(at(22.8,34.3),15.5,2,para_str_7,ff(\"Gill Sans\"),lh(1.1),c(blue),effect(slideright))",
+        "text_reveal_1 = textreveal(write_5_select_1)",
+        "write_6=write(at(26.7,8.6),\"x^2−4x+y^2−3y=0\",exclude(\"=> x2−4x+y2−3y=0\",1),exclude(\"=> x^2−4^x+y^2−3y=0\",1),fadein(0.5),notes(\"equation of the circle\"))",
+        "arect_2=annotationrect(at(26.3,7.6),at(26.3,21.1),at(28.6,21.1),at(28.6,7.6))",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Now we have both Point A and B values"
+        },
+        {
+          "name": "para_str_2",
+          "value": "To find the Equation of the circle with these points,\nWe can apply diameter form of circle equation \n"
+        },
+        {
+          "name": "para_str_3",
+          "value": "(diameter form of circle with endpoints math((x1,y1)) and math((x^2,y^2)))"
+        },
+        {
+          "name": "para_str_4",
+          "value": "(diameter form of circle with endpoints math((x_1,y_1)) and math((x_2,y_2)))"
+        },
+        {
+          "name": "para_str_5",
+          "value": "Substitute math(A(4,0)) and math(B(0,3)):"
+        },
+        {
+          "name": "para_str_6",
+          "value": "(applying the diameter form with the given points)"
+        },
+        {
+          "name": "para_str_7",
+          "value": "(expanding the products)"
+        }
+      ]
+    }
+  },
+  "settings": {
+    "theme": "light"
+  },
+  "slideOrder": [
+    "slide_1776407320083_cs8v2cjgy",
+    "slide_1776672915431_b2q9su8jg"
+  ],
+  "activeSlideId": "slide_1776407320083_cs8v2cjgy",
+  "id": "514423ea-b95e-4703-bc14-1a11f31125c8",
+  "name": "Circle on Axis Intercepts"
+}

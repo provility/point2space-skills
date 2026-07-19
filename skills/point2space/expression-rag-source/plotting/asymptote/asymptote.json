@@ -1,0 +1,61 @@
+{
+  "expression": "asymptote",
+  "_requires": ["g2d", "plot"],
+  "description": "Automatically detects and renders vertical, horizontal, and slant asymptotes of a plot",
+  "utility": "Visualizes asymptotic behavior of functions with automatic detection and optional animation",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph to draw asymptotes on"
+    },
+    {
+      "name": "plot",
+      "type": "plot or implicit",
+      "required": true,
+      "description": "The plot expression to analyze for asymptotes"
+    },
+    {
+      "name": "startX",
+      "type": "number",
+      "required": false,
+      "description": "Optional starting X position for trace animation"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "basic asymptote detection",
+      "syntax": "asymptote(graph, plot)",
+      "description": "Auto-detect all asymptote types (vertical, horizontal, slant)"
+    },
+    {
+      "variant": "with styling",
+      "syntax": "asymptote(graph, plot, dash()), or asymptote(graph, plot, c(blue))",
+      "description": "Apply custom dash pattern or color styling"
+    },
+    {
+      "variant": "with animation start point",
+      "syntax": "asymptote(graph, plot, startX)",
+      "description": "Specify X position for trace animation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Asymptotes of 1/x with custom stroke width on a plotting graph",
+      "expression": "graph_1 = g2d(at(3,7), 21.5, 32.4, range(-5, 5), range(-5, 5), type(plotting))\nplot_1=plot(graph_1,\"1/(x)\",range(-5,5))\nasymptote_1=asymptote(graph_1,plot_1,s(5))"
+    },
+    {
+      "scenario": "Asymptotes alongside tangent and normal on same plot",
+      "expression": "graph_1 = g2d(at(3,7), 21.5, 32.4, range(-5, 5), range(-5, 5), type(plotting))\nplot_1=plot(graph_1,\"1/(x)\",range(-5,5))\ntangent_1 = tangent(graph_1, plot_1, 1)\nnormal_1 = normal(graph_1, plot_1, 1)\nasymptote_1=asymptote(graph_1,plot_1,s(5))"
+    },
+    {
+      "scenario": "Detect asymptotes of a rational function",
+      "expression": "G = g2d(-5, 5, -10, 10)\nf = plot(G, \"1/(x-2)\")\nasymptote(G, f)"
+    },
+    {
+      "scenario": "Asymptote with dashed line",
+      "expression": "G = g2d(-10, 10, -10, 10)\nf = plot(G, \"1/x\")\nasymptote(G, f, dash(5))"
+    }
+  ]
+}

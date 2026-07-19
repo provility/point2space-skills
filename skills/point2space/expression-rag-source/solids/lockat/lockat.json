@@ -1,0 +1,19 @@
+{
+  "expression": "lockat",
+  "_requires": [],
+  "description": "Lock camera at specific position, rotation, and zoom for solid views. Takes plain numeric values.",
+  "utility": "Set camera position and orientation for solid shape display",
+  "arguments": [
+    {"name": "x", "type": "number", "required": true, "description": "Camera X position"},
+    {"name": "y", "type": "number", "required": true, "description": "Camera Y position"},
+    {"name": "z", "type": "number", "required": true, "description": "Camera Z position"},
+    {"name": "rx", "type": "number", "required": false, "description": "Target X"},
+    {"name": "ry", "type": "number", "required": false, "description": "Target Y"},
+    {"name": "rz", "type": "number", "required": false, "description": "Target Z"},
+    {"name": "zoom", "type": "number", "required": false, "description": "Zoom level"}
+  ],
+  "examples": [
+    {"scenario": "Lock camera position", "expression": "lockat(5, 3, 4, 0, 0, 0, 1.2)"},
+    {"scenario": "Camera at angle", "expression": "lockat(8, 5, 6, 0, 0, 0, 1)"}
+  ]
+}

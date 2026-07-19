@@ -1,0 +1,52 @@
+{
+  "expression": "line (from equation)",
+  "_requires": ["g2d"],
+  "description": "Creates a line on a 2D graph from a mathematical equation string. Supports slope-intercept form (y=mx+b) and standard form (ax+by=c).",
+  "utility": "Draw a line from an equation",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": true,
+      "description": "Equation string in slope-intercept (\"y=mx+b\") or standard form (\"ax+by=c\")"
+    },
+    {
+      "name": "options",
+      "type": "c(color) | dash() | stroke(width)",
+      "required": false,
+      "description": "Color, dashed style, or stroke width"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From slope-intercept equation",
+      "syntax": "line(G, \"y=mx+b\")",
+      "description": "Line parsed from equation string, e.g. \"y=2x+3\""
+    },
+    {
+      "variant": "From standard-form equation",
+      "syntax": "line(G, \"ax+by=c\")",
+      "description": "Line parsed from standard form, e.g. \"3x+4y=12\""
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line from standard-form equation for axis intercepts (axis intercepts lesson)",
+      "expression": "line_1=line(graph_1,\"3x+4y-12=0\")"
+    },
+    {
+      "scenario": "Line from equation for diameter check (diameter through center lesson)",
+      "expression": "line_2=line(graph_1,\"x + y - 1 = 0\",t(1))"
+    },
+    {
+      "scenario": "Line from equation on explanation slide (diameter through center lesson)",
+      "expression": "line_1=line(graph_1,\"x+y-2=0\")"
+    }
+  ]
+}

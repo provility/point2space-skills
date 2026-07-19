@@ -1,0 +1,22 @@
+{
+  "expression": "playinputaction",
+  "description": "Button that sets input values first, then replays commands. Combines setvalue operations with playaction. All setvalue operations execute before commands are replayed.",
+  "utility": "Create a button that sets values then replays commands",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position" },
+    { "name": "setvalues", "type": "setvalue(target, value)...", "required": true, "description": "One or more setvalue() expressions to execute before replay" },
+    { "name": "commandVars", "type": "variable references", "required": true, "description": "One or more variable references to existing commands to replay" },
+    { "name": "display", "type": "display(\"label\")", "required": false, "description": "Button text. Defaults to 'Play'" },
+    { "name": "type", "type": "type(parallel|sequence)", "required": false, "description": "Execution mode for commands" },
+    { "name": "duration", "type": "t(seconds)", "required": false, "description": "Animation duration" },
+    { "name": "styles", "type": "style expressions", "required": false, "description": "Optional styling such as fs(fontSize)" }
+  ],
+  "alternates": [
+    { "variant": "Set values then replay", "syntax": "playinputaction(at(3, 4), setvalue(n1, 10), setvalue(n2, 20), A, B, display(\"Go\"))", "description": "Set two values then replay two commands" },
+    { "variant": "Sequential with styling", "syntax": "playinputaction(at(4, 6), setvalue(n1, 10), setvalue(n2, 20), A, B, C, type(sequence), display(\"Play\"), fs(26))", "description": "Set values, replay commands sequentially with font size" }
+  ],
+  "examples": [
+    { "scenario": "HCF tree method with input numbers and factor bars", "expression": "number_1 = inputnumber(at(5.1, 16.8), \"a\", value(20), size(4), display(\"A\"))\nnumber_2 = inputnumber(at(5.1, 26), \"b\", value(125), size(4), display(\"B\"))\nprimefactor_1 = primefactor(at(8.4, 17.8), view(12.4, 11), a)\nprimefactor_2 = primefactor(at(8.3, 31.1), view(12.2, 10.9), b)\nlcmbar_1 = hcfbar(at(21.9, 23.8), view(5.4, 12.5), primefactor_1, primefactor_2, t(10))\nplayinputaction(at(4, 6), setvalue(number_1, 10), setvalue(number_2, 20), primefactor_1, primefactor_2, lcmbar_1, type(sequence), display(\"Play\"), fs(26))" },
+    { "scenario": "Set inputs then play commands", "expression": "playinputaction(at(3, 4), setvalue(n1, 10), setvalue(n2, 20), A, B, display(\"Go\"), type(sequence))" }
+  ]
+}

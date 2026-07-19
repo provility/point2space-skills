@@ -1,0 +1,12 @@
+{
+  "expression": "rot",
+  "_requires": [],
+  "description": "Rotation value or angle computation",
+  "utility": "Compute or extract rotation angles",
+  "arguments": [
+    {"name": "object", "type": "geometry", "required": false, "description": "Object to get rotation from"}
+  ],
+  "examples": [
+    {"scenario": "Get rotation", "expression": "angle = rot()"}
+  ]
+}

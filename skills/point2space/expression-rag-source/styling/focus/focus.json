@@ -1,0 +1,45 @@
+{
+  "expression": "focus",
+  "description": "Applies a dimming overlay SVG mask that focuses attention on specified shapes while dimming everything else",
+  "utility": "Highlight specific shapes with an attention-focusing overlay and optional customization",
+  "arguments": [
+    {
+      "name": "shapes",
+      "type": "shape reference(s)",
+      "required": true,
+      "description": "One or more shape variable references to keep in focus"
+    },
+    {
+      "name": "dimness",
+      "type": "expression",
+      "required": false,
+      "description": "Custom overlay opacity using fo() expression (default: 0.7)"
+    },
+    {
+      "name": "tint",
+      "type": "expression",
+      "required": false,
+      "description": "Custom overlay color using c() or fc() expression (default: black)"
+    },
+    {
+      "name": "duration",
+      "type": "expression",
+      "required": false,
+      "description": "Auto-clear duration using t() expression (default: 5s)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Focus on region for revolution",
+      "expression": "focus_1 = focus(region_1)"
+    },
+    {
+      "scenario": "Focus on equation for emphasis",
+      "expression": "focus(LIM, t(4))"
+    },
+    {
+      "scenario": "Focus on multiple correlated points",
+      "expression": "focus_2 = focus(point_1, point_2)"
+    }
+  ]
+}

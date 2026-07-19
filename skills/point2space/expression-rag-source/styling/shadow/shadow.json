@@ -1,0 +1,33 @@
+{
+  "expression": "shadow",
+  "description": "Adds a drop shadow effect with blur and optional spread radius",
+  "utility": "Apply drop shadow effects to text within border styling",
+  "arguments": [
+    {
+      "name": "blur",
+      "type": "number",
+      "required": true,
+      "description": "Blur radius in pixels for shadow softness"
+    },
+    {
+      "name": "spread",
+      "type": "number",
+      "required": false,
+      "description": "Spread radius in pixels extending the shadow (default: 0)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Subtle shadow with blur only",
+      "expression": "text(\"Text\") | border(black, 1, solid, shadow(4))"
+    },
+    {
+      "scenario": "Shadow with spread effect",
+      "expression": "text(\"Bold\") | border(gray, 2, solid, shadow(4, 2))"
+    },
+    {
+      "scenario": "Strong shadow effect",
+      "expression": "text(\"Prominent\") | border(black, 1, solid, shadow(8, 4))"
+    }
+  ]
+}

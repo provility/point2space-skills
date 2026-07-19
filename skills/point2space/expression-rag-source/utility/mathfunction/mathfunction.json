@@ -1,0 +1,16 @@
+{
+  "expression": "mathfunction",
+  "_requires": [],
+  "description": "Math library: sin, cos, sqrt, mean, abs, floor, ceil, min, max, rad, deg",
+  "utility": "Apply standard mathematical functions",
+  "arguments": [
+    {"name": "func", "type": "sin | cos | tan | sqrt | abs | floor | ceil | mean | min | max | rad | deg", "required": true, "description": "Function name"},
+    {"name": "arg1", "type": "number", "required": true, "description": "First argument"},
+    {"name": "argN", "type": "number", "required": false, "description": "Additional arguments"}
+  ],
+  "examples": [
+    {"scenario": "Trig", "expression": "y = sin(x)"},
+    {"scenario": "Root", "expression": "side = sqrt(area)"},
+    {"scenario": "Degree conversion", "expression": "rad = rad(45)"}
+  ]
+}

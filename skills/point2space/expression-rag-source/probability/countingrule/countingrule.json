@@ -1,0 +1,64 @@
+{
+    "expression": "countingrule",
+    "_requires": [],
+    "description": "Displays the counting formula for a sample space, permutation, combination, or multinomial as a KaTeX-rendered expression. Supports symbolic notation (P(n,r), C(n,r), M(n;...), |S|) or expanded factorial form.",
+    "utility": "Display counting formula for a sample space or arrangement",
+    "arguments": [
+        {
+            "name": "source",
+            "type": "sspace/permutation/combination/multinomial variable",
+            "required": true,
+            "description": "Reference to a sample space, permutation, combination, or multinomial variable"
+        },
+        {
+            "name": "position",
+            "type": "at(row, col)",
+            "required": true,
+            "description": "Canvas position for the formula"
+        },
+        {
+            "name": "format",
+            "type": "type(symbolic|substituted)",
+            "required": false,
+            "description": "Display format: symbolic (P(n,r), default) or substituted (expanded factorial form)"
+        },
+        {
+            "name": "color",
+            "type": "c(color)",
+            "required": false,
+            "description": "Text color"
+        },
+        {
+            "name": "fontSize",
+            "type": "fs(size)",
+            "required": false,
+            "description": "Font size"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Permutation formula: P(5,3) = 60",
+            "expression": "P = permutation(set(\"A\",\"B\",\"C\",\"D\",\"E\"), choose(3), at(4,10), view(14,12))\ncountingrule(P, at(18,10))"
+        },
+        {
+            "scenario": "Combination formula: C(4,2) = 6",
+            "expression": "C = combination(set(\"A\",\"B\",\"C\",\"D\"), choose(2), at(4,10), view(10,8))\ncountingrule(C, at(14,10))"
+        },
+        {
+            "scenario": "Multinomial formula: M(5; 3,2) = 10",
+            "expression": "M = multinomial(group(\"R\",3), group(\"B\",2), at(4,10), view(12,10))\ncountingrule(M, at(16,10))"
+        },
+        {
+            "scenario": "Substituted factorial form",
+            "expression": "countingrule(P, at(20,10), type(substituted))"
+        },
+        {
+            "scenario": "Sample space counting: |S| = 36",
+            "expression": "S = sspace(dice(2), at(4,10), view(12,12))\ncountingrule(S, at(16,10))"
+        },
+        {
+            "scenario": "With color and font size",
+            "expression": "countingrule(P, at(22,10), type(substituted), c(blue), fs(24))"
+        }
+    ]
+}

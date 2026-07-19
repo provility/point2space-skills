@@ -1,0 +1,16 @@
+{
+  "expression": "combination",
+  "_requires": [],
+  "description": "Shows all unordered selections of r items from n elements. Standalone visualization.",
+  "utility": "Generate combinations from a set",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "elements", "type": "set()", "required": true, "description": "Element set definition"},
+    {"name": "selectCount", "type": "choose(n)", "required": false, "description": "Number of items to select (default: 1)"}
+  ],
+  "examples": [
+    {"scenario": "Choose 2 from 4", "expression": "C = combination(at(4,4), view(14,20), set(\"A\", \"B\", \"C\", \"D\"), choose(2))"},
+    {"scenario": "Choose 3 from 5", "expression": "C = combination(at(4,4), view(14,20), set(1, 2, 3, 4, 5), choose(3))"}
+  ]
+}

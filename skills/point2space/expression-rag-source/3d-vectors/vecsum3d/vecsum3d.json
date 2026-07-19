@@ -1,0 +1,53 @@
+{
+  "expression": "vecsum3d",
+  "_requires": ["g3d", "vector3d"],
+  "description": "Adds two 3D vectors component-wise, returning the resultant sum vector. Uses the displacement of each input. Can also be done via trace3d(G, V, type(sum), W).",
+  "utility": "Add two 3D vectors and return the resultant vector",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "vecA",
+      "type": "vector3d",
+      "required": true,
+      "description": "First vector operand"
+    },
+    {
+      "name": "vecB",
+      "type": "vector3d",
+      "required": true,
+      "description": "Second vector operand"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic addition",
+      "syntax": "vecsum3d(G, A, B)",
+      "description": "Sum of A + B"
+    },
+    {
+      "variant": "With color",
+      "syntax": "vecsum3d(G, A, B, c(green))",
+      "description": "Sum vector with color styling"
+    },
+    {
+      "variant": "Via trace3d",
+      "syntax": "trace3d(G, V, type(sum), W)",
+      "description": "Alternative: vector addition via trace3d"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Add two vectors",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = vector3d(G, 0, 0, 0, 3, 0, 0)\nB = vector3d(G, 0, 0, 0, 0, 2, 0)\nS = vecsum3d(G, A, B)"
+    },
+    {
+      "scenario": "Visualize parallelogram law of addition",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = vector3d(G, 0, 0, 0, 2, 1, 0, c(red))\nB = vector3d(G, 0, 0, 0, 0, 1, 2, c(blue))\nS = vecsum3d(G, A, B, c(green))"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "expression": "crossplane",
+  "_requires": [],
+  "description": "Defines a 3D cutting plane for cross-sectioning solid shapes via slice3d. Use with axis-aligned planes (x, y, z) or arbitrary normal vectors.",
+  "utility": "Define a cutting plane for slice3d cross-sections of 3D solid shapes",
+  "arguments": [
+    {"name": "axis", "type": "x | y | z", "required": false, "description": "Axis-aligned plane orientation. y = horizontal cut, x = side cut, z = front cut"},
+    {"name": "nx ny nz", "type": "numbers", "required": false, "description": "Arbitrary plane normal vector (3 numbers). Use instead of axis for oblique cuts"},
+    {"name": "position", "type": "number", "required": false, "description": "Position along axis or normal (0-1 range, default 0.5). 0 = bottom/start, 1 = top/end"}
+  ],
+  "examples": [
+    {"scenario": "Horizontal cut at mid-height", "expression": "crossplane(y, 0.5)"},
+    {"scenario": "Horizontal cut at 30% height", "expression": "crossplane(y, 0.3)"},
+    {"scenario": "Side cut (perpendicular to x-axis)", "expression": "crossplane(x, 0.5)"},
+    {"scenario": "Oblique cut with custom normal", "expression": "crossplane(-1.3, -1.6, 0.9, 0.8)"},
+    {"scenario": "Diagonal cut", "expression": "crossplane(1, 1, 0)"}
+  ]
+}

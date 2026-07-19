@@ -1,0 +1,19 @@
+{
+  "expression": "display",
+  "description": "Parameter-only expression used inside other expressions to specify labels. Not a standalone command. Accepts one or two string arguments.",
+  "utility": "Specify display labels inside other expressions",
+  "arguments": [
+    { "name": "label", "type": "string", "required": true, "description": "Primary label text" },
+    { "name": "playingLabel", "type": "string", "required": false, "description": "Secondary label shown during playback (used in playaction, playinputanimator)" }
+  ],
+  "alternates": [
+    { "variant": "Single label", "syntax": "display(\"Play\")", "description": "Single label text" },
+    { "variant": "Dual labels", "syntax": "display(\"Play\", \"Pause\")", "description": "Primary label and playing-state label" }
+  ],
+  "examples": [
+    { "scenario": "Label for a playaction button", "expression": "playaction(at(3, 4), A, display(\"Play\"))" },
+    { "scenario": "Dual labels for toggle behavior", "expression": "playaction(at(3, 4), A, display(\"Play\", \"Pause\"))" },
+    { "scenario": "Label for dropdown", "expression": "x = dropdown(at(3, 4), \"x\", value(1, 2, 3), display(\"x\"), type(number), ref(1))" },
+    { "scenario": "Label for inputstepper", "expression": "n = inputstepper(at(3, 4), \"n\", value(5), range(0, 100, 1), display(\"Count\"))" }
+  ]
+}

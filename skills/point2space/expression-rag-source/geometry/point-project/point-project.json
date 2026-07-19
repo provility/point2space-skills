@@ -1,0 +1,39 @@
+{
+  "expression": "project (point)",
+  "_requires": ["g2d", "line"],
+  "description": "Creates a point by projecting (dropping a perpendicular) from a point onto a line.",
+  "utility": "Find the foot of perpendicular from a point onto a line",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "line",
+      "type": "line",
+      "required": true,
+      "description": "Line to project onto"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "Point to project"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point from projection",
+      "syntax": "project(G, line, point)",
+      "description": "Foot of perpendicular from point onto line"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Project point onto line",
+      "expression": "foot = project(G, L, P)"
+    }
+  ]
+}

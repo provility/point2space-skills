@@ -1,0 +1,16 @@
+{
+  "expression": "collinear3d",
+  "_requires": ["g3d", "point3d"],
+  "description": "Tests and visualizes whether three 3D points are collinear (lie on the same line).",
+  "utility": "Test collinearity of three 3D points",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "P1", "type": "point3d", "required": true, "description": "First point"},
+    {"name": "P2", "type": "point3d", "required": true, "description": "Second point"},
+    {"name": "P3", "type": "point3d", "required": true, "description": "Third point"}
+  ],
+  "examples": [
+    {"scenario": "Three collinear points", "expression": "G = g3d(at(4,23), view(30, 30))\nA = point3d(G, 0, 0, 0)\nB = point3d(G, 1, 1, 1)\nC = point3d(G, 2, 2, 2)\ncoll = collinear3d(G, A, B, C)"},
+    {"scenario": "Three non-collinear points", "expression": "coll = collinear3d(G, point3d(G, 0, 0, 0), point3d(G, 1, 0, 0), point3d(G, 0, 1, 0))"}
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "expression": "backward",
+  "_requires": ["g2d"],
+  "description": "Shifts a vector or line backward by a specified distance opposite to its direction, preserving orientation and magnitude.",
+  "utility": "Shift a vector backward (opposite direction) by a given distance",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The graph container"
+    },
+    {
+      "name": "vector",
+      "type": "vector | line",
+      "required": true,
+      "description": "The vector or line to shift backward"
+    },
+    {
+      "name": "distance",
+      "type": "number",
+      "required": true,
+      "description": "Distance to shift backward (opposite to vector direction)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Backward shift vector",
+      "syntax": "backward(G, vec, distance)",
+      "description": "Shift vector backward by distance opposite to its direction"
+    },
+    {
+      "variant": "Backward shift line",
+      "syntax": "backward(G, line, distance)",
+      "description": "Shift line backward by distance (returns vector)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Shift a vector backward by 2 units",
+      "expression": "P1 = point(G, 3, 2)\nP2 = point(G, 6, 4)\nV = vector(G, P1, P2)\nB = backward(G, V, 2)"
+    },
+    {
+      "scenario": "Create forward and backward copies of a vector",
+      "expression": "O = point(G, 0, 0)\nA = point(G, 3, 0)\nV = vector(G, O, A)\nF = forward(G, V, 2)\nB = backward(G, V, 2)"
+    },
+    {
+      "scenario": "Shift a line backward as a vector",
+      "expression": "A = point(G, 2, 0)\nB = point(G, 5, 0)\nL = line(G, A, B)\nB1 = backward(G, L, 3)"
+    },
+    {
+      "scenario": "Backward shift of a vector by 1 unit in vector movements",
+      "expression": "G=g2d(at(3,6),25,range(-1,5,1),type(geometry)); vector_1 = vector(G, point(G, 2.3, 1.2), point(G, 3.2, 1.7)); bwd_1 = backward(G, vector_1, 1)"
+    }
+  ]
+}

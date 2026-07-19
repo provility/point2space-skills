@@ -1,0 +1,99 @@
+{
+  "expression": "interval",
+  "_requires": ["nl"],
+  "description": "Creates a highlighted interval on a number line between two points. Supports custom label text.",
+  "utility": "Visualizes bounded solution sets and closed/open intervals with customizable endpoints, styling, and labels",
+  "arguments": [
+    {
+      "name": "numberLine",
+      "type": "nl",
+      "required": true,
+      "description": "The number line to place the interval on"
+    },
+    {
+      "name": "a",
+      "type": "number",
+      "required": true,
+      "description": "The left endpoint of the interval"
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "required": true,
+      "description": "The right endpoint of the interval"
+    },
+    {
+      "name": "type",
+      "type": "type()",
+      "required": false,
+      "description": "Endpoint configuration: type(closed), type(open), type(leftopen), type(rightopen). Defaults to closed"
+    },
+    {
+      "name": "color",
+      "type": "c()",
+      "required": false,
+      "description": "Optional color using c(colorName). Defaults to blue"
+    },
+    {
+      "name": "offset",
+      "type": "buff()",
+      "required": false,
+      "description": "Optional vertical offset from axis using buff(pixels)"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Custom label text (replaces auto-generated interval notation)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "closed interval",
+      "syntax": "interval(N, a, b)",
+      "description": "Interval with both endpoints filled: [a, b]"
+    },
+    {
+      "variant": "open interval",
+      "syntax": "interval(N, a, b, type(open))",
+      "description": "Interval with both endpoints hollow: (a, b)"
+    },
+    {
+      "variant": "left-open",
+      "syntax": "interval(N, a, b, type(leftopen))",
+      "description": "Interval [a, b) with left filled, right hollow"
+    },
+    {
+      "variant": "right-open",
+      "syntax": "interval(N, a, b, type(rightopen))",
+      "description": "Interval (a, b] with left hollow, right filled"
+    },
+    {
+      "variant": "with custom label",
+      "syntax": "interval(N, a, b, type(closed), c(blue), \"Set A\")",
+      "description": "Interval with custom label text replacing auto-generated notation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Show closed interval [2, 5]",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); interval(N, 2, 5)"
+    },
+    {
+      "scenario": "Show open interval (1, 4)",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); interval(N, 1, 4, type(open))"
+    },
+    {
+      "scenario": "Show half-open interval [0, 3)",
+      "expression": "N = nl(at(1,1), 2, 8, range(-5, 5)); interval(N, 0, 3, type(rightopen))"
+    },
+    {
+      "scenario": "Red interval with offset",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); interval(N, 2, 7, type(closed), c(red), buff(10))"
+    },
+    {
+      "scenario": "Interval with custom label",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); I = interval(N, 1, 5, type(closed), c(blue), \"Set A\")"
+    }
+  ]
+}

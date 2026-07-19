@@ -1,0 +1,28 @@
+{
+  "expression": "sweep",
+  "_requires": [],
+  "description": "Specifies the sweep angle range for revolve operations (revolvedisk, revolvewasher, revolveshell). Single argument sweeps from 0 to the given angle; two arguments sweep from start to end angle in degrees.",
+  "utility": "Set sweep angle range for solids of revolution",
+  "arguments": [
+    {"name": "startAngle", "type": "number", "required": false, "description": "Sweep start angle in degrees (defaults to 0 if only one argument given)"},
+    {"name": "endAngle", "type": "number", "required": true, "description": "Sweep end angle in degrees (defaults to 360)"}
+  ],
+  "alternates": [
+    {"variant": "Full sweep (one arg)", "syntax": "sweep(360)", "description": "Sweeps from 0 to 360 degrees"},
+    {"variant": "Partial sweep (two args)", "syntax": "sweep(0, 270)", "description": "Sweeps from 0 to 270 degrees"}
+  ],
+  "examples": [
+    {
+      "scenario": "Full revolution",
+      "expression": "revolvedisk(at(2,1), view(21,26), region_1, axis(x), fc(blue), sweep(0, 360))"
+    },
+    {
+      "scenario": "Partial revolution showing cross-section",
+      "expression": "revolvewasher(at(2,1), view(17,16.9), region_1, region_2, axis(x), fc(red), sweep(0, 270))"
+    },
+    {
+      "scenario": "Half revolution",
+      "expression": "revolveshell(at(2,1), view(21,26), region_1, axis(y), fc(green), sweep(180))"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "expression": "vecsum",
+  "_requires": ["g2d", "vector"],
+  "description": "Adds two vectors (or lines) to produce a resultant sum vector. The result starts at the first vector's start point by default, or at a specified point.",
+  "utility": "Add two vectors to produce a resultant sum vector (A + B)",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "vectorA",
+      "type": "vector | line",
+      "required": true,
+      "description": "First vector (or line) to add"
+    },
+    {
+      "name": "vectorB",
+      "type": "vector | line",
+      "required": true,
+      "description": "Second vector (or line) to add"
+    },
+    {
+      "name": "startPoint",
+      "type": "point",
+      "required": false,
+      "description": "Optional point where the result vector starts"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic sum from first vector's start",
+      "syntax": "vecsum(G, V1, V2)",
+      "description": "Add vectors, result starts at V1's start point"
+    },
+    {
+      "variant": "Sum placed at a point",
+      "syntax": "vecsum(G, V1, V2, point)",
+      "description": "Add vectors, result starts at the given point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Create graph and define points",
+      "expression": "G = g2d(at(8,0), 20, type(geometry))"
+    },
+    {
+      "scenario": "Define points for first vector",
+      "expression": "A = point(G, 0, 0)"
+    },
+    {
+      "scenario": "End of first vector",
+      "expression": "B = point(G, 3, 4)"
+    },
+    {
+      "scenario": "First vector",
+      "expression": "V1 = vector(G, A, B)"
+    },
+    {
+      "scenario": "Second vector using position form",
+      "expression": "V2 = vector(G, 2, -1, type(position))"
+    },
+    {
+      "scenario": "Sum of V1 and V2",
+      "expression": "sum_1 = vecsum(G, V1, V2)"
+    },
+    {
+      "scenario": "Sum placed at a specific point",
+      "expression": "sum_2 = vecsum(G, V1, V2, point(G, 1, 1))"
+    },
+    {
+      "scenario": "Styled sum vector in green",
+      "expression": "sum_3 = vecsum(G, V1, V2, c(green))"
+    }
+  ]
+}

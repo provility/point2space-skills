@@ -1,0 +1,49 @@
+{
+  "expression": "paraplane3d",
+  "_requires": ["g3d"],
+  "description": "Creates a plane in 3D space from parametric equations in parameters t and s.",
+  "utility": "Create a plane from parametric equations",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "x(t,s)",
+      "type": "string",
+      "required": true,
+      "description": "x-coordinate as a function of t and s"
+    },
+    {
+      "name": "y(t,s)",
+      "type": "string",
+      "required": true,
+      "description": "y-coordinate as a function of t and s"
+    },
+    {
+      "name": "z(t,s)",
+      "type": "string",
+      "required": true,
+      "description": "z-coordinate as a function of t and s"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic parametric plane",
+      "syntax": "paraplane3d(G, \"1 + 2t\", \"s\", \"t + s\")",
+      "description": "Plane defined by three parametric equations in t and s"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Parametric plane through point (1,0,0) with direction vectors",
+      "expression": "G = g3d(at(4,23), view(30, 30))\npl = paraplane3d(G, \"1 + 2*t\", \"s\", \"t + s\")"
+    },
+    {
+      "scenario": "Parametric xy-plane",
+      "expression": "G = g3d(at(4,23), view(30, 30))\npl = paraplane3d(G, \"t\", \"s\", \"0\", fc(lightblue), fo(0.2))"
+    }
+  ]
+}

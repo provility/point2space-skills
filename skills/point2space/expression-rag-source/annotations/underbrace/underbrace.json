@@ -1,0 +1,23 @@
+{
+  "expression": "underbrace",
+  "description": "Draws a curly brace below a region defined by two at() position arguments.",
+  "utility": "Draw a curly brace below a target region with optional label",
+  "arguments": [
+    { "name": "from", "type": "at(row, col)", "required": true, "description": "Left anchor point of the brace" },
+    { "name": "to", "type": "at(row, col)", "required": true, "description": "Right anchor point of the brace" },
+    { "name": "label", "type": "string", "required": false, "description": "Text label below the brace" },
+    { "name": "buff", "type": "buff(value)", "required": false, "description": "Label offset from brace" },
+    { "name": "color", "type": "c(colorName)", "required": false, "description": "Brace color" },
+    { "name": "strokeWidth", "type": "s(width)", "required": false, "description": "Brace stroke width" }
+  ],
+  "alternates": [
+    { "variant": "Basic underbrace", "syntax": "underbrace(at(r1, c1), at(r1, c2))", "description": "Brace spanning between two points below" },
+    { "variant": "With label", "syntax": "underbrace(at(r1, c1), at(r1, c2), \"sum\")", "description": "Brace with text label below" },
+    { "variant": "With styling", "syntax": "underbrace(at(r1, c1), at(r1, c2), \"sum\", c(red), s(2))", "description": "Styled brace with label" }
+  ],
+  "examples": [
+    { "scenario": "Underbrace spanning a region", "expression": "underbrace(at(5,5), at(5,12))" },
+    { "scenario": "Underbrace with label", "expression": "underbrace(at(5,5), at(5,12), \"k terms\")" },
+    { "scenario": "Red underbrace", "expression": "underbrace(at(5,5), at(5,12), \"substitution\", c(red))" }
+  ]
+}

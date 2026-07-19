@@ -1,0 +1,15 @@
+{
+  "expression": "pointanimator",
+  "description": "Interactive animator that moves a point from its current position to a target position",
+  "utility": "Animate point movements and position changes with play/reset control",
+  "arguments": [
+    {"name": "sourcePoint", "type": "variable reference", "required": true, "description": "Variable reference to an existing point to animate"},
+    {"name": "targetPoint", "type": "point", "required": true, "description": "Target point expression (can be inline or variable reference)"},
+    {"name": "styles", "type": "style expressions", "required": false, "description": "Optional styling: c(), s(), t(), defer(), etc."}
+  ],
+  "examples": [
+    {"scenario": "Animate tangent point along x² curve", "expression": "graph_1 = g2d(at(4,19), 13.8, 20.3, range(-3, 3), range(-2, 10), type(plotting))\nplot_1 = plot(graph_1, \"x^2\")\npoint_1 = point(graph_1, -2, 4)\ntangent_1 = tangent(graph_1, plot_1, point_1)\nptanim_1 = pointanimator(point_1, point(graph_1, 2, 4))"},
+    {"scenario": "Animate perpendicular slope point along a segment", "expression": "graph_1 = g2d(at(4,19), size(16), range(-5, 5), type(geometry))\npoint_1 = point(graph_1, -3.4, 3.0)\npoint_2 = point(graph_1, 3, 2)\nline_1 = line(graph_1, point_1, point_2, type(segment))\nptanim_1 = pointanimator(point_2, point(graph_1, 1, 4))"},
+    {"scenario": "Animate point to another named point", "expression": "G = g2d(at(4,19), size(16), range(-5, 5), type(geometry))\npoint_1 = point(G, 0, 0)\npoint_2 = point(G, 4, 3)\nptanim_1 = pointanimator(point_1, point_2)"}
+  ]
+}

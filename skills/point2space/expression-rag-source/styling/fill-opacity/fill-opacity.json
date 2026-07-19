@@ -1,0 +1,67 @@
+{
+  "expression": "fo",
+  "description": "Inline modifier that controls fill opacity, from 0 (fully transparent) to 1 (fully opaque).",
+  "utility": "Set fill transparency on shapes using inline modifier",
+  "arguments": [
+    {
+      "name": "opacity",
+      "type": "number (0-1)",
+      "required": true,
+      "description": "Opacity value from 0 (transparent) to 1 (opaque)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Fully transparent fill",
+      "syntax": "fo(0)",
+      "description": "Fill is completely invisible, only stroke shows"
+    },
+    {
+      "variant": "Light tint fill",
+      "syntax": "fo(0.1)",
+      "description": "Very light, barely visible fill"
+    },
+    {
+      "variant": "Semi-transparent fill",
+      "syntax": "fo(0.5)",
+      "description": "Half-transparent fill"
+    },
+    {
+      "variant": "Fully opaque fill",
+      "syntax": "fo(1)",
+      "description": "Completely solid fill with no transparency"
+    },
+    {
+      "variant": "Combined with fill color",
+      "syntax": "polygon(G, A, B, C, fc(yellow), fo(0.3))",
+      "description": "Semi-transparent yellow fill on a polygon"
+    },
+    {
+      "variant": "In effects panel",
+      "syntax": "fill(A, fo(0.5))",
+      "description": "Animate fill opacity change on an existing shape"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Polygon with very light fill for linear programming",
+      "expression": "P = polygon(G, point(G, 0, 0), A, B, fo(0.1))"
+    },
+    {
+      "scenario": "Triangle with invisible fill and stroke",
+      "expression": "T = sss(G, 5, 4, 3, c(red), so(0), fo(0))"
+    },
+    {
+      "scenario": "Rectangle with full opacity fill image",
+      "expression": "r1 = rect(G, 12, 4, 4, 3, fi(\"tree\", 0.7), fo(1), s(0.1))"
+    },
+    {
+      "scenario": "Plot with semi-transparent fill",
+      "expression": "plot(G5, eq5, c(orange), fo(0.3))"
+    },
+    {
+      "scenario": "Write expression with fill opacity",
+      "expression": "w = write(at(2,3), \"Hello x^2\", fc(orange), fo(0.5), pd(10))"
+    }
+  ]
+}

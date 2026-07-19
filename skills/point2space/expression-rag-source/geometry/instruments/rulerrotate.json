@@ -1,0 +1,26 @@
+{
+  "expression": "rulerrotate",
+  "_requires": ["g2d"],
+  "description": "Animates rotating the ruler around its midpoint by a given angle in degrees",
+  "utility": "Rotate the ruler orientation before drawing",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph containing the ruler"
+    },
+    {
+      "name": "angleDegrees",
+      "type": "number",
+      "required": true,
+      "description": "The rotation angle in degrees"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Rotate ruler 45 degrees then draw a diagonal line",
+      "expression": "G = g2d(-10, 10, -10, 10); rulerrotate(G, 45); rulerline(G, point(G, 0, 0), point(G, 5, 5))"
+    }
+  ]
+}

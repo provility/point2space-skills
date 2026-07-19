@@ -1,0 +1,22 @@
+{
+  "expression": "inputnumber",
+  "description": "Digit-box number input with one digit per box and auto-advance. Bound to a variable. Supports size (number of digit boxes), range bounds, and display label.",
+  "utility": "Create a digit-box number input bound to a variable",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position" },
+    { "name": "variableName", "type": "string", "required": true, "description": "Quoted variable name to bind to" },
+    { "name": "defaultValue", "type": "value(number)", "required": true, "description": "Default numeric value" },
+    { "name": "size", "type": "size(count)", "required": true, "description": "Number of digit boxes, 1-8" },
+    { "name": "range", "type": "range(min, max)", "required": false, "description": "Optional numeric bounds" },
+    { "name": "display", "type": "display(\"label\")", "required": false, "description": "Optional label" }
+  ],
+  "alternates": [
+    { "variant": "Basic digit input", "syntax": "n1 = inputnumber(at(3, 4), \"n1\", value(60), size(4))", "description": "4-digit input with default value 60" },
+    { "variant": "With range and label", "syntax": "n1 = inputnumber(at(3, 4), \"n1\", value(60), size(4), range(0, 9999), display(\"Enter\"))", "description": "Digit input with bounds and label" }
+  ],
+  "examples": [
+    { "scenario": "4-digit number input", "expression": "n1 = inputnumber(at(3, 4), \"n1\", value(60), size(4))" },
+    { "scenario": "Number input with range and label", "expression": "n1 = inputnumber(at(3, 4), \"n1\", value(60), size(4), range(0, 9999), display(\"Enter\"))" },
+    { "scenario": "2-digit input for age", "expression": "age = inputnumber(at(5, 10), \"age\", value(25), size(2), range(1, 99), display(\"Age\"))" }
+  ]
+}

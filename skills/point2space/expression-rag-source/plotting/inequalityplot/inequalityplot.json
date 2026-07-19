@@ -1,0 +1,69 @@
+{
+  "expression": "inequalityplot",
+  "_requires": ["g2d"],
+  "description": "Renders a shaded inequality region on a 2D graph. Supports single inequalities and compound inequality conditions using <, >, <=, >=.",
+  "utility": "Plot a shaded inequality region on a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container to plot on"
+    },
+    {
+      "name": "inequality",
+      "type": "string",
+      "required": true,
+      "description": "Inequality expression as a quoted string using <, >, <=, >=. Supports compound conditions separated by commas - e.g., \"y >= sin(x), y <= sin(x) + 1\""
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke/border color - e.g., c(orange)"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Fill opacity for the shaded region - e.g., fo(0.3)"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Fill color for the shaded region - e.g., fc(yellow)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic inequality",
+      "syntax": "inequalityplot(G, \"y > f(x)\")",
+      "description": "Shade the region above the curve y = f(x)"
+    },
+    {
+      "variant": "With color and opacity",
+      "syntax": "inequalityplot(G, \"y >= f(x)\", c(orange), fo(0.3))",
+      "description": "Shaded inequality region with custom color and opacity"
+    },
+    {
+      "variant": "Compound inequality (band region)",
+      "syntax": "inequalityplot(G, \"y >= f(x), y <= g(x)\", c(blue), fo(0.3))",
+      "description": "Shade the region between two curves"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Shaded band between two sine curves",
+      "expression": "G5 = g2d(at(4,4), 20, 20, range(-5, 5), range(-3, 3), type(plotting))\ninequalityplot(G5, \"y >= sin(x), y <= sin(x) + 1\", c(orange), fo(0.3))"
+    },
+    {
+      "scenario": "Region below a parabola",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-5, 5), range(-2, 10), type(plotting))\ninequalityplot(G, \"y < x^2 + 1\", c(blue), fo(0.3))"
+    },
+    {
+      "scenario": "Region above the x-axis",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-5, 5), range(-5, 5), type(plotting))\ninequalityplot(G, \"y >= 0\", c(green), fo(0.2))"
+    }
+  ]
+}

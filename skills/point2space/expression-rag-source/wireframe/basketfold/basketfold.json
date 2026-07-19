@@ -1,0 +1,10 @@
+{
+  "expression": "basketfold",
+  "_requires": [],
+  "description": "Basket weaving pattern for unfolding",
+  "utility": "Create interlocking fold pattern",
+  "arguments": [],
+  "examples": [
+    {"scenario": "Basket fold", "expression": "basketfold()"}
+  ]
+}

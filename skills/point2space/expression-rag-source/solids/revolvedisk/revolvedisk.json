@@ -1,0 +1,28 @@
+{
+  "expression": "revolvedisk",
+  "_requires": ["g2d", "region"],
+  "description": "Solid of revolution using the disk method. Takes a 2D region from a g2d graph and revolves it around an axis.",
+  "utility": "Visualize solids of revolution using the disk method from a 2D region",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position for the 3D view"},
+    {"name": "viewSize", "type": "view(h, w)", "required": true, "description": "Size of the view area"},
+    {"name": "region", "type": "region reference", "required": true, "description": "A 2D region created with region() on a g2d graph"},
+    {"name": "axis", "type": "axis(x) or axis(y)", "required": true, "description": "Axis of revolution"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "rulings", "type": "rulings3d(count)", "required": false, "description": "Number of ruling lines"},
+    {"name": "sweep", "type": "sweep(start, end)", "required": false, "description": "Sweep angle range in degrees"},
+    {"name": "slice", "type": "slice(t)", "required": false, "description": "Cross-section position (0-1)"},
+    {"name": "range", "type": "range(min, max)", "required": false, "description": "Override integration domain"}
+  ],
+  "examples": [
+    {
+      "scenario": "Revolve y = x^2 around x-axis",
+      "expression": "graph_1=g2d(at(3.8,29.9),19.4,21.4,range(-2,2),range(-2,2),type(plotting))\nplot_1=plot(graph_1,\"x^2\",c(teal))\nline_1=line(graph_1,\"y = 0\")\nline_2=line(graph_1,\"x = 0\")\nline_3=line(graph_1,\"x = 1\")\nregion_1=region(graph_1, plot_1, line_1, line_2, line_3)\nrevolve_1=revolvedisk(at(2,1),view(21,26),region_1,axis(x),fc(blue),rulings3d(64),sweep(0,360),slice(0.5))"
+    },
+    {
+      "scenario": "Revolve around y-axis",
+      "expression": "revolve_1=revolvedisk(at(2,1),view(17,16.9),region_1,axis(y),fc(red),rulings3d(64),sweep(0,360),slice(0.5),range(-3,3))"
+    }
+  ],
+  "_note": "Solids of revolution use 2D regions from g2d graphs. Pipeline: g2d -> plot/line -> region() -> revolvedisk."
+}

@@ -1,0 +1,20 @@
+{
+  "expression": "compassflip",
+  "_requires": ["g2d"],
+  "description": "Flips (reflects) the compass across its arm line, mirroring its orientation",
+  "utility": "Mirror the compass to draw on the opposite side of its arm",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph containing the compass"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Flip compass and draw arcs on both sides",
+      "expression": "G = g2d(-10, 10, -10, 10); compassarc(G, point(G, 0, 0), radius(4), range(0, 90)); compassflip(G); compassarc(G, range(0, 90))"
+    }
+  ]
+}

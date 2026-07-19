@@ -1,0 +1,21 @@
+{
+  "expression": "sspace",
+  "_requires": [],
+  "description": "Builds and displays a sample space from dice, coins, cards, custom outcomes, or a btree/ptree variable. Always renders as a flat 2D grid. When sourced from a btree, outcomes animate by cloning from tree leaves into the grid.",
+  "utility": "Create a sample space visualization",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "experiments", "type": "dice/coin/cards/outcomes/btree/ptree", "required": true, "description": "One or more experiment expressions, or a btree/ptree variable reference"},
+    {"name": "repeat", "type": "repeat(n)", "required": false, "description": "Repeat the experiment n times"},
+    {"name": "some", "type": "some(n)", "required": false, "description": "Limit displayed outcomes to n"},
+    {"name": "predicate", "type": "quoted string", "required": false, "description": "Filter outcomes by predicate"}
+  ],
+  "examples": [
+    {"scenario": "Two dice sample space", "expression": "S = sspace(dice(2), at(4,10), view(14,20))"},
+    {"scenario": "Three coins flat grid", "expression": "S = sspace(coin(3), at(4,10), view(10,10))"},
+    {"scenario": "From btree variable", "expression": "B = btree(trial(\"H\", \"T\", probability(1,2)), repeat(3), at(4,10), view(14,12))\nS = sspace(B, at(4,24), view(10,10))"},
+    {"scenario": "Custom outcomes", "expression": "S = sspace(outcomes(\"R\", \"G\", \"B\"), repeat(2), at(4,10), view(10,10))"},
+    {"scenario": "Numbered cards 1 to 10", "expression": "S = sspace(outcomes(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), at(4,10), view(8,20))\nE = event(S, \"any even\", given(\"any > 3\", hatchangle(20), c(steelblue)), fc(red))"}
+  ]
+}

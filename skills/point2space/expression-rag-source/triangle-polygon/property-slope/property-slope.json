@@ -1,0 +1,38 @@
+{
+  "expression": "property (slope)",
+  "_requires": ["g2d"],
+  "description": "Extract slope and positional properties from a line. Returns slope (rise/run) or start point of a line.",
+  "utility": "Extract line slope or start point",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "line",
+      "required": true,
+      "description": "Line variable to extract slope or point from"
+    },
+    {
+      "name": "propertyName",
+      "type": "type(name)",
+      "required": true,
+      "description": "Slope or point property using type() expression"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Line slope",
+      "syntax": "p(line, type(slope))",
+      "description": "Get slope of a line (rise/run)"
+    },
+    {
+      "variant": "Line start point",
+      "syntax": "p(line, type(start))",
+      "description": "Get start point of a line"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get slope of a line",
+      "expression": "m = p(line_1, type(slope))"
+    }
+  ]
+}

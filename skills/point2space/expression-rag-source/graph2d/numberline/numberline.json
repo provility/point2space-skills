@@ -1,0 +1,69 @@
+{
+  "expression": "nl",
+  "description": "Creates a 1D number line with configurable range and tick marks for visualizing intervals, inequalities, and single-variable concepts.",
+  "utility": "Create a 1D number line container for intervals and single-variable visualization",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Logical position using at(row, col) coordinates on the canvas grid"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": true,
+      "description": "Height in logical row units (typically small, e.g., 6)"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": true,
+      "description": "Width in logical column units (e.g., 19.4)"
+    },
+    {
+      "name": "range",
+      "type": "range(min, max) | range(min, max, step)",
+      "required": false,
+      "description": "Value range displayed on the number line with optional tick step"
+    },
+    {
+      "name": "grid",
+      "type": "grid()",
+      "required": false,
+      "description": "Show tick marks on the number line"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic number line",
+      "syntax": "nl(at(row, col), height, width, range(min, max))",
+      "description": "Number line with specified range, no tick marks"
+    },
+    {
+      "variant": "Number line with ticks",
+      "syntax": "nl(at(row, col), height, width, range(min, max), grid())",
+      "description": "Number line with tick marks shown"
+    },
+    {
+      "variant": "Number line with custom step",
+      "syntax": "nl(at(row, col), height, width, range(min, max, step), grid())",
+      "description": "Number line with custom tick spacing"
+    },
+    {
+      "variant": "Number line with border",
+      "syntax": "nl(at(row, col), height, width, range(min, max), grid(), br(0.5))",
+      "description": "Number line with border shadow"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic number line from 0 to 10 with tick marks",
+      "expression": "nl_1 = nl(at(3,9), 6, 19.4, range(0, 10), grid())"
+    },
+    {
+      "scenario": "Number line with an interval marked",
+      "expression": "nl_1 = nl(at(3,9), 6, 19.4, range(0, 10), grid())\ninterval_1 = interval(nl_1, 2, 6, type(closed), buff(-19))"
+    }
+  ]
+}

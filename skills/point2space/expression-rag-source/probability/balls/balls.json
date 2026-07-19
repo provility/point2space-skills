@@ -1,0 +1,17 @@
+{
+  "expression": "balls",
+  "_requires": ["bags"],
+  "description": "Adds colored balls to a bag. Must follow a bags() definition.",
+  "utility": "Add balls to a bag",
+  "arguments": [
+    {"name": "bags", "type": "bags variable", "required": true, "description": "Reference to bags expression"},
+    {"name": "bagLabel", "type": "quoted string", "required": true, "description": "Name of the bag to add balls to"},
+    {"name": "ballLabel", "type": "quoted string", "required": true, "description": "Label for the ball type"},
+    {"name": "count", "type": "number", "required": false, "description": "Number of balls to add (default: 1, max: 20)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Ball color"}
+  ],
+  "examples": [
+    {"scenario": "Add red balls", "expression": "balls(B, \"Urn\", \"red\", 4, c(red))"},
+    {"scenario": "Add blue balls", "expression": "balls(B, \"Urn\", \"blue\", 6, c(blue))"}
+  ]
+}

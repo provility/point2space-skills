@@ -1,0 +1,13 @@
+{
+  "expression": "line angle",
+  "_requires": ["g2d", "line"],
+  "description": "Get the angle of an existing line in degrees.",
+  "utility": "Extract angle from a line",
+  "syntax": "p(line, type(angle))",
+  "examples": [
+    {
+      "scenario": "Get angle of a line",
+      "expression": "a = p(L, type(angle))"
+    }
+  ]
+}

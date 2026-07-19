@@ -1,0 +1,46 @@
+{
+  "expression": "forward3d",
+  "_requires": ["g3d"],
+  "description": "Shifts a 3D vector forward along its own direction by a scaled multiple of its length. The vector is translated without rotation.",
+  "utility": "Shift a 3D vector forward along its direction by a scaled distance.",
+  "arguments": [
+    {
+      "name": "vector",
+      "type": "vector3d",
+      "required": true,
+      "description": "The vector to shift forward"
+    },
+    {
+      "name": "scalar",
+      "type": "number",
+      "required": false,
+      "description": "Scale factor for the shift distance. Defaults to 1 (shift by the vector's own length)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "default shift",
+      "syntax": "forward3d(vec)",
+      "description": "Shift forward by the vector's own length"
+    },
+    {
+      "variant": "scaled shift",
+      "syntax": "forward3d(vec, scalar)",
+      "description": "Shift forward by scalar times the vector's length"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Extend vector forward in 3D",
+      "expression": "fwd_1=forward3d(vector_1,1)"
+    },
+    {
+      "scenario": "Shift vector forward by half its length",
+      "expression": "G = g3d(at(4,23), view(20, 20)); V = vector3d(G, 0, 0, 0, 2, 0, 0); V2 = forward3d(V, 0.5)"
+    },
+    {
+      "scenario": "Shift vector forward by twice its length",
+      "expression": "G = g3d(at(4,23), view(20, 20)); V = vector3d(G, 1, 1, 1, 3, 1, 1); V2 = forward3d(V, 2)"
+    }
+  ]
+}

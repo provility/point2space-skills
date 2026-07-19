@@ -1,0 +1,16 @@
+{
+  "expression": "showall",
+  "description": "Shows all shapes and reverts the effect of any showonly() call",
+  "utility": "Restore visibility of all hidden shapes after showonly() operation",
+  "arguments": [],
+  "examples": [
+    {
+      "scenario": "Reveal all shapes after selective hiding",
+      "expression": "showall()"
+    },
+    {
+      "scenario": "Show selection, then reveal all",
+      "expression": "showonly(A, B); showall()"
+    }
+  ]
+}

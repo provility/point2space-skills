@@ -1,0 +1,48 @@
+{
+  "expression": "vecproject3d",
+  "_requires": ["g3d", "vector3d"],
+  "description": "Projects one 3D vector onto another, returning the component of the first vector that lies along the direction of the second. The result is always parallel to the target vector.",
+  "utility": "Project one 3D vector onto another, returning the parallel component",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "vecToProject",
+      "type": "vector3d",
+      "required": true,
+      "description": "The vector being projected"
+    },
+    {
+      "name": "vecTarget",
+      "type": "vector3d",
+      "required": true,
+      "description": "The vector to project onto (defines the direction)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic projection",
+      "syntax": "vecproject3d(G, A, B)",
+      "description": "Project A onto B"
+    },
+    {
+      "variant": "With color",
+      "syntax": "vecproject3d(G, A, B, c(green))",
+      "description": "Projection vector with color styling"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Project a vector onto the x-axis to extract the x-component",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = vector3d(G, 0, 0, 0, 3, 2, 1)\nB = vector3d(G, 0, 0, 0, 1, 0, 0)\nP = vecproject3d(G, A, B)"
+    },
+    {
+      "scenario": "Project one arbitrary vector onto another",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = vector3d(G, 0, 0, 0, 4, 3, 2, c(red))\nB = vector3d(G, 0, 0, 0, 1, 1, 0, c(blue))\nP = vecproject3d(G, A, B, c(green))"
+    }
+  ]
+}

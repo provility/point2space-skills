@@ -1,0 +1,53 @@
+{
+  "expression": "animator",
+  "description": "Creates a clickable button on the canvas that animates a numeric variable to a target value when pressed.",
+  "utility": "Create an interactive button that animates a variable to a target value on click",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Position of the animator button on the canvas"
+    },
+    {
+      "name": "variable",
+      "type": "variable",
+      "required": true,
+      "description": "Reference to a previously defined numeric or point variable"
+    },
+    {
+      "name": "target",
+      "type": "number",
+      "required": true,
+      "description": "Target value the variable animates toward when button is clicked"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Custom button label text in quotes - defaults to 'Apply'"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic animator",
+      "syntax": "animator(at(row, col), variable, target)",
+      "description": "Button that animates variable to target with default label"
+    },
+    {
+      "variant": "Animator with custom label",
+      "syntax": "animator(at(row, col), variable, target, \"Go\")",
+      "description": "Button with custom label text"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Animate a translation parameter interactively",
+      "expression": "G = g2d(at(2,20), 20, type(geometry))\na = 4\nI = image(G, \"balloon\", point(G, -5, 0), 0.1)\nR = translate(G, I, 4, a)\nanimator(at(10,10), a, 2)"
+    },
+    {
+      "scenario": "Interactive coefficient explorer",
+      "expression": "G = g2d(at(2,3), 30, 30, type(plotting))\na = 1\nplot(G, \"a*x^2\")\nanimator(at(2,30), a, 5)"
+    }
+  ]
+}

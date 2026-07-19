@@ -1,0 +1,63 @@
+{
+  "expression": "vecproject",
+  "_requires": ["g2d", "vector"],
+  "description": "Projects one vector onto another, returning the projection vector along the target direction. The result vector starts at the target vector's start point.",
+  "utility": "Project one vector onto another to get the projection component",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "vectorToProject",
+      "type": "vector | line",
+      "required": true,
+      "description": "The vector being projected (A)"
+    },
+    {
+      "name": "vectorTarget",
+      "type": "vector | line",
+      "required": true,
+      "description": "The vector to project onto (B)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Project A onto B",
+      "syntax": "vecproject(G, V1, V2)",
+      "description": "Returns the projection of V1 onto V2. The result starts at V2's start point."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Create graph and define points",
+      "expression": "G = g2d(at(8,0), 20, type(geometry))"
+    },
+    {
+      "scenario": "Points for first vector",
+      "expression": "A = point(G, 0, 0)"
+    },
+    {
+      "scenario": "End point for diagonal vector",
+      "expression": "B = point(G, 3, 4)"
+    },
+    {
+      "scenario": "Vector to project (diagonal)",
+      "expression": "V1 = vector(G, A, B)"
+    },
+    {
+      "scenario": "Target vector along x-axis using position form",
+      "expression": "V2 = vector(G, 5, 0, type(position))"
+    },
+    {
+      "scenario": "Project V1 onto V2 (gives horizontal component of V1)",
+      "expression": "proj_1 = vecproject(G, V1, V2)"
+    },
+    {
+      "scenario": "Styled projection in purple",
+      "expression": "proj_2 = vecproject(G, V1, V2, c(purple))"
+    }
+  ]
+}

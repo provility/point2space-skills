@@ -1,0 +1,70 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_1776666210989_pjpnoi4wh": {
+      "id": "slide_1776666210989_pjpnoi4wh",
+      "name": "Slide 1",
+      "expressions": [
+        "",
+        "title_1=title(at(1.3,22),\"An Equilateral Triangle\",type(fadescale),fc(saddlebrown),pd(14),border(saddlebrown,radius(12),shadow(12)),ff(\"Gill Sans\"),fs(26),c(white))",
+        "graph_1=g2d(at(5.1,5.8),size(20),range(-1,8),type(geometry))",
+        "point_A=point(graph_1,1,2,s(5))",
+        "label_A=label(graph_1,at(point_A),\"A\",buff(0,-1.5),rotation(0),c(black),fs(18))",
+        "point_B=point(graph_1,6,2,s(5))",
+        "label_B=label(graph_1,at(point_B),\"B\",buff(0,0.5),rotation(0),c(black),fs(18))",
+        "line_a=rulerline(graph_1,point_A,point_B,comment(\"Draw segment a = AB between points A and B\"),t(2))",
+        "label_a=label(graph_1,at(line_a),\"a=5\",buff(0.5,-0.3),fs(16),c(black))",
+        "arc_1=compassarc(graph_1,point_A,radius(5),range(0,90),c(crimson))",
+        "arc_2=compassarc(graph_1,point_B,radius(5),range(180,90),c(crimson))",
+        "notes_1=notes(\"Now intersect these 2 arcs\")",
+        "point_C=intersect(graph_1,arc_2,arc_1,1,s(5))",
+        "label_C=label(graph_1,at(point_C),\"C\",buff(-1.7,-0.2),rotation(0),c(black),fs(18))",
+        "notes_2=notes(\"Draw an equilateral triangle.\")",
+        "line_b=rulerline(graph_1,point_A,point_C,t(2))",
+        "label_b=label(graph_1,at(line_b),\"b=5\",buff(-1,-2.5),fs(16),c(black))",
+        "line_c=rulerline(graph_1,point_C,point_B,t(2))",
+        "label_c=label(graph_1,at(line_c),\"c=5\",buff(-1,0.9),fs(16),c(black))",
+        "hide_1 = hide(arc_2, arc_1,point_A,point_B,point_C)",
+        "paragraph_1=paragraph(at(7.3,29.2),25.8,4.9,para_str_1,ff(\"Gill Sans\"),effect(slideright),fs(25),c(\"#375285\"),lh(2))",
+        "fragment_1 = fragment(paragraph_1, range(10, 16), effect(highlight), c(black), fc(gold), t(1))",
+        "outline_1=outline(label_a,label_b,label_c)",
+        "hidehighlight_1 = hidehighlight(fragment_1)",
+        "paragraph_2=paragraph(at(12.9,29.3),25.7,4.3,para_str_2,ff(\"Gill Sans\"),effect(slideleft),fs(25),c(\"#375285\"),lh(1.8))",
+        "angle_1=protractorangle(graph_1,line_a,line_b,c(black))",
+        "label_ang1=label(graph_1,at(angle_1),\"theta_1=60^o\",buff(-1,1),fs(14),c(black))",
+        "angle_2=protractorangle(graph_1,line_b,line_c,c(black))",
+        "label_ang2=label(graph_1,at(angle_2),\"theta_3=60^o\",buff(1.5,-1.2),fs(14),c(black))",
+        "angle_3=protractorangle(graph_1,line_c,line_a,c(black))",
+        "label_ang3=label(graph_1,at(angle_3),\"theta_2=60^o\",buff(-1,-3),fs(14),c(black))",
+        "fragment_2 = fragment(paragraph_2, range(4, 8), effect(highlight), c(black), fc(gold), t(1))",
+        "outline_2=outline(label_ang1,label_ang2,label_ang3,notes(\"An equilateral triangle has three 60° angles.\",0.03,fc(lavender),fs(23),ff(\"Gill Sans\")))",
+        "hidehighlight_2 = hidehighlight(fragment_2)",
+        "",
+        "paragraph_3=paragraph(at(18.1,29.5),25.7,2.3,para_str_3,ff(\"Gill Sans\"),effect(slideleft),fs(25),c(\"#375285\"))"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "An Equilateral Triangle is a special type of triangle where all three sides are equal in length."
+        },
+        {
+          "name": "para_str_2",
+          "value": "In an equilateral triangle, all three angles are equal, each measuring 60°."
+        },
+        {
+          "name": "para_str_3",
+          "value": "Sum of all three angles are 180°"
+        }
+      ]
+    }
+  },
+  "settings": {
+    "theme": "light"
+  },
+  "slideOrder": [
+    "slide_1776666210989_pjpnoi4wh"
+  ],
+  "activeSlideId": "slide_1776666210989_pjpnoi4wh",
+  "id": "ddbabd6a-8307-4c08-90a0-09995100108a",
+  "name": "Equilateral Triangle"
+}

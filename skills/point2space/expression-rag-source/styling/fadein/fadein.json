@@ -1,0 +1,54 @@
+{
+  "expression": "fadein",
+  "description": "Inline style modifier that adds a fade-in animation when a shape first appears. Placed inside a shape expression.",
+  "utility": "Add fade-in animation to a shape when it is first drawn",
+  "arguments": [
+    {
+      "name": "duration",
+      "type": "number",
+      "required": false,
+      "description": "Fade-in duration in seconds. Defaults to 0.5 if omitted. Use 0 for instant show (no fade)."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Default fade-in (0.5s)",
+      "syntax": "fadein()",
+      "description": "Fade in over 0.5 seconds (default)"
+    },
+    {
+      "variant": "Custom duration fade-in",
+      "syntax": "fadein(1)",
+      "description": "Fade in over 1 second"
+    },
+    {
+      "variant": "Instant show (no animation)",
+      "syntax": "fadein(0)",
+      "description": "Show instantly with no fade"
+    },
+    {
+      "variant": "Inside a shape expression",
+      "syntax": "point(G, 3, 4, c(red), fadein(0.5))",
+      "description": "Point that fades in over 0.5 seconds when drawn"
+    },
+    {
+      "variant": "Inside a callout expression",
+      "syntax": "callout(at(3,5), at(3,8), at(5,8), at(5,5), fadein())",
+      "description": "Callout that fades in when drawn"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Point with fade-in animation",
+      "expression": "P = point(G, 3, 4, fadein(0.5))"
+    },
+    {
+      "scenario": "Label with slow fade-in",
+      "expression": "label(G, P, \"A\", fadein(1))"
+    },
+    {
+      "scenario": "Circle with instant appearance",
+      "expression": "C = circle(G, 3, P, fadein(0))"
+    }
+  ]
+}

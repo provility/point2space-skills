@@ -1,0 +1,15 @@
+{
+  "expression": "bisector3d",
+  "_requires": ["g3d"],
+  "description": "Computes the angle bisector of two 3D vectors or planes.",
+  "utility": "Find angle bisector of two 3D vectors or planes",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "V1", "type": "vector3d | plane3d", "required": true, "description": "First vector or plane"},
+    {"name": "V2", "type": "vector3d | plane3d", "required": true, "description": "Second vector or plane"}
+  ],
+  "examples": [
+    {"scenario": "Bisector of two vectors", "expression": "G = g3d(at(4,23), view(30, 30))\nV1 = vector3d(G, 0, 0, 0, 1, 0, 0, c(red))\nV2 = vector3d(G, 0, 0, 0, 0, 1, 0, c(blue))\nbis = bisector3d(G, V1, V2, c(green))"},
+    {"scenario": "Bisector of two planes", "expression": "bis = bisector3d(G, plane_1, plane_2)"}
+  ]
+}

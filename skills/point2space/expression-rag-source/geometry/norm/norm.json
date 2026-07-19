@@ -1,0 +1,38 @@
+{
+  "expression": "norm",
+  "_requires": [],
+  "description": "Computes normalized unit vector from line, vector, or two points",
+  "utility": "Get direction vector with magnitude 1 for use in positioning and alignment",
+  "arguments": [
+    {
+      "name": "object",
+      "type": "line | vector | point point | number number",
+      "required": true,
+      "description": "Line/vector to normalize, two points, or two coordinates"
+    }
+  ],
+  "alternates": [
+    "norm(line) - direction of line",
+    "norm(vector) - normalized vector",
+    "norm(p1, p2) - direction from p1 to p2",
+    "norm(x, y) - normalized direction of (x, y)"
+  ],
+  "examples": [
+    {
+      "scenario": "Normalize a line",
+      "expression": "L = line(g, 0, 0, 3, 4); dir = norm(L)"
+    },
+    {
+      "scenario": "From two points",
+      "expression": "dir = norm(A, B)"
+    },
+    {
+      "scenario": "From coordinates",
+      "expression": "dir = norm(3, 4)"
+    },
+    {
+      "scenario": "Use for positioning",
+      "expression": "dir = norm(L); P = point(g, placeat(start(g,L), buff(0.5, dir)))"
+    }
+  ]
+}

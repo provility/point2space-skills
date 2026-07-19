@@ -1,0 +1,61 @@
+{
+  "expression": "mag",
+  "_requires": ["g2d", "vector"],
+  "description": "Computes the magnitude (length) of a vector or absolute value of a scalar. Returns a numeric value.",
+  "utility": "Calculate the magnitude (length) of a vector or absolute value",
+  "arguments": [
+    {
+      "name": "source",
+      "type": "line | vector",
+      "required": true,
+      "description": "Line or vector to normalize (single argument form)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From a line or vector variable",
+      "syntax": "norm(V)",
+      "description": "Returns the normalized direction of a line or vector variable"
+    },
+    {
+      "variant": "From two points",
+      "syntax": "norm(P1, P2)",
+      "description": "Returns the normalized direction from point P1 to point P2"
+    },
+    {
+      "variant": "From two numbers",
+      "syntax": "norm(x, y)",
+      "description": "Returns the normalized direction of the vector (x, y)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Create graph and points for a vector",
+      "expression": "G = g2d(at(8,0), 20, type(geometry))"
+    },
+    {
+      "scenario": "Define two points",
+      "expression": "A = point(G, 0, 0)"
+    },
+    {
+      "scenario": "Second point forming a 3-4-5 triangle",
+      "expression": "B = point(G, 3, 4)"
+    },
+    {
+      "scenario": "A vector from A to B",
+      "expression": "V1 = vector(G, A, B)"
+    },
+    {
+      "scenario": "Normalize the vector (returns direction 0.6, 0.8)",
+      "expression": "n1 = norm(V1)"
+    },
+    {
+      "scenario": "Normalize direction between two points",
+      "expression": "n2 = norm(A, B)"
+    },
+    {
+      "scenario": "Normalize from raw numbers",
+      "expression": "n3 = norm(3, 4)"
+    }
+  ]
+}

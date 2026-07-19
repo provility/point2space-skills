@@ -1,0 +1,67 @@
+{
+  "expression": "p5-api-physics",
+  "_context": "p5sheet",
+  "_requires": ["p5sheet"],
+  "description": "Matter.js physics API available inside p5sheet scripts. Provides gravity-based simulation with rigid bodies that can sync their positions to studio expressions via updateRef() or the ref option. Call enablePhysics() in setup() before creating any bodies. Physics steps automatically each frame. NOT standalone expressions — these are JavaScript functions called from within a p5sheet script.",
+  "utility": "Create physics simulations with gravity, collisions, and studio expression binding inside p5sheet scripts",
+  "arguments": [],
+  "alternates": [
+    {
+      "variant": "enablePhysics",
+      "syntax": "enablePhysics({ gravity: { x: 0, y: 1 } })",
+      "description": "Initializes the Matter.js physics engine. Must be called in setup() before creating bodies. Options: gravity.x (default 0), gravity.y (default 1, positive = downward)."
+    },
+    {
+      "variant": "circleBody",
+      "syntax": "let ball = circleBody({ x, y, r, restitution, friction, mass, velocity, color, isStatic, angle, interactive, ref })",
+      "description": "Creates a circular physics body. Returns a proxy with properties: body (raw Matter.js body), x/y (math coordinates if range set), vx/vy (velocity), angle. Options: x/y (pixel position), r (radius, default 10), restitution (bounciness 0-1), friction, mass, velocity ({x, y}), color (fill), isStatic (immovable), angle (degrees), interactive (collision filter), ref (studio variable name to auto-sync)."
+    },
+    {
+      "variant": "rectBody",
+      "syntax": "let box = rectBody({ x, y, w, h, restitution, friction, mass, velocity, color, isStatic, angle, interactive, ref })",
+      "description": "Creates a rectangular physics body. Same options as circleBody plus: w (width, default 20), h (height, default 20)."
+    },
+    {
+      "variant": "groundBody",
+      "syntax": "let ground = groundBody({ h, color })",
+      "description": "Creates a static ground platform spanning the full canvas width at the bottom. Options: h (height, default 20), color (default '#8B7355'). Always isStatic."
+    },
+    {
+      "variant": "updateRef",
+      "syntax": "updateRef('point_1', x, y)",
+      "description": "Manually syncs a physics body position to a named studio expression (e.g. a point on a g2d graph). First arg is the expression variable name (string), x/y are the new coordinates. Creates and caches the binding on first call. Use this when you need custom sync logic (e.g. mapping time vs position)."
+    },
+    {
+      "variant": "applyForce",
+      "syntax": "applyForce(bodyProxy, fx, fy)",
+      "description": "Applies a force vector to a body at its center of mass. fx/fy are force components."
+    },
+    {
+      "variant": "setVelocity",
+      "syntax": "setVelocity(bodyProxy, vx, vy)",
+      "description": "Directly sets a body's velocity. vx/vy are velocity components in pixels per frame."
+    },
+    {
+      "variant": "removeBody",
+      "syntax": "removeBody(bodyProxy)",
+      "description": "Removes a body from the physics world and stops tracking it."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Bouncing ball that plots its trajectory on a g2d graph",
+      "expression": "graph_1 = g2d(at(2.9, 29.6), 20, 20, range(-1, 5), range(-1, 5), type(plotting))\npoint_1 = point(graph_1, 2.2, 4.2, c(crimson), fc(gold))\nsketch_1 = p5sheet(at(3, 4.2), view(20, 20), range(-5, 5), range(0, 5), p5_script_1)",
+      "script": "let ball;\nlet ground;\nlet t = 0;\nlet landed = false;\n\nfunction setup() {\n  canvas();\n  enablePhysics({ gravity: { y: 1 } });\n\n  ground = groundBody();\n  ball = circleBody({ x: width / 2, y: 50, r: 12, restitution: 0.6 });\n}\n\nfunction draw() {\n  background(240);\n\n  if (ground) {\n    fill('#8B7355');\n    noStroke();\n    let b = ground.body.bounds;\n    rect(b.min.x, b.min.y, b.max.x - b.min.x, b.max.y - b.min.y);\n  }\n\n  if (ball) {\n    fill('#FFD700');\n    stroke('#B8860B');\n    strokeWeight(2);\n    circle(ball.body.position.x, ball.body.position.y, 24);\n\n    if (!landed) {\n      t += 1/60;\n      updateRef('point_1', t, ball.y);\n\n      if (ball.body.speed < 0.5 && ball.body.position.y >= ground.body.bounds.min.y - 13) {\n        landed = true;\n      }\n    }\n  }\n}"
+    },
+    {
+      "scenario": "Static and dynamic bodies with collision",
+      "expression": "sketch_1 = p5sheet(at(2, 2), view(20, 20), p5_script_1)",
+      "script": "let boxes = [];\nlet ground;\n\nfunction setup() {\n  canvas();\n  enablePhysics({ gravity: { y: 1 } });\n  ground = groundBody();\n\n  for (let i = 0; i < 5; i++) {\n    boxes.push(rectBody({\n      x: 100 + i * 60,\n      y: 50 + i * 30,\n      w: 30, h: 30,\n      restitution: 0.3,\n      color: 'steelblue'\n    }));\n  }\n}\n\nfunction draw() {\n  background(240);\n\n  if (ground) {\n    fill('#8B7355');\n    noStroke();\n    let b = ground.body.bounds;\n    rect(b.min.x, b.min.y, b.max.x - b.min.x, b.max.y - b.min.y);\n  }\n\n  for (let box of boxes) {\n    push();\n    translate(box.body.position.x, box.body.position.y);\n    rotate(box.body.angle);\n    fill('steelblue');\n    stroke('navy');\n    strokeWeight(2);\n    rectMode(CENTER);\n    rect(0, 0, 30, 30);\n    pop();\n  }\n}"
+    },
+    {
+      "scenario": "Ball with applied force on click",
+      "expression": "sketch_1 = p5sheet(at(2, 2), view(20, 20), p5_script_1)",
+      "script": "let ball;\nlet ground;\n\nfunction setup() {\n  canvas();\n  enablePhysics({ gravity: { y: 1 } });\n  ground = groundBody();\n  ball = circleBody({ x: width / 2, y: height / 2, r: 15, restitution: 0.7 });\n}\n\nfunction draw() {\n  background(240);\n\n  if (ground) {\n    fill('#8B7355');\n    noStroke();\n    let b = ground.body.bounds;\n    rect(b.min.x, b.min.y, b.max.x - b.min.x, b.max.y - b.min.y);\n  }\n\n  if (ball) {\n    fill('#FF6347');\n    stroke('#8B0000');\n    strokeWeight(2);\n    circle(ball.body.position.x, ball.body.position.y, 30);\n  }\n}\n\nfunction mousePressed() {\n  if (ball) {\n    applyForce(ball, 0, -0.05);\n  }\n}"
+    }
+  ]
+}

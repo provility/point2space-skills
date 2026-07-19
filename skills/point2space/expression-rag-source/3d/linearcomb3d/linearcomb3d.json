@@ -1,0 +1,49 @@
+{
+  "expression": "linearcomb3d",
+  "_requires": ["g3d"],
+  "description": "Draws a vector from the grid's reference point to the linear combination position: refPoint + scalarA × v1 + scalarB × v2.",
+  "utility": "Visualize a linear combination as a vector on a lineargrid3d",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container"
+    },
+    {
+      "name": "grid",
+      "type": "lineargrid3d reference",
+      "required": true,
+      "description": "The linear grid that defines the spanning vectors and reference point"
+    },
+    {
+      "name": "scalarA",
+      "type": "number",
+      "required": true,
+      "description": "Scalar coefficient for the first spanning vector"
+    },
+    {
+      "name": "scalarB",
+      "type": "number",
+      "required": true,
+      "description": "Scalar coefficient for the second spanning vector"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Linear combination vector",
+      "syntax": "linearcomb3d(G, grid, a, b)",
+      "description": "Vector to position a*v1 + b*v2 from the grid origin"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Linear combination 2*v1 + 3*v2",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nv1 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 1, 0, 0))\nv2 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 0, 1, 0))\nP = spanplane3d(G, v1, v2, point3d(G, 0, 0, 0))\nO = point3d(G, 0, 0, 0)\ngrid = lineargrid3d(G, P, O)\nlinearcomb3d(G, grid, 2, 3)"
+    },
+    {
+      "scenario": "Animated linear combination",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nv1 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 1, 0, 0))\nv2 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 0, 1, 0))\nP = spanplane3d(G, v1, v2, point3d(G, 0, 0, 0))\nO = point3d(G, 0, 0, 0)\ngrid = lineargrid3d(G, P, O)\nvaranim_a = variableanimator(at(4,35), \"a\", 0, 3)\nvaranim_b = variableanimator(at(6,35), \"b\", 0, 2)\nlinearcomb3d(G, grid, a, b)"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "expression": "property (angle between lines)",
+  "_requires": ["g2d"],
+  "description": "Compute angle or dot product between two lines or vectors. Returns angle in degrees or scalar dot product.",
+  "utility": "Compute angle or dot product between two lines/vectors",
+  "arguments": [
+    {
+      "name": "shape1",
+      "type": "line | vector",
+      "required": true,
+      "description": "First line or vector"
+    },
+    {
+      "name": "shape2",
+      "type": "line | vector",
+      "required": true,
+      "description": "Second line or vector"
+    },
+    {
+      "name": "propertyName",
+      "type": "type(name)",
+      "required": true,
+      "description": "Two-shape property using type() expression (angle or dot)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Angle between two lines",
+      "syntax": "p(L1, L2, type(angle))",
+      "description": "Get angle between two lines or vectors in degrees"
+    },
+    {
+      "variant": "Dot product (two vectors)",
+      "syntax": "p(V1, V2, type(dot))",
+      "description": "Get dot product of two vectors"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get angle between two lines",
+      "expression": "theta = p(line_1, line_2, type(angle))"
+    }
+  ]
+}

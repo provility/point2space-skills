@@ -1,0 +1,20 @@
+{
+  "expression": "frustum3d",
+  "_requires": [],
+  "description": "Standalone ThreeJS frustum (truncated cone) solid. Uses at() and view() for positioning.",
+  "utility": "Create a frustum (truncated cone)",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "topRadius", "type": "number", "required": true, "description": "Top circle radius"},
+    {"name": "bottomRadius", "type": "number", "required": true, "description": "Bottom circle radius"},
+    {"name": "height", "type": "number", "required": true, "description": "Frustum height"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {"scenario": "Frustum with styling", "expression": "S = frustum3d(at(4,4), view(14,14), 1, 2.5, 4, c(navy), fc(lightyellow), fo(0.5))"},
+    {"scenario": "Wide frustum", "expression": "S = frustum3d(at(4,4), view(14,14), 2, 4, 3, c(brown))"}
+  ]
+}

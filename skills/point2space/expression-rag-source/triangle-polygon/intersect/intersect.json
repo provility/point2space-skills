@@ -1,0 +1,92 @@
+{
+  "expression": "intersect",
+  "_requires": ["g2d"],
+  "description": "Computes the intersection point between two geometric objects such as lines, circles, or polygons, with a 1-based index to select among multiple intersections.",
+  "utility": "Find intersection point between two geometric objects",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "object1",
+      "type": "line | circle | polygon | plot",
+      "required": true,
+      "description": "First geometric object"
+    },
+    {
+      "name": "object2",
+      "type": "line | circle | polygon | plot",
+      "required": true,
+      "description": "Second geometric object"
+    },
+    {
+      "name": "index",
+      "type": "number (1-based)",
+      "required": false,
+      "description": "Which intersection point to return (1 = first, 2 = second, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Two lines",
+      "syntax": "intersect(G, line1, line2)",
+      "description": "Find where two lines cross"
+    },
+    {
+      "variant": "Line and polygon",
+      "syntax": "intersect(G, line, polygon, 1)",
+      "description": "First intersection of line with polygon edge"
+    },
+    {
+      "variant": "Circle and line",
+      "syntax": "intersect(G, circle, line, 2)",
+      "description": "Second intersection of circle with line"
+    },
+    {
+      "variant": "Two circles",
+      "syntax": "intersect(G, circle1, circle2, 1)",
+      "description": "First intersection of two circles"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "First intersection point of two implicit parabola plots",
+      "expression": "graph_1 = g2d(at(2,5), 21.8, 20.2, range(-5, 5, 1), type(plotting), grid())\nplot_1=plot(graph_1,\"x^2 = 4y\")\nplot_2=plot(graph_1,\"y^2 = 4x\")\npoint_1 = intersect(graph_1, plot_2, plot_1, 1)"
+    },
+    {
+      "scenario": "Second intersection point of two plots",
+      "expression": "point_2 = intersect(graph_1, plot_2, plot_1, 2)"
+    },
+    {
+      "scenario": "Find y-axis intercept of a line (axis intercepts lesson)",
+      "expression": "point_3 = intersect(graph_1, line_1, line_2, 1)"
+    },
+    {
+      "scenario": "Find intersection of constraint lines for linear programming vertex",
+      "expression": "A = intersect(G, L1, L3)"
+    },
+    {
+      "scenario": "Second intersection for linear programming feasible region",
+      "expression": "B = intersect(G, L2, L3)"
+    },
+    {
+      "scenario": "Circle and line intersection",
+      "expression": "tangent_point = intersect(graph_1, circle_1, line_1, 1)"
+    },
+    {
+      "scenario": "Intersection of two circles",
+      "expression": "graph_1=g2d(at(10,11),20,20,range(-5,6),type(uniform)); circle_1=circle(graph_1,point(graph_1,1.4,1.6),radius(2)); circle_2 = circle(graph_1, point(graph_1, 3.1, 2.8), radius(2)); point_1 = intersect(graph_1, circle_1, circle_2)"
+    },
+    {
+      "scenario": "Secant line intersecting a circle at two points",
+      "expression": "intersection_1 = intersect(G, secant_line, target_circle,1); intersection_2 = intersect(G, secant_line, target_circle,2)"
+    },
+    {
+      "scenario": "Intersection of parabola plot with vertical line for ray tracing",
+      "expression": "G=g2d(at(3,11),size(23),range(-6,6),type(geometry)); P = plot(G, f, -7, 7); H1=intersect(G,P,vline(G,point(G,-2,0)),defer()); H2=intersect(G,P,vline(G,-1),defer())"
+    }
+  ]
+}

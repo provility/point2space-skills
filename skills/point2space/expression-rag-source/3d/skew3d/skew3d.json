@@ -1,0 +1,15 @@
+{
+  "expression": "skew3d",
+  "_requires": ["g3d", "line3d"],
+  "description": "Computes and visualizes the shortest distance between two skew (non-intersecting, non-parallel) 3D lines.",
+  "utility": "Find skew distance between two 3D lines",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "line1", "type": "line3d", "required": true, "description": "First line"},
+    {"name": "line2", "type": "line3d", "required": true, "description": "Second line"}
+  ],
+  "examples": [
+    {"scenario": "Distance between two skew lines", "expression": "G = g3d(at(4,23), view(30, 30))\nL1 = line3d(G, point3d(G, 0, 0, 0), point3d(G, 1, 0, 0))\nL2 = line3d(G, point3d(G, 0, 1, 0), point3d(G, 0, 1, 1))\nd = skew3d(G, L1, L2)"},
+    {"scenario": "Skew distance with styling", "expression": "d = skew3d(G, L1, L2, c(red), s(2))"}
+  ]
+}

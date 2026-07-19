@@ -1,0 +1,124 @@
+{
+  "expression": "paragraph",
+  "_requires": [],
+  "description": "Displays multiline paragraph text in a bounded box. For explanatory text, descriptions, and multi-sentence content. Content can be a string literal or a reference to an existing variable. Content is in PLAIN TEXT mode by default — text renders as-is without math processing. Math expressions must be wrapped in math() to render as math. Supports text color, background color, opacity, padding, line height, and border styling.",
+  "utility": "Display explanatory text and multi-sentence descriptions — use instead of multiple write() calls for non-math content",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Top-left corner position of paragraph box"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": true,
+      "description": "Width of paragraph box in grid units"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": true,
+      "description": "Height of paragraph box in grid units"
+    },
+    {
+      "name": "paraVarName",
+      "type": "string | variable",
+      "required": true,
+      "description": "Reference to an existing variable, or a string literal"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Text color"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Background color"
+    },
+    {
+      "name": "fontSize",
+      "type": "fs(size)",
+      "required": false,
+      "description": "Font size in pixels"
+    },
+    {
+      "name": "fontFamily",
+      "type": "ff(familyName)",
+      "required": false,
+      "description": "Font family name"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Background opacity (0-1)"
+    },
+    {
+      "name": "padding",
+      "type": "pd(pixels)",
+      "required": false,
+      "description": "Padding inside box"
+    },
+    {
+      "name": "lineHeight",
+      "type": "lh(value)",
+      "required": false,
+      "description": "Line height multiplier"
+    },
+    {
+      "name": "border",
+      "type": "border(style)",
+      "required": false,
+      "description": "Border styling"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic paragraph",
+      "syntax": "paragraph(at(row, col), width, height, paraVarName)",
+      "description": "Display paragraph text from variable"
+    },
+    {
+      "variant": "With text color",
+      "syntax": "paragraph(at(row, col), width, height, paraVarName, c(blue))",
+      "description": "Paragraph with text color"
+    },
+    {
+      "variant": "With background",
+      "syntax": "paragraph(at(row, col), width, height, paraVarName, c(blue), fc(yellow))",
+      "description": "Paragraph with background color"
+    },
+    {
+      "variant": "With full styling",
+      "syntax": "paragraph(at(row, col), width, height, paraVarName, c(black), fc(lightgray), fs(18), pd(10), lh(1.5))",
+      "description": "Complete styling: colors, font size, padding, line height"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Question paragraph with slidedown and notes for circle lesson",
+      "expression": "paragraph_1=paragraph(at(1,2),42.7,5.2,para_str_1,ff(\"Gill Sans\"),fs(27),lh(2),effect(slidedown),notes(\"Circle from a Diameter\"))"
+    },
+    {
+      "scenario": "Explanation paragraph with teal text and honeydew fill (axis intercepts lesson)",
+      "expression": "paragraph_2=paragraph(at(12,5),21.5,5.1,para_str_4,ff(\"Gill Sans\"),c(teal),fc(honeydew),effect(slideleft))"
+    },
+    {
+      "scenario": "Problem statement paragraph with slidedown effect (Point and Circle lesson)",
+      "expression": "paragraph_1=paragraph(at(5,4),45.9,2.8,para_str_1,ff(\"Gill Sans\"),effect(slidedown),notes(\"Position of a Point and a Circle\"))"
+    },
+    {
+      "scenario": "Overview paragraph with lavender fill and padding (Point and Circle lesson)",
+      "expression": "paragraph_2=paragraph(at(10,5),24.6,7.3,para_str_2,ff(\"Gill Sans\"),fc(lavender),pd(22),effect(fadein))"
+    },
+    {
+      "scenario": "Blue annotation paragraph with slideright effect (circle from diameter lesson)",
+      "expression": "paragraph_3=paragraph(at(20,31),14.3,2.3,para_str_4,effect(slideright),ff(\"Gill Sans\"),c(blue))"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "expression": "textmove",
+  "description": "Animate moving a text object from its current position to a new destination. Both source and destination can be any text object (write, print, label) or selection. The actual object moves, not a copy. Clicking the mutator icon opens the Explorer side panel with full AsciiMath editing, live preview, and symbol picker.",
+  "utility": "Animate moving any text object or selection to another position",
+  "arguments": [
+    {
+      "name": "destination",
+      "type": "variable",
+      "required": true,
+      "description": "Target position — any text object or selection to use as anchor"
+    },
+    {
+      "name": "source",
+      "type": "variable",
+      "required": true,
+      "description": "Any text object or selection to move (write, print, label, or select result)"
+    },
+    {
+      "name": "buff",
+      "type": "buff(row, col)",
+      "required": false,
+      "description": "Position offset from destination"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Move to another object's position",
+      "syntax": "textmove(destination, source)",
+      "description": "Move source to destination's position"
+    },
+    {
+      "variant": "Move to selection position",
+      "syntax": "textmove(selection, source)",
+      "description": "Move source to a selection's position"
+    },
+    {
+      "variant": "Move selection to another position",
+      "syntax": "textmove(destination, selection)",
+      "description": "Move a selection to destination's position"
+    },
+    {
+      "variant": "With offset",
+      "syntax": "textmove(destination, source, buff(0.5, 0))",
+      "description": "Move with additional offset"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Move b value into equation for Pythagorean theorem",
+      "expression": "text_move_1=textmove(write_16_select_1,write_17,buff(-0.1,-0.1))"
+    },
+    {
+      "scenario": "Move denominator value during equation solving",
+      "expression": "text_move_1 = textmove(write_4_select_1, select_1, buff(-0.2, -0.1))"
+    },
+    {
+      "scenario": "Move integral term into position",
+      "expression": "text_move_1 = textmove(write_10_select_1, write_11_select_1, buff(-0.2, 0))"
+    }
+  ]
+}

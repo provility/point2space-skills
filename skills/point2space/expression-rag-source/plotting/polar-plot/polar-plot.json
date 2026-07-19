@@ -1,0 +1,78 @@
+{
+  "expression": "polarplot",
+  "_requires": ["g2d"],
+  "description": "Renders a polar function r = f(theta) on a 2D graph. Supports theta range restriction, filled polar regions, and curves such as roses, cardioids, limacons, and spirals.",
+  "utility": "Plot a polar function r = f(theta) on a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container to plot on"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": true,
+      "description": "Polar equation as ASCII math string using theta - e.g., \"2 + cos(3*theta)\""
+    },
+    {
+      "name": "range",
+      "type": "range(thetaMin, thetaMax)",
+      "required": false,
+      "description": "Theta interval - e.g., range(0, 4*pi). Defaults to 0 to 2*pi"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color - e.g., c(red)"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Fill color for filled polar regions - e.g., fc(yellow)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic polar plot",
+      "syntax": "polarplot(G, \"r(theta)\")",
+      "description": "Plot r = f(theta) over the default interval 0 to 2*pi"
+    },
+    {
+      "variant": "With theta range",
+      "syntax": "polarplot(G, \"theta\", range(0, 4*pi))",
+      "description": "Archimedean spiral: r = theta over multiple revolutions"
+    },
+    {
+      "variant": "With stroke color",
+      "syntax": "polarplot(G, \"2 + cos(3*theta)\", c(red))",
+      "description": "Polar curve with custom stroke color"
+    },
+    {
+      "variant": "Filled polar region",
+      "syntax": "polarplot(G, \"2 + cos(3*theta)\", fc(yellow))",
+      "description": "Polar curve with filled interior"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Three-petal rose curve",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-4, 4), range(-4, 4), type(plotting))\npolarplot(G, \"2 + cos(3*theta)\")"
+    },
+    {
+      "scenario": "Archimedean spiral over two full turns",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-15, 15), range(-15, 15), type(plotting))\npolarplot(G, \"theta\", range(0, 4*pi))"
+    },
+    {
+      "scenario": "Filled polar rose with yellow fill color",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-4, 4), range(-4, 4), type(plotting))\npolarplot(G, \"2 + cos(3*theta)\", fc(yellow))"
+    },
+    {
+      "scenario": "Cardioid curve",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-4, 4), range(-4, 4), type(plotting))\npolarplot(G, \"1 + cos(theta)\", c(blue))"
+    }
+  ]
+}

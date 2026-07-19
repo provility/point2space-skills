@@ -1,0 +1,85 @@
+{
+  "expression": "interpolate",
+  "description": "Creates a point at a ratio along a shape or between two points. Supports static (single ratio) and animated (from/to ratio) forms.",
+  "utility": "Find a point at a ratio along a shape, or between two points",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d|p2d",
+      "required": true,
+      "description": "Graph container"
+    },
+    {
+      "name": "shape or P1",
+      "type": "line|circle|ellipse|polygon|plot|arc|point",
+      "required": true,
+      "description": "Shape to interpolate along, or first point for point-to-point form"
+    },
+    {
+      "name": "ratio or P2",
+      "type": "number|point",
+      "required": true,
+      "description": "Ratio for shape form (0=start, 1=end), or second point for point-to-point form"
+    },
+    {
+      "name": "ratio / toRatio",
+      "type": "number",
+      "required": false,
+      "description": "For point-to-point: the ratio (0=P1, 1=P2, 0.5=midpoint). For animated shape form: the toRatio"
+    },
+    {
+      "name": "toRatio",
+      "type": "number",
+      "required": false,
+      "description": "For animated point-to-point: the ending ratio (creates animation from fromRatio to toRatio)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Static point on shape",
+      "syntax": "interpolate(G, shape, ratio)",
+      "description": "Point at ratio along line, circle, ellipse, polygon, plot, arc, etc. (0=start, 1=end)"
+    },
+    {
+      "variant": "Animated point on shape",
+      "syntax": "interpolate(G, shape, fromRatio, toRatio)",
+      "description": "Point animates from fromRatio to toRatio along shape"
+    },
+    {
+      "variant": "Static point between two points",
+      "syntax": "interpolate(G, P1, P2, ratio)",
+      "description": "Point at ratio between P1 and P2 (0=P1, 0.5=midpoint, 1=P2)"
+    },
+    {
+      "variant": "Animated point between two points",
+      "syntax": "interpolate(G, P1, P2, fromRatio, toRatio)",
+      "description": "Point animates from fromRatio to toRatio along segment P1→P2"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Midpoint between two points",
+      "expression": "A = point(G, 2, 1); B = point(G, 6, 5); M = interpolate(G, A, B, 0.5)"
+    },
+    {
+      "scenario": "Point at 1/3 ratio between two points (e.g. centroid helper)",
+      "expression": "M = interpolate(G, A, B, 0.5); centroid = interpolate(G, M, V, 1/3)"
+    },
+    {
+      "scenario": "Animate point traveling along a line segment between two points",
+      "expression": "A = point(G, 1, 1); B = point(G, 5, 4); P = interpolate(G, A, B, 0, 1)"
+    },
+    {
+      "scenario": "Animate point along a circle circumference",
+      "expression": "circle_1 = circle(G, point(G, 0, 0), radius(3)); P = interpolate(G, circle_1, 0, 1)"
+    },
+    {
+      "scenario": "Static point at ratio along a plot curve",
+      "expression": "plot_1 = plot(G, \"x^2\", range(-3, 3)); P = interpolate(G, plot_1, 0.5)"
+    },
+    {
+      "scenario": "Animate point along ellipse for focal distance demo",
+      "expression": "F1 = point(G, -3, 0); F2 = point(G, 3, 0); ell = ellipse(G, F1, F2, type(foci)); P = interpolate(G, ell, 0, 1)"
+    }
+  ]
+}

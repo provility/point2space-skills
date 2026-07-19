@@ -1,0 +1,25 @@
+{
+  "expression": "p2d",
+  "description": "Creates a 2D polar coordinate graph with concentric radial gridlines, configurable radius bounds, and angular divisions.",
+  "utility": "Create a 2D polar coordinate graph for polar functions and polar point placement",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Logical position on canvas" },
+    { "name": "height", "type": "number", "required": true, "description": "Height in logical row units" },
+    { "name": "width", "type": "number", "required": true, "description": "Width in logical column units" },
+    { "name": "radius", "type": "radius(rMax) | radius(rMax, rStep)", "required": true, "description": "Maximum radius. Optional step controls concentric circle spacing." },
+    { "name": "grid", "type": "grid()", "required": false, "description": "Show polar grid (concentric circles + radial lines)" },
+    { "name": "border", "type": "br(radius)", "required": false, "description": "Border shadow effect" }
+  ],
+  "alternates": [
+    { "variant": "Polar graph with max radius", "syntax": "p2d(at(row, col), height, width, radius(rMax))", "description": "Polar graph with auto grid spacing" },
+    { "variant": "Polar graph with step", "syntax": "p2d(at(row, col), height, width, radius(rMax, rStep))", "description": "Polar graph with custom concentric circle spacing" },
+    { "variant": "Polar graph with grid", "syntax": "p2d(at(row, col), height, width, radius(rMax), grid())", "description": "Polar graph showing concentric circles and radial lines" },
+    { "variant": "Polar graph with grid and shadow", "syntax": "p2d(at(row, col), height, width, radius(rMax), grid(), br(0.5))", "description": "Full-featured polar graph" }
+  ],
+  "examples": [
+    { "scenario": "Polar graph with grid for plotting rose curves and spirals", "expression": "G = p2d(at(2,4), 20, 20,range(0,10,1), grid())" },
+    { "scenario": "Polar point placement with variables for length and angle", "expression": "G = p2d(at(2,4), 20, 20,range(0,10,1), grid())\nl=5\nang=30\npolarpoint(G, l, ang)" },
+    { "scenario": "Polar point on a geometry graph with angle change animation", "expression": "G2 = g2d(at(0,30), 20, range(-10,10), grid(), type(geometry))\nl=5\nang=30\npolarpoint(G2, l, ang)\nchange(ang,210)" },
+    { "scenario": "Plot a polar rose curve on p2d", "expression": "G = p2d(at(2,4), 20, 20, range(0, 10, 1), grid())\nplot(G, \"2 + cos(3*theta)\")" }
+  ]
+}

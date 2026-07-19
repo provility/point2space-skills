@@ -1,0 +1,34 @@
+{
+  "expression": "config",
+  "description": "Sets global configuration options for the playback controller",
+  "utility": "Configure playback behavior like inter-command delays",
+  "arguments": [
+    {
+      "name": "key",
+      "type": "type(key)",
+      "required": true,
+      "description": "Configuration key wrapped in type(): currently supports type(delay)"
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": true,
+      "description": "Configuration value: for delay, a number of seconds (0 to disable)"
+    }
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "Set 2 second delay between commands",
+      "expression": "config(type(delay), 2)"
+    },
+    {
+      "scenario": "Disable command delay",
+      "expression": "config(type(delay), 0)"
+    },
+    {
+      "scenario": "Set 0.5 second delay",
+      "expression": "config(type(delay), 0.5)"
+    }
+  ]
+}

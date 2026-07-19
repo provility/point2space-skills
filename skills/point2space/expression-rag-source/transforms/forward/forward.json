@@ -1,0 +1,56 @@
+{
+  "expression": "forward",
+  "_requires": ["g2d"],
+  "description": "Shifts a vector or line forward along its own direction by a specified distance, preserving orientation and magnitude.",
+  "utility": "Shift a vector forward along its direction by a given distance",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The graph container"
+    },
+    {
+      "name": "vector",
+      "type": "vector | line",
+      "required": true,
+      "description": "The vector or line to shift forward"
+    },
+    {
+      "name": "distance",
+      "type": "number",
+      "required": true,
+      "description": "Distance to shift forward along the vector direction"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Forward shift vector",
+      "syntax": "forward(G, vec, distance)",
+      "description": "Shift vector forward by distance along its direction"
+    },
+    {
+      "variant": "Forward shift line",
+      "syntax": "forward(G, line, distance)",
+      "description": "Shift line forward by distance (returns vector)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Shift a vector forward by 2 units",
+      "expression": "O = point(G, 0, 0)\nV = vector(G, O, point(G, 3, 2))\nF = forward(G, V, 2)"
+    },
+    {
+      "scenario": "Create a stepped progression of vectors",
+      "expression": "O = point(G, 0, 0)\nV = vector(G, O, point(G, 1, 1))\nF1 = forward(G, V, 1)\nF2 = forward(G, V, 2)\nF3 = forward(G, V, 3)"
+    },
+    {
+      "scenario": "Shift a line forward as a vector",
+      "expression": "A = point(G, 0, 0)\nB = point(G, 4, 0)\nL = line(G, A, B)\nF = forward(G, L, 3)"
+    },
+    {
+      "scenario": "Forward with a small distance",
+      "expression": "P1 = point(G, 1, 1)\nP2 = point(G, 4, 3)\nV = vector(G, P1, P2)\nfwd1 = forward(G, V, 1)"
+    }
+  ]
+}

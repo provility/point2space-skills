@@ -1,0 +1,102 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_1776252123298_3j4bi2t2i": {
+      "id": "slide_1776252123298_3j4bi2t2i",
+      "name": "Slide 1",
+      "expressions": [
+        "title_1=title(at(0.9,19.8),\" Two Dimensional Analytical Geometry-II\",fc(lavender),pd(12),border(transparent,s(4),radius(12),shadow(2)),fs(29),ff(\"Gill Sans\"))",
+        "paragraph_1=paragraph(at(4.3,3.2),39.5,4.7,para_str_1,ff(\"Gill Sans\"),effect(slideleft),t(1),fs(28),lh(1.8),notes(\"Equation of a Circle\"))",
+        "fragment_3 = fragment(paragraph_1, range(2, 8), effect(highlight), c(darkred), fc(gold), t(1))",
+        "hidehighlight_3 = hidehighlight(fragment_3)",
+        "fragment_1 = fragment(paragraph_1, range(9, 11), effect(highlight), c(darkred), fc(gold), t(1))",
+        "graph_3=g2d(at(8.5,35.1),size(16.7),range(-7.2,1,1),type(geometry))",
+        "graph_2=g2d(at(8.5,35.1),size(16.7),range(-7.2,1,1),type(geometry),grid(noaxes))",
+        "point_1=point(graph_2,-3,-4,s(4))",
+        "label_1=label(graph_2,at(point_1),\"C (-3,-4)\",buff(-0.5,-4.5),rotation(0),c(black),fs(16))",
+        "hidehighlight_1 = hidehighlight(fragment_1)",
+        "fragment_2 = fragment(paragraph_1, range(13, 15), effect(highlight), c(darkred), fc(gold), t(1))",
+        "circle_1=circle(graph_2,point_1,radius(3),c(mediumvioletred),fc(violet))",
+        "dm_1=distancemarker(at(18.8,44.2),at(12.6,44.2),\"r = 3\",buff(1))",
+        "hide_1 = hide(graph_3)",
+        "paragraph_2=paragraph(at(9.8,3.3),21.6,5.4,para_str_2,ff(\"Gill Sans\"),fs(26),c(darkblue),effect(slideleft))",
+        "write_1=write(at(16,6.8),\"(x−h)^2+(y−k)^2=r^2\",fadein(0.5),comment(\"standard form of a circle\"))",
+        "arect_1=annotationrect(at(15.5,5.8),at(15.5,20.5),at(18.2,20.5),at(18.2,5.8))",
+        "paragraph_4=paragraph(at(14.6,20.9),14.7,1.8,para_str_4,ff(\"Gill Sans\"),c(blue),lh(1.6),effect(slideright))",
+        "outline_1 = outline(label_1)",
+        "paragraph_6=paragraph(at(16.9,21.4),11.2,1.6,para_str_6,lh(0.2),ff(\"Gill Sans\"),c(blue),pd(-4),effect(slideright))",
+        "outline_2 = outline(dm_1)",
+        "paragraph_3=paragraph(at(19.1,3.4),20.6,2.3,para_str_3,ff(\"Gill Sans\"),lh(1.4),c(darkblue),fs(26),effect(slideleft))",
+        "write_2=write(at(22.1,5),\"text(Centre =) (−3,−4),\",fs(20),fadein(0.5))",
+        "write_3=write(at(22.2,14.4),\"text(Radius = ) 3\",fs(20),fadein(0.5))",
+        "write_4=write(at(24.4,7.5),\"( x - − h )^2+( y - − k )^2= r^2\",exclude(\"−\",2),exclude(\"−\",1),fadein(0.5))",
+        "paragraph_5=paragraph(at(23.9,21.9),18.3,2.7,para_str_5,ff(\"Gill Sans\"),c(blue),effect(slideright))",
+        "select_3 = select(write_4, \"r\", 1)",
+        "select_4 = select(write_2, \"−3\", 1)",
+        "select_5 = select(write_2, \"−4\", 1)",
+        "select_6 = select(write_3, \"3\", 1)",
+        "select_7 = select(write_4, \"− h\", 1)",
+        "select_8 = select(write_4, \"− k\", 1)",
+        "text_replace_4=textreplace(select_7,select_4,fs(22),buff(-0.2,0.2),c(orange))",
+        "text_replace_5=textreplace(select_8,select_5,fs(22),buff(-0.2,0.1),c(green))",
+        "text_replace_3=textreplace(select_3,select_6,buff(-0.5,-0.3),c(darkblue))",
+        "write_5=write(at(27,7.5),\"(x+3)^2 + (y+4)^2 = 9\",fadein(0.7))",
+        "write_7=write(at(29.5,7.7),\"x^2+6x+9+y^2+8y+16=9\",exclude(\"x^2+6x+9\",1),exclude(\"+y^2+8y+16\",1),fadein(0.7))",
+        "paragraph_7=paragraph(at(28.8,24.5),20.1,2.7,para_str_7,ff(\"Gill Sans\"),fs(24),c(blue),effect(slideright))",
+        "arect_3=annotationrect(at(26.9,7.2),at(26.9,12),at(28.8,12),at(28.8,7.2),s(1),t(0.5),c(orange))",
+        "text_reveal_1=textreveal(write_7_select_1,c(orange))",
+        "hide_2 = hide(arect_3)",
+        "arect_4=annotationrect(at(26.8,13.2),at(26.8,17.5),at(28.8,17.5),at(28.8,13.2),s(1),t(0.5),c(green))",
+        "text_reveal_2=textreveal(write_7_select_2,c(darkgreen))",
+        "hide_3 = hide(arect_4)",
+        "write_8=write(at(32,7.7),\"x^2+y^2+6x+8y+(25-9)=0\",fadein(0.7))",
+        "write_10=write(at(35,7.7),\"x^2+y^2+6x+8y+16=0\",fadein(0.7),notes(\"general equation of the circle\"))",
+        "arect_2=annotationrect(at(34.6,7.2),at(34.6,22.8),at(37,22.8),at(37,7.2))",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Example 5.1. Find the general equation of a circle with centre (−3,−4) and radius 3 units."
+        },
+        {
+          "name": "para_str_2",
+          "value": "The general equation can be derived using the standard form:"
+        },
+        {
+          "name": "para_str_3",
+          "value": "As Given in the Question,\n"
+        },
+        {
+          "name": "para_str_4",
+          "value": "where math((h,k)) is the center "
+        },
+        {
+          "name": "para_str_5",
+          "value": "(substituting math(h = -3, k = -4, r = 3 ) )\n\n"
+        },
+        {
+          "name": "para_str_6",
+          "value": "and math(r) is the radius."
+        },
+        {
+          "name": "para_str_7",
+          "value": "(expand using math((a+b)^2=a^2+2ab+b^2))"
+        }
+      ]
+    }
+  },
+  "settings": {
+    "theme": "light"
+  },
+  "slideOrder": [
+    "slide_1776252123298_3j4bi2t2i"
+  ],
+  "activeSlideId": "slide_1776252123298_3j4bi2t2i",
+  "id": "36877974-0e3e-4f19-9fe9-6acffe74a309",
+  "name": "Equation of a Circle"
+}

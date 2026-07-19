@@ -1,0 +1,14 @@
+{
+  "expression": "venn",
+  "_requires": ["g2d"],
+  "description": "Venn diagram visualization inside a 2D graph container.",
+  "utility": "Create a Venn diagram",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "2D graph container"},
+    {"name": "sets", "type": "quoted strings", "required": true, "description": "Set names (2 or 3)"}
+  ],
+  "examples": [
+    {"scenario": "Two-set Venn diagram", "expression": "G = g2d(at(4,4), size(20), type(geometry))\nvenn(G, \"A\", \"B\")"},
+    {"scenario": "Three-set Venn diagram", "expression": "G = g2d(at(4,4), size(20), type(geometry))\nvenn(G, \"A\", \"B\", \"C\")"}
+  ]
+}

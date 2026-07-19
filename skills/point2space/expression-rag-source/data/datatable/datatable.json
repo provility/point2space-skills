@@ -1,0 +1,73 @@
+{
+  "expression": "datatable",
+  "description": "Creates a table with user-provided asciimath values displayed as-is",
+  "utility": "Display explicit data values in table format with optional headers and styling",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Starting position of table in logical coordinates"
+    },
+    {
+      "name": "columns",
+      "type": "data(...)",
+      "required": true,
+      "description": "One or more data() expressions providing column values as asciimath strings"
+    },
+    {
+      "name": "headers",
+      "type": "header(...)",
+      "required": false,
+      "description": "Optional header() expression providing column labels"
+    },
+    {
+      "name": "textColor",
+      "type": "c(color)",
+      "required": false,
+      "description": "Text color for table content"
+    },
+    {
+      "name": "fontSize",
+      "type": "fs(size)",
+      "required": false,
+      "description": "Font size for table"
+    },
+    {
+      "name": "backgroundColor",
+      "type": "fc(color)",
+      "required": false,
+      "description": "Background color for table"
+    },
+    {
+      "name": "padding",
+      "type": "pd(value)",
+      "required": false,
+      "description": "Cell padding"
+    },
+    {
+      "name": "layout",
+      "type": "layout(horizontal|vertical)",
+      "required": false,
+      "description": "Table orientation: horizontal (columns as rows) or vertical (default)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Simple table with data columns",
+      "syntax": "datatable(at(row, col), data(\"1\", \"2\", \"3\"), data(\"1\", \"4\", \"9\"))",
+      "description": "Create table with two columns of values"
+    },
+    {
+      "variant": "Table with headers and styling",
+      "syntax": "datatable(at(row, col), data(\"1\", \"2\"), data(\"4\", \"5\"), header(\"x\", \"x^2\"), c(blue), fc(yellow))",
+      "description": "Table with headers and custom colors"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Datatable comparing standard ellipse formula with solved values",
+      "expression": "mathexpr_1=datatable(at(2,2),data(\"(x^(2))/(b^(2))+(y^(2))/(a^(2))=1\",\"(x^(2))/(4)+(y^(2))/(25)=1\"),data(\"text(y axis )\",\"text(y axis )\"),data(\"c^(2)=a^(2)-b^(2)\",\"c^2 = 21\"),data(\"(0,+-c)\",\"(0,+-sqrt(21))\"),data(\"2b\",\"4\"),data(\"2a\",\"10\"),data(\"e=(c)/(a)\",\"e=(sqrt(21))/(5)\"),data(\"(2b^(2))/(a)\",\"(8)/(5)\"),data(\"(0,+-a)\",\"(0,+-5)\"),header(\"text(   Equation )\",\"text(major axis)\",\"text(         )c^2text(         )\",\"text(foci)\",\"text(length of )-text(minor axis)\",\"text(length of)-text( major axis)\",\"text(eccentricity)\",\"text(LLR)\",\"text(Vertices)\"),c(black),notes(\"Compare standard formula with solved values\"))"
+    }
+  ]
+}

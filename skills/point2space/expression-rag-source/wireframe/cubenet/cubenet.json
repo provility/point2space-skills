@@ -1,0 +1,17 @@
+{
+  "expression": "cubenet",
+  "_requires": [],
+  "description": "Unfolds a cube into a 2D net pattern (cross layout)",
+  "utility": "Visualize cube unfolding for education or net visualization",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Grid position for net"},
+    {"name": "sidelength", "type": "number", "required": true, "description": "Side length of cube"},
+    {"name": "styles", "type": "styling", "required": false, "description": "c(), fc(), fo() for color"}
+  ],
+  "examples": [
+    {
+      "scenario": "Cube net for folding",
+      "expression": "cubenet_1 = cubenet(at(1,29), 3, c(navy), fc(lightyellow), fo(0.5))"
+    }
+  ]
+}

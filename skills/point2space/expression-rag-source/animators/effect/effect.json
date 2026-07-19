@@ -1,0 +1,12 @@
+{
+  "expression": "effect",
+  "_requires": [],
+  "description": "Animation effect modifier for transitions",
+  "utility": "Apply fade, scale, or other effects to animations",
+  "arguments": [
+    {"name": "effecttype", "type": "fade | scale | rotate", "required": true, "description": "Type of effect"}
+  ],
+  "examples": [
+    {"scenario": "Fade effect", "expression": "effect(fade)"}
+  ]
+}

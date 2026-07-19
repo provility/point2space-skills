@@ -1,0 +1,33 @@
+{
+  "expression": "arrow",
+  "description": "Draws a curved or straight arrow between two points on the canvas, with optional curvature, MathJax text label at the arrow end, and text offset control via buff().",
+  "utility": "Draw animated curved arrows between any two points with optional text labels",
+  "arguments": [
+    { "name": "from", "type": "at(row, col) | at(shape, anchor) | variable", "required": true, "description": "Source endpoint — direct coordinates, shape anchor (0-8), or shape variable (center)" },
+    { "name": "to", "type": "at(row, col) | at(shape, anchor) | variable | dx,dy", "required": true, "description": "Destination endpoint — same types as from, or two numbers for delta offset mode" },
+    { "name": "curvature", "type": "number", "required": false, "description": "Arc curvature in logical units. Positive = clockwise, negative = counter-clockwise, 0 = straight" },
+    { "name": "text", "type": "string", "required": false, "description": "MathJax text label rendered at the arrow end" },
+    { "name": "buff", "type": "buff(along) | buff(along, perp)", "required": false, "description": "Text offset control. First arg: offset along arrow direction (positive = further from tip). Second arg: offset perpendicular (positive = right side of arrow)" },
+    { "name": "color", "type": "c(colorName)", "required": false, "description": "Arrow color" },
+    { "name": "strokeWidth", "type": "s(width)", "required": false, "description": "Arrow stroke width" }
+  ],
+  "alternates": [
+    { "variant": "Between two shapes", "syntax": "arrow(A, B)", "description": "Arrow from center of shape A to center of shape B" },
+    { "variant": "With curvature", "syntax": "arrow(A, B, 2)", "description": "Curved arrow with curvature of 2 logical units" },
+    { "variant": "With text label", "syntax": "arrow(at(G, 4), at(M, 8), \"label\")", "description": "Arrow with MathJax text at the arrow end" },
+    { "variant": "Text with offset", "syntax": "arrow(A, B, \"f(x)\", buff(0.3))", "description": "Text offset 0.3 units along arrow direction" },
+    { "variant": "Text with 2D offset", "syntax": "arrow(A, B, \"f\", buff(-2, 1))", "description": "Text offset: 2 back along arrow, 1 right of arrow" },
+    { "variant": "Delta offset mode", "syntax": "arrow(at(5,3), 3, 2)", "description": "Arrow from (5,3) offset by dx=3, dy=2" },
+    { "variant": "Shape anchors", "syntax": "arrow(at(G, 4), at(M, 8))", "description": "Arrow from G's right edge (4) to M's left edge (8)" },
+    { "variant": "Direct coordinates", "syntax": "arrow(at(5,3), at(10,6))", "description": "Arrow between two canvas positions" },
+    { "variant": "With styling", "syntax": "arrow(A, B, -2, c(red), s(5))", "description": "Styled arrow with negative curvature" }
+  ],
+  "examples": [
+    { "scenario": "Arrow annotating a plottable curve on a graph (plot-table-version2 lesson)", "expression": "arrow(at(p2,5,buff(0.5)),at(12,20),\"sqrt(4-x^2)\",buff(-7,2),c(black))" },
+    { "scenario": "Arrow with text label for major axis length", "expression": "arrow_1 = arrow(at(12,44), at(9,40), \"text(major axis length is 10)\", buff(10, -3.5), s(3), c(darkblue), defer(), t(1))" },
+    { "scenario": "Arrow annotating minor axis on ellipse", "expression": "arrow_3 = arrow(at(19,28), at(22,23), \"text(minor axis)\", s(3), buff(5.5, 3.5))" },
+    { "scenario": "Arrow for rearranging equation with stroke width", "expression": "arrow_2 = arrow(at(19,36), at(21,41), s(2), notes(\"Rearrange the Equation\", 0.5))" },
+    { "scenario": "Arrow from annotation to fadeout with power rule", "expression": "arrow_1 = arrow(at(7,18), at(3,25), -2.5, s(3), fadeout(6))" }
+  ],
+  "notes": "Anchor positions: 0=center, 1=TL, 2=T, 3=TR, 4=R, 5=BR, 6=B, 7=BL, 8=L"
+}

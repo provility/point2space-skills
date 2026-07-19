@@ -1,0 +1,22 @@
+{
+  "expression": "solidarea",
+  "_requires": [],
+  "description": "Highlight a range of faces on a solid by face index range. Uses range() to specify which faces to highlight.",
+  "utility": "Highlight a range of faces on a solid",
+  "arguments": [
+    {"name": "solidRef", "type": "variable", "required": true, "description": "Reference to solid shape"},
+    {"name": "faceRange", "type": "range(start, end)", "required": true, "description": "Face index range to highlight (0-based, inclusive)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Highlight color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Highlight all faces of a solid",
+      "expression": "C = cube3d(at(10,10), view(25,25), 3)\nA = solidarea(C, range(0, 31), c(red), fo(0.3))"
+    },
+    {
+      "scenario": "Highlight specific face range",
+      "expression": "C = cylinder3d(at(10,10), view(25,25), 2, 5)\nA = solidarea(C, range(0, 5), c(blue), fo(0.5))"
+    }
+  ]
+}

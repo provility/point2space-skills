@@ -1,0 +1,39 @@
+{
+  "expression": "scale (point)",
+  "_requires": ["g2d", "point"],
+  "description": "Creates a point by scaling an existing point by a given factor about the origin or an optional center point.",
+  "utility": "Scale a point by a factor about the origin or a center",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "Point to scale"
+    },
+    {
+      "name": "factor",
+      "type": "number",
+      "required": true,
+      "description": "Scale factor"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point from scaling",
+      "syntax": "scale(G, point, factor)",
+      "description": "Point scaled by factor about origin (or optional center)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Scale point by factor of 2",
+      "expression": "P2 = scale(G, P1, 2)"
+    }
+  ]
+}

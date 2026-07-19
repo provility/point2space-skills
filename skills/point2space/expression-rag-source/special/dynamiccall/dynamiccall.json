@@ -1,0 +1,13 @@
+{
+  "expression": "dynamiccall",
+  "_requires": [],
+  "description": "Call function resolved at runtime from variable name",
+  "utility": "Dynamically invoke functions based on context values",
+  "arguments": [
+    {"name": "funcvar", "type": "variable | string", "required": true, "description": "Function name or variable"},
+    {"name": "args", "type": "any", "required": false, "description": "Function arguments"}
+  ],
+  "examples": [
+    {"scenario": "Dynamic call", "expression": "dynamiccall(funcname, 5)"}
+  ]
+}

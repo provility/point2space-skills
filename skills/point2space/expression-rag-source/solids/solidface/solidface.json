@@ -1,0 +1,24 @@
+{
+  "expression": "solidface",
+  "_requires": ["loc3d"],
+  "description": "Highlight a face region on a solid defined by 3 or more loc3d points. Points can be inline loc3d() calls or variable references to previously assigned loc3d points.",
+  "utility": "Highlight a face region on a solid using loc3d points",
+  "arguments": [
+    {"name": "solidRef", "type": "variable", "required": true, "description": "Reference to solid shape"},
+    {"name": "point1", "type": "loc3d or variable", "required": true, "description": "First vertex of the face region"},
+    {"name": "point2", "type": "loc3d or variable", "required": true, "description": "Second vertex of the face region"},
+    {"name": "point3", "type": "loc3d or variable", "required": true, "description": "Third vertex of the face region"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge/fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Highlight face with inline loc3d",
+      "expression": "C = cube3d(at(10,10), view(25,25), 3)\nF = solidface(C, loc3d(C, 0, 0, 0), loc3d(C, 0, 100, 0), loc3d(C, 0, 100, 100), c(red), fo(0.3))"
+    },
+    {
+      "scenario": "Highlight face with loc3d variable references",
+      "expression": "C = cube3d(at(10,10), view(25,25), 3)\nP1 = loc3d(C, 0, 0, 0, c(magenta))\nP2 = loc3d(C, 0, 100, 0, c(magenta))\nP3 = loc3d(C, 0, 100, 100, c(magenta))\nF = solidface(C, P1, P2, P3, c(red), fo(0.3))"
+    }
+  ]
+}

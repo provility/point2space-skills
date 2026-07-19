@@ -1,0 +1,40 @@
+{
+  "expression": "header",
+  "description": "Defines custom column headers for a data table, with each label rendered as KaTeX supporting LaTeX math notation.",
+  "utility": "Define custom column headers for a table",
+  "arguments": [
+    {
+      "name": "labels",
+      "type": "string (one or more)",
+      "required": true,
+      "description": "Header label strings - e.g., \"n\", \"n^2\", \"\\\\sin(n)\". Each label corresponds to one table column."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic headers matching formulas",
+      "syntax": "header(\"x\", \"x^2\")",
+      "description": "Simple headers that match the formula columns"
+    },
+    {
+      "variant": "LaTeX-formatted headers",
+      "syntax": "header(\"n\", \"n^2\", \"\\\\sin(n)\")",
+      "description": "Headers with LaTeX math notation for display"
+    },
+    {
+      "variant": "Descriptive headers",
+      "syntax": "header(\"Input\", \"Output\", \"Error\")",
+      "description": "Human-readable column labels"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Header row for ellipse properties datatable",
+      "expression": "mathexpr_1=datatable(at(2,2),data(\"(x^(2))/(b^(2))+(y^(2))/(a^(2))=1\",\"(x^(2))/(4)+(y^(2))/(25)=1\"),header(\"text(   Equation )\",\"text(major axis)\",\"c^2\",\"text(foci)\",\"text(length of minor axis)\",\"text(length of major axis)\",\"text(eccentricity)\",\"text(LLR)\",\"text(Vertices)\"),c(black))"
+    },
+    {
+      "scenario": "Table with descriptive headers different from formulas",
+      "expression": "T = table(at(2,5), header(\"Time\", \"Position\", \"Velocity\"), \"t\", \"t^2/2\", \"t\", range(0, 10, 1))"
+    }
+  ]
+}

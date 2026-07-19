@@ -1,0 +1,70 @@
+{
+  "expression": "stepcombine",
+  "_requires": ["g2d", "annotationstep"],
+  "description": "Combines multiple step annotations at a position, showing how multiple previous steps merge or combine. Requires at least two step references with optional label text and styling.",
+  "utility": "Mark where multiple steps combine into a single result",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at() expression",
+      "required": true,
+      "description": "Position of the combined step, specified as at(row, col)"
+    },
+    {
+      "name": "stepRef1",
+      "type": "variable reference",
+      "required": true,
+      "description": "First annotationstep variable reference (e.g., astep_1)"
+    },
+    {
+      "name": "stepRef2",
+      "type": "variable reference",
+      "required": true,
+      "description": "Second annotationstep variable reference (e.g., astep_2)"
+    },
+    {
+      "name": "additionalSteps",
+      "type": "variable reference",
+      "required": false,
+      "description": "Additional annotationstep variable references"
+    },
+    {
+      "name": "label",
+      "type": "quoted string",
+      "required": false,
+      "description": "Optional label text for the combined step"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with label",
+      "syntax": "stepcombine(at(r, c), stepVar1, stepVar2, \"combined\")",
+      "description": "Combine two steps with label"
+    },
+    {
+      "variant": "three steps",
+      "syntax": "stepcombine(at(r, c), stepVar1, stepVar2, stepVar3)",
+      "description": "Combine three or more steps"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Combine two steps",
+      "expression": "astep_1 = annotationstep(at(1,1), size(2), \"1\"), astep_2 = annotationstep(at(2,1), size(2), \"2\"), stepcombine(at(3,1), astep_1, astep_2)"
+    },
+    {
+      "scenario": "Combine with label",
+      "expression": "astep_1 = annotationstep(at(1,1), size(2), \"1\"), astep_2 = annotationstep(at(2,1), size(2), \"2\"), stepcombine(at(3,1), astep_1, astep_2, \"sum\")"
+    },
+    {
+      "scenario": "Combine two trig substitution steps with plus operator and result label",
+      "expression": "astep_1 = annotationstep(at(4,12), size(11.8), \"1\")\nastep_2 = annotationstep(at(9,22), size(4.7), \"1\")\nscomb_1 = stepcombine(at(3,37), astep_1, \"+\", astep_2, \"text(result)\")"
+    }
+  ]
+}

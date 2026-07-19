@@ -1,0 +1,49 @@
+{
+  "expression": "stepimplies",
+  "_requires": ["g2d", "annotationstep"],
+  "description": "Creates an implication annotation that shows a step leading to a conclusion. References a step annotation and displays a conclusion text with optional styling.",
+  "utility": "Mark logical implications or conclusions following from a step",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at() expression",
+      "required": true,
+      "description": "Position of the implication arrow, specified as at(row, col)"
+    },
+    {
+      "name": "stepRef",
+      "type": "variable reference",
+      "required": true,
+      "description": "Reference to an annotationstep variable (e.g., astep_1)"
+    },
+    {
+      "name": "conclusion",
+      "type": "quoted string",
+      "required": true,
+      "description": "Conclusion text displayed as the result of the step"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with color",
+      "syntax": "stepimplies(at(r, c), stepVar, \"conclusion\", c(blue))",
+      "description": "Implication with colored styling"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic implication",
+      "expression": "astep_1 = annotationstep(at(1,1), size(2), \"1\"), stepimplies(at(2,1), astep_1, \"result\")"
+    },
+    {
+      "scenario": "Styled implication",
+      "expression": "astep_1 = annotationstep(at(1,1), size(3), \"1\"), stepimplies(at(3,1), astep_1, \"therefore\", c(blue))"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "expression": "tetrahedron3d",
+  "_requires": ["g3d", "point3d"],
+  "description": "Creates a tetrahedron from 4 points in 3D space within a g3d container.",
+  "utility": "Create a tetrahedron from four 3D points",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "P1", "type": "point3d", "required": true, "description": "First vertex"},
+    {"name": "P2", "type": "point3d", "required": true, "description": "Second vertex"},
+    {"name": "P3", "type": "point3d", "required": true, "description": "Third vertex"},
+    {"name": "P4", "type": "point3d", "required": true, "description": "Fourth vertex"}
+  ],
+  "examples": [
+    {"scenario": "Tetrahedron from four points", "expression": "G = g3d(at(4,23), view(30, 30))\nA = point3d(G, 0, 0, 0)\nB = point3d(G, 3, 0, 0)\nC = point3d(G, 1.5, 2.6, 0)\nD = point3d(G, 1.5, 0.9, 2.4)\ntet = tetrahedron3d(G, A, B, C, D, fc(lightblue), fo(0.3))"},
+    {"scenario": "Unit tetrahedron", "expression": "tet = tetrahedron3d(G, point3d(G, 1, 1, 1), point3d(G, 1, -1, -1), point3d(G, -1, 1, -1), point3d(G, -1, -1, 1))"}
+  ]
+}

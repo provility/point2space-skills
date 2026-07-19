@@ -1,0 +1,12 @@
+{
+  "expression": "diameterfold",
+  "_requires": [],
+  "description": "Folding based on diameter measurements",
+  "utility": "Create fold patterns using diameter",
+  "arguments": [
+    {"name": "diameter", "type": "number", "required": false, "description": "Diameter value"}
+  ],
+  "examples": [
+    {"scenario": "Diameter-based fold", "expression": "diameterfold(4)"}
+  ]
+}

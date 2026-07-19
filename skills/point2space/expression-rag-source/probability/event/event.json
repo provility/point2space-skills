@@ -1,0 +1,24 @@
+{
+  "expression": "event",
+  "_requires": ["sspace"],
+  "description": "Defines and highlights an event within a sample space. Supports predicates for filtering outcomes, conditional probability via given(), hatch patterns for overlapping events, and eventcaption() for synced probability displays.",
+  "utility": "Define an event on a sample space",
+  "arguments": [
+    {"name": "sspace", "type": "sspace variable", "required": true, "description": "Reference to a sample space expression"},
+    {"name": "predicate", "type": "quoted string", "required": true, "description": "Event predicate (e.g., \"sum > 7\", \"all blue\", \"at least 2 red\", \"any even\", \"any > 3\", \"all odd\")"},
+    {"name": "given", "type": "given(predicate, ...)", "required": false, "description": "Conditional probability condition with optional styling (hatchangle, c)"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Highlight color for matching outcomes"},
+    {"name": "hatchangle", "type": "hatchangle(deg)", "required": false, "description": "Use hatch lines instead of solid fill, at given angle"},
+    {"name": "duration", "type": "t(seconds)", "required": false, "description": "Per-cell animation duration"},
+    {"name": "captions", "type": "eventcaption(...)", "required": false, "description": "One or more eventcaption expressions (inline or variable references)"}
+  ],
+  "examples": [
+    {"scenario": "Sum greater than 7", "expression": "S = sspace(dice(2), at(4,10), view(12,12))\nE = event(S, \"sum > 7\", fc(coral))"},
+    {"scenario": "Conditional probability with captions", "expression": "S = sspace(coin(3), at(4,10), view(10,10))\nc1 = eventcaption(at(16, 24), type(given), display(\"P(F)\"))\nc2 = eventcaption(at(18, 24), type(intersection), display(\"P(E nn F)\"))\nc3 = eventcaption(at(20, 24), type(conditional), display(\"P(E|F)\"))\nE = event(S, \"at least 2 H\", given(\"first = T\", hatchangle(20), c(steelblue)), fc(red), t(1), c1, c2, c3)"},
+    {"scenario": "Overlapping events with hatch", "expression": "S = sspace(coin(3), at(4,10), view(10,10))\nE = event(S, \"at least 2 H\", fc(red), hatchangle(45))\nF = event(S, \"first = T\", fc(blue), hatchangle(-45))"},
+    {"scenario": "Even numbers from numbered cards", "expression": "S = sspace(outcomes(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), at(4,10), view(8,20))\nE = event(S, \"any even\", fc(red))"},
+    {"scenario": "Conditional: P(even | > 3)", "expression": "S = sspace(outcomes(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), at(4,10), view(8,20))\nc1 = eventcaption(at(14,10), type(given), display(\"P(B)\"))\nc2 = eventcaption(at(16,10), type(intersection), display(\"P(A nn B)\"))\nc3 = eventcaption(at(18,10), type(conditional), display(\"P(A|B)\"))\nE = event(S, \"any even\", given(\"any > 3\", hatchangle(20), c(steelblue)), fc(red), t(1), c1, c2, c3)"},
+    {"scenario": "At least 2 even in dice", "expression": "S = sspace(dice(3), some(50), at(4,10), view(15,15))\nE = event(S, \"at least 2 even\", fc(orange))"},
+    {"scenario": "All values greater than 3", "expression": "S = sspace(dice(2), at(4,10), view(12,12))\nE = event(S, \"all > 3\", fc(green))"}
+  ]
+}

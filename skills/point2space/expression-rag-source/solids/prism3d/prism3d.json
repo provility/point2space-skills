@@ -1,0 +1,18 @@
+{
+  "expression": "prism3d",
+  "_requires": [],
+  "description": "Standalone ThreeJS regular prism solid. Uses at() and view() for positioning.",
+  "utility": "Create a regular prism with specified number of sides",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "sides", "type": "number", "required": true, "description": "Number of sides (default 6)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {"scenario": "Hexagonal prism", "expression": "S = prism3d(at(4,4), view(14,14), 6, c(navy), fc(lightyellow), fo(0.5))"},
+    {"scenario": "Triangular prism", "expression": "S = prism3d(at(4,4), view(14,14), 3, c(teal))"}
+  ]
+}

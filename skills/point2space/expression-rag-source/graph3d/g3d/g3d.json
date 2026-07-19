@@ -1,0 +1,118 @@
+{
+  "expression": "g3d",
+  "description": "Creates a 3D graph container for rendering geometry, surfaces, and solids. Supports configurable coordinate system, axis ranges, grid plane toggles, origin offset, view scale, and font size.",
+  "utility": "Create a 3D graph container for 3D geometry and surface rendering",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Logical position on the canvas using at(row, col)"
+    },
+    {
+      "name": "view",
+      "type": "view(height, width)",
+      "required": true,
+      "description": "Container dimensions using view(height, width) in logical units"
+    },
+    {
+      "name": "range",
+      "type": "range(min, max, step)",
+      "required": false,
+      "description": "Uniform axis range with optional step. Default: range(-3, 3, 1). Applied to all three axes"
+    },
+    {
+      "name": "coordSystem",
+      "type": "\"lhs\" | \"rhs\"",
+      "required": false,
+      "description": "Coordinate system: lhs (default, Z up) or rhs (Y up)"
+    },
+    {
+      "name": "xygrid",
+      "type": "xygrid()",
+      "required": false,
+      "description": "Toggle XY plane grid (z=0). On by default in new g3d"
+    },
+    {
+      "name": "yzgrid",
+      "type": "yzgrid()",
+      "required": false,
+      "description": "Toggle YZ plane grid (x=0)"
+    },
+    {
+      "name": "zxgrid",
+      "type": "zxgrid()",
+      "required": false,
+      "description": "Toggle ZX plane grid (y=0)"
+    },
+    {
+      "name": "origin3d",
+      "type": "origin3d(x, y, z)",
+      "required": false,
+      "description": "Origin offset for the 3D coordinate system"
+    },
+    {
+      "name": "viewscale3d",
+      "type": "viewscale3d(factor)",
+      "required": false,
+      "description": "Zoom level. >1 zooms in, <1 zooms out"
+    },
+    {
+      "name": "fs",
+      "type": "fs(size)",
+      "required": false,
+      "description": "Font size for tick labels and axis name labels"
+    },
+    {
+      "name": "nolabel",
+      "type": "nolabel()",
+      "required": false,
+      "description": "Suppress tick labels and axis name labels"
+    },
+    {
+      "name": "lockat",
+      "type": "lockat(camX, camY, camZ, targetX, targetY, targetZ, zoom)",
+      "required": false,
+      "description": "Lock camera to a specific position and target"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Default with all new sub-expressions",
+      "syntax": "g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", xygrid(), origin3d(0, 0, 0), viewscale3d(1), fs(16))",
+      "description": "Default expression when created via UI"
+    },
+    {
+      "variant": "With multiple grid planes",
+      "syntax": "g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", xygrid(), yzgrid(), zxgrid())",
+      "description": "All three grid planes enabled"
+    },
+    {
+      "variant": "No labels",
+      "syntax": "g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", nolabel())",
+      "description": "Suppress tick labels and axis name labels"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Default 3D graph (as created by UI)",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", xygrid(), origin3d(0, 0, 0), viewscale3d(1), fs(16))"
+    },
+    {
+      "scenario": "3D graph with custom origin and zoom",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", xygrid(), origin3d(1, 1, 0), viewscale3d(1.5), fs(16))"
+    },
+    {
+      "scenario": "3D graph with all grid planes",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"rhs\", xygrid(), yzgrid(), zxgrid())"
+    },
+    {
+      "scenario": "3D graph with LHS and custom range",
+      "expression": "G = g3d(at(2, 0), view(27, 48), range(-3, 3), \"lhs\")"
+    },
+    {
+      "scenario": "3D graph with wider range",
+      "expression": "G = g3d(at(10, 10), view(30, 30), range(-7, 7), \"lhs\")"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "expression": "profile2d",
+  "_requires": [],
+  "description": "Named 2D profile specification for template shapes and extrusions. Specifies a profile shape by name (e.g. rectangle, star-5pt, circle). Used as an argument to templateshape2d() and extrude3d().",
+  "utility": "Specify a named 2D profile for shapes and extrusions",
+  "arguments": [
+    {"name": "profileName", "type": "string", "required": false, "description": "Profile name (e.g. \"rectangle\", \"star-5pt\", \"circle\"). Defaults to \"rectangle\""}
+  ],
+  "examples": [
+    {"scenario": "Rectangle profile for template shape", "expression": "ts_1 = templateshape2d(at(7,34), view(16,23.7), profile2d(\"rectangle\"), c(navy), fc(lightyellow), fo(0.5))"},
+    {"scenario": "Star profile for template shape", "expression": "ts_1 = templateshape2d(at(4,7), view(13.5,18.7), profile2d(\"star-5pt\"), c(navy), fc(lightyellow), fo(0.5))"},
+    {"scenario": "Profile for extrusion", "expression": "p = profile2d(\"rectangle\")\nE = extrude3d(at(4,4), view(14,14), p, 5, c(navy), fc(lightyellow), fo(0.5))"}
+  ]
+}

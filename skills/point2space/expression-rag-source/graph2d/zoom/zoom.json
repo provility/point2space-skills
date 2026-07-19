@@ -1,0 +1,90 @@
+{
+  "expression": "zoomin / zoomout",
+  "description": "Interactive zoom controls for 2D graphs. zoomin creates a button that zooms into a target point or object. zoomout creates a button that resets the zoom to the original view. Both require at() as the first argument for button placement.",
+  "utility": "Create interactive buttons for zooming in to a target or resetting zoom on a g2d graph",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Logical position for the zoom button using at(row, col)"
+    },
+    {
+      "name": "graph",
+      "type": "g2d variable",
+      "required": true,
+      "description": "The g2d graph to zoom"
+    },
+    {
+      "name": "target",
+      "type": "x, y | point | object",
+      "required": true,
+      "description": "For zoomin: coordinates, point, or object to zoom into"
+    },
+    {
+      "name": "scale",
+      "type": "number (0.1 - 2.0)",
+      "required": false,
+      "description": "Zoom scale for zoomin (default 0.5 = zoom to 50% of range)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Zoom in to coordinates",
+      "syntax": "zoomin(at(row, col), graph, x, y)",
+      "description": "Button that zooms into a specific point with default scale"
+    },
+    {
+      "variant": "Zoom in with scale",
+      "syntax": "zoomin(at(row, col), graph, x, y, scale)",
+      "description": "Button that zooms into a point with custom scale factor"
+    },
+    {
+      "variant": "Zoom in to point variable",
+      "syntax": "zoomin(at(row, col), graph, pointVar)",
+      "description": "Button that zooms into a previously defined point"
+    },
+    {
+      "variant": "Zoom in to point with scale",
+      "syntax": "zoomin(at(row, col), graph, pointVar, scale)",
+      "description": "Button that zooms to a point with custom scale"
+    },
+    {
+      "variant": "Zoom in to object",
+      "syntax": "zoomin(at(row, col), graph, objectVar)",
+      "description": "Button that zooms into the center of a circle, polygon, or other object"
+    },
+    {
+      "variant": "Zoom out (reset)",
+      "syntax": "zoomout(at(row, col), graph)",
+      "description": "Button that resets zoom to original view with default 1s duration"
+    },
+    {
+      "variant": "Zoom out with duration",
+      "syntax": "zoomout(at(row, col), graph, duration)",
+      "description": "Button that resets zoom with custom animation duration"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Zoom in button for a polygon region",
+      "expression": "G = g2d(at(2,2), 20, 30, range(-1, 10), type(plotting))\nP = polygon(G, point(G, 0, 0), point(G, 4, 0), point(G, 0, 3))\nzoomin(at(25,2), G, P)"
+    },
+    {
+      "scenario": "Zoom in button to specific coordinates",
+      "expression": "zoomin(at(25,2), G, 3, 4)"
+    },
+    {
+      "scenario": "Zoom in button with custom scale",
+      "expression": "zoomin(at(25,2), G, 3, 4, 0.3)"
+    },
+    {
+      "scenario": "Zoom out button to reset view",
+      "expression": "zoomout(at(25,5), G)"
+    },
+    {
+      "scenario": "Zoom out button with fast animation",
+      "expression": "zoomout(at(25,5), G, 0.5)"
+    }
+  ]
+}

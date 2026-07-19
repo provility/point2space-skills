@@ -1,0 +1,58 @@
+{
+  "expression": "plot (advanced)",
+  "_requires": ["g2d"],
+  "description": "Advanced plot features: plotting from function definitions and discontinuous plots with holes/excluded points. For piecewise functions use piecewiseplot(), for implicit curves use implicitplot(), for parametric curves use paraplot().",
+  "utility": "Plot funcdef-based functions and functions with holes/excluded points",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "equation",
+      "type": "string | function | variable",
+      "required": true,
+      "description": "Function expression as a quoted ASCII math string, a function reference, or a string variable"
+    },
+    {
+      "name": "range",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Optional domain restriction for the x range"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color - e.g., c(blue), c(red)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From a function definition",
+      "syntax": "f(x) = x^2 + a\nplot(G, f)",
+      "description": "Plot a previously defined function"
+    },
+    {
+      "variant": "With hole (excluded point)",
+      "syntax": "piecewiseplot(G, \"f(x)\", \"x != value\")",
+      "description": "Plot with an open circle at the excluded x-value using piecewiseplot"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plot with a hole at x=1",
+      "expression": "G = g2d(at(4,3), 30, 30, type(plotting))\nplot(G, \"(x^2-1)/(x-1)\", \"x != 1\")"
+    },
+    {
+      "scenario": "Plot from function definitions with parameter variable",
+      "expression": "G = g2d(at(4,3), 30, 30, type(plotting))\na = -1\nf(x) = x^2 + a\ng(x) = sin(x)\nh(x) = f(x) + g(x)\nplot(G, h)"
+    },
+    {
+      "scenario": "Piecewise function using piecewiseplot",
+      "expression": "G = g2d(at(4,3), 20, 20, type(plotting))\npiecewiseplot(G, \"1\", \"x > 0\", \"-1\", \"x < 0\")"
+    }
+  ]
+}

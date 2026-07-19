@@ -1,0 +1,26 @@
+{
+  "expression": "compassangle",
+  "_requires": ["g2d"],
+  "description": "Animates changing the compass opening angle to a new value in degrees",
+  "utility": "Adjust the compass arm opening angle before drawing",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph containing the compass"
+    },
+    {
+      "name": "angleDegrees",
+      "type": "number",
+      "required": true,
+      "description": "The new opening angle in degrees"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Open compass to 45 degrees",
+      "expression": "G = g2d(-10, 10, -10, 10); compassangle(G, 45)"
+    }
+  ]
+}

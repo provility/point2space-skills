@@ -1,0 +1,72 @@
+{
+  "expression": "textreveal",
+  "description": "Animate revealing a previously hidden text portion. Used after write(..., exclude()) to reveal the excluded terms. Accepts the exclude result variable from write(..., exclude()). Can also reveal any select() result.",
+  "utility": "Animate revealing hidden or selected text portions",
+  "arguments": [
+    {
+      "name": "selection",
+      "type": "variable",
+      "required": true,
+      "description": "Reference to a select or exclude variable (e.g., M_exclude_1 from write(..., exclude()))"
+    },
+    {
+      "name": "buff",
+      "type": "buff(row, col)",
+      "required": false,
+      "description": "Position offset in logical units"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Custom animation duration"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic reveal",
+      "syntax": "textreveal(M_exclude_1)",
+      "description": "Reveal the first excluded portion from write(..., exclude())"
+    },
+    {
+      "variant": "With position offset",
+      "syntax": "textreveal(M_exclude_1, buff(-0.4, -0.2))",
+      "description": "Reveal with position adjustment"
+    },
+    {
+      "variant": "Reveal a select result",
+      "syntax": "textreveal(sel)",
+      "description": "Reveal a selected portion"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Reveal excluded term in equation",
+      "expression": "text_reveal_1=textreveal(writewithout_1_select_1,buff(-0.4,-0.2),notes(\"hello world\"))"
+    },
+    {
+      "scenario": "Reveal expanded equation with color",
+      "expression": "text_reveal_1=textreveal(write_7_select_1,c(orange))"
+    },
+    {
+      "scenario": "Reveal matrix content with timing",
+      "expression": "text_reveal_1=textreveal(write_1,t(2))"
+    },
+    {
+      "scenario": "Reveal excluded distance formula term",
+      "expression": "text_reveal_1 = textreveal(write_1_select_1)"
+    },
+    {
+      "scenario": "Reveal three excluded factored terms sequentially in optimization derivative",
+      "expression": "text_reveal_1=textreveal(write_3_select_2,c(black))\ntext_reveal_2=textreveal(write_3_select_1,c(black))\ntext_reveal_3=textreveal(write_3_select_3,c(black))"
+    },
+    {
+      "scenario": "Reveal two excluded substitution values with deferred parallel play",
+      "expression": "text_reveal_3=textreveal(write_11_select_2,defer())\ntext_reveal_4=textreveal(write_11_select_1,defer())\nplay_3 = play(text_reveal_3, text_reveal_4, type(parallel))"
+    },
+    {
+      "scenario": "Reveal excluded b^2 term in completing the square with color",
+      "expression": "write_1=write(at(10,12),\"x^2 + bx = (x + b/2)^2 - b^2/4\",exclude(\"b^2\",1))\ntext_reveal_1=textreveal(write_1_select_1,c(darkred))"
+    }
+  ]
+}

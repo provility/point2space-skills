@@ -1,0 +1,24 @@
+{
+  "expression": "templateshape2d",
+  "_requires": [],
+  "description": "Renders a 2D template shape as SVG. Combines a position, viewport size, profile2d specification, and styling.",
+  "utility": "Render a 2D template shape",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size (defaults to 6x6)"},
+    {"name": "profile", "type": "profile2d(name)", "required": false, "description": "2D profile shape (defaults to rectangle)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Rectangle template shape",
+      "expression": "ts_1 = templateshape2d(at(7,34), view(16,23.7), profile2d(\"rectangle\"), c(navy), fc(lightyellow), fo(0.5))"
+    },
+    {
+      "scenario": "Star template shape",
+      "expression": "ts_1 = templateshape2d(at(4,7), view(13.5,18.7), profile2d(\"star-5pt\"), c(navy), fc(lightyellow), fo(0.5))"
+    }
+  ]
+}

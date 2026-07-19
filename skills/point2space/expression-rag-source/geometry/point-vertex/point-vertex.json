@@ -1,0 +1,36 @@
+{
+  "expression": "point (vertex)",
+  "_requires": ["g2d"],
+  "description": "Extracts the nth vertex (1-based) from a polygon, triangle (sss, sas, asa, aas), rect, or square.",
+  "syntax": "point(G, item(polygon, type(vertex), n))",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "polygon",
+      "type": "polygon/triangle/rect/square",
+      "required": true,
+      "description": "The polygon or triangle shape to extract a vertex from"
+    },
+    {
+      "name": "n",
+      "type": "number",
+      "required": true,
+      "description": "1-based vertex index"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Extract second vertex from triangle",
+      "expression": "V2 = point(G, item(tri, type(vertex), 2))"
+    },
+    {
+      "scenario": "Extract first vertex from polygon",
+      "expression": "V1 = point(G, item(poly, type(vertex), 1))"
+    }
+  ]
+}

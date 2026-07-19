@@ -1,0 +1,60 @@
+{
+  "expression": "property (triangle centers)",
+  "_requires": ["g2d"],
+  "description": "Extract triangle center points. Returns point coordinates for centroid, incenter, circumcenter, and orthocenter.",
+  "utility": "Extract triangle center points (centroid, incenter, circumcenter, orthocenter)",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "triangle",
+      "required": true,
+      "description": "Triangle variable to extract center from"
+    },
+    {
+      "name": "propertyName",
+      "type": "property name",
+      "required": true,
+      "description": "Center property name to extract"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Triangle centroid",
+      "syntax": "p(triangle, centroid)",
+      "description": "Get triangle centroid point"
+    },
+    {
+      "variant": "Triangle incenter",
+      "syntax": "p(triangle, incenter)",
+      "description": "Get inscribed circle center"
+    },
+    {
+      "variant": "Triangle circumcenter",
+      "syntax": "p(triangle, circumcenter)",
+      "description": "Get circumscribed circle center"
+    },
+    {
+      "variant": "Triangle orthocenter",
+      "syntax": "p(triangle, orthocenter)",
+      "description": "Get altitudes intersection point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get and draw triangle centroid",
+      "expression": "centroid_point = point(graph_1, p(triangle_1, centroid), c(red))"
+    },
+    {
+      "scenario": "Get and draw triangle incenter",
+      "expression": "incenter_point = point(graph_1, p(triangle_1, incenter), c(blue))"
+    },
+    {
+      "scenario": "Get and draw circumcenter",
+      "expression": "circumcenter_point = point(graph_1, p(triangle_1, circumcenter), c(green))"
+    },
+    {
+      "scenario": "Get and draw orthocenter",
+      "expression": "orthocenter_point = point(graph_1, p(triangle_1, orthocenter), c(purple))"
+    }
+  ]
+}

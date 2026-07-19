@@ -1,0 +1,14 @@
+{
+  "expression": "parallelmarker",
+  "_requires": ["g2d"],
+  "description": "Mark parallel lines or segments visually",
+  "utility": "Indicate parallel relationships",
+  "arguments": [
+    {"name": "line1", "type": "line", "required": true, "description": "First line"},
+    {"name": "line2", "type": "line", "required": true, "description": "Second line"},
+    {"name": "marks", "type": "number", "required": false, "description": "Number of tick marks"}
+  ],
+  "examples": [
+    {"scenario": "Mark parallel", "expression": "parallelmarker(L1, L2, 1)"}
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "expression": "setvalue",
+  "_requires": [],
+  "description": "Sets a control's value programmatically. Works with dropdown, inputstepper, and inputnumber controls. Can be used standalone or nested inside playinputaction and playinputanimator as a value assignment before replay/animation.",
+  "utility": "Set a control's value programmatically during playback",
+  "arguments": [
+    {
+      "name": "targetRef",
+      "type": "variable reference",
+      "required": true,
+      "description": "Reference to a dropdown, stepper, or inputnumber control"
+    },
+    {
+      "name": "value",
+      "type": "number or string",
+      "required": true,
+      "description": "Value to set"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Set numeric value on dropdown",
+      "syntax": "setvalue(dd, 2)",
+      "description": "Set dropdown to numeric value 2"
+    },
+    {
+      "variant": "Set string value on dropdown",
+      "syntax": "setvalue(dd, \"x^2\")",
+      "description": "Set dropdown to a symbolic/string value"
+    },
+    {
+      "variant": "Set value on stepper",
+      "syntax": "setvalue(stepper1, 10)",
+      "description": "Set stepper to value 10"
+    },
+    {
+      "variant": "Inside playinputaction",
+      "syntax": "playinputaction(at(3, 4), setvalue(n, 10), A, display(\"Go\"))",
+      "description": "Nested inside playinputaction to set value before command replay"
+    },
+    {
+      "variant": "Inside playinputanimator",
+      "syntax": "playinputanimator(at(3, 4), setvalue(a, 10), t(6), display(\"Animate\"))",
+      "description": "Nested inside playinputanimator to animate from current to new value"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Set dropdown value during playback",
+      "expression": "n = 1\ndrop_1 = dropdown(at(3, 4), \"n\", value(1, 2, 3, 4, 5), display(\"n\"), type(number), ref(1))\nsetvalue(drop_1, 3)"
+    },
+    {
+      "scenario": "Set inputnumber value inside playinputaction",
+      "expression": "number_1 = inputnumber(at(5, 16), \"a\", value(20), size(4), display(\"A\"))\nplayinputaction(at(4, 6), setvalue(number_1, 10), primefactor_1, type(sequence), display(\"Play\"))"
+    },
+    {
+      "scenario": "Set value inside playinputanimator",
+      "expression": "a = 1\nf = plot(G, \"a*x^2\")\nbtn_1 = playinputanimator(at(6, 16), setvalue(a, 10), t(6), display(\"Animate\"))"
+    }
+  ]
+}

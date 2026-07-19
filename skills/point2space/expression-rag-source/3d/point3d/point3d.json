@@ -1,0 +1,94 @@
+{
+  "expression": "point3d",
+  "_requires": ["g3d"],
+  "description": "Places a point in 3D space at explicit (x, y, z) coordinates within a g3d graph container. Takes explicit coordinates: point3d(G, x, y, z).",
+  "utility": "Create a point at (x, y, z) in 3D space",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "required": true,
+      "description": "X coordinate of the point"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "required": true,
+      "description": "Y coordinate of the point"
+    },
+    {
+      "name": "z",
+      "type": "number",
+      "required": true,
+      "description": "Z coordinate of the point"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Explicit coordinates",
+      "syntax": "point3d(G, x, y, z)",
+      "description": "Point at explicit (x, y, z) coordinates"
+    },
+    {
+      "variant": "With color",
+      "syntax": "point3d(G, x, y, z, c(red))",
+      "description": "Point with a custom color"
+    },
+    {
+      "variant": "With stroke width",
+      "syntax": "point3d(G, x, y, z, s(3))",
+      "description": "Point with custom visual radius via stroke width"
+    },
+    {
+      "variant": "Spherical coordinates",
+      "syntax": "point3d(G, r, theta, phi, type(spherical))",
+      "description": "Point in spherical coordinates (r, theta, phi)"
+    },
+    {
+      "variant": "Cylindrical coordinates",
+      "syntax": "point3d(G, r, theta, z, type(cylindrical))",
+      "description": "Point in cylindrical coordinates (r, theta, z)"
+    },
+    {
+      "variant": "Hidden reference point",
+      "syntax": "point3d(G, x, y, z, defer())",
+      "description": "Hidden point used for computation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Origin point in 3D for scalar triple product",
+      "expression": "O = point3d(G, 0, 0, 0)"
+    },
+    {
+      "scenario": "3D point for vector endpoint",
+      "expression": "U = point3d(G, 2, 1, 3)"
+    },
+    {
+      "scenario": "Point on surface with function evaluation",
+      "expression": "pt = point3d(G, x0, y0, f(x0, y0))"
+    },
+    {
+      "scenario": "Multiple 3D points at different positions",
+      "expression": "graph_1 = g3d(at(14,34), view(10.2, 16.2), range(-5, 5), range(-5, 5), range(-5, 5))\npoint_1 = point3d(graph_1, 3.7, 3.5, 0.0)\npoint_2 = point3d(graph_1, 1.2, -2.4, 0.0)\npoint_3 = point3d(graph_1, -2.7, -2.4, 0.0)"
+    },
+    {
+      "scenario": "Point in spherical coordinates",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nP = point3d(G, 5, 45, 30, type(spherical))"
+    },
+    {
+      "scenario": "Spherical point with animated variables (r, theta, phi)",
+      "expression": "var_r = variableanimator(at(3,6.7), \"r\", 4, 6, \"r\")\nvar_theta = variableanimator(at(2.9,13.1), \"theta\", 30, 200, \"θ\")\nvar_phi = variableanimator(at(3.1,22), \"phi\", 60, 140, \"φ\")\nP = point3d(G, r, theta, phi, type(spherical))"
+    },
+    {
+      "scenario": "Hidden reference points on axes for angle arcs",
+      "expression": "pXAxis = point3d(G, 2, 0, 0, defer())\npYAxis = point3d(G, 0, 2, 0, defer())"
+    }
+  ]
+}

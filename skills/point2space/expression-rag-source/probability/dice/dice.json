@@ -1,0 +1,13 @@
+{
+  "expression": "dice",
+  "_requires": [],
+  "description": "Generates die outcomes (1-6) per die rolled. Used as an experiment component inside sspace().",
+  "utility": "Define dice for a sample space",
+  "arguments": [
+    {"name": "count", "type": "number", "required": false, "description": "Number of dice to roll (default: 1)"}
+  ],
+  "examples": [
+    {"scenario": "Single die", "expression": "S = sspace(at(4,4), view(14,20), dice(1))"},
+    {"scenario": "Two dice", "expression": "S = sspace(at(4,4), view(14,20), dice(2))"}
+  ]
+}

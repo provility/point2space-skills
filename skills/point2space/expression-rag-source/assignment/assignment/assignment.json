@@ -1,0 +1,78 @@
+{
+  "expression": "assignment",
+  "_requires": [],
+  "description": "Assigns values to variables using natural syntax. Supports numeric values, point tuples, vector literals, and matrix literals. Variables can reference other variables and be used in any subsequent expression.",
+  "utility": "Define variables, point tuples, vectors, and matrices using natural assignment",
+  "arguments": [
+    {
+      "name": "variable",
+      "type": "variable name",
+      "required": true,
+      "description": "Variable name to assign to (left side)"
+    },
+    {
+      "name": "value",
+      "type": "expression",
+      "required": true,
+      "description": "Value or expression to assign (right side)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Numeric variable",
+      "syntax": "R = 4",
+      "description": "Simple numeric variable assignment"
+    },
+    {
+      "variant": "Point tuple",
+      "syntax": "A = (3, 4)",
+      "description": "2D point tuple assignment"
+    },
+    {
+      "variant": "Vector literal",
+      "syntax": "v = {3, 4}",
+      "description": "2D vector literal assignment"
+    },
+    {
+      "variant": "Matrix literal",
+      "syntax": "M = [[1, 0], [0, 1]]",
+      "description": "Matrix assignment using double-bracket syntax"
+    },
+    {
+      "variant": "Expression result",
+      "syntax": "C = A + B",
+      "description": "Assign result of expression involving other variables"
+    },
+    {
+      "variant": "Scaled tuple",
+      "syntax": "B = 1.3 * (4, 2)",
+      "description": "Assign a scaled point tuple"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Numeric variables",
+      "expression": "R = 4\nangle = pi/4"
+    },
+    {
+      "scenario": "Point tuple variables",
+      "expression": "A = (2, 1)\nB = 1.3 * (4, 2)"
+    },
+    {
+      "scenario": "Vector variables",
+      "expression": "c = {2, 3}\nd = {-1, 2}"
+    },
+    {
+      "scenario": "Matrix variable and arithmetic",
+      "expression": "M = [[cos(pi/4), -sin(pi/4)], [sin(pi/4), cos(pi/4)]]\nI = [[1, 0], [0, 1]]\nN = M + I\nU = 2 * M"
+    },
+    {
+      "scenario": "Assign geometry references",
+      "expression": "A = point(G, 0, 0)\nB = point(G, 3, 4)\nL = line(G, A, B)"
+    },
+    {
+      "scenario": "Variables used in graph expressions",
+      "expression": "A = (2, 1)\nB = 1.3 * (4, 2)\ngraph_1 = g2d(at(2.7, 3.4), size(11.7), range(-1, 6), type(geometry))\npt = point(graph_1, B)\nl1 = line(graph_1, A, B)"
+    }
+  ]
+}

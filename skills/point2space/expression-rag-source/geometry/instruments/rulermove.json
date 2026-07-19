@@ -1,0 +1,26 @@
+{
+  "expression": "rulermove",
+  "_requires": ["g2d"],
+  "description": "Animates translating the ruler to a new position on the graph",
+  "utility": "Reposition the ruler before drawing the next line or marking a point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph containing the ruler"
+    },
+    {
+      "name": "newPosition",
+      "type": "point",
+      "required": true,
+      "description": "The new position to move the ruler to"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Move ruler to (4,3) then draw a line",
+      "expression": "G = g2d(-10, 10, -10, 10); rulermove(G, point(G, 4, 3)); rulerline(G, point(G, 4, 3), point(G, 8, 6))"
+    }
+  ]
+}

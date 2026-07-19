@@ -1,0 +1,13 @@
+{
+  "expression": "repeat",
+  "_requires": [],
+  "description": "Specifies repetition count for binary tree trials or sample space experiments. Max 8 for btree (256 leaf limit).",
+  "utility": "Repeat trials or experiments",
+  "arguments": [
+    {"name": "count", "type": "number", "required": false, "description": "Number of repetitions (default: 1, max: 8 for btree)"}
+  ],
+  "examples": [
+    {"scenario": "Repeat 3 times", "expression": "T = btree(at(4,4), view(12,20), trial(\"H\", \"T\", 1, 2), repeat(3))"},
+    {"scenario": "Repeat experiment", "expression": "S = sspace(at(4,4), view(14,20), outcomes(\"A\", \"B\"), repeat(2))"}
+  ]
+}

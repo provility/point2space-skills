@@ -1,0 +1,36 @@
+{
+  "expression": "hcfbar",
+  "_requires": ["primefactor"],
+  "description": "Shows the Highest Common Factor (HCF/GCD) using prime factor bars. Requires two or more primefactor variable references. Standalone expression with at() positioning. Leaf nodes are highlighted with an orange stroke for emphasis.",
+  "utility": "Visualize HCF using prime factor bars",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Canvas position"
+    },
+    {
+      "name": "factors",
+      "type": "primefactor variables",
+      "required": true,
+      "description": "Two or more primefactor variable references"
+    },
+    {
+      "name": "viewSize",
+      "type": "view(h, w)",
+      "required": false,
+      "description": "Container size"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "HCF of 12 and 18",
+      "expression": "P1 = primefactor(at(4,4), 12)\nP2 = primefactor(at(4,10), 18)\nH = hcfbar(at(10,4), P1, P2)"
+    },
+    {
+      "scenario": "HCF of three numbers",
+      "expression": "P1 = primefactor(at(4,4), 24)\nP2 = primefactor(at(4,10), 36)\nP3 = primefactor(at(4,16), 48)\nH = hcfbar(at(10,4), P1, P2, P3)"
+    }
+  ]
+}

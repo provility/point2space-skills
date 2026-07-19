@@ -1,0 +1,54 @@
+{
+  "expression": "line (polar)",
+  "_requires": ["g2d"],
+  "description": "Creates a line on a 2D graph using polar form, specifying a length and angle in degrees. Can originate from the graph origin or from a specified origin point.",
+  "utility": "Draw a line using polar coordinates (length and angle)",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "length",
+      "type": "number",
+      "required": true,
+      "description": "Length of the line"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": true,
+      "description": "Angle in degrees"
+    },
+    {
+      "name": "origin",
+      "type": "point",
+      "required": false,
+      "description": "Origin point (defaults to graph origin if omitted)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Polar line from origin",
+      "syntax": "line(G, length, angle, type(polar))",
+      "description": "Line of given length at given angle (degrees) from origin"
+    },
+    {
+      "variant": "Polar line from specified origin",
+      "syntax": "line(G, length, angle, origin, type(polar))",
+      "description": "Line of given length at given angle from a specified origin point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Polar line of length 5 at 45 degrees from origin",
+      "expression": "L = line(G, 5, 45, type(polar))"
+    },
+    {
+      "scenario": "Polar line from a specific point",
+      "expression": "L = line(G, 3, 90, A, type(polar))"
+    }
+  ]
+}

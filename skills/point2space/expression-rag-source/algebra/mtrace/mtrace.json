@@ -1,0 +1,24 @@
+{
+  "expression": "mtrace",
+  "_requires": [],
+  "description": "Sum of diagonal elements of a square matrix. Uses mtrace (not trace) to avoid conflict with curve tracing.",
+  "utility": "Calculate the trace (sum of diagonal) of a square matrix",
+  "arguments": [
+    {
+      "name": "matrix",
+      "type": "matrix",
+      "required": true,
+      "description": "A square matrix variable"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Trace of 2x2 matrix",
+      "expression": "M = [[1, 2], [3, 4]]\nt = mtrace(M)"
+    },
+    {
+      "scenario": "Trace of identity matrix",
+      "expression": "I = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]\nt = mtrace(I)"
+    }
+  ]
+}

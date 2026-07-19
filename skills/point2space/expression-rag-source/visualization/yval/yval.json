@@ -1,0 +1,12 @@
+{
+  "expression": "yval",
+  "_requires": [],
+  "description": "Extract y-coordinate value from point or position",
+  "utility": "Get y component of point for calculations",
+  "arguments": [
+    {"name": "point", "type": "point", "required": true, "description": "Point to extract from"}
+  ],
+  "examples": [
+    {"scenario": "Get y coordinate", "expression": "y = yval(P)"}
+  ]
+}

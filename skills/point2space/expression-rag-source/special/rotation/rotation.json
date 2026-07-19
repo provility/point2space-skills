@@ -1,0 +1,15 @@
+{
+  "expression": "rotation",
+  "_requires": ["g2d"],
+  "description": "Apply rotation transformation to shape",
+  "utility": "Rotate geometry around center point",
+  "arguments": [
+    {"name": "graph", "type": "g2d | g3d", "required": true, "description": "Coordinate system"},
+    {"name": "shape", "type": "geometry", "required": true, "description": "Shape to rotate"},
+    {"name": "angle", "type": "number", "required": true, "description": "Rotation angle (degrees)"},
+    {"name": "center", "type": "point", "required": false, "description": "Center of rotation"}
+  ],
+  "examples": [
+    {"scenario": "Rotate shape", "expression": "rotation(g, C, 45, center(g, 0, 0))"}
+  ]
+}

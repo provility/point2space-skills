@@ -1,0 +1,33 @@
+{
+  "expression": "property (diagonal)",
+  "_requires": ["g2d"],
+  "description": "Extract diagonal length from a rectangle. Returns the numeric diagonal distance.",
+  "utility": "Extract rectangle diagonal length",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "rect",
+      "required": true,
+      "description": "Rectangle variable to extract diagonal from"
+    },
+    {
+      "name": "propertyName",
+      "type": "type(diagonal)",
+      "required": true,
+      "description": "Diagonal property using type() expression"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Rectangle diagonal",
+      "syntax": "p(rect, type(diagonal))",
+      "description": "Get rectangle diagonal length"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get rectangle diagonal length",
+      "expression": "diag_len = p(rect_1, type(diagonal))"
+    }
+  ]
+}

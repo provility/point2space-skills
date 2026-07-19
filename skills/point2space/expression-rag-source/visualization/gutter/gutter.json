@@ -1,0 +1,24 @@
+{
+  "expression": "gutter",
+  "_requires": ["sheetrect"],
+  "description": "Gutter fold operation on a rectangular sheet. Folds the sheet into a U-shaped gutter/channel form.",
+  "utility": "Fold a rectangular sheet into a U-shaped gutter",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position for the gutter view"},
+    {"name": "sheet", "type": "sheetrect variable", "required": true, "description": "Reference to the sheet to fold"},
+    {"name": "foldDepth", "type": "number", "required": false, "description": "Depth of the gutter fold"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Gutter fold from sheet rectangle",
+      "expression": "sheet_1 = sheetrect(at(4,4), view(14,14), 6, 4, c(navy), fc(lightyellow), fo(0.5))\ngutter_1 = gutter(at(12,40), sheet_1, 3, c(navy), fc(lightyellow), fo(0.5))"
+    },
+    {
+      "scenario": "Simple gutter fold",
+      "expression": "sheet_1 = sheetrect(at(4,4), view(14,14), 8, 3, c(navy), fc(lightyellow), fo(0.5))\ngutter_1 = gutter(at(4,22), sheet_1)"
+    }
+  ]
+}

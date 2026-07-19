@@ -1,0 +1,66 @@
+{
+  "expression": "complex",
+  "_requires": ["g2d"],
+  "description": "Represents a complex number on the complex plane with optional vector display",
+  "utility": "Visualizes complex numbers in Cartesian or polar form with arithmetic operations support",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph (complex plane) to plot on"
+    },
+    {
+      "name": "a (or z)",
+      "type": "number or complex",
+      "required": true,
+      "description": "Real part in Cartesian form, or magnitude in polar form, or a complex number to copy"
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "required": false,
+      "description": "Imaginary part in Cartesian form, or angle (degrees) in polar form. Required unless first arg is complex"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Cartesian form (point only)",
+      "syntax": "complex(graph, a, b)",
+      "description": "Plot complex number a + bi as a point on the plane"
+    },
+    {
+      "variant": "Cartesian form (with vector)",
+      "syntax": "complex(graph, a, b, type(2)) or complex(graph, a, b, type(vector))",
+      "description": "Plot a + bi showing both point and vector from origin"
+    },
+    {
+      "variant": "Polar form",
+      "syntax": "complex(graph, r, θ, type(polar))",
+      "description": "Plot magnitude r at angle θ (degrees). Always shows point and vector"
+    },
+    {
+      "variant": "Copy from existing complex",
+      "syntax": "complex(graph, z)",
+      "description": "Create new complex number from existing complex number z"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plot 3 + 4i as a point",
+      "expression": "G = g2d(-5, 5, -5, 5); z = complex(G, 3, 4)"
+    },
+    {
+      "scenario": "Plot 3 + 4i with vector shown",
+      "expression": "G = g2d(-5, 5, -5, 5); z = complex(G, 3, 4, type(vector))"
+    },
+    {
+      "scenario": "Plot in polar form: magnitude 5 at 45 degrees",
+      "expression": "G = g2d(-5, 5, -5, 5); z = complex(G, 5, 45, type(polar), c(red))"
+    },
+    {
+      "scenario": "Complex arithmetic",
+      "expression": "z1 = complex(G, 1, 2); z2 = complex(G, 3, 4); sum = z1 + z2; product = z1 * z2"
+    }
+  ]
+}

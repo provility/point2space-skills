@@ -1,0 +1,14 @@
+{
+  "expression": "frombag",
+  "_requires": [],
+  "description": "Specifies how many items to draw from a specific bag. Used inside pick().",
+  "utility": "Specify draws from a bag",
+  "arguments": [
+    {"name": "bagLabel", "type": "quoted string", "required": true, "description": "Name of the bag to draw from"},
+    {"name": "count", "type": "number", "required": false, "description": "Number of items to draw (default: 1)"}
+  ],
+  "examples": [
+    {"scenario": "Draw 2 from Urn", "expression": "frombag(\"Urn\", 2)"},
+    {"scenario": "Draw 1 from Bag1", "expression": "frombag(\"Bag1\", 1)"}
+  ]
+}

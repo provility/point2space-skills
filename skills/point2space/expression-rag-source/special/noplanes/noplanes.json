@@ -1,0 +1,19 @@
+{
+  "expression": "noplanes",
+  "_requires": [],
+  "description": "Controls coordinate plane visibility in 3D graphs. Each argument toggles a plane: 0 hides, 1 shows. Arguments are positional: (xy, yz, xz). Called with no arguments hides all planes.",
+  "utility": "Show or hide coordinate planes in 3D views",
+  "arguments": [
+    {"name": "xy", "type": "number", "required": false, "description": "XY plane visibility (0=hide, 1=show)"},
+    {"name": "yz", "type": "number", "required": false, "description": "YZ plane visibility (0=hide, 1=show)"},
+    {"name": "xz", "type": "number", "required": false, "description": "XZ plane visibility (0=hide, 1=show)"}
+  ],
+  "alternates": [
+    {"variant": "Hide all planes", "syntax": "noplanes()", "description": "Hides all three coordinate planes"},
+    {"variant": "Show specific planes", "syntax": "noplanes(1, 0, 1)", "description": "Show XY and XZ, hide YZ"}
+  ],
+  "examples": [
+    {"scenario": "Hide all planes", "expression": "cube3d(at(4,4), view(14,14), 3, noplanes(), c(navy), fc(lightyellow), fo(0.5))"},
+    {"scenario": "Show only XY plane", "expression": "cylinder3d(at(4,4), view(14,14), 3, 5, noplanes(1, 0, 0), c(navy), fc(lightyellow), fo(0.5))"}
+  ]
+}

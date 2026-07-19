@@ -1,0 +1,16 @@
+{
+  "expression": "drain3d",
+  "_requires": [],
+  "description": "Drain animation for solid shapes. Reverse of fill3d — animates liquid draining from full to empty.",
+  "utility": "Animate a drain effect inside a 3D solid",
+  "arguments": [
+    {"name": "solidRef", "type": "variable", "required": true, "description": "Reference to solid shape to drain"},
+    {"name": "range", "type": "range(from, to)", "required": false, "description": "Drain level range. Default 1 to 0"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Liquid color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Liquid opacity"}
+  ],
+  "examples": [
+    {"scenario": "Drain a cylinder", "expression": "S = cylinder3d(at(4,4), view(14,14), 2, 5, c(navy))\ndrain3d(S, fc(blue), fo(0.6))"},
+    {"scenario": "Partial drain", "expression": "drain3d(S, range(1, 0.3), fc(aqua), fo(0.5))"}
+  ]
+}

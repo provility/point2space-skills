@@ -1,0 +1,54 @@
+{
+  "expression": "area",
+  "_requires": ["sheetrect"],
+  "description": "Area grid overlay on a sheet shape. Defines a rectangular region using horizontal and vertical ranges (normalized 0-1), with a grid size for counting.",
+  "utility": "Overlay area grid on a sheet for region visualization",
+  "arguments": [
+    {
+      "name": "sheetRef",
+      "type": "variable",
+      "required": true,
+      "description": "Reference to sheetrect or sheetcircle"
+    },
+    {
+      "name": "hRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Horizontal range (normalized 0-1)"
+    },
+    {
+      "name": "vRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Vertical range (normalized 0-1)"
+    },
+    {
+      "name": "gridSize",
+      "type": "size(cols, rows)",
+      "required": false,
+      "description": "Grid dimensions"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(color)",
+      "required": false,
+      "description": "Fill color for the area"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(number)",
+      "required": false,
+      "description": "Fill opacity (0-1)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Four area regions on a sheet with different colors",
+      "expression": "s = sheetrect(at(2,2), view(10,10), 5, 5, fc(lightyellow), fo(0.2))\nag1 = area(s, range(0, 0.6), range(0, 0.6), size(3,3), fc(red), fo(0.15))\nag2 = area(s, range(0.6, 1), range(0, 0.6), size(2,3), fc(green), fo(0.15))\nag3 = area(s, range(0, 0.6), range(0.6, 1), size(3,2), fc(green), fo(0.15))\nag4 = area(s, range(0.6, 1), range(0.6, 1), size(2,2), fc(blue), fo(0.15))"
+    },
+    {
+      "scenario": "Simple area grid on a sheet",
+      "expression": "sheet = sheetrect(at(4,4), view(14,14), 6, 4, c(navy), fc(lightyellow), fo(0.5))\narea_1 = area(sheet, range(0, 1), range(0, 1), size(6, 4))"
+    }
+  ]
+}

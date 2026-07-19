@@ -1,0 +1,13 @@
+{
+  "expression": "coin",
+  "_requires": [],
+  "description": "Generates coin outcomes (H, T) per toss. Used as an experiment component inside sspace().",
+  "utility": "Define coin tosses for a sample space",
+  "arguments": [
+    {"name": "count", "type": "number", "required": false, "description": "Number of coin tosses (default: 1)"}
+  ],
+  "examples": [
+    {"scenario": "Single coin toss", "expression": "S = sspace(at(4,4), view(14,20), coin(1))"},
+    {"scenario": "Three coin tosses", "expression": "S = sspace(at(4,4), view(14,20), coin(3))"}
+  ]
+}

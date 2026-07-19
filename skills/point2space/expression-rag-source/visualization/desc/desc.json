@@ -1,0 +1,23 @@
+{
+  "expression": "desc",
+  "_requires": [],
+  "description": "Display computed property values or formatted text at a grid position. Use ONLY when the user explicitly requests displaying values or text. Content is in MATH MODE by default — all text is rendered as math. Plain text must be wrapped in text() to display as normal text. Example: \"text(Step 1:) x^2 + y^2 = r^2\" renders 'Step 1:' as plain text and the equation as math.",
+  "utility": "Display computed property values or formatted text at grid position",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Grid position (row, col)"},
+    {"name": "content", "type": "string", "required": true, "description": "Content string in math mode by default. Wrap plain text in text() — e.g., \"text(Result:) x = 5\""},
+    {"name": "styles", "type": "styling", "required": false, "description": "c(), fc(), fo(), fs(), rotation()"}
+  ],
+  "alternates": [
+    "desc(at(r, c), \"x^2 + y^2 = 1\") - math expression (default mode)",
+    "desc(at(r, c), \"text(Step 1:) x = 5\") - mixed plain text and math",
+    "desc(at(r, c), \"text(This is plain text)\") - plain text only",
+    "desc(at(r, c), \"text\", c(red), fs(14)) - styled text"
+  ],
+  "examples": [
+    {"scenario": "Computed property display with slope", "expression": "desc_2 = desc(at(14,15), \"m = (Delta y)/(Delta x) = :{p(line_1, slope)}:.2f\")"},
+    {"scenario": "Ellipse sum of distances property", "expression": "desc_3 = desc(at(26,32), \"d_1 + d_2 = 2a = 2 cdot :{p(ellipse_1, semimajor)}:.2f = :{2 * p(ellipse_1, semimajor)}:.2f\")"},
+    {"scenario": "Mixed plain text and math formula", "expression": "desc_1 = desc(at(3,5), \"text(Quadratic formula: ) x = (-b +- sqrt(b^2 - 4ac))/(2a)\")"},
+    {"scenario": "Step instruction text (plain text wrapped in text())", "expression": "desc_1=desc(at(8,2),\"text(Step 1 — Define the function:)\",c(steelblue),fs(20))"}
+  ]
+}

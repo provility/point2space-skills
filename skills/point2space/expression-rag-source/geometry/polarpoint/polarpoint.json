@@ -1,0 +1,64 @@
+{
+  "expression": "polarpoint",
+  "_requires": ["g2d"],
+  "description": "Creates a point using polar coordinates (radius and angle in degrees) on a 2D graph, optionally relative to a specified center point.",
+  "utility": "Place a point at polar coordinates (radius, angle) on a graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "required": true,
+      "description": "Radius (distance from origin or center)"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": true,
+      "description": "Angle in degrees"
+    },
+    {
+      "name": "center",
+      "type": "tuple",
+      "required": false,
+      "description": "Optional center point as a tuple for relative polar coordinates"
+    },
+    {
+      "name": "styles",
+      "type": "c() | s() | icon()",
+      "required": false,
+      "description": "Color, size, or marker icon"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Polar point from origin",
+      "syntax": "polarpoint(G, radius, angle)",
+      "description": "Point at polar coordinates (radius, angle in degrees) from origin"
+    },
+    {
+      "variant": "Polar point from center",
+      "syntax": "polarpoint(G, radius, angle, (cx, cy))",
+      "description": "Point at polar coordinates relative to a center point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Point at radius 5, angle 45 degrees from origin",
+      "expression": "P = polarpoint(G, 5, 45)"
+    },
+    {
+      "scenario": "Point at radius 3, angle 90 degrees from center (1,2)",
+      "expression": "P = polarpoint(G, 3, 90, (1, 2))"
+    },
+    {
+      "scenario": "Polar point with color",
+      "expression": "point_2 = polarpoint(G, 1, 45, c(red))"
+    }
+  ]
+}

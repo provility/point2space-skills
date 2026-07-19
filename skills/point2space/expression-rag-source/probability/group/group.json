@@ -1,0 +1,32 @@
+{
+    "expression": "group",
+    "_requires": [
+        "multinomial"
+    ],
+    "description": "Defines a group type with a label and count for use inside multinomial(). Each group represents one type of item in the arrangement.",
+    "utility": "Define a group type for multinomial arrangements",
+    "arguments": [
+        {
+            "name": "label",
+            "type": "quoted string",
+            "required": true,
+            "description": "Display label for the group type (e.g., \"R\", \"B\", \"A\")"
+        },
+        {
+            "name": "count",
+            "type": "number",
+            "required": true,
+            "description": "Number of items of this type"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "3 red items",
+            "expression": "group(\"R\", 3)"
+        },
+        {
+            "scenario": "2 blue items",
+            "expression": "group(\"B\", 2)"
+        }
+    ]
+}

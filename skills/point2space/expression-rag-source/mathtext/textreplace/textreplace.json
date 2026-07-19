@@ -1,0 +1,77 @@
+{
+  "expression": "textreplace",
+  "description": "Replace the content of a target text object or selection. Accepts either a text object variable (textreplace(target, source)) or a string literal (textreplace(target, \"new text\")) as the replacement source. When source is a variable, the source content animates to the target position while the target fades out. When source is a string, the old content fades out and the new string appears in place. Clicking the mutator icon opens the Explorer side panel with full AsciiMath editing, live preview, and symbol picker.",
+  "utility": "Replace text content with another text object or a string literal",
+  "arguments": [
+    {
+      "name": "target",
+      "type": "variable",
+      "required": true,
+      "description": "Text object or selection to be replaced (will fade out)"
+    },
+    {
+      "name": "source",
+      "type": "variable | string",
+      "required": true,
+      "description": "Replacement content — either a text object variable (write, print, label, select result) or a string literal in quotes"
+    },
+    {
+      "name": "buff",
+      "type": "buff(row, col)",
+      "required": false,
+      "description": "Position offset for the replacement"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Replace with text object",
+      "syntax": "textreplace(target, source)",
+      "description": "Copy source object content to target position, target fades out"
+    },
+    {
+      "variant": "Replace with string literal",
+      "syntax": "textreplace(target, \"new text\")",
+      "description": "Replace target content with a string literal"
+    },
+    {
+      "variant": "Object replace with offset",
+      "syntax": "textreplace(target, source, buff(0, -2))",
+      "description": "Replace with text object and position offset"
+    },
+    {
+      "variant": "String replace with offset",
+      "syntax": "textreplace(target, \"new text\", buff(0, 1))",
+      "description": "Replace with string literal and position offset"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Replace h placeholder with center x-coordinate in circle standard form (equation of a circle lesson)",
+      "expression": "text_replace_4=textreplace(select_7,select_4,fs(22),buff(-0.2,0.2),c(orange))"
+    },
+    {
+      "scenario": "Replace k placeholder with center y-coordinate (equation of a circle lesson)",
+      "expression": "text_replace_5=textreplace(select_8,select_5,fs(22),buff(-0.2,0.1),c(green))"
+    },
+    {
+      "scenario": "Replace radius variable with actual value (equation of a circle lesson)",
+      "expression": "text_replace_3=textreplace(select_3,select_6,buff(-0.5,-0.3),c(darkblue))"
+    },
+    {
+      "scenario": "Replace variable in equation with numeric value",
+      "expression": "text_replace_1=textreplace(select_1,\"0\",buff(-0.1,0))"
+    },
+    {
+      "scenario": "Replace x variables with x=30 in height equation for derivatives application",
+      "expression": "select_6 = select(write_15, \"x\", 1)\nselect_7 = select(write_15, \"x\", 2)\ntext_replace_1=textreplace(select_6,select_5,buff(-0.4,-0.2),fs(18))\ntext_replace_2=textreplace(select_7,select_5,buff(-0.5,-0.3),fs(20))"
+    },
+    {
+      "scenario": "Replace question mark label with selected expression from integrand",
+      "expression": "text_replace_6 = textreplace(label_3, select_1, buff(0,-2), type(replace))"
+    },
+    {
+      "scenario": "Replace factored bracket with simplified form in optimization",
+      "expression": "text_replace_1=textreplace(select_4,\"(12-6x)\",fs(20),buff(0,-1))"
+    }
+  ]
+}

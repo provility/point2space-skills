@@ -1,0 +1,59 @@
+{
+  "expression": "buff",
+  "description": "Apply a horizontal and vertical offset to nudge an element from its anchor position without changing the logical attachment point.",
+  "utility": "Offset element position by col/row amount in logical units",
+  "arguments": [
+    {
+      "name": "col",
+      "type": "number",
+      "required": true,
+      "description": "Horizontal offset in logical units (positive = right, negative = left)"
+    },
+    {
+      "name": "row",
+      "type": "number",
+      "required": false,
+      "description": "Vertical offset in logical units (positive = down, negative = up). If omitted, col value is used as a single directional offset."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Two-argument offset",
+      "syntax": "buff(col, row)",
+      "description": "Offset by col horizontally and row vertically"
+    },
+    {
+      "variant": "Single-argument offset",
+      "syntax": "buff(value)",
+      "description": "Single directional offset (context-dependent direction)"
+    },
+    {
+      "variant": "Label with buff",
+      "syntax": "label(G, at(point), \"A\", buff(0.5, 0.5))",
+      "description": "Label offset right and down from point"
+    },
+    {
+      "variant": "Measure with buff",
+      "syntax": "measure(G, p1, p2, \"\", buff(1.7, 1))",
+      "description": "Measurement line offset from points"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Label top-right of a point",
+      "expression": "label_1 = label(graph_1, at(point_1), \"A\", buff(0.5, 0.5))"
+    },
+    {
+      "scenario": "Label left and up from an angle",
+      "expression": "label_2 = label(graph_1, at(angle_2), \"theta\", buff(-0.9, -2))"
+    },
+    {
+      "scenario": "Label above an edge",
+      "expression": "label_3 = label(graph_1, at(item(triangle_1, type(edge), 1)), \"?\", buff(0, 0.5), rotation(0))"
+    },
+    {
+      "scenario": "Measurement offset from points",
+      "expression": "measure_1 = measure(graph_1, point_3, point_4, \"\", buff(1.7, 1))"
+    }
+  ]
+}

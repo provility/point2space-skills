@@ -1,0 +1,24 @@
+{
+  "expression": "box",
+  "description": "Returns the logical bounds of an item as coordinates {row1, col1, row2, col2} for use in positioning or constraint expressions",
+  "utility": "Get bounding box coordinates of shapes for dynamic positioning",
+  "arguments": [
+    {
+      "name": "reference",
+      "type": "variable",
+      "required": true,
+      "description": "Variable reference to an existing shape or element"
+    }
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "Get bounds of a shape",
+      "expression": "bounds = box(myShape)"
+    },
+    {
+      "scenario": "Use bounds for positioning",
+      "expression": "place(G, at(box(shape1).row1, box(shape1).col1))"
+    }
+  ]
+}

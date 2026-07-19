@@ -1,0 +1,60 @@
+{
+  "expression": "dot",
+  "_requires": [],
+  "description": "Dot product of two vectors or points. Works for both 2D and 3D. Can be used as a standalone function with vector literals or vector variables.",
+  "utility": "Calculate the dot product of two vectors",
+  "arguments": [
+    {
+      "name": "vectorA",
+      "type": "vector | point tuple",
+      "required": true,
+      "description": "First vector (vector literal {x,y}, point tuple, or vector variable)"
+    },
+    {
+      "name": "vectorB",
+      "type": "vector | point tuple",
+      "required": true,
+      "description": "Second vector (vector literal {x,y}, point tuple, or vector variable)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Dot product with vector literals",
+      "syntax": "d = dot({3, 4}, {1, 2})",
+      "description": "Dot product of two 2D vector literals"
+    },
+    {
+      "variant": "Dot product with 3D vectors",
+      "syntax": "d = dot({1, 2, 3}, {4, 5, 6})",
+      "description": "Dot product of two 3D vector literals"
+    },
+    {
+      "variant": "Dot product with named vectors",
+      "syntax": "d = dot(a, b)",
+      "description": "Dot product of two named vector variables"
+    },
+    {
+      "variant": "Dot product via p() for graph vectors",
+      "syntax": "d = p(V1, V2, dot)",
+      "description": "Dot product of two graph vector expressions using the p() property accessor"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Dot product of 2D vector literals",
+      "expression": "d = dot({3, 4}, {1, 2})"
+    },
+    {
+      "scenario": "Dot product of 3D vector literals",
+      "expression": "d = dot({1, 2, 3}, {4, 5, 6})"
+    },
+    {
+      "scenario": "Dot product of named vectors",
+      "expression": "a = {2, 3}\nb = {4, 1}\nd = dot(a, b)"
+    },
+    {
+      "scenario": "Dot product of graph vectors via p()",
+      "expression": "G = g2d(at(10, 10), size(25), range(-6, 6), type(geometry))\nA = vector(G, point(G, 0, 0), point(G, 3, 0))\nB = vector(G, point(G, 0, 0), point(G, 0, 4))\nd = p(A, B, dot)"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "expression": "col",
+  "_requires": [],
+  "description": "Extract column index or reference from data",
+  "utility": "Access specific column in data structures",
+  "arguments": [
+    {"name": "data", "type": "table | matrix", "required": true, "description": "Data source"},
+    {"name": "index", "type": "number", "required": true, "description": "Column index"}
+  ],
+  "examples": [
+    {"scenario": "Get column", "expression": "col(table, 0)"}
+  ]
+}

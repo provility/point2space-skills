@@ -1,0 +1,74 @@
+{
+  "expression": "polarvector",
+  "_requires": ["g2d"],
+  "description": "Polar vectors are created using vector() with the type(polar) modifier. There is no standalone polarvector() expression. Use vector(G, length, angle, type(polar)) instead.",
+  "utility": "Create a vector from polar coordinates (length and angle in degrees) using vector() with type(polar)",
+  "redirectTo": "vector",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "length",
+      "type": "number",
+      "required": true,
+      "description": "Magnitude (length) of the vector"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": true,
+      "description": "Angle in degrees measured counterclockwise from positive x-axis"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From origin",
+      "syntax": "vector(G, length, angle, type(polar))",
+      "description": "Polar vector from origin with given length and angle"
+    },
+    {
+      "variant": "From a point variable",
+      "syntax": "vector(G, length, angle, type(polar), point)",
+      "description": "Polar vector starting at given point variable"
+    },
+    {
+      "variant": "From coordinates",
+      "syntax": "vector(G, length, angle, type(polar), ox, oy)",
+      "description": "Polar vector starting at (ox, oy)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Create graph",
+      "expression": "G = g2d(at(8,0), 20, type(geometry))"
+    },
+    {
+      "scenario": "Vector of length 5 at 30 degrees from origin",
+      "expression": "pv1 = vector(G, 5, 30, type(polar))"
+    },
+    {
+      "scenario": "Vector of length 3 at 90 degrees (straight up)",
+      "expression": "pv2 = vector(G, 3, 90, type(polar))"
+    },
+    {
+      "scenario": "Polar vector starting from a point variable",
+      "expression": "P = point(G, 2, 1)"
+    },
+    {
+      "scenario": "Polar vector from point P",
+      "expression": "pv3 = vector(G, 4, 60, type(polar), P)"
+    },
+    {
+      "scenario": "Polar vector starting from coordinates",
+      "expression": "pv4 = vector(G, 4, 45, type(polar), -1, -1)"
+    },
+    {
+      "scenario": "Styled polar vector in blue",
+      "expression": "pv5 = vector(G, 5, 120, type(polar), c(blue))"
+    }
+  ]
+}

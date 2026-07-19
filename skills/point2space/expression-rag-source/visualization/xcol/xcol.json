@@ -1,0 +1,12 @@
+{
+  "expression": "xcol",
+  "_requires": [],
+  "description": "Extract or reference x-column from data",
+  "utility": "Access x values from table or dataset",
+  "arguments": [
+    {"name": "data", "type": "table | data", "required": true, "description": "Data source"}
+  ],
+  "examples": [
+    {"scenario": "Get x values", "expression": "x_vals = xcol(table)"}
+  ]
+}

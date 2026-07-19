@@ -1,0 +1,37 @@
+{
+  "expression": "symmetricline3d",
+  "_requires": ["g3d"],
+  "description": "Creates a 3D line from symmetric (Cartesian) form (x-x0)/a = (y-y0)/b = (z-z0)/c.",
+  "utility": "Create a 3D line from symmetric equation form",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": true,
+      "description": "Symmetric equation - e.g., \"(x-1)/2 = (y-3)/(-1) = (z-2)/4\""
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Standard symmetric form",
+      "syntax": "symmetricline3d(G, \"(x-1)/2 = (y-3)/(-1) = (z-2)/4\")",
+      "description": "Line from symmetric equation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line through (1,3,2) with direction ratios 2:-1:4",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = symmetricline3d(G, \"(x-1)/2 = (y-3)/(-1) = (z-2)/4\")"
+    },
+    {
+      "scenario": "Line through origin with equal direction ratios",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = symmetricline3d(G, \"x/1 = y/1 = z/1\", c(green))"
+    }
+  ]
+}

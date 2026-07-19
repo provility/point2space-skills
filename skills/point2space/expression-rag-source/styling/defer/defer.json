@@ -1,0 +1,20 @@
+{
+  "expression": "defer",
+  "description": "Renders a shape instantly without animation, allowing it to be animated later via play()",
+  "utility": "Create shape immediately but defer animation timing to explicit play() calls",
+  "arguments": [],
+  "examples": [
+    {
+      "scenario": "Draw circle now, animate later",
+      "expression": "circle(0, 1) | defer()"
+    },
+    {
+      "scenario": "Show point instantly with deferred animation",
+      "expression": "point(1, 2) | defer()"
+    },
+    {
+      "scenario": "Multiple shapes with deferred timing",
+      "expression": "A = point(0, 0) | defer(); play(A)"
+    }
+  ]
+}

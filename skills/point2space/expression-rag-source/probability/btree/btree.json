@@ -1,0 +1,18 @@
+{
+  "expression": "btree",
+  "_requires": [],
+  "description": "Displays a binary probability tree with outcomes and probabilities. Shows a formula overlay at the top-left with n, P(success), P(failure), and |S| = 2^n. The formula font size follows the tree's fs() setting.",
+  "utility": "Create a binary probability tree",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "trial", "type": "trial()", "required": false, "description": "Trial definition with labels and probability"},
+    {"name": "repeat", "type": "repeat(n)", "required": false, "description": "Number of trials (default: 1, max: 8)"},
+    {"name": "fontSize", "type": "fs(size)", "required": false, "description": "Font size for tree labels and formula overlay"}
+  ],
+  "examples": [
+    {"scenario": "3 fair coin flips", "expression": "B = btree(trial(\"H\", \"T\", probability(1,2)), repeat(3), at(4,10), view(14,12))"},
+    {"scenario": "Biased experiment", "expression": "B = btree(trial(\"S\", \"F\", probability(2,5)), repeat(2), at(4,10), view(12,12))"},
+    {"scenario": "Tree with sspace grid", "expression": "B = btree(trial(\"H\", \"T\", probability(1,2)), repeat(3), at(4,10), view(14,12))\nS = sspace(B, at(4,24), view(10,10))"}
+  ]
+}

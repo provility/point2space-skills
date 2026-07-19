@@ -1,0 +1,16 @@
+{
+  "expression": "bags",
+  "_requires": [],
+  "description": "Creates a visual representation of bags containing balls for probability drawing experiments. Requires balls() to populate bags.",
+  "utility": "Create bags for ball drawing experiments",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "labels", "type": "quoted strings", "required": true, "description": "Names for each bag (up to 5)"},
+    {"name": "spacing", "type": "buff(gap)", "required": false, "description": "Spacing between bags"}
+  ],
+  "examples": [
+    {"scenario": "Two bags", "expression": "B = bags(at(4,4), view(10,16), \"Bag1\", \"Bag2\")"},
+    {"scenario": "Single bag with balls", "expression": "B = bags(at(4,4), view(10,12), \"Urn\")\nballs(B, \"Urn\", \"red\", 3, c(red))\nballs(B, \"Urn\", \"blue\", 5, c(blue))"}
+  ]
+}

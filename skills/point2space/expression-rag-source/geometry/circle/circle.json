@@ -1,0 +1,86 @@
+{
+  "expression": "circle",
+  "_requires": ["g2d", "point"],
+  "description": "Creates a circle on a 2D graph using center-and-radius, two-point, three-point circumscribed construction, diameter endpoints, or equation string.",
+  "utility": "Draw a circle from center+radius, two points, three points, diameter, or equation",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "center or P1",
+      "type": "point",
+      "required": true,
+      "description": "Center point or first defining point"
+    },
+    {
+      "name": "P2 or radius()",
+      "type": "point | radius(r)",
+      "required": false,
+      "description": "Through-point or radius modifier when center is given"
+    },
+    {
+      "name": "P3",
+      "type": "point",
+      "required": false,
+      "description": "Third point for circumcircle"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Center point + radius",
+      "syntax": "circle(G, center, radius(r))",
+      "description": "Circle with center at a point and given radius"
+    },
+    {
+      "variant": "Center + through point",
+      "syntax": "circle(G, P1, P2)",
+      "description": "Circle centered at P1 passing through P2; radius equals the distance between them"
+    },
+    {
+      "variant": "Circumcircle through three points",
+      "syntax": "circle(G, P1, P2, P3)",
+      "description": "Unique circle passing through all three points"
+    },
+    {
+      "variant": "Diameter endpoints",
+      "syntax": "circle(G, P1, P2, type(diameter))",
+      "description": "Circle with P1 and P2 as diameter endpoints; center is midpoint"
+    },
+    {
+      "variant": "From equation (standard form)",
+      "syntax": "circle(G, \"(x-h)^2 + (y-k)^2 = r^2\")",
+      "description": "Circle from standard equation string"
+    },
+    {
+      "variant": "From equation (general form)",
+      "syntax": "circle(G, \"x^2 + y^2 + Dx + Ey + F = 0\")",
+      "description": "Circle from general quadratic equation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Circle with center point and radius with color and fill (equation of a circle lesson)",
+      "expression": "circle_1=circle(graph_2,point_1,radius(3),c(mediumvioletred),fc(violet))"
+    },
+    {
+      "scenario": "Circle from diameter endpoints (circle from a diameter lesson)",
+      "expression": "circle_1 = circle(graph_1, point_1, point_2, type(diameter), c(mediumvioletred),notes(\"the diameter defines the circle completely\"))"
+    },
+    {
+      "scenario": "Circle from diameter using intersection points (axis intercepts lesson)",
+      "expression": "circle_1 = circle(graph_1, point_3, point_5, type(diameter), c(mediumvioletred),notes(\"A and B are the diameter endpoints\"))"
+    },
+    {
+      "scenario": "Circle from general equation string for point position analysis",
+      "expression": "circle_1=circle(graph_1,\"x^2+y^2-6x-8y+12=0\",c(seagreen))"
+    },
+    {
+      "scenario": "Circle with center on a line using ratio and radius with zero fill opacity",
+      "expression": "circle_1=circle(graph_1,point_1,radius(3),c(mediumvioletred),fo(0),t(1))"
+    }
+  ]
+}

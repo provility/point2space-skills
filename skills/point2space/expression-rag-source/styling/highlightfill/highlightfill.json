@@ -1,0 +1,54 @@
+{
+  "expression": "highlightfill",
+  "_requires": ["g2d"],
+  "description": "Fills a region between 2D shapes or points on a g2d graph with a colored, semi-transparent overlay.",
+  "utility": "Fill a region between 2D shapes with color",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "2D graph container"
+    },
+    {
+      "name": "shapes",
+      "type": "variable references",
+      "required": true,
+      "description": "Shapes or points defining the fill region"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Fill color - e.g., fc(yellow), fc(blue)"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(number)",
+      "required": false,
+      "description": "Fill opacity from 0 (transparent) to 1 (opaque)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic fill region",
+      "syntax": "highlightfill(G, A, B, C)",
+      "description": "Fill region between three shapes with default styling"
+    },
+    {
+      "variant": "With fill color and opacity",
+      "syntax": "highlightfill(G, A, B, C, fc(yellow), fo(0.3))",
+      "description": "Fill region with custom color and transparency"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Fill triangular region between three points",
+      "expression": "G = g2d(at(4,8), 20, 20, type(plotting))\nA = point(G, 0, 0)\nB = point(G, 4, 0)\nC = point(G, 2, 3)\nhighlightfill(G, A, B, C)"
+    },
+    {
+      "scenario": "Fill region between curves with yellow highlight",
+      "expression": "G = g2d(at(4,8), 20, 20, type(plotting))\nf1 = plot(G, \"x^2\")\nf2 = plot(G, \"2*x + 1\")\nhighlightfill(G, f1, f2, fc(yellow), fo(0.3))"
+    }
+  ]
+}

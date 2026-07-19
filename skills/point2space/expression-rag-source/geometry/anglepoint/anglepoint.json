@@ -1,0 +1,58 @@
+{
+  "expression": "anglepoint",
+  "_requires": ["g2d"],
+  "description": "Creates a point on a circle or ellipse at a given angle in degrees.",
+  "utility": "Place a point on a circle/ellipse at a specific angle",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "shape",
+      "type": "circle | ellipse",
+      "required": true,
+      "description": "The circle or ellipse to place the point on"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": true,
+      "description": "Angle in degrees"
+    },
+    {
+      "name": "styles",
+      "type": "c() | s() | icon()",
+      "required": false,
+      "description": "Color, size, or marker icon"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point on circle at angle",
+      "syntax": "anglepoint(G, C, 45)",
+      "description": "Point on circle at 45 degrees"
+    },
+    {
+      "variant": "Point on ellipse at angle",
+      "syntax": "anglepoint(G, E, 90)",
+      "description": "Point on ellipse at 90 degrees"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Point on circle at 45 degrees",
+      "expression": "C = circle(G, (0, 0), radius(3))\nP = anglepoint(G, C, 45)"
+    },
+    {
+      "scenario": "Point on circle at 180 degrees",
+      "expression": "C = circle(G, (0, 0), radius(3))\nQ = anglepoint(G, C, 180)"
+    },
+    {
+      "scenario": "Multiple points on a circle",
+      "expression": "C = circle(G, (0, 0), radius(4))\nP1 = anglepoint(G, C, 0)\nP2 = anglepoint(G, C, 90)\nP3 = anglepoint(G, C, 180)\nP4 = anglepoint(G, C, 270)"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "expression": "inputstepper",
+  "_requires": [],
+  "description": "KaTeX-rendered +/- stepper control bound to a variable. Uses display() for label. Produces an assignment. The variable can be used in other expressions for reactive updates.",
+  "utility": "Create a numeric stepper control bound to a variable",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Canvas position"
+    },
+    {
+      "name": "variableName",
+      "type": "string",
+      "required": true,
+      "description": "Quoted variable name to bind to"
+    },
+    {
+      "name": "defaultValue",
+      "type": "value(default)",
+      "required": true,
+      "description": "Initial/default numeric value"
+    },
+    {
+      "name": "range",
+      "type": "range(min, max, step)",
+      "required": true,
+      "description": "Min, max, and step size"
+    },
+    {
+      "name": "display",
+      "type": "display(\"label\")",
+      "required": false,
+      "description": "Label displayed above the stepper using display() expression"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic stepper",
+      "syntax": "n = inputstepper(at(3, 4), \"n\", value(5), range(0, 100, 1))",
+      "description": "Stepper assigned to variable"
+    },
+    {
+      "variant": "With display label",
+      "syntax": "n = inputstepper(at(3, 4), \"n\", value(5), range(0, 100, 1), display(\"Count\"))",
+      "description": "Stepper with label using display()"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic numeric stepper",
+      "expression": "n = inputstepper(at(3, 4), \"n\", value(5), range(0, 100, 1))"
+    },
+    {
+      "scenario": "Stepper with display label",
+      "expression": "n = inputstepper(at(3, 4), \"n\", value(5), range(0, 100, 1), display(\"Count\"))"
+    },
+    {
+      "scenario": "Stepper for polygon sides",
+      "expression": "sides = inputstepper(at(3, 4), \"sides\", value(6), range(3, 12, 1), display(\"Sides\"))"
+    }
+  ]
+}

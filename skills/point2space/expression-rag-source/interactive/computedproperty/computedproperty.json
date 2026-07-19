@@ -1,0 +1,75 @@
+{
+  "expression": "computedproperty",
+  "_requires": [],
+  "description": "Creates a named numeric variable from a shape property and displays its value (e.g., 'a = 3.50'). Updates automatically when the referenced shape changes.",
+  "utility": "Extract a computed property from a shape and store it as a named variable",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Grid position for the KaTeX display of variable = value"
+    },
+    {
+      "name": "shapeRef",
+      "type": "variable reference",
+      "required": true,
+      "description": "Reference to the shape whose property is being extracted (for dependency tracking)"
+    },
+    {
+      "name": "propertyExpr",
+      "type": "string",
+      "required": true,
+      "description": "Property expression string using p() syntax, e.g., \"p(point_2, x)\" or \"p(line_1, distance)\""
+    },
+    {
+      "name": "variableName",
+      "type": "string",
+      "required": true,
+      "description": "Name of the variable to register with the computed value (e.g., \"a\", \"d\")"
+    },
+    {
+      "name": "styles",
+      "type": "style expressions",
+      "required": false,
+      "description": "Optional styling: c(), fc(), fo(), fs(), etc."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Extract x coordinate of a point",
+      "syntax": "cprop_1 = computedproperty(at(2,10), point_2, \"p(point_2, x)\", \"a\")",
+      "description": "Variable 'a' holds the x-coordinate of point_2, updates dynamically"
+    },
+    {
+      "variant": "Extract distance of a line",
+      "syntax": "cprop_2 = computedproperty(at(3,10), line_1, \"p(line_1, distance)\", \"d\")",
+      "description": "Variable 'd' holds the distance (length) of line_1"
+    },
+    {
+      "variant": "With styling",
+      "syntax": "cprop_3 = computedproperty(at(4,10), circle_1, \"p(circle_1, area)\", \"A\", c(blue), fs(16))",
+      "description": "Styled display of computed area"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Track x-coordinate of a point as variable",
+      "expression": "G = g2d(at(5,9), 20, 20, type(plotting))\nP = point(G, 3, 4)\ncprop_1 = computedproperty(at(2,10), P, \"p(P, x)\", \"a\")"
+    },
+    {
+      "scenario": "Track distance of a line segment",
+      "expression": "G = g2d(at(5,9), 20, 20)\nA = point(G, 0, 0)\nB = point(G, 3, 4)\nL = line(G, A, B, type(segment))\ncprop_1 = computedproperty(at(2,10), L, \"p(L, distance)\", \"d\")"
+    },
+    {
+      "scenario": "Use computed variable in subsequent expressions",
+      "expression": "G = g2d(at(5,9), 20, 20)\nP = point(G, 3, 4)\ncprop_1 = computedproperty(at(2,10), P, \"p(P, x)\", \"px\")\ncprop_2 = computedproperty(at(3,10), P, \"p(P, y)\", \"py\")\ndesc(at(4,10), \"Distance from origin = :{sqrt(px^2 + py^2)}\")"
+    }
+  ],
+  "notes": [
+    "The variable updates dynamically when the referenced shape moves or changes",
+    "Displayed as 'variableName = value' using KaTeX rendering",
+    "Similar to desc() for evaluation but also registers a usable variable like variableanimator()",
+    "The property expression string uses p() syntax: p(shapeRef, propertyName)"
+  ]
+}

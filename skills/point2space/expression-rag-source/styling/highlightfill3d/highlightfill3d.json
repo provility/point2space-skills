@@ -1,0 +1,63 @@
+{
+  "expression": "highlightfill3d",
+  "_requires": ["g3d"],
+  "description": "Fills a region between 3D shapes or points on a g3d graph with a colored, semi-transparent overlay. Requires minimum 3 points.",
+  "utility": "Fill a region between 3D shapes with color",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container"
+    },
+    {
+      "name": "shapes",
+      "type": "variable references",
+      "required": true,
+      "description": "3D shapes or points defining the fill region (minimum 3)"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Fill color (default: dodgerblue)"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(number)",
+      "required": false,
+      "description": "Fill opacity (default: 0.3)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic 3D fill",
+      "syntax": "highlightfill3d(G, A, B, C)",
+      "description": "Fill region between three 3D points with default dodgerblue color"
+    },
+    {
+      "variant": "With color and opacity",
+      "syntax": "highlightfill3d(G, P1, P2, P3, P4, fc(red), fo(0.5))",
+      "description": "Fill region with custom color and opacity"
+    },
+    {
+      "variant": "Between line3d segments",
+      "syntax": "highlightfill3d(G, line1, line2, line3, fc(gold), fo(0.1))",
+      "description": "Fill region defined by line3d segments (uses their endpoints)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Fill triangular face between three 3D points",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = point3d(G, 1, 0, 0)\nB = point3d(G, 0, 1, 0)\nC = point3d(G, 0, 0, 1)\nhighlightfill3d(G, A, B, C)"
+    },
+    {
+      "scenario": "Fill quadrilateral face with red highlight",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nP1 = point3d(G, 0, 0, 0)\nP2 = point3d(G, 2, 0, 0)\nP3 = point3d(G, 2, 2, 0)\nP4 = point3d(G, 0, 2, 0)\nhighlightfill3d(G, P1, P2, P3, P4, fc(red), fo(0.5))"
+    },
+    {
+      "scenario": "Fill triangle between three line3d segments (spherical coordinates)",
+      "expression": "vecR = line3d(G, pOrigin, P, c(crimson), s(0.05))\nvecProj = line3d(G, pOrigin, pProj, c(gray), s(0.03))\nvecZ = line3d(G, P, pProj, c(gray), s(0.03))\nhighlightfill3d(G, vecProj, vecZ, vecR, fc(gold), fo(0.1))"
+    }
+  ]
+}

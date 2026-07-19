@@ -1,0 +1,18 @@
+{
+  "expression": "polarplot",
+  "_requires": ["g2d"],
+  "description": "Plots r=f(theta) in polar coordinates on a 2D graph.",
+  "utility": "Plot a polar curve",
+  "arguments": [
+    {"name": "graph", "type": "g2d reference", "required": true, "description": "The 2D graph container"},
+    {"name": "equation", "type": "string", "required": true, "description": "r(theta) expression as quoted string"},
+    {"name": "thetaMin", "type": "number", "required": false, "description": "Start angle (default: 0)"},
+    {"name": "thetaMax", "type": "number", "required": false, "description": "End angle (default: 2*pi)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Curve color"}
+  ],
+  "examples": [
+    {"scenario": "Cardioid", "expression": "G = g2d(at(4,4), 20, 20, range(-3, 3), range(-3, 3), type(plotting))\npolarplot(G, \"1 + cos(t)\", 0, 2*pi, c(blue))"},
+    {"scenario": "Rose curve", "expression": "polarplot(G, \"cos(3*t)\", 0, pi, c(red))"},
+    {"scenario": "Spiral", "expression": "polarplot(G, \"t/10\", 0, 6*pi, c(green))"}
+  ]
+}

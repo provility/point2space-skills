@@ -1,0 +1,45 @@
+{
+  "expression": "p",
+  "description": "Inline modifier that controls the number of decimal places displayed for computed numeric values.",
+  "utility": "Set decimal precision for numeric display in tables",
+  "arguments": [
+    {
+      "name": "precision",
+      "type": "integer",
+      "required": true,
+      "description": "Number of decimal places to display - non-negative integer, e.g., 0, 2, 4"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Integer precision",
+      "syntax": "p(0)",
+      "description": "Display whole numbers only, no decimal places"
+    },
+    {
+      "variant": "Standard precision",
+      "syntax": "p(2)",
+      "description": "Display two decimal places (default)"
+    },
+    {
+      "variant": "High precision",
+      "syntax": "p(4)",
+      "description": "Display four decimal places for detailed values"
+    },
+    {
+      "variant": "Inside table expression",
+      "syntax": "table(at(1,3), \"x\", \"x^2\", range(1, 2, 3, 4, 5), p(3))",
+      "description": "Table with three decimal places of precision"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Table with high precision values",
+      "expression": "table_1 = table(at(2,5), \"x\", \"sin(x)\", range(0, 0.5, 1, 1.5, 2), p(4))"
+    },
+    {
+      "scenario": "Table with integer-only output",
+      "expression": "table_2 = table(at(2,5), \"x\", \"x^2\", range(1, 2, 3, 4, 5), p(0))"
+    }
+  ]
+}

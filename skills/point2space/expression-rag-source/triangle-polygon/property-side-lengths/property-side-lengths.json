@@ -1,0 +1,53 @@
+{
+  "expression": "property (side lengths)",
+  "_requires": ["g2d"],
+  "description": "Extract side length and size properties from shapes. Returns numeric values for rectangle width/height, square size, circle radius, line distance, and vector magnitude.",
+  "utility": "Extract side length and size values from shapes",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "rect | square | circle | line | vector",
+      "required": true,
+      "description": "Shape variable to extract length/size from"
+    },
+    {
+      "name": "propertyName",
+      "type": "type(name)",
+      "required": true,
+      "description": "Length property to extract using type() expression"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Rectangle width",
+      "syntax": "p(rect, type(width))",
+      "description": "Get rectangle width"
+    },
+    {
+      "variant": "Square size",
+      "syntax": "p(square, type(size))",
+      "description": "Get square side length"
+    },
+    {
+      "variant": "Circle radius",
+      "syntax": "p(circle, type(radius))",
+      "description": "Get circle radius"
+    },
+    {
+      "variant": "Line distance",
+      "syntax": "p(line, type(distance))",
+      "description": "Get length of a line or vector"
+    },
+    {
+      "variant": "Vector magnitude",
+      "syntax": "p(vector, type(magnitude))",
+      "description": "Get vector length"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get rectangle width",
+      "expression": "w = p(rect_1, type(width))"
+    }
+  ]
+}

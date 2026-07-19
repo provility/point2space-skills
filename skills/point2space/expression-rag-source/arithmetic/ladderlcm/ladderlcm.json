@@ -1,0 +1,22 @@
+{
+  "expression": "ladderlcm",
+  "description": "Animated ladder method (division method) for computing LCM. Takes two or more positive integers (or variable references) and visualizes the step-by-step division process.",
+  "utility": "Visualize LCM computation using the ladder/division method",
+  "arguments": [
+    { "name": "numbers", "type": "positive integers or variable references", "required": true, "description": "Two or more positive integers or variable references to compute LCM for" },
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position" },
+    { "name": "viewSize", "type": "view(rowHeight, colWidth)", "required": false, "description": "Cell sizing. Defaults: rowHeight=14, colWidth=30" },
+    { "name": "buff", "type": "buff(x)", "required": false, "description": "Buffer value" },
+    { "name": "styles", "type": "style expressions", "required": false, "description": "Optional styling" }
+  ],
+  "alternates": [
+    { "variant": "Two numbers", "syntax": "ladderlcm(12, 18, at(4, 4))", "description": "LCM of two numbers" },
+    { "variant": "Variable references", "syntax": "ladderlcm(at(9, 19), view(14, 13), a, b)", "description": "LCM of variables from inputnumber controls" },
+    { "variant": "Multiple numbers with view", "syntax": "ladderlcm(2, 4, 3, 4, at(4, 4), view(14, 22))", "description": "LCM of multiple numbers with custom cell sizing" }
+  ],
+  "examples": [
+    { "scenario": "LCM ladder with input number controls", "expression": "inputnumber(at(5.1, 16.8), \"a\", value(41), size(4), display(\"A\"))\ninputnumber(at(5.2, 26.1), \"b\", value(18), size(4), display(\"B\"))\nladderlcm_1 = ladderlcm(at(9.2, 19.5), view(13.9, 13.3), a, b)\nplayaction(at(5.4, 35.8), ladderlcm_1, display(\"Play\"), fs(26))" },
+    { "scenario": "LCM of two numbers", "expression": "ladderlcm(12, 18, at(4, 4))" },
+    { "scenario": "LCM of four numbers with custom view", "expression": "ladderlcm(2, 4, 3, 4, at(4, 4), view(14, 22))" }
+  ]
+}

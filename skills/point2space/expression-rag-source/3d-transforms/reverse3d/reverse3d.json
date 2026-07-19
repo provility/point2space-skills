@@ -1,0 +1,25 @@
+{
+  "expression": "reverse3d",
+  "_requires": ["g3d"],
+  "description": "Creates a reversed (flipped) 3D vector with opposite direction. The reversed vector pivots around the start point of the original vector.",
+  "utility": "Reverse a 3D vector's direction around its start point.",
+  "arguments": [
+    {
+      "name": "vector",
+      "type": "vector3d",
+      "required": true,
+      "description": "The vector to reverse"
+    }
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "Reverse a vector",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 1, 2, 3); V2 = reverse3d(V)"
+    },
+    {
+      "scenario": "Use reversed vector in another operation",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 1, 1, 1, 3, 1, 1); V2 = reverse3d(V); V3 = forward3d(V2)"
+    }
+  ]
+}

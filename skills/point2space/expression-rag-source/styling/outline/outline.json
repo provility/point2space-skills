@@ -1,0 +1,53 @@
+{
+  "expression": "outline",
+  "description": "Applies a glowing border outline to specified shapes with optional customization",
+  "utility": "Highlight shapes with a visible glow effect for emphasis",
+  "arguments": [
+    {
+      "name": "shapes",
+      "type": "shape reference(s)",
+      "required": true,
+      "description": "One or more shape variable references to outline"
+    },
+    {
+      "name": "color",
+      "type": "expression",
+      "required": false,
+      "description": "Custom outline color using c() expression (default: #ff6b6b red)"
+    },
+    {
+      "name": "width",
+      "type": "expression",
+      "required": false,
+      "description": "Border width using s() expression (default: 2)"
+    },
+    {
+      "name": "opacity",
+      "type": "expression",
+      "required": false,
+      "description": "Glow opacity using fo() expression (default: varies by context)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Outline area under curve",
+      "expression": "outline_1 = outline(area_1)"
+    },
+    {
+      "scenario": "Outline label vertices",
+      "expression": "outline_1 = outline(label_1)"
+    },
+    {
+      "scenario": "Outline with notes for equilateral angles",
+      "expression": "outline_2=outline(label_ang1,label_ang2,label_ang3,notes(\"An equilateral triangle has three 60° angles.\",0.03,fc(lavender),fs(23),ff(\"Gill Sans\")))"
+    },
+    {
+      "scenario": "Outline the final result of a computation",
+      "expression": "write_10=write(at(35,10),\"V = 128\",fs(20)); outline_2 = outline(write_10)"
+    },
+    {
+      "scenario": "Outline selected term from equation for emphasis",
+      "expression": "select_1 = select(write_9, \"4\", 1); outline_1=outline(select_1,t(0.5))"
+    }
+  ]
+}

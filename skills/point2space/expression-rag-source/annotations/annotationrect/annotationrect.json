@@ -1,0 +1,67 @@
+{
+  "expression": "annotationrect",
+  "_requires": ["g2d"],
+  "description": "Draws a rectangular annotation defined by four anchor points. Creates a rectangle connecting four specified points with optional styling.",
+  "utility": "Highlight or annotate rectangular regions in diagrams with four-point anchors",
+  "arguments": [
+    {
+      "name": "point1",
+      "type": "at() expression",
+      "required": true,
+      "description": "First anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point2",
+      "type": "at() expression",
+      "required": true,
+      "description": "Second anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point3",
+      "type": "at() expression",
+      "required": true,
+      "description": "Third anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point4",
+      "type": "at() expression",
+      "required": true,
+      "description": "Fourth anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with color",
+      "syntax": "annotationrect(at(r1, c1), at(r2, c2), at(r3, c3), at(r4, c4), c(green))",
+      "description": "Rectangle with green outline"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Highlight standard form equation box with lightblue fill (equation of a circle lesson)",
+      "expression": "arect_1=annotationrect(at(16,6),at(16,20),at(18,20),at(18,6))"
+    },
+    {
+      "scenario": "Highlight intermediate step with orange stroke and timing (axis intercepts lesson)",
+      "expression": "arect_3=annotationrect(at(27,7),at(27,12),at(29,12),at(29,7),s(1),t(0.5),c(orange))"
+    },
+    {
+      "scenario": "Highlight final answer with default styling (circle from diameter lesson)",
+      "expression": "arect_2 = annotationrect(at(35,6), at(35,20), at(38,20), at(38,6))"
+    },
+    {
+      "scenario": "Highlight lightblue result box (axis intercepts lesson)",
+      "expression": "arect_1=annotationrect(at(39,8),at(39,15),at(41,15),at(41,8),fc(lightblue))"
+    },
+    {
+      "scenario": "Deferred annotation rect for later reveal (circle from diameter lesson)",
+      "expression": "arect_3=annotationrect(at(18,9),at(18,13),at(19,13),at(19,9),defer())"
+    }
+  ]
+}

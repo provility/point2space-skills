@@ -1,0 +1,16 @@
+{
+  "expression": "hidehighlight",
+  "_requires": [],
+  "description": "Remove highlight effect from previously highlighted fragments",
+  "utility": "Fade out highlights with customizable duration",
+  "arguments": [
+    {"name": "fragment", "type": "geometry | text", "required": true, "description": "Fragment to unhighlight"},
+    {"name": "duration", "type": "number", "required": false, "description": "Fade duration (default: 0.5s)"}
+  ],
+  "examples": [
+    {"scenario": "Clear highlight from question fragment then highlight next (equation of a circle lesson)", "expression": "hidehighlight_3 = hidehighlight(fragment_3)\nfragment_1 = fragment(paragraph_1, range(9, 11), effect(highlight), c(darkred), fc(gold), t(1))"},
+    {"scenario": "Clear highlight from circle keyword before next fragment (circle from diameter lesson)", "expression": "hidehighlight_1 = hidehighlight(fragment_1)\nfragment_2=fragment(paragraph_1,range(11,15),effect(highlight),c(black),fc(gold),t(1))"},
+    {"scenario": "Clear multiple fragments at once (axis intercepts lesson)", "expression": "hidehighlight_1 = hidehighlight(fragment_1,fragment_2)"},
+    {"scenario": "Hide highlight with custom duration", "expression": "hidehighlight(shape, t(1.0))"}
+  ]
+}

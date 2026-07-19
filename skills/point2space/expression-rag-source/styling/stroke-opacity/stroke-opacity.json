@@ -1,0 +1,27 @@
+{
+  "expression": "so",
+  "description": "Sets the opacity of the stroke (outline) of a shape",
+  "utility": "Control stroke transparency from fully transparent (0) to fully opaque (1)",
+  "arguments": [
+    {
+      "name": "opacity",
+      "type": "number",
+      "required": true,
+      "description": "Opacity value between 0 (transparent) and 1 (opaque)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Semi-transparent outline",
+      "expression": "circle(0, 1) | so(0.5)"
+    },
+    {
+      "scenario": "Fully opaque stroke",
+      "expression": "line([0, 0], [1, 1]) | so(1)"
+    },
+    {
+      "scenario": "Very faint outline",
+      "expression": "point(2, 3) | so(0.2)"
+    }
+  ]
+}

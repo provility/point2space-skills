@@ -1,0 +1,18 @@
+{
+  "expression": "solidangle",
+  "_requires": ["loc3d"],
+  "description": "Angle measurement on a solid surface between three points. Uses loc3d() for coordinates, either inline or as variable references.",
+  "utility": "Show angle measurement at a vertex on a solid",
+  "arguments": [
+    {"name": "solidRef", "type": "variable", "required": true, "description": "Reference to solid shape"},
+    {"name": "vertex", "type": "loc3d or variable", "required": true, "description": "Angle vertex point (inline loc3d or variable reference)"},
+    {"name": "point1", "type": "loc3d or variable", "required": true, "description": "First ray endpoint (inline loc3d or variable reference)"},
+    {"name": "point2", "type": "loc3d or variable", "required": true, "description": "Second ray endpoint (inline loc3d or variable reference)"},
+    {"name": "label", "type": "string", "required": false, "description": "Angle label text"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Arc color"}
+  ],
+  "examples": [
+    {"scenario": "Angle with inline loc3d", "expression": "C = cube3d(at(10,10), view(25,25), 3)\nA = solidangle(C, loc3d(C, 0, 0, 0), loc3d(C, 0, 100, 0), loc3d(C, 0, 0, 100), \"90\", c(limegreen))"},
+    {"scenario": "Angle with variable references", "expression": "C = cube3d(at(10,10), view(25,25), 3)\nP1 = loc3d(C, 0, 0, 0, c(magenta))\nP2 = loc3d(C, 0, 100, 0, c(magenta))\nP3 = loc3d(C, 0, 0, 100, c(magenta))\nA = solidangle(C, P1, P2, P3, \"90\", c(limegreen))"}
+  ]
+}

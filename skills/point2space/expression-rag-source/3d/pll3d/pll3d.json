@@ -1,0 +1,32 @@
+{
+  "expression": "pll3d",
+  "_requires": ["g3d"],
+  "description": "Creates a parallel line or vector through a point in 3D space",
+  "utility": "Draw a parallel copy of a line/vector passing through a specified point",
+  "arguments": [
+    {"name": "vector_or_line", "type": "vector3d|line3d", "required": true, "description": "The reference vector or line to make parallel"},
+    {"name": "point", "type": "point3d", "required": true, "description": "The point the parallel should pass through"}
+  ],
+  "alternates": [
+    {
+      "variant": "with custom length",
+      "syntax": "pll3d(vector_or_line, point, length)",
+      "description": "Create parallel with custom length instead of reference length"
+    },
+    {
+      "variant": "using coordinates",
+      "syntax": "pll3d(vector_or_line, x, y, z)",
+      "description": "Specify the point using x, y, z coordinates instead of point3d"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "parallel vector through a point",
+      "expression": "V = vector3d(g, 0, 0, 0, 1, 1, 1); pll3d(V, point3d(g, 2, 2, 2))"
+    },
+    {
+      "scenario": "parallel with custom length",
+      "expression": "V = vector3d(g, 0, 0, 0, 1, 0, 0); pll3d(V, point3d(g, 0, 1, 0), 5)"
+    }
+  ]
+}

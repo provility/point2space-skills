@@ -1,0 +1,93 @@
+{
+  "expression": "hyperbola",
+  "_requires": ["g2d"],
+  "description": "Draws a two-branch hyperbola on a 2D graph from a center point and transverse/conjugate semi-axes, or from a standard-form equation string. Center takes a point() expression or variable. Rotation uses the rotation() expression.",
+  "utility": "Draw a hyperbola on a 2D graph by center+axes or equation",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph container to draw on"
+    },
+    {
+      "name": "center",
+      "type": "point expression",
+      "required": false,
+      "description": "Center of the hyperbola as a point() expression or point variable. Defaults to origin if omitted"
+    },
+    {
+      "name": "a",
+      "type": "number",
+      "required": true,
+      "description": "Semi-transverse axis length (along rotation direction, where vertices are). Must be positive"
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "required": true,
+      "description": "Semi-conjugate axis length (perpendicular). Must be positive"
+    },
+    {
+      "name": "rotation",
+      "type": "rotation(angle)",
+      "required": false,
+      "description": "Rotation angle using rotation() expression - e.g., rotation(pi/4). Default is 0 (horizontal transverse axis)"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": false,
+      "description": "Alternative to parametric args - standard form equation string e.g. \"x^2/16 - y^2/9 = 1\""
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Center point + semi-axes",
+      "syntax": "hyperbola(G, point(G, h, k), a, b)",
+      "description": "Hyperbola at a point with transverse axis a and conjugate axis b"
+    },
+    {
+      "variant": "Semi-axes only (origin center)",
+      "syntax": "hyperbola(G, a, b)",
+      "description": "Hyperbola centered at origin with semi-axes a and b"
+    },
+    {
+      "variant": "With rotation",
+      "syntax": "hyperbola(G, point(G, h, k), a, b, rotation(angle))",
+      "description": "Rotated hyperbola using rotation() expression"
+    },
+    {
+      "variant": "From equation string",
+      "syntax": "hyperbola(G, \"x^2/16 - y^2/9 = 1\")",
+      "description": "Hyperbola defined by standard-form equation"
+    },
+    {
+      "variant": "Shifted equation",
+      "syntax": "hyperbola(G, \"(x-1)^2/4 - (y+2)^2/9 = 1\")",
+      "description": "Hyperbola centered at (1, -2) from equation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Vertical hyperbola from equation in a geometry graph with labeled vertices and foci",
+      "expression": "graph_1=g2d(at(5,35),size(16.7),range(-7,7,1),type(geometry),grid(),snap())\nhyperbola_1=hyperbola(graph_1,\"y^2/16 - x^2/20 = 1\",notes(\"Now draw the hyperpola\",type(slideright)))"
+    },
+    {
+      "scenario": "Hyperbola at origin with semi-axes 3 and 2",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nH = hyperbola(G, point(G, 0, 0), 3, 2)"
+    },
+    {
+      "scenario": "Hyperbola from standard-form equation",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nH = hyperbola(G, \"x^2/16 - y^2/9 = 1\")"
+    },
+    {
+      "scenario": "Rotated hyperbola",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nH = hyperbola(G, point(G, 0, 0), 3, 2, rotation(pi/4))"
+    },
+    {
+      "scenario": "Extract and draw first focus",
+      "expression": "F1 = point(G, p(H, type(foci, 1)), c(red))"
+    }
+  ]
+}

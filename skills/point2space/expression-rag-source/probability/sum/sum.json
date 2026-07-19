@@ -1,0 +1,15 @@
+{
+  "expression": "sum",
+  "_requires": ["sspace"],
+  "description": "Tests if the sum of numeric outcome values satisfies a comparison condition. Used as a predicate inside event() expressions. Supports comparison operators: =, >, <, >=, <=.",
+  "utility": "Filter outcomes by their numeric sum",
+  "arguments": [
+    {"name": "operator", "type": "comparison operator", "required": false, "description": "Comparison operator (=, >, <, >=, <=). Defaults to = if omitted."},
+    {"name": "targetValue", "type": "number", "required": true, "description": "Numeric value to compare the sum against"}
+  ],
+  "examples": [
+    {"scenario": "Sum equals 7", "expression": "S = sspace(at(4,4), view(14,20), dice(2))\nE = event(S, sum(7), fc(coral))"},
+    {"scenario": "Sum greater than 8", "expression": "S = sspace(at(4,4), view(14,20), dice(2))\nE = event(S, sum(>, 8), fc(steelblue))"},
+    {"scenario": "Sum less than or equal to 4", "expression": "S = sspace(at(4,4), view(14,20), dice(2))\nE = event(S, sum(<=, 4), fc(gold))"}
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "expression": "playanimator",
+  "description": "Play/reset control for variableanimator or shape animator expressions. When display() is provided, renders a clickable play button inline next to the animator control. Without display(), renders a mutator pencil icon.",
+  "utility": "Creates a play control that triggers the referenced animator's animation",
+  "arguments": [
+    {"name": "animatorRef", "type": "variable reference", "required": true, "description": "Variable reference to a variableanimator or shape animator expression"},
+    {"name": "duration", "type": "t(seconds)", "required": false, "description": "Animation duration using t() syntax, e.g. t(3) for 3 seconds"},
+    {"name": "display", "type": "display(\"label\") or display(\"label\", \"playingLabel\")", "required": false, "description": "Button text. When provided, renders a clickable play button next to the animator instead of a pencil icon. Second string shown while playing."}
+  ],
+  "alternates": [
+    {
+      "variant": "Pencil icon (default)",
+      "syntax": "playanimator(animRef, t(3))",
+      "description": "Mutator pencil icon next to the animator control"
+    },
+    {
+      "variant": "Play button with display",
+      "syntax": "playanimator(animRef, t(3), display(\"Play\", \"Playing...\"))",
+      "description": "Clickable play button inline next to the animator. Preferred for interactive lessons."
+    }
+  ],
+  "examples": [
+    {"scenario": "Correct ordering: variableanimator, then dependents, then playanimator last", "expression": "var_anim_1 = variableanimator(at(2,10), \"q_1\", 2, 0.8)\nq1 = point(graph_1, q1x, f(q1x))\nline_2 = line(graph_1, p1, q1, c(red))\nplay_1 = playanimator(var_anim_1, t(5))"},
+    {"scenario": "Play button with display label — placed after all t-dependent shapes", "expression": "varanim_t = variableanimator(at(2, 30), \"t\", 0, 360)\nP = anglepoint(G, uc, t, c(crimson), s(5))\nradius_line = line(G, O, P, type(segment), c(gray))\nplay_anim = playanimator(varanim_t, t(8), display(\"Play\", \"Playing...\"))"},
+    {"scenario": "Play variable animator for circle tangent rotation", "expression": "mathexpr_1 = variableanimator(at(3.7, 4.4), \"a\", 0, 360)\ncircle_1 = circle(graph_1, point(graph_1, 0, 0), radius(2))\ntangent_1 = tangent(graph_1, circle_1, a)\nplayanim_1 = playanimator(mathexpr_1, t(3))"},
+    {"scenario": "Unit circle animation with play button, angle, tracetable", "expression": "varanim_t = variableanimator(at(2, 30), \"t\", 0, 360)\nG = g2d(at(4, 1), size(20), range(-2, 2), type(geometry), grid())\nO = point(G, 0, 0, s(3))\nuc = circle(G, O, radius(1), c(steelblue), s(2))\nP = anglepoint(G, uc, t, c(crimson), s(5))\nradius_line = line(G, O, P, type(segment), c(gray))\nxaxis_pt = point(G, 1, 0, defer())\nangle_1 = angle(G, O, xaxis_pt, P, arcsize(35), arrowhead(start), c(orange), s(3))\ncos_line = line(G, P, point(G, cos(rad(t)), 0, defer()), type(segment), c(dodgerblue), s(2))\nsin_line = line(G, P, point(G, 0, sin(rad(t)), defer()), type(segment), c(tomato), s(2))\ncos_pt = point(G, cos(rad(t)), 0, c(dodgerblue), s(4))\nsin_pt = point(G, 0, sin(rad(t)), c(tomato), s(4))\ntrace_1 = tracepoint(G, P)\ntt = tracetable(at(4, 24), slidingwindow(10), field(P, 'x', \"cos theta\"), field(P, 'y', \"sin theta\"), prec(3))\nplay_anim = playanimator(varanim_t, t(8), display(\"Play\", \"Playing...\"))"}
+  ],
+  "notes": [
+    "ORDERING RULE: playanimator() MUST be placed AFTER all expressions that reference the animated variable. Define variableanimator first, then all shapes/labels/expressions that use the variable, then playanimator last. Placing it before dependent expressions means the animation triggers before those shapes exist.",
+    "When display() is provided, a clickable play button appears inline next to the animator control — no at() needed.",
+    "Without display(), a mutator pencil icon appears next to the animator (legacy behavior).",
+    "Prefer display() for interactive lessons where users click to play."
+  ]
+}

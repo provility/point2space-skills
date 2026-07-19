@@ -1,0 +1,62 @@
+{
+  "expression": "plottable",
+  "description": "Plots data from a table using columns as x and y coordinates, supporting curve or point visualization",
+  "utility": "Visualize table data as a plot on a graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container to draw plot in"
+    },
+    {
+      "name": "table",
+      "type": "variable",
+      "required": true,
+      "description": "Table variable containing data points"
+    },
+    {
+      "name": "yColumn",
+      "type": "number",
+      "required": false,
+      "description": "1-based column index for y values (default: 2, uses column 1 as x)"
+    },
+    {
+      "name": "plotType",
+      "type": "type(curve|points)",
+      "required": false,
+      "description": "type(curve) for smooth curve (default) or type(points) for discrete points with labels"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Plot with default curve type",
+      "syntax": "plottable(graph, table)",
+      "description": "Uses column 1 as x, column 2 as y, draws smooth curve"
+    },
+    {
+      "variant": "Specify y column",
+      "syntax": "plottable(graph, table, 3)",
+      "description": "Uses column 1 as x, column 3 as y"
+    },
+    {
+      "variant": "Plot as discrete points",
+      "syntax": "plottable(graph, table, 2, type(points))",
+      "description": "Plot points with coordinate labels"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plot table column as curve",
+      "expression": "plottable(G1, T, 2, c(blue))"
+    },
+    {
+      "scenario": "Plot table as scatter points",
+      "expression": "plot_1=plottable(graph_1,table_1,col(2),type(points))"
+    },
+    {
+      "scenario": "Plot sqrt functions from table",
+      "expression": "p1=plottable(G, T, 2, c(orange))"
+    }
+  ]
+}

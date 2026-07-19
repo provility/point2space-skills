@@ -1,0 +1,24 @@
+{
+  "expression": "tracepoint",
+  "_requires": ["g2d"],
+  "description": "Leaves a trail of dots showing the past positions of a moving point during animation. The point must be driven by a variableanimator for positions to accumulate.",
+  "utility": "Show the path traced by a moving point during animation",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "Graph container"},
+    {"name": "point", "type": "point variable", "required": true, "description": "The moving point whose positions are recorded as dots"}
+  ],
+  "examples": [
+    {
+      "scenario": "Trace point on height function plot driven by variable animator",
+      "expression": "G2 = g2d(at(4,35), 20, 20, range(-2,10), type(plotting))\nH = point(G2, t, h(t))\ntrace_h = tracepoint(G2, H)"
+    },
+    {
+      "scenario": "Trace point moving along unit circle",
+      "expression": "varanim_t = variableanimator(at(2, 30), \"t\", 0, 360)\nG = g2d(at(4, 1), size(20), range(-2, 2), type(geometry))\nuc = circle(G, point(G, 0, 0), radius(1))\nP = anglepoint(G, uc, t, c(crimson), s(5))\ntrace_1 = tracepoint(G, P)\nplay_anim = playanimator(varanim_t, t(8))"
+    }
+  ],
+  "notes": [
+    "Takes exactly 2 arguments: graph and point. No third parameter.",
+    "The point must move via animation (variableanimator + playanimator) for the trail to appear. Static points produce no trail."
+  ]
+}

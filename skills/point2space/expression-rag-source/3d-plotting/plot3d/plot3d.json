@@ -1,0 +1,90 @@
+{
+  "expression": "plot3d",
+  "_requires": ["g3d"],
+  "description": "Renders a 3D surface as a wireframe mesh from an explicit equation z = f(x, y) over a rectangular domain.",
+  "utility": "Plot a 3D surface z = f(x, y) on a g3d graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container created with g3d()"
+    },
+    {
+      "name": "equation",
+      "type": "string | def reference",
+      "required": true,
+      "description": "Surface equation as a quoted string \"x^2 + y^2\" or a function definition reference"
+    },
+    {
+      "name": "xRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Domain for x variable. Defaults to g3d axis range if omitted"
+    },
+    {
+      "name": "yRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Domain for y variable. Defaults to g3d axis range if omitted"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Surface color - e.g., c(gold), c(blue)"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Surface fill opacity from 0 to 1 - e.g., fo(0.8)"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Surface fill color - e.g., fc(yellow)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Explicit surface with auto domain",
+      "syntax": "plot3d(G, \"x^2 + y^2\")",
+      "description": "Surface using g3d default axis ranges"
+    },
+    {
+      "variant": "Explicit surface with custom domain",
+      "syntax": "plot3d(G, \"x^2 + y^2\", range(-3, 3), range(-3, 3))",
+      "description": "Surface with explicit x and y domain"
+    },
+    {
+      "variant": "Surface from function definition",
+      "syntax": "plot3d(G, f, range(-3, 3), range(-3, 3))",
+      "description": "Surface using a function definition reference for reuse"
+    },
+    {
+      "variant": "Surface with styling",
+      "syntax": "plot3d(G, \"x^2 - y^2\", range(-2, 2), range(-2, 2), c(gold), fo(0.8), fc(yellow))",
+      "description": "Colored surface with fill opacity and fill color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Paraboloid surface with orange color",
+      "expression": "G=g3d(at(4,23), view(16.1, 14.5))\nplot_1=plot3d(G, \"x^2 + y^2\",c(orange))"
+    },
+    {
+      "scenario": "Wave surface with restricted pi ranges",
+      "expression": "G=g3d(at(4,23), view(16.1, 14.5))\nplot_3=plot3d(G, \"sin(x)*cos(y)\", range(-pi, pi), range(-pi, pi))"
+    },
+    {
+      "scenario": "Saddle surface with styling",
+      "expression": "G=g3d(at(4,23), view(16.1, 14.5))\nplot_4=plot3d(G,\"x^2 - y^2\",range(-2,2),range(-2,2),c(gold),fo(0.8),fc(yellow))"
+    },
+    {
+      "scenario": "Surface with animated tangent plane and variable animator",
+      "expression": "G=g3d(at(1,9), view(21.1, 22.2))\nf(x, y) = x^2 + y^2\nP = plot3d(G, f, range(-3, 3), range(-3, 3))\nvaranim_1=variableanimator(at(6,37),\"x0\",1,-2,\"text(Tangent At)\")\ny0 = 1\npt = point3d(G, x0, y0, f(x0, y0))\nT = tangentplane(G, P, x0, y0)"
+    }
+  ]
+}

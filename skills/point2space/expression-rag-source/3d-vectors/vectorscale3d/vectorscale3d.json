@@ -1,0 +1,16 @@
+{
+  "expression": "vectorscale3d",
+  "_requires": ["g3d", "vector3d"],
+  "description": "Scales a 3D vector by a scalar factor.",
+  "utility": "Multiply a 3D vector by a scalar",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "vector", "type": "vector3d", "required": true, "description": "Vector to scale"},
+    {"name": "scalar", "type": "number", "required": true, "description": "Scale factor"}
+  ],
+  "examples": [
+    {"scenario": "Double a vector", "expression": "G = g3d(at(4,23), view(30, 30))\nV = vector3d(G, 0, 0, 0, 1, 2, 3, c(red))\nV2 = vectorscale3d(G, V, 2, c(blue))"},
+    {"scenario": "Half a vector", "expression": "V_half = vectorscale3d(G, V, 0.5, c(green))"},
+    {"scenario": "Negate a vector", "expression": "V_neg = vectorscale3d(G, V, -1, c(orange))"}
+  ]
+}

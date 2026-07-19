@@ -1,0 +1,16 @@
+{
+  "expression": "piechart",
+  "_requires": ["stattable"],
+  "description": "Standalone pie chart container from stattable data.",
+  "utility": "Create a pie chart from statistical table data",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "table", "type": "stattable variable", "required": true, "description": "Reference to stattable"},
+    {"name": "col", "type": "col(n)", "required": false, "description": "Value column"}
+  ],
+  "examples": [
+    {"scenario": "Pie chart from frequency data", "expression": "T = stattable(at(2,4), values(\"A\",\"B\",\"C\",\"A\",\"B\",\"A\"), statcolumn(type(frequency)))\nP = piechart(at(14,4), view(10,10), T, col(2))"},
+    {"scenario": "Styled pie chart", "expression": "P = piechart(at(14,4), view(12,12), T)"}
+  ]
+}

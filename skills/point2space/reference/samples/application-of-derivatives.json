@@ -1,0 +1,109 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_1775714686996_wa9ai48xl": {
+      "id": "slide_1775714686996_wa9ai48xl",
+      "name": "Slide 1",
+      "expressions": [
+        "",
+        "title_1=title(at(2.8,20.9),\"Application of Derivatives\",fc(tan),pd(6),border(black,radius(18)),fs(36),notes(\"In this problem, we explore an application of derivatives—finding maximum values in real life.\"))",
+        "write_4=desc(at(7,6.5),\"text(A ball is thrown into the air from a building 60 m high, travels along a path given by) h(x)=60+x-(x^(2))/(60),\",fs(20),t(0.5))",
+        "write_3=desc(at(9.2,6.4),\"text(where) x text(is the horizontal distance from building and) h(x) text(is height of the ball).text(What is the max height the)\",fs(20),t(0.5))",
+        "write_6=desc(at(11,6.4),\"text(ball will reach )?\",fs(20),t(0.5))",
+        "aline_7=annotationline(at(8.7,7),at(8.6,50.3),c(teal),fadeout(26))",
+        "notes_1=notes(\"Let’s visualize the situation.\")",
+        "image_1=image(at(17.7,20.4),\"building\",4.5,9.6)",
+        "aline_1=annotationline(at(26.9,19),at(26.8,41.2),c(black),s(1),t(0))",
+        "dm_1=distancemarker(at(18,19.6),at(26.8,19.6),t(1))",
+        "write_7=desc(at(21.5,16.5),\"60m\",t(0.5),notes(\"This is the building with a height of 60 meters.\"))",
+        "graph_1=g2d(at(10.7,22.2),16.5,20.5,range(-2,100),range(5,100),type(plotting),grid(noaxes),nodraw())",
+        "plot_1=plot(graph_1,\"60+x-x^2/60\",type(explicit),defer())",
+        "point_1=point(graph_1,p(plot_1,type(y_intercept)),defer())",
+        "play_1=play(point_1,plot_1,type(parallel))",
+        "arrow_2=arrow(at(17.7,22.5),at(15.6,20.7))",
+        "write_11=desc(at(14.5,20),\"text(Ball)\",fs(20),notes(\"The ball starts from here\"))",
+        "arrow_1=arrow(at(19.2,36.8),at(15.7,38.6),c(darkgreen),t(0.5))",
+        "notes_2=notes(\"This curve represents the motion of the ball; additionally, its equation is\")",
+        "write_8=write(at(13.9,36.1),\"h(x)=60+x-(x^(2))/(60)\",fadein(0.5),fs(16),t(0.5))",
+        "aline_8=annotationline(at(10.6,41),at(10.5,51.9),c(teal),t(0.5))",
+        "aline_9=annotationline(at(12.5,7),at(12.4,13),c(teal),t(0.5))",
+        "aellipse_1=annotationellipse(at(14.8,28.9),at(14.8,29.3),at(15.2,29.3),at(15.2,28.9),fc(red),fo(1),c(red))",
+        "write_9=desc(at(13.2,24.9),\"text(Vertex)text(,)text(Max height)\",fs(20),notes(\"The highest point on the curve, called the vertex, represents the maximum height of the ball.\"))",
+        "aline_2=annotationline(at(15.4,29.1),at(26.8,29.3),t(0.5),c(orange))",
+        "write_10=desc(at(20.4,29.4),\"text(Max height)=?\",fs(20),notes(\"So our goal is to find this maximum height.\"))",
+        "aline_3=annotationline(at(25.7,29.4),at(25.7,30.7),c(black),s(1),t(0))",
+        "aline_4=annotationline(at(25.7,30.7),at(26.8,30.7),s(1),c(black),t(0))",
+        "aline_5=annotationline(at(25.7,24.4),at(25.7,25.6),c(black),s(1),t(0))",
+        "aline_6=annotationline(at(25.7,25.6),at(26.8,25.6),c(black),s(1),t(0))",
+        ""
+      ],
+      "paraVariables": []
+    },
+    "slide_1775718944565_vbuybe2go": {
+      "id": "slide_1775718944565_vbuybe2go",
+      "name": "Slide 2",
+      "expressions": [
+        "title_1=title(at(3.7,7.5),\"Solution\",fc(lightpink),pd(6),border(black,radius(18)),fs(25),notes(\"Let’s now solve the problem step by step.\"))",
+        "write_1=write(at(7,7.5),\"h(x)=-(1)/(60)x^(2)+x+60\",fadein(0.5),fs(20),notes(\"First, we rewrite the given function in standard quadratic form\"))",
+        "write_2=desc(at(7.4,18.6),\"text((Compare with ) ax^2+bx+c=0)\",fs(20),c(blue))",
+        "notes_1=notes(\"From comparison, we get\")",
+        "write_8=write(at(10.3,7.6),\"a=-1/60 ,\",fadein(0.5),fs(20))",
+        "write_9=write(at(11,12.6),\"b=1,\",fadein(0.5),fs(20))",
+        "write_10=write(at(10.9,15.9),\"c=60\",fadein(0.5),fs(20))",
+        "write_19=write(at(13.4,7.4),\"text(The horizontal distance )x, text(at the vertex :) x=-(b)/(2a).\",fs(20),fadein(0.5))",
+        "write_7=write(at(16.5,7.6),\"x=-((1)/(2(-(1)/(60))))\",exclude(\"1\",1),exclude(\"-(1)/(60)\",1),fadein(0.5),fs(20))",
+        "notes_2=notes(\"Substituting the values of a and b into the formula.\")",
+        "select_1 = select(write_8, \"-1/60\", 1)",
+        "select_2 = select(write_9, \"1\", 1)",
+        "__temp_select_1775715884640 = select(write_10, \"60\", 1)",
+        "text_copy_1=textcopy(write_7_select_2,select_1,fs(18))",
+        "text_copy_2=textcopy(write_7_select_1,select_2,buff(-0.3,-0.2),fs(20))",
+        "write_11=write(at(16.7,16.4),\"=(-1)/(2(-(1)/(60)))\",fs(20),fadein(0.5))",
+        "select_3 = select(write_11, \"2\", 1)",
+        "select_4 = select(write_11, \"60\", 1)",
+        "write_12=write(at(16.7,22.1),\"=(-1)/((-(1)/(30)))\",fs(20),fadein(0.5))",
+        "aline_1=annotationline(at(16.9,24.1),at(17.4,24.7),s(2),c(red),defer())",
+        "aline_2=annotationline(at(18.4,23.9),at(19,24.5),s(2),c(red),defer())",
+        "play_1=play(aline_2,aline_1,type(parallel),t(0.5))",
+        "write_13=write(at(17.3,26.6),\"=30 text( metres)\",fs(20),notes(\"So, the horizontal distance at the vertex is x = 30 meters.\"))",
+        "write_14=write(at(21.1,7.4),\"text(To find the maximum height substitute )x=30 text( in original equation.) \",fs(20),fadein(0.5))",
+        "select_5 = select(write_14, \"30\", 1)",
+        "write_15=write(at(23.6,7.5),\"h(x)=60+x-(tex^2)/(60)\",fs(20),exclude(\"te\",1),fadein(0.5))",
+        "select_6 = select(write_15, \"x\", 1)",
+        "select_7 = select(write_15, \"x\", 2)",
+        "select_8 = select(write_15, \"x\", 3)",
+        "text_replace_1=textreplace(select_6,select_5,buff(-0.4,-0.2),fs(18))",
+        "text_replace_2=textreplace(select_7,select_5,buff(-0.5,-0.3),fs(20))",
+        "text_replace_3=textreplace(select_8,select_5,buff(-0.3,-0.5),fs(20))",
+        "write_16=write(at(23.8,17.6),\"=90-(900)/(60)\",fs(20),fadein(0.5))",
+        "write_17=write(at(24.4,23.4),\"=90-15\",fs(20),fadein(0.5))",
+        "write_18=write(at(24.3,28.4),\"=75m\",fs(20),notes(\"Therefore, the maximum height reached by the ball is 75 meters.\"))",
+        "",
+        "aline_3=annotationline(at(25.6,29.3),at(25.6,31.7),c(green),t(1))"
+      ],
+      "paraVariables": []
+    },
+    "slide_1776076544337_c9ifzjlir": {
+      "id": "slide_1776076544337_c9ifzjlir",
+      "name": "Slide 3",
+      "expressions": [
+        "title_1=title(at(4,9),\"Concepts used:\",c(maroon))",
+        "title_2=title(at(7,9.2),\"1) Compare math(h(x)) with standard Quadratic Equation math(ax^2+bx+c=0), find math(a,b,c) values.\",fs(22))",
+        "title_3=title(at(9.4,9.1),\"2) The vertex of a parabola is the max height use vertex formula math( x=-b/ {2a} )\",fs(22))",
+        "title_4=title(at(11.8,9.1),\"3) To find the maximum height substitute the value of math(x) in math(h(x)).\",fs(22))"
+      ],
+      "paraVariables": []
+    }
+  },
+  "settings": {
+    "theme": "light"
+  },
+  "slideOrder": [
+    "slide_1775714686996_wa9ai48xl",
+    "slide_1775718944565_vbuybe2go",
+    "slide_1776076544337_c9ifzjlir"
+  ],
+  "activeSlideId": "slide_1775714686996_wa9ai48xl",
+  "id": "b10baed2-979c-40d7-98b7-2de9d5a7dc7f",
+  "name": "Application of Derivatives"
+}

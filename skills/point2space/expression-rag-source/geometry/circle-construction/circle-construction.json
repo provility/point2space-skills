@@ -1,0 +1,67 @@
+{
+  "expression": "circle (construction)",
+  "_requires": ["g2d"],
+  "description": "Advanced circle constructions: diameter-based circles, styled circles with color and fill, and circle intersection.",
+  "utility": "Construct circles from diameter endpoints, apply styling, or find circle intersections",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "P1",
+      "type": "point",
+      "required": true,
+      "description": "First defining point"
+    },
+    {
+      "name": "P2",
+      "type": "point",
+      "required": true,
+      "description": "Second defining point"
+    },
+    {
+      "name": "type or options",
+      "type": "type(diameter) | c(color) | fo(opacity)",
+      "required": false,
+      "description": "Diameter mode or styling options"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Diameter from two points",
+      "syntax": "circle(G, P1, P2, type(diameter))",
+      "description": "Circle with P1 and P2 as diameter endpoints"
+    },
+    {
+      "variant": "Colored circle",
+      "syntax": "circle(G, center, radius(r), c(red))",
+      "description": "Circle rendered in specified color"
+    },
+    {
+      "variant": "Circle with fill opacity",
+      "syntax": "circle(G, center, radius(r), fo(0.3))",
+      "description": "Semi-transparent filled circle"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Circle from diameter endpoints joining two known points (circle from a diameter lesson)",
+      "expression": "circle_1 = circle(graph_1, point_1, point_2, type(diameter), c(mediumvioletred),notes(\"the diameter defines the circle completely\"))"
+    },
+    {
+      "scenario": "Circle with center and radius with color and fill (equation of a circle lesson)",
+      "expression": "circle_1=circle(graph_2,point_1,radius(3),c(mediumvioletred),fc(violet))"
+    },
+    {
+      "scenario": "Circle from diameter using axis intercept points (axis intercepts lesson)",
+      "expression": "circle_1 = circle(graph_1, point_3, point_5, type(diameter), c(mediumvioletred),notes(\"A and B are the diameter endpoints\"))"
+    },
+    {
+      "scenario": "Circle from general equation for examining point position",
+      "expression": "circle_1=circle(graph_1,\"x^2+y^2-6x-8y+12=0\",c(seagreen))"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "expression": "circle (properties)",
+  "_requires": ["g2d"],
+  "description": "Extract properties from a circle: center point, radius, diameter, circumference, and area. Also supports creating circles from standard-form and general-form equations.",
+  "utility": "Extract circle properties or create a circle from an equation string",
+  "arguments": [
+    {
+      "name": "circle",
+      "type": "circle reference",
+      "required": true,
+      "description": "A previously created circle variable"
+    },
+    {
+      "name": "property type",
+      "type": "center | radius | diameter | circumference | area",
+      "required": true,
+      "description": "The property to extract from the circle"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From standard-form equation",
+      "syntax": "circle(G, \"(x-h)^2+(y-k)^2=r^2\")",
+      "description": "Circle parsed from standard form equation, e.g. \"(x-2)^2+(y-3)^2=25\""
+    },
+    {
+      "variant": "From general-form equation",
+      "syntax": "circle(G, \"x^2+y^2+Dx+Ey+F=0\")",
+      "description": "Circle parsed from general quadratic, e.g. \"x^2+y^2-4x-6y-12=0\""
+    },
+    {
+      "variant": "Extract center point",
+      "syntax": "point(G, p(C, center))",
+      "description": "Get the center of a circle as a point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Circle from general-form equation for point position analysis (Point and Circle lesson)",
+      "expression": "circle_1=circle(graph_1,\"x^2+y^2-6x-8y+12=0\",c(seagreen))"
+    },
+    {
+      "scenario": "Circle from general-form equation in diameter through center lesson",
+      "expression": "circle_1=circle(graph_1,point_1,radius(3),c(mediumvioletred),fo(0),t(1))"
+    },
+    {
+      "scenario": "Extract center point from circle",
+      "expression": "center_pt = point(G, p(circle_1, center))"
+    }
+  ]
+}

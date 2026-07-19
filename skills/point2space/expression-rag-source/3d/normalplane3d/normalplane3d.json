@@ -1,0 +1,48 @@
+{
+  "expression": "normalplane3d",
+  "_requires": ["g3d", "vector3d", "point3d"],
+  "description": "Creates a plane in 3D space defined by a normal vector and a point on the plane.",
+  "utility": "Create a plane from a normal vector and a point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "normal",
+      "type": "vector3d",
+      "required": true,
+      "description": "Normal vector to the plane"
+    },
+    {
+      "name": "point",
+      "type": "point3d",
+      "required": true,
+      "description": "A point that lies on the plane"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Inline vector and point",
+      "syntax": "normalplane3d(G, vector3d(1, 1, 1), point3d(0, 0, 0))",
+      "description": "Plane with inline normal vector and point definitions"
+    },
+    {
+      "variant": "From variables",
+      "syntax": "normalplane3d(G, n, A)",
+      "description": "Plane from previously defined vector3d and point3d variables"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plane with normal (1,1,1) through origin",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nn = vector3d(G, 0, 0, 0, 1, 1, 1)\nA = point3d(G, 0, 0, 0)\nP = normalplane3d(G, n, A)"
+    },
+    {
+      "scenario": "Plane perpendicular to z-axis through (0,0,3)",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nP = normalplane3d(G, vector3d(G, 0, 0, 0, 0, 0, 1), point3d(G, 0, 0, 3), fc(lightblue), fo(0.3))"
+    }
+  ]
+}

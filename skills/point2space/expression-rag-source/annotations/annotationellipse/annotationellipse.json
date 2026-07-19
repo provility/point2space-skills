@@ -1,0 +1,55 @@
+{
+  "expression": "annotationellipse",
+  "_requires": ["g2d"],
+  "description": "Draws an elliptical annotation defined by four anchor points. Creates an ellipse fitting through four specified points with optional styling.",
+  "utility": "Highlight or annotate elliptical regions in diagrams with four-point anchors",
+  "arguments": [
+    {
+      "name": "point1",
+      "type": "at() expression",
+      "required": true,
+      "description": "First anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point2",
+      "type": "at() expression",
+      "required": true,
+      "description": "Second anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point3",
+      "type": "at() expression",
+      "required": true,
+      "description": "Third anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point4",
+      "type": "at() expression",
+      "required": true,
+      "description": "Fourth anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with color",
+      "syntax": "annotationellipse(at(r1, c1), at(r2, c2), at(r3, c3), at(r4, c4), c(purple))",
+      "description": "Ellipse with purple outline"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic ellipse annotation",
+      "expression": "annotationellipse(at(1,1), at(1,4), at(3,4), at(3,1))"
+    },
+    {
+      "scenario": "Styled ellipse",
+      "expression": "annotationellipse(at(2,2), at(2,6), at(4,6), at(4,2), c(orange))"
+    }
+  ]
+}

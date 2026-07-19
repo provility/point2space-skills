@@ -1,0 +1,15 @@
+{
+  "expression": "matrixaccess",
+  "_requires": [],
+  "description": "Accesses elements from matrices, rows, or vectors by index. Supports matrix[row][col], row[index], vector[index].",
+  "utility": "Access matrix or vector elements",
+  "arguments": [
+    {"name": "variable", "type": "variable name", "required": true, "description": "Matrix, row, or vector variable"},
+    {"name": "rowIndex", "type": "number", "required": true, "description": "Row index (1-based)"},
+    {"name": "colIndex", "type": "number", "required": false, "description": "Column index (1-based, for matrices)"}
+  ],
+  "examples": [
+    {"scenario": "Access matrix element", "expression": "M = [[1, 2], [3, 4]]\nval = matrixaccess(M, 1, 2)"},
+    {"scenario": "Access vector element", "expression": "v = {3, 4, 5}\nval = matrixaccess(v, 2)"}
+  ]
+}

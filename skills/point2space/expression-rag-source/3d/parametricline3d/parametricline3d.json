@@ -1,0 +1,37 @@
+{
+  "expression": "parametricline3d",
+  "_requires": ["g3d"],
+  "description": "Creates a 3D line from parametric equations in the form x = x0 + at, y = y0 + bt, z = z0 + ct.",
+  "utility": "Create a 3D line from parametric equations",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": true,
+      "description": "Comma-separated parametric equations - e.g., \"x = 1 + 2t, y = 3 - t, z = 2 + 4t\""
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Standard parametric form",
+      "syntax": "parametricline3d(G, \"x = 1 + 2t, y = 3 - t, z = 2 + 4t\")",
+      "description": "Line from parametric equations"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line through (1,3,2) with direction (2,-1,4)",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = parametricline3d(G, \"x = 1 + 2t, y = 3 - t, z = 2 + 4t\")"
+    },
+    {
+      "scenario": "Line through origin along (1,1,1) with color",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = parametricline3d(G, \"x = t, y = t, z = t\", c(blue))"
+    }
+  ]
+}

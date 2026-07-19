@@ -1,0 +1,88 @@
+{
+  "expression": "asa",
+  "_requires": ["g2d"],
+  "description": "Construct a triangle from two angles and the included side between them (Angle-Side-Angle). The third angle is computed as 180 - angleA - angleB. Vertex A is at the base point (or origin if omitted).",
+  "utility": "Create triangle from two angles and the included side between them",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "angleA",
+      "type": "number (degrees)",
+      "required": true,
+      "description": "Angle at vertex A in degrees. Must be positive."
+    },
+    {
+      "name": "c",
+      "type": "number",
+      "required": true,
+      "description": "Length of side from A to B (the included side). Must be positive."
+    },
+    {
+      "name": "angleB",
+      "type": "number (degrees)",
+      "required": true,
+      "description": "Angle at vertex B in degrees. angleA + angleB must be less than 180."
+    },
+    {
+      "name": "basePoint",
+      "type": "point",
+      "required": false,
+      "description": "Position for vertex A (defaults to origin). Must be a point variable or point(G, x, y)."
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": false,
+      "description": "Rotation angle in degrees for the entire triangle around vertex A"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic ASA triangle",
+      "syntax": "asa(G, angleA, sideC, angleB)",
+      "description": "Triangle at origin with two angles and included side"
+    },
+    {
+      "variant": "Positioned triangle",
+      "syntax": "asa(G, 45, 5, 60, point(G, 0, 0))",
+      "description": "Triangle positioned at specific point"
+    },
+    {
+      "variant": "Equilateral via angles",
+      "syntax": "asa(G, 60, 5, 60)",
+      "description": "Equilateral triangle (all angles 60 degrees)"
+    },
+    {
+      "variant": "Isosceles via angles",
+      "syntax": "asa(G, 70, 4, 70)",
+      "description": "Isosceles triangle with equal base angles"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "ASA triangle for sine rule demonstration",
+      "expression": "triangle_1 = asa(graph_1, 45, 5, 60, point(graph_1, 0, 0))"
+    },
+    {
+      "scenario": "Extract angle at vertex A",
+      "expression": "angle_A = angle(graph_1, item(triangle_1, type(angle), 1), arcsize(25))"
+    },
+    {
+      "scenario": "Extract angle at vertex B",
+      "expression": "angle_B = angle(graph_1, item(triangle_1, type(angle), 2), arcsize(25))"
+    },
+    {
+      "scenario": "Extract the included side",
+      "expression": "line_c = line(graph_1, item(triangle_1, type(edge), 1), type(segment), c(blue))"
+    },
+    {
+      "scenario": "Equilateral triangle construction",
+      "expression": "triangle_eq = asa(graph_1, 60, 4, 60, point(graph_1, 2, 2))"
+    }
+  ]
+}

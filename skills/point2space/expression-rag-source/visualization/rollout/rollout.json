@@ -1,0 +1,12 @@
+{
+  "expression": "rollout",
+  "_requires": [],
+  "description": "Unroll or spread out grouped elements",
+  "utility": "Expand collapsed or grouped items",
+  "arguments": [
+    {"name": "group", "type": "collection", "required": true, "description": "Grouped items to rollout"}
+  ],
+  "examples": [
+    {"scenario": "Expand group", "expression": "rollout(collection)"}
+  ]
+}

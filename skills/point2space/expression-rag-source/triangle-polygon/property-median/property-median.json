@@ -1,0 +1,33 @@
+{
+  "expression": "property (median)",
+  "_requires": ["g2d"],
+  "description": "Get a point at a ratio along a line. Useful for finding midpoints, medians, and other proportional positions on a line segment.",
+  "utility": "Extract point at ratio along a line (midpoint, median)",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "line",
+      "required": true,
+      "description": "Line variable to extract point from"
+    },
+    {
+      "name": "propertyName",
+      "type": "type(at_ratio, number)",
+      "required": true,
+      "description": "Ratio property using type() expression. Ratio parameter goes inside type()."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Midpoint via ratio",
+      "syntax": "p(line, type(at_ratio, 0.5))",
+      "description": "Get point at a ratio along the line. Ratio goes inside type()."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get midpoint of a line",
+      "expression": "mid = p(line_1, type(at_ratio, 0.5))"
+    }
+  ]
+}

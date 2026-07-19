@@ -1,0 +1,32 @@
+{
+  "expression": "midpoint",
+  "_requires": ["g2d", "point"],
+  "description": "Creates a point at the midpoint between two existing points.",
+  "syntax": "midpoint(G, P1, P2)",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "P1",
+      "type": "point",
+      "required": true,
+      "description": "First point"
+    },
+    {
+      "name": "P2",
+      "type": "point",
+      "required": true,
+      "description": "Second point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Midpoint between two points",
+      "expression": "M = midpoint(G, A, B)"
+    }
+  ]
+}

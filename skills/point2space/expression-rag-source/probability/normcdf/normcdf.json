@@ -1,0 +1,16 @@
+{
+  "expression": "normcdf",
+  "_requires": [],
+  "description": "Displays the cumulative distribution function of a normal distribution. Standalone chart with at() positioning.",
+  "utility": "Create a normal CDF curve",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "mean", "type": "number", "required": false, "description": "Mean of the distribution (default: 0)"},
+    {"name": "stddev", "type": "number", "required": false, "description": "Standard deviation (default: 1)"}
+  ],
+  "examples": [
+    {"scenario": "Standard normal CDF", "expression": "C = normcdf(at(4,4), view(12,16))"},
+    {"scenario": "CDF with mean 10, stddev 3", "expression": "C = normcdf(at(4,4), view(12,16), 10, 3)"}
+  ]
+}

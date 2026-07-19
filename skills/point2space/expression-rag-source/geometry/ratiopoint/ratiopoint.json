@@ -1,0 +1,67 @@
+{
+  "expression": "ratiopoint",
+  "_requires": ["g2d"],
+  "description": "Creates a point at a fractional position along a line, arc, circle, or ellipse. The ratio ranges from 0 (start) to 1 (end).",
+  "utility": "Place a point at a ratio along a shape",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "shape",
+      "type": "line | arc | circle | ellipse",
+      "required": true,
+      "description": "The shape to place the point on"
+    },
+    {
+      "name": "ratio",
+      "type": "number",
+      "required": true,
+      "description": "Fractional position from 0 (start) to 1 (end)"
+    },
+    {
+      "name": "styles",
+      "type": "c() | s() | icon() | fi() | notes()",
+      "required": false,
+      "description": "Color, size, marker icon, fill-image, or notes"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Midpoint of a line",
+      "syntax": "ratiopoint(G, L, 0.5)",
+      "description": "Point at 50% along a line"
+    },
+    {
+      "variant": "Quarter point",
+      "syntax": "ratiopoint(G, L, 0.25)",
+      "description": "Point at 25% along a shape"
+    },
+    {
+      "variant": "Point on circle circumference",
+      "syntax": "ratiopoint(G, C, 0.25)",
+      "description": "Point at 25% around a circle (0=start, 1=full circumference)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Midpoint of a line",
+      "expression": "L = line(G, (0, 0), (4, 4))\nM = ratiopoint(G, L, 0.5)"
+    },
+    {
+      "scenario": "Quarter point along a line",
+      "expression": "L = line(G, (0, 0), (4, 4))\nQ = ratiopoint(G, L, 0.25)"
+    },
+    {
+      "scenario": "Point on circle at ratio with styling",
+      "expression": "C = circle(G, (0, 0), radius(3))\nP = ratiopoint(G, C, 0.25, c(red), s(4))"
+    },
+    {
+      "scenario": "Animate point along spline path",
+      "expression": "S = spline(G, point(G, 0, 8), point(G, 1, 6), point(G, 2, 3), point(G, 3, 0))\nvar_anim = variableanimator(at(5,29), \"t\", 0, 1)\nP = ratiopoint(G, S, t)\nplay_1 = playanimator(var_anim)"
+    }
+  ]
+}

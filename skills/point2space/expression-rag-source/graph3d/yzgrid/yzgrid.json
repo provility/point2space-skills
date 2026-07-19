@@ -1,0 +1,17 @@
+{
+  "expression": "yzgrid",
+  "_requires": ["g3d"],
+  "description": "Toggles the YZ plane grid (x=0) inside a g3d container. Renders grid lines and a subtle semi-transparent fill. Include to show, omit to hide.",
+  "utility": "Show YZ plane grid on a g3d graph",
+  "arguments": [],
+  "examples": [
+    {
+      "scenario": "g3d with YZ grid enabled",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", yzgrid())"
+    },
+    {
+      "scenario": "g3d with all three grids",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"rhs\", xygrid(), yzgrid(), zxgrid())"
+    }
+  ]
+}

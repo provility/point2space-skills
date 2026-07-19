@@ -1,0 +1,43 @@
+{
+  "expression": "pointvectorline3d",
+  "_requires": ["g3d", "point3d", "vector3d"],
+  "description": "Creates a 3D line through a point in the direction of a vector.",
+  "utility": "Create a 3D line from a point and direction vector",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "point",
+      "type": "point3d",
+      "required": true,
+      "description": "Starting point of the line"
+    },
+    {
+      "name": "direction",
+      "type": "vector3d",
+      "required": true,
+      "description": "Direction vector of the line"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From variable references",
+      "syntax": "pointvectorline3d(G, P, V)",
+      "description": "Line through point P in direction of vector V"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line through a point along a direction vector",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nP = point3d(G, 1, 2, 3)\nV = vector3d(G, 0, 0, 0, 2, 1, -1)\nL = pointvectorline3d(G, P, V)"
+    },
+    {
+      "scenario": "Line through origin along x-axis with color",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nP = point3d(G, 0, 0, 0)\nV = vector3d(G, 0, 0, 0, 1, 0, 0)\nL = pointvectorline3d(G, P, V, c(blue))"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "expression": "dcdf",
+  "_requires": [],
+  "description": "Displays a discrete cumulative distribution function from a PMF, binomial, or sample space. Standalone chart.",
+  "utility": "Create a discrete CDF visualization",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "source", "type": "pmf/binomial/sspace variable", "required": false, "description": "Source distribution or sample space"},
+    {"name": "randomVariable", "type": "quoted string", "required": false, "description": "Random variable (sum, max, min, heads)"}
+  ],
+  "examples": [
+    {"scenario": "Discrete CDF from PMF", "expression": "P = pmf(at(4,4), view(10,16), S, \"sum\")\nC = dcdf(at(16,4), view(10,16), P)"},
+    {"scenario": "Discrete CDF from binomial", "expression": "C = dcdf(at(16,4), view(10,16), B)"}
+  ]
+}

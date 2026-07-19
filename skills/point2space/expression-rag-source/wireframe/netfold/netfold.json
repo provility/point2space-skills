@@ -1,0 +1,27 @@
+{
+  "expression": "netfold",
+  "_requires": [],
+  "description": "Generic net folding operation",
+  "utility": "Fold unfolded pattern back into 3D",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "pattern", "type": "net variable", "required": true, "description": "Net pattern to fold (cubenet, prismnet, pyramidnet, tetrahedronnet, octahedronnet)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Fold cube net into cube",
+      "expression": "netfold_1=netfold(at(1,16),cubenet_1,c(navy),fc(lightyellow),fo(0.5))"
+    },
+    {
+      "scenario": "Fold prism net",
+      "expression": "netfold_1=netfold(at(5,33),prismnet_1,c(navy),fc(lightyellow),fo(0.5))"
+    },
+    {
+      "scenario": "Fold pyramid net",
+      "expression": "netfold_3=netfold(at(5,33),pyramidnet_1,c(darkred),fc(lightsalmon),fo(0.5))"
+    }
+  ]
+}

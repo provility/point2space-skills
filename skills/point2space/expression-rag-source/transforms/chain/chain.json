@@ -1,0 +1,51 @@
+{
+  "expression": "chain",
+  "_requires": ["g2d"],
+  "description": "Positions one vector so its tail starts at another vector's tip, implementing tail-to-tip graphical vector addition.",
+  "utility": "Position a vector's tail at another vector's tip for tail-to-tip addition",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The graph container"
+    },
+    {
+      "name": "vecA",
+      "type": "vector",
+      "required": true,
+      "description": "The target vector (chain attaches to its tip)"
+    },
+    {
+      "name": "vecB",
+      "type": "vector",
+      "required": true,
+      "description": "The source vector (moved to start at vecA's tip)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Chain two vectors",
+      "syntax": "chain(G, vecA, vecB)",
+      "description": "Place vecB's tail at vecA's tip"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Chain a vertical vector to a horizontal one (vector addition)",
+      "expression": "O = point(G, 0, 0)\nA = vector(G, O, point(G, 3, 0))\nB = vector(G, O, point(G, 0, 2))\nC = chain(G, A, B)"
+    },
+    {
+      "scenario": "Chain multiple vectors in sequence",
+      "expression": "O = point(G, 0, 0)\nV1 = vector(G, O, point(G, 3, 0))\nV2 = vector(G, O, point(G, 1, 2))\nV3 = vector(G, O, point(G, -1, 1))\nC1 = chain(G, V1, V2)\nC2 = chain(G, C1, V3)"
+    },
+    {
+      "scenario": "Visualize vector addition with resultant",
+      "expression": "O = point(G, 0, 0)\nA = vector(G, O, point(G, 4, 1))\nB = vector(G, O, point(G, 1, 3))\nchained = chain(G, A, B)\nresultant = vector(G, O, point(G, 5, 4), c(red))"
+    },
+    {
+      "scenario": "Chain two force vectors for equilibrium analysis",
+      "expression": "O = point(G, 0, 0)\nF1 = vector(G, O, point(G, 3, 4))\nF2 = vector(G, O, point(G, -2, 1))\nF_sum = chain(G, F1, F2)"
+    }
+  ]
+}

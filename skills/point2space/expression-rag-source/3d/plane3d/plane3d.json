@@ -1,0 +1,84 @@
+{
+  "expression": "plane3d",
+  "_requires": ["g3d"],
+  "description": "Defines a plane in 3D space from a Cartesian equation ax + by + cz = d. For other construction methods, use normalplane3d, pointsplane3d, spanplane3d, interceptplane3d, or paraplane3d.",
+  "utility": "Create a plane from a Cartesian equation in 3D space",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": true,
+      "description": "Cartesian equation as a quoted string - e.g., \"x + y + z = 2\""
+    },
+    {
+      "name": "size",
+      "type": "size(number)",
+      "required": false,
+      "description": "Visual size of the plane"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Fill color - e.g., fc(lightblue)"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(number)",
+      "required": false,
+      "description": "Fill opacity from 0 to 1"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color - e.g., c(blue)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic Cartesian equation",
+      "syntax": "plane3d(G, \"x + y + z = 2\")",
+      "description": "Plane from a Cartesian equation"
+    },
+    {
+      "variant": "With type(cartesian) and defer",
+      "syntax": "plane3d(G, \"z = 0\", type(cartesian), defer())",
+      "description": "Plane using explicit cartesian type. defer() hides the visual plane while keeping it available for operations like project3d."
+    },
+    {
+      "variant": "With size and styling",
+      "syntax": "plane3d(G, \"x + y + z = 2\", size(5), fc(lightblue), fo(0.2))",
+      "description": "Plane with custom size and fill styling"
+    },
+    {
+      "variant": "Parallel through point",
+      "syntax": "pll3d(plane, point)",
+      "description": "Create a plane parallel to an existing plane, passing through a new point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plane from equation with opacity",
+      "expression": "G = g3d(at(4,23), view(30, 30))\npl = plane3d(G, \"x + 1y + 2z = 5\", size(4.9), fo(0.2))"
+    },
+    {
+      "scenario": "Vertical plane x=1 with color",
+      "expression": "G = g3d(at(4,23), view(30, 30))\npl = plane3d(G, \"x = 1\", size(5.1), fc(yellow), c(gold))"
+    },
+    {
+      "scenario": "Two intersecting planes",
+      "expression": "G = g3d(at(4,23), view(30, 30))\np1 = plane3d(G, \"x + y + z = 3\", fo(0.2), fc(lightblue))\np2 = plane3d(G, \"2x - y + z = 1\", fo(0.2), fc(lightyellow))"
+    },
+    {
+      "scenario": "Hidden xy-plane for projection (spherical coordinates)",
+      "expression": "xyPlane = plane3d(G, \"z = 0\", type(cartesian), defer())"
+    }
+  ]
+}

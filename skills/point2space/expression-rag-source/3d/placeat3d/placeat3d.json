@@ -1,0 +1,27 @@
+{
+  "expression": "placeat3d",
+  "_requires": ["g3d"],
+  "description": "Copies a 3D vector to a new starting point, preserving direction and length",
+  "utility": "Reposition a vector to start at a specified point while maintaining its properties",
+  "arguments": [
+    {"name": "vector", "type": "vector3d", "required": true, "description": "The vector to copy and reposition"},
+    {"name": "new_start_point", "type": "point3d", "required": true, "description": "The point where the vector should start"}
+  ],
+  "alternates": [
+    {
+      "variant": "using coordinates for new start",
+      "syntax": "placeat3d(vector, x, y, z)",
+      "description": "Specify the new start point using x, y, z coordinates instead of point3d"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "place vector at a new point",
+      "expression": "V = vector3d(g, 0, 0, 0, 1, 1, 1); placeat3d(V, point3d(g, 2, 2, 2))"
+    },
+    {
+      "scenario": "place vector using coordinates",
+      "expression": "V = vector3d(g, 0, 0, 0, 1, 0, 0); placeat3d(V, 3, 3, 3)"
+    }
+  ]
+}

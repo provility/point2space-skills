@@ -1,0 +1,20 @@
+{
+  "expression": "barchart",
+  "_requires": ["stattable"],
+  "description": "Standalone bar chart container. References a stattable variable for data. Uses at() and view() for positioning.",
+  "utility": "Create a bar chart from statistical table data",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size (default 10, 8)"},
+    {"name": "table", "type": "stattable variable", "required": true, "description": "Reference to stattable data source"},
+    {"name": "col", "type": "col(n)", "required": false, "description": "Value column index, 1-based (default 2)"},
+    {"name": "xcol", "type": "xcol(n)", "required": false, "description": "Category column index, 1-based (default 1)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Bar outline color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Bar fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity"}
+  ],
+  "examples": [
+    {"scenario": "Bar chart from frequency table", "expression": "T = stattable(at(2,4), values(\"A\",\"B\",\"A\",\"C\",\"B\",\"A\"), statcolumn(type(frequency)), header(\"Value\", \"Count\"))\nB = barchart(at(14,4), view(10,8), T, col(2), c(blue), fc(skyblue))"},
+    {"scenario": "Simple bar chart", "expression": "B = barchart(at(14,4), T, c(steelblue), fc(lightsteelblue))"}
+  ]
+}

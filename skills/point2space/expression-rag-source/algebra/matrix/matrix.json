@@ -1,0 +1,58 @@
+{
+  "expression": "matrix",
+  "_requires": [],
+  "description": "Matrix literal using double-bracket syntax. Each inner bracket is a row. Supports arithmetic (+, -, *), scalar multiplication, matrix-point multiplication, and element access with M[row, col] (0-based).",
+  "utility": "Define and manipulate matrices using native syntax",
+  "arguments": [
+    {
+      "name": "rows",
+      "type": "[[row1], [row2], ...]",
+      "required": true,
+      "description": "Matrix rows defined with double-bracket syntax"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "2x2 matrix",
+      "syntax": "M = [[a, b], [c, d]]",
+      "description": "Define a 2x2 matrix"
+    },
+    {
+      "variant": "3x3 matrix",
+      "syntax": "M = [[a, b, c], [d, e, f], [g, h, i]]",
+      "description": "Define a 3x3 matrix"
+    },
+    {
+      "variant": "Element access",
+      "syntax": "M[row, col]",
+      "description": "Access element at row, col (0-based indexing)"
+    },
+    {
+      "variant": "Matrix-point multiplication",
+      "syntax": "M * (x, y)",
+      "description": "Multiply matrix by a point tuple to transform it"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "2x2 identity matrix",
+      "expression": "I = [[1, 0], [0, 1]]"
+    },
+    {
+      "scenario": "Rotation matrix",
+      "expression": "R = [[cos(pi/4), -sin(pi/4)], [sin(pi/4), cos(pi/4)]]"
+    },
+    {
+      "scenario": "Matrix arithmetic",
+      "expression": "A = [[1, 2], [3, 4]]\nB = [[5, 6], [7, 8]]\nC = A + B\nD = A * B\nE = 2 * A"
+    },
+    {
+      "scenario": "Matrix-point transformation",
+      "expression": "M = [[cos(pi/4), -sin(pi/4)], [sin(pi/4), cos(pi/4)]]\nS = point(G, M * (4, 0))"
+    },
+    {
+      "scenario": "Element access",
+      "expression": "M = [[1, 2], [3, 4]]\na = M[0, 0]\nb = M[1, 1]"
+    }
+  ]
+}

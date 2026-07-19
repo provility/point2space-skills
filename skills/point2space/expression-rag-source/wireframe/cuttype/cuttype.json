@@ -1,0 +1,13 @@
+{
+  "expression": "cuttype",
+  "_requires": [],
+  "description": "Specifies cut operation type for wireframe operations",
+  "utility": "Define how material is removed in unfolding operations",
+  "arguments": [
+    {"name": "type", "type": "corner | sector", "required": true, "description": "Type of cut"}
+  ],
+  "examples": [
+    {"scenario": "Corner cut", "expression": "cuttype(corner)"},
+    {"scenario": "Sector cut", "expression": "cuttype(sector)"}
+  ]
+}

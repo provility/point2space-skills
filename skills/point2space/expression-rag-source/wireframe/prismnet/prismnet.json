@@ -1,0 +1,15 @@
+{
+  "expression": "prismnet",
+  "_requires": [],
+  "description": "Prism net unfolding pattern",
+  "utility": "Display prism as flat net",
+  "arguments": [
+    {"name": "sides", "type": "number", "required": false, "description": "Polygon sides"}
+  ],
+  "examples": [
+    {
+      "scenario": "Prism net for folding",
+      "expression": "prismnet_1=prismnet(at(5,22),3,c(navy),fc(lightyellow),fo(0.5))"
+    }
+  ]
+}

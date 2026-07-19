@@ -1,0 +1,54 @@
+{
+  "expression": "viewtransform",
+  "_requires": ["g3d"],
+  "description": "Sets CSS 3D rotation and perspective on a g3d graph. Data expression consumed by g3d.",
+  "utility": "Control 3D view rotation and perspective for g3d",
+  "arguments": [
+    {
+      "name": "rotateX",
+      "type": "number",
+      "required": true,
+      "description": "Rotation around the X axis in degrees"
+    },
+    {
+      "name": "rotateY",
+      "type": "number",
+      "required": true,
+      "description": "Rotation around the Y axis in degrees"
+    },
+    {
+      "name": "rotateZ",
+      "type": "number",
+      "required": true,
+      "description": "Rotation around the Z axis in degrees"
+    },
+    {
+      "name": "perspective",
+      "type": "number",
+      "required": false,
+      "description": "CSS perspective distance. Default: 800"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic rotation",
+      "syntax": "viewtransform(rotateX, rotateY, rotateZ)",
+      "description": "Set 3D rotation with default perspective"
+    },
+    {
+      "variant": "With custom perspective",
+      "syntax": "viewtransform(rotateX, rotateY, rotateZ, perspective)",
+      "description": "Set 3D rotation with custom perspective distance"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Top-down view",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nvt = viewtransform(90, 0, 0)"
+    },
+    {
+      "scenario": "Isometric-like view with perspective",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nvt = viewtransform(35, 45, 0, 1200)"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "expression": "square",
+  "_requires": ["g2d"],
+  "description": "Create a square from a corner point and side length, with optional rotation. The corner must be a point variable or inline point() expression. All four sides are equal and all angles are 90 degrees.",
+  "utility": "Create square from corner point and side length with optional rotation",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "corner",
+      "type": "point",
+      "required": true,
+      "description": "Top-left corner as a point variable or point(G, x, y) expression"
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "required": true,
+      "description": "Side length of the square. Must be positive."
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "required": false,
+      "description": "Rotation angle in degrees about the square's center"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From point variable",
+      "syntax": "square(G, P, size)",
+      "description": "Square with corner at point variable P"
+    },
+    {
+      "variant": "Rotated square",
+      "syntax": "square(G, P, size, 45)",
+      "description": "Square rotated 45 degrees about its center"
+    },
+    {
+      "variant": "From inline point",
+      "syntax": "square(G, point(G, 1, 5), 4)",
+      "description": "Square with inline point definition"
+    },
+    {
+      "variant": "With styling",
+      "syntax": "square(G, P, 4, c(red), fc(pink))",
+      "description": "Colored square with stroke and fill"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Unit square at origin",
+      "expression": "square_1 = square(graph_1, point(graph_1, 0, 1), 1)"
+    },
+    {
+      "scenario": "Rotated square for diamond shape",
+      "expression": "square_1 = square(graph_1, point(graph_1, 2, 4), 3, 45)"
+    },
+    {
+      "scenario": "Square for Pythagorean proof",
+      "expression": "square_a = square(graph_1, point(graph_1, 0, 5), 3)"
+    },
+    {
+      "scenario": "Extract edge for labeling",
+      "expression": "edge_1 = line(graph_1, item(square_1, type(edge), 1), type(segment))"
+    },
+    {
+      "scenario": "Get square area",
+      "expression": "a = p(square_1, type(area))"
+    },
+    {
+      "scenario": "Get square diagonal length",
+      "expression": "diag = p(square_1, type(diagonal))"
+    },
+    {
+      "scenario": "Colored square with fill",
+      "expression": "square_2 = square(graph_1, point(graph_1, 3, 4), 2, c(blue), fc(lightblue))"
+    }
+  ]
+}

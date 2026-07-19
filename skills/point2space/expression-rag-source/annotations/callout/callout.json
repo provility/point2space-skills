@@ -1,0 +1,29 @@
+{
+  "expression": "callout",
+  "description": "Draws a callout annotation — a rounded rectangle highlight with a curved arrow pointing outward. Takes 4 corner at() points defining the bounds, with optional direction, arrow length, curvature, and label text.",
+  "utility": "Draw a callout highlight with curved arrow at specified bounds",
+  "arguments": [
+    { "name": "corner1", "type": "at(row, col)", "required": true, "description": "First corner of bounding rectangle" },
+    { "name": "corner2", "type": "at(row, col)", "required": true, "description": "Second corner" },
+    { "name": "corner3", "type": "at(row, col)", "required": true, "description": "Third corner" },
+    { "name": "corner4", "type": "at(row, col)", "required": true, "description": "Fourth corner" },
+    { "name": "direction", "type": "type(right|left|top|bottom|topleft|topright|bottomleft|bottomright)", "required": false, "description": "Arrow direction from the callout bounds" },
+    { "name": "length", "type": "number", "required": false, "description": "Arrow length in logical units (default 3)" },
+    { "name": "curvature", "type": "number", "required": false, "description": "Arrow curvature (default 0.3)" },
+    { "name": "label", "type": "string", "required": false, "description": "MathJax text label at arrow tip" },
+    { "name": "buff", "type": "buff(x, y)", "required": false, "description": "Arrow offset from bounds" },
+    { "name": "color", "type": "c(colorName)", "required": false, "description": "Callout color" },
+    { "name": "strokeWidth", "type": "s(width)", "required": false, "description": "Stroke width" },
+    { "name": "fillColor", "type": "fc(colorName)", "required": false, "description": "Fill color" },
+    { "name": "fadeIn", "type": "fadein(duration)", "required": false, "description": "Fade-in animation" }
+  ],
+  "alternates": [
+    { "variant": "Basic callout", "syntax": "callout(at(r1,c1), at(r1,c2), at(r2,c2), at(r2,c1))", "description": "Callout with default arrow direction" },
+    { "variant": "With direction and label", "syntax": "callout(at(r1,c1), at(r1,c2), at(r2,c2), at(r2,c1), type(right), 3, 0.3, \"Note\")", "description": "Arrow pointing right with label" },
+    { "variant": "With styling", "syntax": "callout(at(r1,c1), at(r1,c2), at(r2,c2), at(r2,c1), type(top), c(blue), s(2))", "description": "Blue callout with thick stroke" }
+  ],
+  "examples": [
+    { "scenario": "Callout showing quadratic solution value", "expression": "callout_1=callout(at(18,26),at(18,31),at(22,31),at(22,26),3,0.3,fadein(5),fadeout(0),t(2),\"math(1/2)\",c(darkred),s(2))" },
+    { "scenario": "Callout with theta label", "expression": "callout_1=callout(at(10,17),at(10,22),at(13,22),at(13,17),type(bottom),5,0.9,fadein(5),fadeout(0),t(2),\"some theta\",s(3),c(brown))" }
+  ]
+}

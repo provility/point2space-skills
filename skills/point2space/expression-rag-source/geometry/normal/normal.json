@@ -1,0 +1,34 @@
+{
+  "expression": "normal",
+  "_requires": [],
+  "description": "Computes perpendicular (normal) direction to a line or vector in 2D",
+  "utility": "Get perpendicular unit vector for positioning and orthogonal constructions",
+  "arguments": [
+    {
+      "name": "object",
+      "type": "line | vector | point point | number number",
+      "required": true,
+      "description": "Object to compute normal to"
+    }
+  ],
+  "alternates": [
+    "normal(line) - perpendicular to line direction",
+    "normal(vector) - perpendicular to vector",
+    "normal(p1, p2) - perpendicular to line p1→p2",
+    "normal(x, y) - perpendicular to (x, y)"
+  ],
+  "examples": [
+    {
+      "scenario": "Normal to a line",
+      "expression": "L = line(g, 0, 0, 3, 0); perp = normal(L)"
+    },
+    {
+      "scenario": "From two points",
+      "expression": "perp = normal(A, B)"
+    },
+    {
+      "scenario": "Normal of a vector in vector movements lesson",
+      "expression": "G=g2d(at(3,6),25,range(-1,5,1),type(geometry)); vector_1 = vector(G, point(G, 2.3, 1.2), point(G, 3.2, 1.7)); norm_1 = normal(G, vector_1)"
+    }
+  ]
+}

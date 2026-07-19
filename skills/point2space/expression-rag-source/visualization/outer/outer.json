@@ -1,0 +1,13 @@
+{
+  "expression": "outer",
+  "_requires": [],
+  "description": "Specify outer radius function for washer/disk method",
+  "utility": "Define outer boundary in solids of revolution",
+  "arguments": [
+    {"name": "function", "type": "string | number", "required": true, "description": "Outer radius as function or constant"}
+  ],
+  "examples": [
+    {"scenario": "Constant outer radius", "expression": "outer(\"2\")"},
+    {"scenario": "Function outer radius", "expression": "outer(\"sqrt(x)\")"}
+  ]
+}

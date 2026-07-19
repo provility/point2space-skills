@@ -1,0 +1,14 @@
+{
+  "expression": "ptree",
+  "_requires": ["g2d"],
+  "description": "Probability tree diagram visualization inside a 2D graph.",
+  "utility": "Create a probability tree diagram",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "2D graph container"},
+    {"name": "branches", "type": "quoted strings", "required": true, "description": "Branch definitions with probabilities"}
+  ],
+  "examples": [
+    {"scenario": "Coin flip tree", "expression": "G = g2d(at(4,4), size(20), type(geometry))\nptree(G, \"H:0.5\", \"T:0.5\")"},
+    {"scenario": "Simple tree", "expression": "ptree(G, \"A:0.3\", \"B:0.7\")"}
+  ]
+}

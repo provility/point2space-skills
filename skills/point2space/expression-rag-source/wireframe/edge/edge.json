@@ -1,0 +1,20 @@
+{
+  "expression": "edge",
+  "_requires": [],
+  "description": "Specifies a point on a polygon edge by edge index and position ratio. Used to define endpoints on sheet edges for wireframe operations.",
+  "utility": "Define a point on a polygon edge by index and ratio",
+  "arguments": [
+    {"name": "edgeIndex", "type": "number", "required": true, "description": "Edge number (1-based index of the polygon edge)"},
+    {"name": "ratio", "type": "number", "required": true, "description": "Position along the edge (0 to 1, where 0 is the start and 1 is the end)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Midpoint of edge 1",
+      "expression": "edge(1, 0.5)"
+    },
+    {
+      "scenario": "60% along edge 2",
+      "expression": "edge(2, 0.6)"
+    }
+  ]
+}

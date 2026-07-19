@@ -1,0 +1,70 @@
+{
+  "expression": "polygon",
+  "_requires": ["g2d", "point"],
+  "description": "Creates a closed polygon from three or more vertex points, automatically connecting consecutive vertices with edges and closing the shape.",
+  "utility": "Create closed polygon from three or more points",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "points",
+      "type": "point | point(G, x, y) | x, y pairs",
+      "required": true,
+      "description": "Three or more points defining polygon vertices (can be point variables, inline points, or x,y coordinate pairs)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From point variables",
+      "syntax": "polygon(G, P1, P2, P3)",
+      "description": "Polygon using existing point variables"
+    },
+    {
+      "variant": "From inline points",
+      "syntax": "polygon(G, point(G, 0, 0), point(G, 3, 0), point(G, 1.5, 2))",
+      "description": "Polygon with inline point definitions"
+    },
+    {
+      "variant": "From coordinates",
+      "syntax": "polygon(G, 0, 0, 3, 0, 1.5, 2)",
+      "description": "Polygon from x,y coordinate pairs"
+    },
+    {
+      "variant": "With color styling",
+      "syntax": "polygon(G, P1, P2, P3, P4, c(blue), fc(lightblue))",
+      "description": "Colored polygon with stroke and fill"
+    },
+    {
+      "variant": "Hidden stroke",
+      "syntax": "polygon(G, P1, P2, P3, so(0))",
+      "description": "Polygon structure without visible outline"
+    },
+    {
+      "variant": "Regular n-gon",
+      "syntax": "polygon(G, center, radius, sides)",
+      "description": "Regular polygon with given center point, circumradius, and number of sides (>= 3)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Triangle from three inline points (two-tables lesson)",
+      "expression": "triangle_1 = polygon(graph_1, point(graph_1, 2.0, 1.9), point(graph_1, -2.0, -0.5), point(graph_1, -1.8, 1.4))"
+    },
+    {
+      "scenario": "Feasible region polygon from origin and intersection points with fill opacity (linear programming lesson)",
+      "expression": "P = polygon(G, point(G,0,0), A, B,fo(0.1))"
+    },
+    {
+      "scenario": "Quadrilateral with coordinates",
+      "expression": "quad_1 = polygon(graph_1, 0, 0, 4, 0, 4, 3, 0, 3)"
+    },
+    {
+      "scenario": "Pentagon with fill color",
+      "expression": "pentagon_1 = polygon(graph_1, P1, P2, P3, P4, P5, c(blue), fc(lightblue))"
+    }
+  ]
+}

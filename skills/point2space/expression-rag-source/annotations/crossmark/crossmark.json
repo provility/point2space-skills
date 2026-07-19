@@ -1,0 +1,43 @@
+{
+  "expression": "crossmark",
+  "_requires": ["g2d"],
+  "description": "Draws a cross mark annotation between two endpoints. Creates an X mark symbol to indicate incorrect or invalid items with optional styling.",
+  "utility": "Mark incorrect answers or invalid items with cross symbols",
+  "arguments": [
+    {
+      "name": "from",
+      "type": "at() expression",
+      "required": true,
+      "description": "Starting point for the cross mark, specified as at(row, col)"
+    },
+    {
+      "name": "to",
+      "type": "at() expression",
+      "required": true,
+      "description": "Ending point for the cross mark, specified as at(row, col)"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with color",
+      "syntax": "crossmark(at(r1, c1), at(r2, c2), c(red))",
+      "description": "Cross mark with red color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic cross mark",
+      "expression": "crossmark(at(2,1), at(2,2))"
+    },
+    {
+      "scenario": "Red cross mark",
+      "expression": "crossmark(at(1,3), at(1,4), c(red))"
+    }
+  ]
+}

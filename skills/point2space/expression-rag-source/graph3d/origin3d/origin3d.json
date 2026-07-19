@@ -1,0 +1,36 @@
+{
+  "expression": "origin3d",
+  "_requires": ["g3d"],
+  "description": "Shifts the origin of the 3D coordinate system inside a g3d container. All shapes and axes are offset by this amount.",
+  "utility": "Set the 3D origin offset for a g3d graph",
+  "arguments": [
+    {
+      "name": "x",
+      "type": "number",
+      "required": true,
+      "description": "X-axis origin offset"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "required": true,
+      "description": "Y-axis origin offset"
+    },
+    {
+      "name": "z",
+      "type": "number",
+      "required": true,
+      "description": "Z-axis origin offset"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Shift origin to (1,1,0)",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", origin3d(1, 1, 0))"
+    },
+    {
+      "scenario": "Shift origin along z-axis",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-5, 5), \"rhs\", origin3d(0, 0, 2))"
+    }
+  ]
+}

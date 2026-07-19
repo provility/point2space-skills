@@ -1,0 +1,25 @@
+{
+  "expression": "pause",
+  "description": "Pauses playback for a specified duration in seconds. Optionally supports inline notes, media, and shape reference icon placement during the pause. Useful for allowing time to read annotations or listen to audio during playback.",
+  "utility": "Pause playback for a specified duration",
+  "arguments": [
+    { "name": "duration", "type": "number", "required": true, "description": "Duration of pause in seconds (must be positive)" },
+    { "name": "notes", "type": "notes(...)", "required": false, "description": "Optional notes text with optional color and fill color styling" },
+    { "name": "media", "type": "media(...)", "required": false, "description": "Optional media (audio/video) to play during pause" },
+    { "name": "ref", "type": "ref(shapeLabel)", "required": false, "description": "Optional reference to existing shape for icon placement" }
+  ],
+  "alternates": [
+    { "variant": "Simple pause", "syntax": "pause(2)", "description": "Pause for 2 seconds" },
+    { "variant": "With notes", "syntax": "pause(3, notes(\"Read this\"))", "description": "Pause with explanatory text" },
+    { "variant": "With media", "syntax": "pause(5, media(\"backgroundAudio\"))", "description": "Pause with audio playback" },
+    { "variant": "With icon reference", "syntax": "pause(2, ref(p1))", "description": "Pause with icon placed near shape p1" },
+    { "variant": "Complete with notes and media", "syntax": "pause(4, notes(\"Listen\"), media(\"voiceover\"))", "description": "Pause with both annotations and audio" }
+  ],
+  "examples": [
+    { "scenario": "Simple pause", "expression": "pause(2)" },
+    { "scenario": "Pause with explanatory notes", "expression": "pause(5, notes(\"Think about this problem\"))" },
+    { "scenario": "Pause with audio", "expression": "pause(3, media(\"background\"))" },
+    { "scenario": "Pause with icon next to shape", "expression": "pause(2, ref(p1))" },
+    { "scenario": "Full pause with notes and media", "expression": "pause(1.5, notes(\"Step 1\"), media(\"a\"))" }
+  ]
+}

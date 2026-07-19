@@ -1,0 +1,270 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_1780600000001_te01": {
+      "id": "slide_1780600000001_te01",
+      "name": "Write + FadeIn",
+      "expressions": [
+        "title_1=title(at(1.2,3),\"Write & FadeIn\",type(slideup),fc(lavender),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30.1,3.9,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(9,4),\"a^2 + b^2 = c^2\",t(5))",
+        "write_2=write(at(11.5,3.7),\"E = mc^2\",fadein(0.5))",
+        "write_3=write(at(14.7,3.6),\"\\int_0^1 x^2 dx = 1/3\",t(4))",
+        "goto_1=goto(at(16.6,13.9),\"Sub (Substitution)\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "The write() expression renders math with a pen-trace animation. Adding fadein() makes it fade in instantly instead."
+        }
+      ]
+    },
+    "slide_1780600000002_te02": {
+      "id": "slide_1780600000002_te02",
+      "name": "Sub (Substitution)",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"Sub (Substitution)\",type(slideup),fc(lightyellow),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30,3.8,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(8.5,3.8),\"ax^2 + bx + c = 0\",t(4))",
+        "write_2=write(at(11.6,3.8),\"ax^2 + bx + c = 0\",sub(\"a\",\"2\"),sub(\"b\",\"5\"),sub(\"+c\",\"-3\"),fadein(0.5))",
+        "write_3=write(at(14.6,4),\"2x^2 + 5x - 3 = 0\",fadein(0.7))",
+        "goto_1=goto(at(15.4,14),\"Comment\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "The sub() modifier replaces variable names with specific values inside a write expression. Each sub(\"find\", \"replace\") swaps one token."
+        }
+      ]
+    },
+    "slide_1780600000003_te03": {
+      "id": "slide_1780600000003_te03",
+      "name": "Comment",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"Comment\",type(slideup),fc(mistyrose),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30.4,4,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(8.9,3.6),\"(x-h)^2 + (y-k)^2 = r^2\",t(4),comment(\"standard form of a circle\"))",
+        "comment_1=comment(at(11,4),\"This is a standalone comment with math(r^2 = x^2 + y^2).\",t(2),type(right),buff(1,0))",
+        "goto_1=goto(at(11.6,16.2),\"Select + Outline\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Inline comment() on a write shows a tooltip. Standalone comment() creates a floating annotation at any position."
+        }
+      ]
+    },
+    "slide_1780600000004_te04": {
+      "id": "slide_1780600000004_te04",
+      "name": "Select + Outline",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"Select & Outline\",type(slideup),fc(honeydew),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30,4.1,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(10,3.6),\"ax^2 + bx + c = 0\",t(4))",
+        "select_1 = select(write_1, \"a\", 1)",
+        "select_2 = select(write_1, \"b\", 1)",
+        "select_3 = select(write_1, \"c\", 1)",
+        "outline_1 = outline(select_1, c(red))",
+        "outline_2 = outline(select_2, c(blue))",
+        "outline_3 = outline(select_3, c(green))",
+        "goto_1=goto(at(11.2,13.4),\"Fragment Highlight\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "select() picks out a specific token from a write expression. outline() draws a glowing border around it. Each coefficient is highlighted in a different color."
+        }
+      ]
+    },
+    "slide_1780600000005_te05": {
+      "id": "slide_1780600000005_te05",
+      "name": "Fragment Highlight",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"Fragment Highlight\",type(slideup),fc(lavenderblush),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(4,3),35,5,para_str_1,ff(\"Gill Sans\"),effect(slideleft),fs(22),lh(1.8))",
+        "fragment_1 = fragment(paragraph_1, range(1, 3), effect(highlight), c(black), fc(gold), t(1))",
+        "fragment_2 = fragment(paragraph_1, range(8, 10), effect(highlight), c(darkred), fc(lightskyblue), t(1))",
+        "hidehighlight_1 = hidehighlight(fragment_1)",
+        "fragment_3 = fragment(paragraph_1, range(14, 16), effect(highlight), c(white), fc(coral), t(1))",
+        "goto_1=goto(at(9.3,18),\"TextReveal\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "The Pythagorean theorem states that in a right triangle the square of the hypotenuse equals the sum of the squares of the other two sides."
+        }
+      ]
+    },
+    "slide_1780600000006_te06": {
+      "id": "slide_1780600000006_te06",
+      "name": "TextReveal",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"TextReveal\",type(slideup),fc(aliceblue),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30,3.7,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(8.6,3.6),\"x^2 + y^2 + 6x + 8y + 16 = 0\",exclude(\"6x\",1),exclude(\"8y\",1),fadein(0.5))",
+        "text_reveal_1=textreveal(write_1_select_1,c(orange))",
+        "text_reveal_2=textreveal(write_1_select_2,c(green))",
+        "goto_1=goto(at(12,19.4),\"TextCopy\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "exclude() hides parts of a write expression. textreveal() then animates them into view one at a time, drawing attention to each term."
+        }
+      ]
+    },
+    "slide_1780600000007_te07": {
+      "id": "slide_1780600000007_te07",
+      "name": "TextCopy",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"TextCopy\",type(slideup),fc(lightyellow),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30,3.9,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(8.5,3.6),\"a^2 + b^2 = c^2\",t(4))",
+        "select_1 = select(write_1, \"a\", 1)",
+        "select_2 = select(write_1, \"b\", 1)",
+        "write_2=write(at(11.7,3.7),\"text(Given: ) P, Q\",exclude(\"P\",1),exclude(\"Q\",1),fadein(0.5))",
+        "text_copy_1=textcopy(write_2_select_1,select_1,buff(-0.3,-0.2),defer())",
+        "text_copy_2=textcopy(write_2_select_2,select_2,buff(-0.3,-0.1),defer())",
+        "play_1 = play(text_copy_1, text_copy_2, type(parallel))",
+        "goto_1=goto(at(16.6,11.2),\"TextMove\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "textcopy() duplicates a selected piece of text and animates the copy flying to a target location. The original stays in place."
+        }
+      ]
+    },
+    "slide_1780600000008_te08": {
+      "id": "slide_1780600000008_te08",
+      "name": "TextMove",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"TextMove\",type(slideup),fc(azure),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30,3.6,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(9.3,3.8),\"x + y = 5\",t(4))",
+        "select_1 = select(write_1, \"x\", 1)",
+        "write_2=write(at(13,3.9),\"text(Solution: ) M = 3\",exclude(\"M\",1),fadein(0.5))",
+        "text_move_1 = textmove(write_2_select_1, select_1, buff(-0.2, -0.1))",
+        "goto_1=goto(at(17.3,13.6),\"TextReplace\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "textmove() animates a selected piece of text from its current position to a new destination. Unlike textcopy, the original disappears."
+        }
+      ]
+    },
+    "slide_1780600000009_te09": {
+      "id": "slide_1780600000009_te09",
+      "name": "TextReplace",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"TextReplace\",type(slideup),fc(seashell),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30.1,4.2,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(8.8,3.5),\"(x - h)^2 + (y - akbc)^2 = r^2\",exclude(\"a\",1),exclude(\"bc\",1),fadein(0.5))",
+        "select_1 = select(write_1, \"h\", 1)",
+        "select_2 = select(write_1, \"k\", 1)",
+        "select_3 = select(write_1, \"r\", 1)",
+        "text_replace_1=textreplace(select_1,\"3\",buff(0,0.1),c(orange))",
+        "text_replace_2=textreplace(select_2,\"(-4)\",buff(0.1,0.1),c(green))",
+        "text_replace_3=textreplace(select_3,\"5\",buff(0,-0.2),c(blue))",
+        "goto_1=goto(at(14.8,17),\"TextScale\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "textreplace() swaps a selected token with new content. Here we substitute concrete values for the center and radius of a circle."
+        }
+      ]
+    },
+    "slide_1780600000010_te10": {
+      "id": "slide_1780600000010_te10",
+      "name": "TextScale",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"TextScale\",type(slideup),fc(mintcream),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30,3.8,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(8.9,3.8),\"ax^2 + bx + c = 0\",t(4))",
+        "select_1 = select(write_1, \"x^2\", 1)",
+        "select_2 = select(write_1, \"x\", 2)",
+        "text_scale_1=textscale(select_1,size(1.4))",
+        "text_scale_2=textscale(select_2,size(1.4))",
+        "goto_1=goto(at(14.9,9.9),\"TextSwap\",\"section1\")"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "textscale() zooms a selected piece of text up by a given factor and then scales it back. Great for drawing attention to specific terms."
+        }
+      ]
+    },
+    "slide_1780600000011_te11": {
+      "id": "slide_1780600000011_te11",
+      "name": "TextSwap",
+      "expressions": [
+        "section_1=section(at(2.4,9.1),\"section1\")",
+        "title_1=title(at(1.2,3),\"TextSwap\",type(slideup),fc(linen),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30,4,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(8.4,3.9),\"a + b = c\",t(4))",
+        "select_1 = select(write_1, \"+b\", 1)",
+        "select_2 = select(write_1, \"c\", 1)",
+        "text_swap_1=textswap(select_2, select_1, \"-c\", \"-b\", buff(0, 0.3), buff(0, -0.3))",
+        "goto_1=goto(at(9.1,10.6),\"TextSplit + TextGather\",\"section1\")",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "textswap() exchanges two selected text pieces with new content. Both pieces animate simultaneously to their swapped positions."
+        }
+      ]
+    },
+    "slide_1780600000012_te12": {
+      "id": "slide_1780600000012_te12",
+      "name": "TextSplit + TextGather",
+      "expressions": [
+        "section_1=section(at(19.2,6.7),\"section1\")",
+        "title_1=title(at(1.2,3),\"TextSplit & TextGather\",type(slideup),fc(ghostwhite),pd(12),border(black,radius(10),shadow(12)),fs(26),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.5,3),30,3.6,para_str_1,ff(\"Gill Sans\"),effect(fadein),fs(22))",
+        "write_1=write(at(10.6,3.9),\"2x + 3y = 12\",t(4))",
+        "select_1 = select(write_1, \"2x\", 1)",
+        "select_2 = select(write_1, \"3y\", 1)",
+        "select_3 = select(write_1, \"12\", 1)",
+        "SP=textsplit((select_1, buff(-2, 0)), (select_2, buff(0, 0)), (select_3, buff(2, 0)), t(1), c(steelblue))",
+        "textgather_1=textgather(SP, t(0.5), c(coral))",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "textsplit() pulls selected parts of an equation apart to separate positions. textgather() animates them back together."
+        }
+      ]
+    }
+  },
+  "settings": {},
+  "slideOrder": [
+    "slide_1780600000001_te01",
+    "slide_1780600000002_te02",
+    "slide_1780600000003_te03",
+    "slide_1780600000004_te04",
+    "slide_1780600000005_te05",
+    "slide_1780600000006_te06",
+    "slide_1780600000007_te07",
+    "slide_1780600000008_te08",
+    "slide_1780600000009_te09",
+    "slide_1780600000010_te10",
+    "slide_1780600000011_te11",
+    "slide_1780600000012_te12"
+  ],
+  "activeSlideId": "slide_1780600000001_te01",
+  "id": "46b1169c-3d5e-43bc-bd2a-7af2b912535c",
+  "name": "Text Effects Demo"
+}

@@ -1,0 +1,79 @@
+{
+  "expression": "fragment",
+  "description": "Highlights a specific text portion of a paragraph element using pattern matching",
+  "utility": "Apply effects or styling to specific text within a paragraph",
+  "arguments": [
+    {
+      "name": "paragraph",
+      "type": "variable",
+      "required": true,
+      "description": "Variable reference to a paragraph element"
+    },
+    {
+      "name": "pattern",
+      "type": "string",
+      "required": true,
+      "description": "Quoted text pattern to match and highlight"
+    },
+    {
+      "name": "ordinal",
+      "type": "number",
+      "required": true,
+      "description": "1-based occurrence index (which match to highlight if pattern appears multiple times)"
+    },
+    {
+      "name": "effectType",
+      "type": "type(effect)",
+      "required": false,
+      "description": "Animation effect: type(highlight), type(bounce), etc."
+    },
+    {
+      "name": "textColor",
+      "type": "c(color)",
+      "required": false,
+      "description": "Text color for highlighted fragment"
+    },
+    {
+      "name": "backgroundColor",
+      "type": "fc(color)",
+      "required": false,
+      "description": "Background color for highlighted fragment"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Animation duration in seconds"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Simple highlight",
+      "syntax": "fragment(para_1, \"some text\", 1)",
+      "description": "Highlight first occurrence of pattern with default effect"
+    },
+    {
+      "variant": "With animation and color",
+      "syntax": "fragment(para_1, \"some text\", 1, type(bounce), c(red), fc(yellow), t(2))",
+      "description": "Highlight with bounce effect, red text on yellow background, 2 second duration"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Highlight word range in circle equation question and clear (equation of a circle lesson)",
+      "expression": "fragment_3 = fragment(paragraph_1, range(2, 8), effect(highlight), c(darkred), fc(gold), t(1))\nhidehighlight_3 = hidehighlight(fragment_3)"
+    },
+    {
+      "scenario": "Highlight circle keyword in diameter problem (circle from a diameter lesson)",
+      "expression": "fragment_1=fragment(paragraph_1,range(3,9),effect(highlight),c(black),fc(gold),t(1))\nhidehighlight_1 = hidehighlight(fragment_1)"
+    },
+    {
+      "scenario": "Highlight axis intercepts phrase (axis intercepts lesson)",
+      "expression": "fragment_2 = fragment(paragraph_1, range(5, 10), effect(highlight), c(black), fc(gold), t(1))"
+    },
+    {
+      "scenario": "Highlight circle equation in position analysis problem (Point and Circle lesson)",
+      "expression": "fragment_1 = fragment(paragraph_1, range(12, 13), effect(highlight), c(black), fc(gold), t(1))"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "expression": "placeat",
+  "description": "Duplicate a vector or line segment at a new starting point, preserving its original direction and magnitude.",
+  "utility": "Copy vector/line to new starting point preserving direction and magnitude",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container"
+    },
+    {
+      "name": "source",
+      "type": "vector | line",
+      "required": true,
+      "description": "Vector or line to copy"
+    },
+    {
+      "name": "point",
+      "type": "point | (x, y)",
+      "required": true,
+      "description": "New starting point - either a point expression or x, y coordinates"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Copy vector to a point",
+      "syntax": "placeat(G, vec, point(G, x, y))",
+      "description": "Copy vector to start at a point expression"
+    },
+    {
+      "variant": "Copy vector to coordinates",
+      "syntax": "placeat(G, vec, x, y)",
+      "description": "Copy vector to start at (x, y) coordinates"
+    },
+    {
+      "variant": "Copy line as vector",
+      "syntax": "placeat(G, line, point)",
+      "description": "Copy line segment as vector to new start point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Copy vector to a new starting point",
+      "expression": "V = vector(G, 0, 0, 3, 2)\nV2 = placeat(G, V, point(G, 1, 1))"
+    },
+    {
+      "scenario": "Copy vector using coordinates",
+      "expression": "V = vector(G, 0, 0, 3, 2)\nV2 = placeat(G, V, 2, 3)"
+    },
+    {
+      "scenario": "Build a parallelogram with vector placement",
+      "expression": "A = point(G, 0, 0)\nB = point(G, 4, 0)\nV1 = vector(G, 0, 0, 4, 0)\nV2 = vector(G, 0, 0, 1, 3)\nV3 = placeat(G, V1, point(G, 1, 3))\nV4 = placeat(G, V2, point(G, 4, 0))"
+    },
+    {
+      "scenario": "Copy line segment as vector to new position",
+      "expression": "L = line(G, 0, 0, 3, 4)\nV = placeat(G, L, point(G, 5, 0))"
+    }
+  ]
+}

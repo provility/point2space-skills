@@ -1,0 +1,76 @@
+{
+  "expression": "select",
+  "description": "Extract and target a specific sub-expression within rendered math text by pattern matching with an optional occurrence index. Returns a reference to the matched term for subsequent manipulation (textreplace, textmove, textreveal, textcopy, textswap, write). Works on write or label objects.",
+  "utility": "Extract and target specific portions of rendered math text",
+  "arguments": [
+    {
+      "name": "source",
+      "type": "variable",
+      "required": true,
+      "description": "Reference to a write or label variable"
+    },
+    {
+      "name": "pattern",
+      "type": "string",
+      "required": true,
+      "description": "ASCII math pattern to match within the rendered text"
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "required": false,
+      "description": "1-based occurrence index (1 = first match, 2 = second, etc.). If omitted, returns all matches as a collection."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Select specific occurrence",
+      "syntax": "select(M, \"pattern\", 1)",
+      "description": "Select first occurrence of pattern in M"
+    },
+    {
+      "variant": "Select all occurrences",
+      "syntax": "select(M, \"pattern\")",
+      "description": "Select all occurrences as a collection"
+    },
+    {
+      "variant": "Animate selected items",
+      "syntax": "S = select(M, \"x^2\")\nwrite(S)",
+      "description": "Select items then animate them with write()"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Select r variable from circle standard form for textreplace (equation of a circle lesson)",
+      "expression": "select_3 = select(write_4, \"r\", 1)"
+    },
+    {
+      "scenario": "Select center coordinate from given values for substitution (equation of a circle lesson)",
+      "expression": "select_4 = select(write_2, \"−3\", 1)\nselect_5 = select(write_2, \"−4\", 1)"
+    },
+    {
+      "scenario": "Select h and k placeholders for textreplace (equation of a circle lesson)",
+      "expression": "select_7 = select(write_4, \"− h\", 1)\nselect_8 = select(write_4, \"− k\", 1)"
+    },
+    {
+      "scenario": "Select expanded product for textcopy into combined expression (circle from diameter lesson)",
+      "expression": "select_11 = select(write_6, \"x^2+3x-4\", 1)\nselect_12 = select(write_8, \"y^2+y-2\", 1)"
+    },
+    {
+      "scenario": "Select point coordinates for outline emphasis (Point and Circle lesson)",
+      "expression": "select_1 = select(write_3, \"(2,3)\", 1)\noutline_1 = outline(select_1)"
+    },
+    {
+      "scenario": "Select coefficient values from written equation for textcopy into vertex formula",
+      "expression": "select_1 = select(write_8, \"-1/60\", 1)\nselect_2 = select(write_9, \"1\", 1)"
+    },
+    {
+      "scenario": "Select multiple x occurrences for textreplace substitution in height equation",
+      "expression": "select_6 = select(write_15, \"x\", 1)\nselect_7 = select(write_15, \"x\", 2)\nselect_8 = select(write_15, \"x\", 3)"
+    },
+    {
+      "scenario": "Select squared terms in Pythagorean equation for textscale emphasis",
+      "expression": "select_5 = select(write_11, \"2\", 1)\nselect_6 = select(write_11, \"2\", 2)\nselect_7 = select(write_11, \"2\", 3)\ntext_scale_1 = textscale(select_5, select_6, select_7, size(2))"
+    }
+  ]
+}

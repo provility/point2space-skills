@@ -1,0 +1,45 @@
+{
+  "expression": "rightangle3d",
+  "_requires": ["g3d"],
+  "description": "Creates a 3D right angle marker (90 degree square corner indicator)",
+  "utility": "Show a right angle indicator in 3D space between two rays from a vertex",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "The 3D graph container"},
+    {"name": "vertex_x", "type": "number", "required": true, "description": "X coordinate of the angle vertex"},
+    {"name": "vertex_y", "type": "number", "required": true, "description": "Y coordinate of the angle vertex"},
+    {"name": "vertex_z", "type": "number", "required": true, "description": "Z coordinate of the angle vertex"},
+    {"name": "point1_x", "type": "number", "required": true, "description": "X coordinate of the first ray endpoint"},
+    {"name": "point1_y", "type": "number", "required": true, "description": "Y coordinate of the first ray endpoint"},
+    {"name": "point1_z", "type": "number", "required": true, "description": "Z coordinate of the first ray endpoint"},
+    {"name": "point2_x", "type": "number", "required": true, "description": "X coordinate of the second ray endpoint"},
+    {"name": "point2_y", "type": "number", "required": true, "description": "Y coordinate of the second ray endpoint"},
+    {"name": "point2_z", "type": "number", "required": true, "description": "Z coordinate of the second ray endpoint"}
+  ],
+  "alternates": [
+    {
+      "variant": "with custom size",
+      "syntax": "rightangle3d(graph, vertex_x, vertex_y, vertex_z, point1_x, point1_y, point1_z, point2_x, point2_y, point2_z, size)",
+      "description": "Specify a custom size for the right angle indicator"
+    },
+    {
+      "variant": "between vectors",
+      "syntax": "rightangle3d(graph, vector1, vector2)",
+      "description": "Create right angle between two vector3d expressions"
+    },
+    {
+      "variant": "between lines",
+      "syntax": "rightangle3d(graph, line1, line2)",
+      "description": "Create right angle between two line3d expressions"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "right angle at origin between x and y axes",
+      "expression": "rightangle3d(g, 0, 0, 0, 1, 0, 0, 0, 1, 0)"
+    },
+    {
+      "scenario": "right angle between vectors",
+      "expression": "rightangle3d(g, vector3d(g, 0, 0, 0, 1, 0, 0), vector3d(g, 0, 0, 0, 0, 1, 0))"
+    }
+  ]
+}

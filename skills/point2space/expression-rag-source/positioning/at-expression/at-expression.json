@@ -1,0 +1,124 @@
+{
+  "expression": "at (expression-relative)",
+  "description": "Position an element relative to another expression's location using anchor types (top, bottom, left, right) or table cell references (row, col).",
+  "utility": "Position elements relative to another expression's location",
+  "arguments": [
+    {
+      "name": "expression",
+      "type": "variable reference | item() | select()",
+      "required": true,
+      "description": "Reference to an existing expression (point, angle, line, edge, write, select, etc.)"
+    },
+    {
+      "name": "anchorType",
+      "type": "type(top) | type(bottom) | type(left) | type(right)",
+      "required": false,
+      "description": "Anchor position on the referenced expression (used with arrows and markers)"
+    },
+    {
+      "name": "tableRow",
+      "type": "number",
+      "required": false,
+      "description": "Row index when referencing a table cell"
+    },
+    {
+      "name": "tableCol",
+      "type": "number",
+      "required": false,
+      "description": "Column index when referencing a table cell"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Label at a point",
+      "syntax": "label(G, at(point_1), \"A\", buff(0.5, 0.5))",
+      "description": "Position label at a point with offset"
+    },
+    {
+      "variant": "Label at an angle",
+      "syntax": "label(G, at(angle_A), \"A\", buff(-1.0, 1.0))",
+      "description": "Position label at an angle vertex"
+    },
+    {
+      "variant": "Label at edge via item()",
+      "syntax": "label(G, at(item(triangle, type(edge), 1)), \"a\", buff(0, 0.5))",
+      "description": "Position label at edge midpoint extracted from polygon"
+    },
+    {
+      "variant": "Arrow from expression anchor",
+      "syntax": "arrow(at(write_1, type(bottom)), at(write_2, type(left)), 1.5)",
+      "description": "Arrow from bottom of one write to left of another"
+    },
+    {
+      "variant": "Arrow from table cell to point",
+      "syntax": "arrow(at(T, 1, 2), P, \"f(x)\")",
+      "description": "Arrow from table cell at row 1, col 2 to point P"
+    },
+    {
+      "variant": "Arrow between table cell and point",
+      "syntax": "arrow(at(T, 1, 1), at(P1), -2, c(red), s(5))",
+      "description": "Arrow from table cell to point with curvature and style"
+    },
+    {
+      "variant": "Callout at expression with anchor",
+      "syntax": "callout(at(3,5), at(3,8), at(5,8), at(5,5), type(right))",
+      "description": "Callout annotation with arrow pointing right"
+    },
+    {
+      "variant": "Overbrace at positions",
+      "syntax": "overbrace(at(3,5), at(3,12), \"label\")",
+      "description": "Overbrace between two positions with label"
+    },
+    {
+      "variant": "Arrow between select and write",
+      "syntax": "arrow(at(D, 6, 1), at(L, 2), 1)",
+      "description": "Arrow from select position to write with curvature"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Label a point with offset",
+      "expression": "label_1 = label(graph_1, at(point_1), \"point_1\", buff(0.5, 0.5))"
+    },
+    {
+      "scenario": "Label triangle edge 'a' with rotation",
+      "expression": "label_1 = label(graph_1, at(item(triangle_1, type(edge), 2)), \"a\", buff(-2, -0.7), rotation(26), type(write))"
+    },
+    {
+      "scenario": "Label angle theta",
+      "expression": "label_2 = label(graph_1, at(angle_2), \"theta\", buff(-0.9, -2))"
+    },
+    {
+      "scenario": "Label triangle edge with question mark",
+      "expression": "label_3 = label(graph_1, at(item(triangle_1, type(edge), 1)), \"?\", buff(0, 0.5), rotation(0))"
+    },
+    {
+      "scenario": "Label triangle edge 'x' with offset",
+      "expression": "label_5 = label(graph_1, at(item(triangle_1, type(edge), 3)), \"x\", buff(-0.2, -1.1), rotation(0))"
+    },
+    {
+      "scenario": "Arrow connecting two write expressions",
+      "expression": "arrow_1 = arrow(at(write_7, type(bottom)), at(write_8_select_1, type(left)), 1.5)"
+    },
+    {
+      "scenario": "Arrow from table cell to a point on graph",
+      "expression": "arrow(at(T, 1, 2), P, \"f(x)\")"
+    },
+    {
+      "scenario": "Arrow from table cell to point with style",
+      "expression": "arrow(at(T, 1, 1), at(P1), -2, c(red), s(5))"
+    },
+    {
+      "scenario": "Callout annotation",
+      "expression": "callout_1 = callout(at(3,5), at(3,8), at(5,8), at(5,5), type(right))"
+    },
+    {
+      "scenario": "Overbrace with label",
+      "expression": "overbrace_1 = overbrace(at(3,5), at(3,12), \"sum\")"
+    },
+    {
+      "scenario": "Label Q on a graph point with offset",
+      "expression": "label(G, q1, \"Q\", buff(-2, -1))"
+    }
+  ]
+}

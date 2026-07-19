@@ -1,0 +1,49 @@
+{
+  "expression": "limit",
+  "_requires": [],
+  "description": "Computes limits using Richardson extrapolation for numeric evaluation",
+  "utility": "Calculate limits: lim_(x→a) f(x) including one-sided limits and infinity",
+  "arguments": [
+    {
+      "name": "expression",
+      "type": "string",
+      "required": true,
+      "description": "Expression as quoted string containing the variable"
+    },
+    {
+      "name": "variable",
+      "type": "string",
+      "required": true,
+      "description": "Variable name approaching the limit point"
+    },
+    {
+      "name": "value",
+      "type": "number | infinity",
+      "required": true,
+      "description": "Value that variable approaches (can be Infinity or -Infinity)"
+    }
+  ],
+  "alternates": [
+    "AsciiMath syntax: lim_(x->a) expr → limit(expr, x, a)",
+    "Supports one-sided limits via context configuration",
+    "Handles ±Infinity as limit point"
+  ],
+  "examples": [
+    {
+      "scenario": "Polynomial limit",
+      "expression": "L = limit(\"x^2\", \"x\", 2)"
+    },
+    {
+      "scenario": "Using AsciiMath notation",
+      "expression": "lim_(x->3) x^2 + x"
+    },
+    {
+      "scenario": "Limit at infinity",
+      "expression": "L = limit(\"1/x\", \"x\", Infinity)"
+    },
+    {
+      "scenario": "Rational function",
+      "expression": "L = limit(\"(x^2-1)/(x-1)\", \"x\", 1)"
+    }
+  ]
+}

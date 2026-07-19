@@ -1,0 +1,30 @@
+{
+  "expression": "compassradius",
+  "_requires": ["g2d"],
+  "description": "Animates changing the compass radius (arm tip distance) to a new value",
+  "utility": "Adjust the compass opening to a new radius before drawing",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph containing the compass"
+    },
+    {
+      "name": "newRadius",
+      "type": "number",
+      "required": true,
+      "description": "The new radius value for the compass"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Set compass radius to 5 then draw a circle",
+      "expression": "G = g2d(-10, 10, -10, 10); compassradius(G, 5); compassarc(G)"
+    },
+    {
+      "scenario": "Change compass radius between two arcs",
+      "expression": "G = g2d(-10, 10, -10, 10); compassarc(G, point(G, 0, 0), radius(3)); compassradius(G, 6); compassarc(G)"
+    }
+  ]
+}

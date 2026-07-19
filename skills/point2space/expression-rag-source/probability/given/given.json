@@ -1,0 +1,18 @@
+{
+  "expression": "given",
+  "_requires": [],
+  "description": "Defines a condition for conditional probability P(A|B). Used inside event() expressions. Supports solid fill, stroke color, and hatch patterns for the given overlay.",
+  "utility": "Set conditional probability condition",
+  "arguments": [
+    {"name": "predicate", "type": "quoted string", "required": true, "description": "Event predicate for the condition (e.g., \"sum > 5\", \"first = T\", \"any > 3\", \"any even\")"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Color for given outcomes (used with hatchangle for hatch pattern, or as solid fill)"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Solid fill color for given outcomes"},
+    {"name": "hatchangle", "type": "hatchangle(deg)", "required": false, "description": "Use hatch lines at given angle instead of solid fill"}
+  ],
+  "examples": [
+    {"scenario": "With hatch pattern", "expression": "E = event(S, \"at least 2 H\", given(\"first = T\", hatchangle(20), c(steelblue)), fc(red))"},
+    {"scenario": "Simple given", "expression": "E = event(S, \"sum > 7\", given(\"at least 1 six\", c(steelblue)), fc(coral))"},
+    {"scenario": "Given value > 3", "expression": "E = event(S, \"any even\", given(\"any > 3\", hatchangle(20), c(steelblue)), fc(red))"},
+    {"scenario": "Given all odd", "expression": "E = event(S, \"sum > 10\", given(\"all odd\", c(lightblue)), fc(orange))"}
+  ]
+}

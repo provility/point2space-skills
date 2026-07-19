@@ -1,0 +1,74 @@
+{
+  "expression": "line (from edge)",
+  "_requires": ["g2d"],
+  "description": "Creates a visible line from edge data extracted from a polygon or triangle. Supports segment (finite), line (infinite), and ray (half-infinite) rendering modes, with optional color and dash styling.",
+  "utility": "Draw visible line from polygon edge extraction",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "edge_data",
+      "type": "item(polygon, type(edge), index)",
+      "required": true,
+      "description": "Edge data extracted from polygon using item()"
+    },
+    {
+      "name": "lineType",
+      "type": "type(segment) | type(line) | type(ray)",
+      "required": false,
+      "description": "Type of line: segment (default), line (infinite), ray"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Line segment from edge",
+      "syntax": "line(G, item(triangle, type(edge), 1), type(segment))",
+      "description": "Finite line segment matching edge"
+    },
+    {
+      "variant": "Infinite line through edge",
+      "syntax": "line(G, item(triangle, type(edge), 1), type(line))",
+      "description": "Line extending infinitely through edge"
+    },
+    {
+      "variant": "Colored edge",
+      "syntax": "line(G, item(triangle, type(edge), 1), type(segment), c(blue))",
+      "description": "Blue line segment from edge"
+    },
+    {
+      "variant": "Dashed edge",
+      "syntax": "line(G, item(triangle, type(edge), 1), type(segment), dash())",
+      "description": "Dashed line segment from edge"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Create triangle and extract all edges",
+      "expression": "triangle_1 = sas(graph_1, 5, 40, 6, point(graph_1, 0, 0))"
+    },
+    {
+      "scenario": "Draw edge c (first edge) in blue",
+      "expression": "line_c = line(graph_1, item(triangle_1, type(edge), 1), type(segment), c(blue))"
+    },
+    {
+      "scenario": "Draw edge a (second edge) in blue",
+      "expression": "line_a = line(graph_1, item(triangle_1, type(edge), 2), type(segment), c(blue))"
+    },
+    {
+      "scenario": "Draw edge b (third edge) in blue",
+      "expression": "line_b = line(graph_1, item(triangle_1, type(edge), 3), type(segment), c(blue))"
+    },
+    {
+      "scenario": "Highlight base edge with thick stroke",
+      "expression": "stroke_line_c = stroke(line_c, type(width), 8)"
+    },
+    {
+      "scenario": "Draw height as dashed red line",
+      "expression": "line_height = line(graph_1, point_c, point_projected_d, type(segment), dash(), c(red))"
+    }
+  ]
+}

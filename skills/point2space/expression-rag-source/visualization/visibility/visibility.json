@@ -1,0 +1,13 @@
+{
+  "expression": "visibility",
+  "_requires": [],
+  "description": "Control visibility/opacity of shapes",
+  "utility": "Show or hide geometric elements",
+  "arguments": [
+    {"name": "shape", "type": "geometry", "required": true, "description": "Shape to control"},
+    {"name": "visible", "type": "boolean | show | hide", "required": true, "description": "Visibility state"}
+  ],
+  "examples": [
+    {"scenario": "Show/hide", "expression": "visibility(shape, false)"}
+  ]
+}

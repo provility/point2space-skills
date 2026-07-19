@@ -1,0 +1,90 @@
+{
+  "expression": "at",
+  "description": "Set the absolute position of a container on the canvas using logical row and column coordinates.",
+  "utility": "Position containers at absolute logical row/col coordinates on the canvas",
+  "arguments": [
+    {
+      "name": "row",
+      "type": "number",
+      "required": true,
+      "description": "Vertical position in logical units (0 = top, increases downward)"
+    },
+    {
+      "name": "col",
+      "type": "number",
+      "required": true,
+      "description": "Horizontal position in logical units (0 = left, increases rightward)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Position a graph",
+      "syntax": "g2d(at(row, col), width, height)",
+      "description": "Place a 2D graph at row, col"
+    },
+    {
+      "variant": "Position a 3D scene",
+      "syntax": "g3d(at(row, col), view(width, height))",
+      "description": "Place a 3D scene at row, col"
+    },
+    {
+      "variant": "Position math text",
+      "syntax": "write(at(row, col), \"expression\")",
+      "description": "Place written math at row, col"
+    },
+    {
+      "variant": "Position a table",
+      "syntax": "table(at(row, col), \"x\", equation, range(...))",
+      "description": "Place a table at row, col"
+    },
+    {
+      "variant": "Position an input",
+      "syntax": "input(at(row, col), value(...), \"label\")",
+      "description": "Place an input dropdown at row, col"
+    },
+    {
+      "variant": "Side-by-side layout",
+      "syntax": "G1 = g2d(at(2,2), 14, 14)\nG2 = g2d(at(2,18), 14, 14)",
+      "description": "Two graphs side by side using different col values"
+    },
+    {
+      "variant": "Stacked layout",
+      "syntax": "G1 = g2d(at(2,2), 14, 14)\nG2 = g2d(at(18,2), 14, 14)",
+      "description": "Two graphs stacked using different row values"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Graph positioned at top-left area",
+      "expression": "G = g2d(at(2,3), 30, 30, type(plotting))"
+    },
+    {
+      "scenario": "Graph with axes positioned with offset",
+      "expression": "graph_1 = g2d(at(5,26), 13.3, 20.6, range(-1, 5, 1), range(-1, 5, 1), grid(noaxes), type(plotting))"
+    },
+    {
+      "scenario": "Write math text at specific position",
+      "expression": "write_1 = write(at(3,2), \"int sqrt(a^2-x^2) dx\")"
+    },
+    {
+      "scenario": "Table positioned beside a graph",
+      "expression": "t = table(at(1,7), \"x\", eq, slopeeq, range(2, 1.5, 1.1, 1.01, 1.001), c(blue))"
+    },
+    {
+      "scenario": "Grid of 6 graphs (2 rows x 3 cols)",
+      "expression": "G1 = g2d(at(2,2), 14, 14, type(plotting))\nG2 = g2d(at(2,18), 14, 14, type(plotting))\nG3 = g2d(at(2,34), 14, 14, type(plotting))\nG4 = g2d(at(18,2), 14, 14, type(plotting))\nG5 = g2d(at(18,18), 14, 14, type(plotting))\nG6 = g2d(at(18,34), 14, 14, type(plotting))"
+    },
+    {
+      "scenario": "3D scene positioned on canvas",
+      "expression": "S = g3d(at(4,30), view(30, 30), type(3))"
+    },
+    {
+      "scenario": "Write text below a graph",
+      "expression": "G = g2d(at(2,3), 14, 14, type(plotting))\nwrite_1 = write(at(18,3), \"f(x) = x^2\")"
+    },
+    {
+      "scenario": "Input dropdown above a graph",
+      "expression": "eq1 = input(at(0,2), value(\"a*x^2 + b*x + c\", \"a*sin(b*x)\"), \"f(x)\")\nG1 = g2d(at(2,2), 14, 14)"
+    }
+  ]
+}

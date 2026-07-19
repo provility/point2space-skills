@@ -1,0 +1,53 @@
+{
+  "expression": "vecdiff3d",
+  "_requires": ["g3d", "vector3d"],
+  "description": "Subtracts two 3D vectors component-wise, returning the difference vector A minus B. Uses the displacement of each input. Can also be done via trace3d(G, V, type(diff), W).",
+  "utility": "Subtract two 3D vectors and return the difference vector",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "vecA",
+      "type": "vector3d",
+      "required": true,
+      "description": "Vector to subtract from (minuend)"
+    },
+    {
+      "name": "vecB",
+      "type": "vector3d",
+      "required": true,
+      "description": "Vector to subtract (subtrahend)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic subtraction",
+      "syntax": "vecdiff3d(G, A, B)",
+      "description": "Difference A - B"
+    },
+    {
+      "variant": "With color",
+      "syntax": "vecdiff3d(G, A, B, c(orange))",
+      "description": "Difference vector with color styling"
+    },
+    {
+      "variant": "Via trace3d",
+      "syntax": "trace3d(G, V, type(diff), W)",
+      "description": "Alternative: vector subtraction via trace3d"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Subtract two vectors",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = vector3d(G, 0, 0, 0, 3, 2, 1)\nB = vector3d(G, 0, 0, 0, 1, 1, 0)\nD = vecdiff3d(G, A, B)"
+    },
+    {
+      "scenario": "Visualize relative displacement between two direction vectors",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = vector3d(G, 0, 0, 0, 4, 0, 0, c(red))\nB = vector3d(G, 0, 0, 0, 1, 3, 0, c(blue))\nD = vecdiff3d(G, A, B, c(orange))"
+    }
+  ]
+}

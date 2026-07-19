@@ -1,0 +1,85 @@
+{
+  "expression": "size / w / h",
+  "description": "Scale container dimensions by width and height ratios, or query the logical width and height of a container.",
+  "utility": "Scale container size or query logical width/height of items",
+  "arguments": [
+    {
+      "name": "containers (for size)",
+      "type": "variable references (g2d | g3d | mathtext)",
+      "required": true,
+      "description": "One or more container variables to scale"
+    },
+    {
+      "name": "widthRatio (for size)",
+      "type": "number (positive)",
+      "required": true,
+      "description": "Width scale factor (0.5 = half, 1 = no change, 2 = double)"
+    },
+    {
+      "name": "heightRatio (for size)",
+      "type": "number (positive)",
+      "required": true,
+      "description": "Height scale factor (0.5 = half, 1 = no change, 2 = double)"
+    },
+    {
+      "name": "ref (for w/h)",
+      "type": "variable reference",
+      "required": true,
+      "description": "Reference to item for width/height query"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Scale one container",
+      "syntax": "size(G, widthRatio, heightRatio)",
+      "description": "Scale a single container"
+    },
+    {
+      "variant": "Scale multiple containers",
+      "syntax": "size(G, T, widthRatio, heightRatio)",
+      "description": "Scale two containers together"
+    },
+    {
+      "variant": "Get width",
+      "syntax": "w(G)",
+      "description": "Get logical width of container G"
+    },
+    {
+      "variant": "Get height",
+      "syntax": "h(G)",
+      "description": "Get logical height of container G"
+    },
+    {
+      "variant": "Scale to half size",
+      "syntax": "size(G, 0.5, 0.5)",
+      "description": "Shrink container to 50%"
+    },
+    {
+      "variant": "Scale to double size",
+      "syntax": "size(G, 2, 2)",
+      "description": "Enlarge container to 200%"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Shrink a graph to half size",
+      "expression": "G = g2d(at(2,3), 30, 30, type(plotting))\nsize(G, 0.5, 0.5)"
+    },
+    {
+      "scenario": "Double the size of a graph",
+      "expression": "size(G, 2, 2)"
+    },
+    {
+      "scenario": "Scale two containers together",
+      "expression": "G = g2d(at(2,2), 14, 14, type(plotting))\nT = write(at(18,2), \"f(x)\")\nsize(G, T, 1.5, 1.5)"
+    },
+    {
+      "scenario": "Scale width only (stretch horizontally)",
+      "expression": "size(G, 2, 1)"
+    },
+    {
+      "scenario": "Get width and height of a container",
+      "expression": "G = g2d(at(2,2), 14, 14, type(plotting))\nwidth = w(G)\nheight = h(G)"
+    }
+  ]
+}

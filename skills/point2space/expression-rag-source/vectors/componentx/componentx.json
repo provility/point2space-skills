@@ -1,0 +1,13 @@
+{
+  "expression": "componentx",
+  "_requires": ["g2d", "vector"],
+  "description": "Extracts the X-component of a 2D vector, creating a horizontal projection from the vector's start point.",
+  "utility": "Extract X-component of a vector",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "2D graph container"},
+    {"name": "vector", "type": "vector variable", "required": true, "description": "Vector to decompose"}
+  ],
+  "examples": [
+    {"scenario": "X-component of vector", "expression": "G = g2d(at(4,4), size(20), type(geometry))\nV = vector(G, (0,0), (3,4), c(black))\nVx = componentx(G, V, c(red))"}
+  ]
+}

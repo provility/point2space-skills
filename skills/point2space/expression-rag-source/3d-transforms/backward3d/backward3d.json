@@ -1,0 +1,46 @@
+{
+  "expression": "backward3d",
+  "_requires": ["g3d"],
+  "description": "Shifts a 3D vector backward (opposite to its direction) by a scaled multiple of its length. The vector is translated in the reverse direction.",
+  "utility": "Shift a 3D vector backward along its direction by a scaled distance.",
+  "arguments": [
+    {
+      "name": "vector",
+      "type": "vector3d",
+      "required": true,
+      "description": "The vector to shift backward"
+    },
+    {
+      "name": "scalar",
+      "type": "number",
+      "required": false,
+      "description": "Scale factor for the shift distance. Defaults to 1 (shift by the vector's own length)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "default shift",
+      "syntax": "backward3d(vec)",
+      "description": "Shift backward by the vector's own length"
+    },
+    {
+      "variant": "scaled shift",
+      "syntax": "backward3d(vec, scalar)",
+      "description": "Shift backward by scalar times the vector's length"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Shift vector backward by its own length",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 1, 0, 0); V2 = backward3d(V)"
+    },
+    {
+      "scenario": "Shift vector backward by half its length",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 2, 0, 0); V2 = backward3d(V, 0.5)"
+    },
+    {
+      "scenario": "Shift vector backward by twice its length",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 1, 1, 1, 3, 1, 1); V2 = backward3d(V, 2)"
+    }
+  ]
+}

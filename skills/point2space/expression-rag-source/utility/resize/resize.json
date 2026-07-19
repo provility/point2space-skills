@@ -1,0 +1,47 @@
+{
+  "expression": "resize",
+  "description": "Sets width and height for containers (g2d, mathtext, g3d) using logical coordinate units",
+  "utility": "Dynamically resize containers to specific dimensions",
+  "arguments": [
+    {
+      "name": "containers",
+      "type": "variable",
+      "required": true,
+      "description": "One or more variable references to containers (g2d, mathtext, or g3d)"
+    },
+    {
+      "name": "colWidth",
+      "type": "number",
+      "required": true,
+      "description": "Width in logical column units"
+    },
+    {
+      "name": "rowHeight",
+      "type": "number",
+      "required": true,
+      "description": "Height in logical row units"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Resize single container",
+      "syntax": "resize(G, 8, 10)",
+      "description": "Set container to 8 columns wide, 10 rows tall"
+    },
+    {
+      "variant": "Resize multiple containers",
+      "syntax": "resize(G, T, M, 6, 8)",
+      "description": "Set multiple containers to same dimensions (6 columns, 8 rows)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Resize graph container",
+      "expression": "G = g2d(0, 0, 16, 8, -10, 10, -10, 10); resize(G, 12, 8)"
+    },
+    {
+      "scenario": "Resize multiple containers",
+      "expression": "resize(G, T, 10, 10)"
+    }
+  ]
+}

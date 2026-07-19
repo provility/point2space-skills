@@ -1,0 +1,106 @@
+{
+  "expression": "item",
+  "_requires": ["g2d"],
+  "description": "Extracts a single item from a collection by index. Works with polygons (vertex, edge, angle), text collections (select, selectexcept, selectcell), tables (row, col), and lines (angle, normal, foot).",
+  "utility": "Extract an individual component from a polygon, text collection, table, or line",
+  "arguments": [
+    {
+      "name": "source",
+      "type": "polygon | select | table | line",
+      "required": true,
+      "description": "Source collection to extract from"
+    },
+    {
+      "name": "typeOrIndex",
+      "type": "type(edge|vertex|angle|normal|foot) | number",
+      "required": true,
+      "description": "For polygons: type(edge), type(vertex), or type(angle). For text/transforms: numeric index. For tables: row number."
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "required": false,
+      "description": "For polygons: 1-based index after type(). For tables: column number (2nd arg)."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Polygon edge",
+      "syntax": "item(polygon, type(edge), 1)",
+      "description": "Extract first edge as line data"
+    },
+    {
+      "variant": "Polygon vertex",
+      "syntax": "item(polygon, type(vertex), 2)",
+      "description": "Extract second vertex as point data"
+    },
+    {
+      "variant": "Polygon angle",
+      "syntax": "item(polygon, type(angle), 1)",
+      "description": "Extract angle at first vertex (vertex + two adjacent points for angle())"
+    },
+    {
+      "variant": "Text item from select",
+      "syntax": "item(S, 0)",
+      "description": "Extract first text item from a select/selectexcept collection"
+    },
+    {
+      "variant": "Table cell",
+      "syntax": "item(T, row, col)",
+      "description": "Extract cell from table at (row, col)"
+    },
+    {
+      "variant": "Line angle with x-axis",
+      "syntax": "item(L, type(angle))",
+      "description": "Angle data from line for use with angle()"
+    },
+    {
+      "variant": "Line normal",
+      "syntax": "item(L, type(normal))",
+      "description": "Normal (perpendicular) data from line"
+    },
+    {
+      "variant": "Line foot",
+      "syntax": "item(L, type(foot))",
+      "description": "Foot of perpendicular from line"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Extract and draw triangle edges as lines",
+      "expression": "T = sas(G, 5, 40, 6, point(G, 0, 0))\nline_a = line(G, item(T, type(edge), 1), type(segment), c(blue))\nline_b = line(G, item(T, type(edge), 2), type(segment), c(red))\nline_c = line(G, item(T, type(edge), 3), type(segment), c(green))"
+    },
+    {
+      "scenario": "Extract and draw angles at each vertex",
+      "expression": "angle_A = angle(G, item(T, type(angle), 1), arcsize(25))\nangle_B = angle(G, item(T, type(angle), 2), arcsize(25))\nangle_C = angle(G, item(T, type(angle), 3), arcsize(25))"
+    },
+    {
+      "scenario": "Extract vertex as visible point",
+      "expression": "point_A = point(G, item(T, type(vertex), 1), c(red))"
+    },
+    {
+      "scenario": "Project vertex onto opposite edge",
+      "expression": "point_D = project(G, line_c, item(T, type(vertex), 3))"
+    },
+    {
+      "scenario": "Label at an edge",
+      "expression": "label_a = label(G, at(item(T, type(edge), 2)), \"a\", buff(-1.5, 1))"
+    },
+    {
+      "scenario": "Extract triangle edge as line for sine law proof",
+      "expression": "graph_1 = g2d(at(-10, 11.4), size(25), range(-1, 8), grid(noaxes), type(geometry))\ntriangle_1 = sas(graph_1, 5, 40, 6, point(graph_1, 0, 0))\nline_c = line(graph_1, item(triangle_1, type(edge), 1), type(segment), c(blue), defer())"
+    },
+    {
+      "scenario": "Extract triangle vertex for projection",
+      "expression": "point_c = item(triangle_1, type(vertex), 3)"
+    },
+    {
+      "scenario": "Label triangle edge in Pythagorean theorem proof",
+      "expression": "label_1=label(graph_1,at(item(triangle_1,type(edge),1)),\"c\",buff(0,-1.5),rotation(0))"
+    },
+    {
+      "scenario": "Extract interior angle from triangle",
+      "expression": "angle_1=angle(graph_1,item(triangle_1,type(angle),1),arcsize(40),type(interior),c(black),t(0.5))"
+    }
+  ]
+}

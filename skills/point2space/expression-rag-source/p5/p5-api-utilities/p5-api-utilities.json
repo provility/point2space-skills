@@ -1,0 +1,44 @@
+{
+  "expression": "p5-api-utilities",
+  "_context": "p5sheet",
+  "_requires": ["p5sheet"],
+  "description": "Core utility APIs available inside p5sheet scripts: canvas() for initialization, fields proxy for studio variable binding, phaseStepper() for interactive step navigation, bridge() for executing studio expressions from JavaScript, and effect() for animations. NOT standalone expressions.",
+  "utility": "Core p5sheet script utilities: canvas, fields, phaseStepper, bridge",
+  "arguments": [],
+  "alternates": [
+    {
+      "variant": "canvas",
+      "syntax": "canvas()",
+      "description": "Must be called in setup() to create the p5 canvas. The canvas size is determined by the p5sheet's view(height, width) expression. Without calling canvas(), nothing will render."
+    },
+    {
+      "variant": "fields",
+      "syntax": "fields.variableName",
+      "description": "A Proxy object that reads and writes studio expression variables. Reading: fields.a returns the current value of variable a (undefined if not set). Writing: fields.a = 5 sets variable a to 5. Changes are reactive and update other expressions that depend on the variable. Use with inputstepper or inputnumber expressions to create interactive controls."
+    },
+    {
+      "variant": "phaseStepper",
+      "syntax": "let stepper = phaseStepper(stepCount)",
+      "description": "Creates an interactive step navigation UI with clickable circles at the bottom of the canvas. Properties: .phase (current phase number, 0 means no phase active, 1 to stepCount). .phaseFrames (frames per transition, default 30). Methods: .phaseT(p) returns animation progress 0-1 for phase p (0 if not reached, smooth interpolation during transition, 1 if past), .handleClick() call in mousePressed() to handle circle clicks, .draw() call at end of draw() to render step circles."
+    },
+    {
+      "variant": "bridge",
+      "syntax": "let b = bridge()",
+      "description": "Returns a TypedCommandBridge for executing studio expressions from JavaScript. Methods: .execute(varName, exprStr) executes any expression string, .noAnimate() disables animation, .animate() re-enables animation. Typed shortcuts: .g2d(name, { row, col, size, rowHeight, xRange, type }), .point(name, { graph, x, y }), .line(name, { graph, x1, y1, x2, y2 }), .segment(name, opts), .ray(name, opts), .vector(name, opts), .circle(name, { graph, cx, cy, r }), .angle(name, { graph, vertex, p1, p2 }), .plot(name, { graph, equation }), .paraplot(name, { graph, xEquation, yEquation, tMin, tMax }), .polarplot(name, { graph, equation }), .impplot(name, { graph, equation }), .inequalityplot(name, { graph, equation }), .piecewiseplot(name, { graph, pieces }), .notes(name, { text, effect, vpos, color, fillColor, fontSize, fontFamily, padding, stayDuration, ref }), .media(name, { asset, startTime, duration, volume, speed, ref }), .comment(name, { targets, target, text, placement, color, fillColor, fontSize, fontFamily, duration, buffX, buffY })."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Interactive canvas with fields and inputstepper",
+      "expression": "// Expression: n = 5\n// Expression: inputstepper(at(1,1), n, 1, 20, 1)\n// Expression: S = p5sheet(at(2, 1), view(25, 7))\n// Script:\nfunction setup() { canvas(); }\nfunction draw() {\n  background(255);\n  let n = fields.n != undefined ? fields.n : 5;\n  fill(0);\n  noStroke();\n  textSize(20);\n  text('n = ' + n, 50, 50);\n  for (let i = 0; i < n; i++) {\n    fill('steelblue');\n    rect(50 + i * 40, 80, 30, 30);\n  }\n}"
+    },
+    {
+      "scenario": "Phase stepper for step-by-step proof",
+      "expression": "let stepper;\nfunction setup() {\n  canvas();\n  frameRate(30);\n  stepper = phaseStepper(3);\n}\nfunction mousePressed() { stepper.handleClick(); }\nfunction draw() {\n  background(255);\n  let t1 = stepper.phaseT(1);\n  let t2 = stepper.phaseT(2);\n  let t3 = stepper.phaseT(3);\n  // Draw progressively based on phase progress\n  if (t1 > 0) {\n    stroke(0); strokeWeight(2);\n    line(50, 200, lerp(50, 350, t1), 200);\n  }\n  if (t2 > 0) {\n    line(350, 200, 350, lerp(200, 50, t2));\n  }\n  if (t3 > 0) {\n    line(350, 50, lerp(350, 50, t3), lerp(50, 200, t3));\n  }\n  stepper.draw();\n}"
+    },
+    {
+      "scenario": "Bridge to create studio geometry from script",
+      "expression": "function setup() {\n  canvas();\n  let b = bridge();\n  b.noAnimate();\n  b.g2d('G', { row: 0, col: 0, size: 20, type: 'geometry' });\n  b.point('P1', { graph: 'G', x: 2, y: 3 });\n  b.point('P2', { graph: 'G', x: 5, y: 1 });\n  b.line('L', { graph: 'G', x1: 2, y1: 3, x2: 5, y2: 1 });\n}"
+    }
+  ]
+}

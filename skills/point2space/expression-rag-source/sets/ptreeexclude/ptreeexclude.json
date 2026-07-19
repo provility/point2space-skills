@@ -1,0 +1,14 @@
+{
+  "expression": "ptreeexclude",
+  "_requires": ["ptree"],
+  "description": "Excludes specified paths from a probability tree visualization, dimming or hiding them.",
+  "utility": "Exclude paths from a probability tree",
+  "arguments": [
+    {"name": "ptree", "type": "ptree variable", "required": true, "description": "Reference to probability tree"},
+    {"name": "paths", "type": "quoted strings", "required": true, "description": "One or more path labels to exclude"}
+  ],
+  "examples": [
+    {"scenario": "Exclude TT path", "expression": "ptreeexclude(T, \"TT\")"},
+    {"scenario": "Exclude multiple paths", "expression": "ptreeexclude(T, \"TH\", \"TT\")"}
+  ]
+}

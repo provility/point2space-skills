@@ -1,0 +1,13 @@
+{
+  "expression": "slope",
+  "_requires": ["g2d", "line"],
+  "description": "Get the numeric slope value of an existing line.",
+  "utility": "Extract slope from a line",
+  "syntax": "p(line, type(slope))",
+  "examples": [
+    {
+      "scenario": "Get slope of a line",
+      "expression": "s = p(L, type(slope))"
+    }
+  ]
+}

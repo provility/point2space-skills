@@ -1,0 +1,46 @@
+{
+    "expression": "multinomial",
+    "_requires": [],
+    "description": "Generates all distinct arrangements of items with multiple types. Each group() defines a type with its label and count. Displays as grid (default) or tree layout.",
+    "utility": "Generate multinomial arrangements",
+    "arguments": [
+        {
+            "name": "groups",
+            "type": "group()",
+            "required": true,
+            "description": "Two or more group(label, count) definitions"
+        },
+        {
+            "name": "position",
+            "type": "at(row, col)",
+            "required": true,
+            "description": "Canvas position"
+        },
+        {
+            "name": "viewSize",
+            "type": "view(h, w)",
+            "required": true,
+            "description": "Container size"
+        },
+        {
+            "name": "layout",
+            "type": "layout(grid|tree)",
+            "required": false,
+            "description": "Display as grid (default) or tree"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Arrange 3 Red and 2 Blue: 5!/(3!2!) = 10",
+            "expression": "M = multinomial(group(\"R\", 3), group(\"B\", 2), at(4,10), view(12,10))"
+        },
+        {
+            "scenario": "Tree layout with 3 types",
+            "expression": "M = multinomial(group(\"R\", 2), group(\"G\", 1), group(\"B\", 1), at(4,10), view(14,12), layout(tree))"
+        },
+        {
+            "scenario": "Three types, 2 of each",
+            "expression": "M = multinomial(group(\"A\", 2), group(\"B\", 2), group(\"C\", 2), at(4,10), view(14,14))"
+        }
+    ]
+}

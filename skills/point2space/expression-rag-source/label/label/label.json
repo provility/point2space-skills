@@ -1,0 +1,71 @@
+{
+  "expression": "label",
+  "_requires": ["g2d"],
+  "description": "Add a text annotation anchored to a shape (point, line, circle, etc.) on a 2D graph, with optional offset for precise placement. Use only when the user explicitly requests labels.",
+  "utility": "Add text label anchored to a shape on a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "position",
+      "type": "at(shape) | shape",
+      "required": true,
+      "description": "Shape reference (point, line, circle, etc.) using at(shape_var) or direct shape variable"
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": true,
+      "description": "Label text in quotes. ASCII math auto-converts to LaTeX."
+    },
+    {
+      "name": "buff",
+      "type": "buff(col, row)",
+      "required": false,
+      "description": "Offset from anchor position in logical units. Positive col = right, positive row = down."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Label at point with at()",
+      "syntax": "label_1=label(G, at(P), \"A\", buff(0.5, 0.5))",
+      "description": "Label near a named point using at() positioning"
+    },
+    {
+      "variant": "Label at point",
+      "syntax": "label_1=label(G, P, \"A\")",
+      "description": "Label at point variable without at() wrapper"
+    },
+    {
+      "variant": "Label at line/shape",
+      "syntax": "label_1=label(G, at(line_1), \"AB\", buff(1, -1))",
+      "description": "Label anchored to a line or other shape"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Label center of a circle with coordinates (equation of a circle lesson)",
+      "expression": "label_1=label(graph_2,at(point_1),\"C (-3,-4)\",buff(-0.5,-4.5),rotation(0),c(black),fs(16))"
+    },
+    {
+      "scenario": "Label diameter endpoint with coordinates (circle from a diameter lesson)",
+      "expression": "label_1=label(graph_1,at(point_1),\"(-4,-2)\",buff(-1.5,-1.5),rotation(0),c(black),fs(14))"
+    },
+    {
+      "scenario": "Label axis intercept point with letter (axis intercepts lesson)",
+      "expression": "label_2=label(graph_1,at(point_3),\"A\",buff(-0.5,-1.5),rotation(0),c(black),fs(18))"
+    },
+    {
+      "scenario": "Label a line equation with rotation (axis intercepts lesson)",
+      "expression": "label_1=label(graph_1,at(line_1),\"3x+4y-12=0\",buff(2.5,3),fs(16),c(black),rotation(35))"
+    },
+    {
+      "scenario": "Label on a plotting graph at a plot point (table plot lesson)",
+      "expression": "label_1=label(G1,at(plot_1),\"log(x)\",buff(1,1))"
+    }
+  ]
+}

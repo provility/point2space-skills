@@ -1,0 +1,15 @@
+{
+  "expression": "pyramidnet",
+  "_requires": [],
+  "description": "Pyramid net unfolding pattern",
+  "utility": "Display pyramid as flat net",
+  "arguments": [
+    {"name": "sides", "type": "number", "required": false, "description": "Number of sides"}
+  ],
+  "examples": [
+    {
+      "scenario": "Pyramid net for folding",
+      "expression": "pyramidnet_1=pyramidnet(at(5,17),4,c(darkred),fc(lightsalmon),fo(0.5))"
+    }
+  ]
+}

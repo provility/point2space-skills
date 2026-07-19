@@ -1,0 +1,24 @@
+{
+  "expression": "scrollto",
+  "description": "Smooth-scrolls the canvas to an anchor position during playback",
+  "utility": "Center the viewport on a specific grid location",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Position expression specifying target row and column to scroll to"
+    }
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "Scroll to anchor point in projectile problem",
+      "expression": "scrollto_1 = scrollTo(ref(anchor_1))"
+    },
+    {
+      "scenario": "Scroll to second anchor for graph analysis",
+      "expression": "scrollto_2 = scrollTo(ref(anchor_2))"
+    }
+  ]
+}

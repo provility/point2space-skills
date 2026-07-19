@@ -1,0 +1,77 @@
+{
+  "expression": "scale",
+  "_requires": ["g2d"],
+  "description": "Scales a geometric shape uniformly by a given factor around a center point, where factors greater than 1 enlarge and between 0 and 1 shrink.",
+  "utility": "Scale a shape by a factor around a center point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The graph container"
+    },
+    {
+      "name": "shape",
+      "type": "point | line | circle | polygon | image",
+      "required": true,
+      "description": "The shape to scale"
+    },
+    {
+      "name": "factor",
+      "type": "number",
+      "required": true,
+      "description": "Scale factor (>1 enlarges, 0-1 shrinks, negative reflects)"
+    },
+    {
+      "name": "cx, cy",
+      "type": "number, number",
+      "required": false,
+      "description": "Center of scaling as x, y coordinates (default: origin)"
+    },
+    {
+      "name": "centerPoint",
+      "type": "point",
+      "required": false,
+      "description": "Center of scaling as a point expression (alternative to cx, cy)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Scale around origin",
+      "syntax": "scale(G, shape, factor)",
+      "description": "Scale shape around origin (0,0) by the given factor"
+    },
+    {
+      "variant": "Scale around coordinates",
+      "syntax": "scale(G, shape, factor, cx, cy)",
+      "description": "Scale shape around explicit center (cx, cy)"
+    },
+    {
+      "variant": "Scale around point expression",
+      "syntax": "scale(G, shape, factor, centerPoint)",
+      "description": "Scale shape around a point expression"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Scale a triangle by factor 2 from the origin",
+      "expression": "T = sas(G, 3, 60, 3, point(G, 1, 1))\nT2 = scale(G, T, 2)"
+    },
+    {
+      "scenario": "Shrink a circle by half around its center",
+      "expression": "center = point(G, 3, 3)\nC = circle(G, 4, center)\nC2 = scale(G, C, 0.5, center)"
+    },
+    {
+      "scenario": "Scale a polygon around a specific point",
+      "expression": "P = polygon(G, point(G, 0, 0), point(G, 4, 0), point(G, 4, 3), point(G, 0, 3))\nP2 = scale(G, P, 1.5, 2, 1.5)"
+    },
+    {
+      "scenario": "Scale a line segment by factor 3 from origin",
+      "expression": "A = point(G, 1, 0)\nB = point(G, 2, 0)\nL = line(G, A, B)\nL2 = scale(G, L, 3)"
+    },
+    {
+      "scenario": "Negative scale to reflect and enlarge",
+      "expression": "P = point(G, 2, 3)\nP2 = scale(G, P, -1)"
+    }
+  ]
+}

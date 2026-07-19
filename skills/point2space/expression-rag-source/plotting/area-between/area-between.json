@@ -1,0 +1,73 @@
+{
+  "expression": "areabetween",
+  "_requires": ["g2d", "plot"],
+  "description": "Shades the enclosed region between two plotted curves, automatically computing intersection boundaries. Used for visualizing definite integrals and area comparisons between functions.",
+  "utility": "Shade the area between two curves on a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "plot1",
+      "type": "plot reference",
+      "required": true,
+      "description": "First plot variable - the upper or lower curve"
+    },
+    {
+      "name": "plot2",
+      "type": "plot reference",
+      "required": true,
+      "description": "Second plot variable - the other bounding curve"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Fill color using fc() expression - e.g., fc(purple). Default is blue"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Fill opacity from 0 to 1 using fo() expression - e.g., fo(0.3). Default is 0.3"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic area between two curves",
+      "syntax": "f = plot(G, \"f(x)\")\ng = plot(G, \"g(x)\")\nareabetween(G, f, g)",
+      "description": "Shade the region between f and g with default styling"
+    },
+    {
+      "variant": "With custom fill color",
+      "syntax": "f = plot(G, \"f(x)\")\ng = plot(G, \"g(x)\")\nareabetween(G, f, g, fc(purple))",
+      "description": "Shade with custom fill color"
+    },
+    {
+      "variant": "With custom fill color and opacity",
+      "syntax": "f = plot(G, \"f(x)\")\ng = plot(G, \"g(x)\")\nareabetween(G, f, g, fc(purple), fo(0.5))",
+      "description": "Shade with custom fill color and opacity"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Area between two implicit parabolas with intersection points",
+      "expression": "graph_1 = g2d(at(2,5), 21.8, 20.2, range(-5, 5, 1), type(plotting), grid())\nplot_1=plot(graph_1,\"x^2 = 4y\")\nplot_2=plot(graph_1,\"y^2 = 4x\")\narea_1 = areabetween(graph_1, plot_2, plot_1, -2, 2)\npoint_1 = intersect(graph_1, plot_2, plot_1, 1)\npoint_2 = intersect(graph_1, plot_2, plot_1, 2)"
+    },
+    {
+      "scenario": "Area between 3x squared and sin(x)+3 with green fill and opacity",
+      "expression": "G=g2d(at(4,19),19.1,19.6,range(-5,5,1),range(-5,5,1),type(plotting))\nP1 = plot(G, \"3x^2\")\nP2 = plot(G, \"sin(x) + 3\")\nA = areabetween(G, P1, P2, fc(green), fo(0.2))"
+    },
+    {
+      "scenario": "Area between two curves with default styling",
+      "expression": "G = g2d(at(2,2), 30, 30, type(plotting))\nf = plot(G, \"x^2\")\ng = plot(G, \"x\")\nareabetween(G, f, g)"
+    },
+    {
+      "scenario": "Area between sine and cosine with purple fill",
+      "expression": "G = g2d(at(2,2), 30, 30, type(plotting))\nf = plot(G, \"sin(x)\")\ng = plot(G, \"cos(x)\")\nareabetween(G, f, g, fc(purple), fo(0.4))"
+    }
+  ]
+}

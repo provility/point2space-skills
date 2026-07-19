@@ -1,0 +1,13 @@
+{
+  "expression": "nolabel",
+  "_requires": [],
+  "description": "Utility expression that suppresses labels on the target expression.",
+  "utility": "Suppress labels on an expression",
+  "arguments": [],
+  "examples": [
+    {
+      "scenario": "Suppress axis labels on 3D graph",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", nolabel())"
+    }
+  ]
+}

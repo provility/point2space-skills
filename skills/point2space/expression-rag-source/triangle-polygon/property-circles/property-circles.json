@@ -1,0 +1,46 @@
+{
+  "expression": "property (triangle circles)",
+  "_requires": ["g2d"],
+  "description": "Extract triangle circle properties. Returns radius values for inscribed (incircle) and circumscribed (circumcircle) circles. Use with incenter/circumcenter from property-points to draw the full circles.",
+  "utility": "Extract triangle incircle and circumcircle radius values",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "triangle",
+      "required": true,
+      "description": "Triangle variable to extract circle property from"
+    },
+    {
+      "name": "propertyName",
+      "type": "property name",
+      "required": true,
+      "description": "Circle property name to extract"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Triangle inradius",
+      "syntax": "p(triangle, in_radius)",
+      "description": "Get inscribed circle radius value"
+    },
+    {
+      "variant": "Triangle circumradius",
+      "syntax": "p(triangle, circum_radius)",
+      "description": "Get circumscribed circle radius value"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get inradius for inscribed circle",
+      "expression": "r_in = p(triangle_1, in_radius)"
+    },
+    {
+      "scenario": "Draw inscribed circle using incenter and inradius",
+      "expression": "inscribed = circle(graph_1, p(triangle_1, incenter), r_in)"
+    },
+    {
+      "scenario": "Get circumradius for circumscribed circle",
+      "expression": "r_circ = p(triangle_1, circum_radius)"
+    }
+  ]
+}

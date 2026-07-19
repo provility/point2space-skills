@@ -1,0 +1,59 @@
+{
+  "expression": "border",
+  "description": "Adds a customizable border with color, width, style, optional radius and shadow to text",
+  "utility": "Apply complete border styling to text boxes with multiple configuration options",
+  "arguments": [
+    {
+      "name": "color",
+      "type": "string or color name",
+      "required": true,
+      "description": "Border color (e.g., red, \"#ff0000\")"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false,
+      "description": "Border width in pixels (default: 1)"
+    },
+    {
+      "name": "style",
+      "type": "string",
+      "required": false,
+      "description": "Border style: solid, dashed, dotted, double, or none (default: solid)"
+    },
+    {
+      "name": "radius",
+      "type": "expression",
+      "required": false,
+      "description": "Border radius using radius(value) sub-expression"
+    },
+    {
+      "name": "shadow",
+      "type": "expression",
+      "required": false,
+      "description": "Drop shadow using shadow(blur) or shadow(blur, spread) sub-expression"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Simple red border",
+      "expression": "text(\"Box\") | border(red)"
+    },
+    {
+      "scenario": "Blue border with custom width",
+      "expression": "text(\"Content\") | border(blue, 2)"
+    },
+    {
+      "scenario": "Dashed black border",
+      "expression": "text(\"Dashed\") | border(black, 1, dashed)"
+    },
+    {
+      "scenario": "Rounded corners border",
+      "expression": "text(\"Rounded\") | border(gray, 2, solid, radius(8))"
+    },
+    {
+      "scenario": "Border with drop shadow",
+      "expression": "text(\"Shadow\") | border(red, 2, dashed, radius(12), shadow(4))"
+    }
+  ]
+}

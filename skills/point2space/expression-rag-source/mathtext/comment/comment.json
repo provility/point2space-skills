@@ -1,0 +1,109 @@
+{
+  "expression": "comment",
+  "description": "Display a temporary positioned annotation that appears for a configurable duration. Content is in PLAIN TEXT mode by default — math expressions must be wrapped in math() to render as math. Supports anchor-based, absolute, or logical positioning with color, font size, and background styling.",
+  "utility": "Display positioned annotation comments with optional styling",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(...)",
+      "required": true,
+      "description": "Position using at() - can reference shapes, anchor points, or absolute coordinates"
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": true,
+      "description": "Comment text in quotes - supports ASCII math syntax"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Display duration in seconds (default 2)"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Text color - e.g., c(blue), c(gray)"
+    },
+    {
+      "name": "fontSize",
+      "type": "fs(size)",
+      "required": false,
+      "description": "Font size in pixels - e.g., fs(24)"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Background fill color"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Background opacity (0-1)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Center of shape",
+      "syntax": "comment(at(M), \"text\")",
+      "description": "Comment at center of shape M"
+    },
+    {
+      "variant": "Shape edge (anchor point)",
+      "syntax": "comment(at(M, 4), \"text\")",
+      "description": "Comment at right edge of M (anchor 4)"
+    },
+    {
+      "variant": "With buffer offset",
+      "syntax": "comment(at(M, 4, buff(0.5)), \"text\")",
+      "description": "Comment at right edge + 0.5 unit offset"
+    },
+    {
+      "variant": "Two-axis buffer",
+      "syntax": "comment(at(M, 6, buff(0, 0.5)), \"text\")",
+      "description": "Comment below shape with vertical offset"
+    },
+    {
+      "variant": "Absolute position",
+      "syntax": "comment(at(5,3), \"text\")",
+      "description": "Comment at row 5, col 3"
+    },
+    {
+      "variant": "Corner position type",
+      "syntax": "comment(at(M, type(topleft)), \"text\")",
+      "description": "Comment at top-left corner of M"
+    },
+    {
+      "variant": "With styling",
+      "syntax": "comment(at(M, 4), \"text\", c(blue), fs(24))",
+      "description": "Colored comment with custom font size"
+    },
+    {
+      "variant": "Custom duration",
+      "syntax": "comment(at(M, 4), \"text\", t(3))",
+      "description": "Comment visible for 3 seconds"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Comment below an equation",
+      "expression": "comment_1=comment(at(write_1,type(bottom)),\"point - slope formula\",buff(0.5,0),c(brown),fc(lightblue),type(right))"
+    },
+    {
+      "scenario": "Comment on write expression",
+      "expression": "comment_1=comment(at(3,42),\"Compare with standard form math(ax^2+bx+c=0):\",t(2),type(right),buff(1,0))"
+    },
+    {
+      "scenario": "Comment on point",
+      "expression": "comment_2 = comment(at(point_1, type(right)), \"comment\", buff(0.2, 0.5), fs(20), c(orange), fc(black))"
+    },
+    {
+      "scenario": "Comment on write for point-slope formula",
+      "expression": "write_1=write(at(14,14),\"y - y_1 = m(x - x_1)\"); comment_1=comment(at(write_1,type(bottom)),\"point - slope formula\",buff(0.5,0),c(brown),fc(lightblue),type(right))"
+    }
+  ]
+}

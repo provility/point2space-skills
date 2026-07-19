@@ -1,0 +1,26 @@
+{
+  "expression": "point (end of line)",
+  "_requires": ["g2d", "line"],
+  "description": "Extracts the end point from an existing line.",
+  "syntax": "point(G, p(L, type(end)))",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "L",
+      "type": "line",
+      "required": true,
+      "description": "Line to extract the end point from"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get end point of a line",
+      "expression": "P2 = point(G, p(L, type(end)))"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "expression": "outcomes",
+  "_requires": [],
+  "description": "Defines a custom outcome set for a sample space. Each argument is a possible outcome value.",
+  "utility": "Define custom outcomes for a sample space",
+  "arguments": [
+    {"name": "values", "type": "strings or numbers", "required": true, "description": "One or more outcome values"}
+  ],
+  "examples": [
+    {"scenario": "Color outcomes", "expression": "S = sspace(at(4,4), view(14,20), outcomes(\"R\", \"G\", \"B\"))"},
+    {"scenario": "Numeric outcomes", "expression": "S = sspace(at(4,4), view(14,20), outcomes(1, 2, 3, 4, 5))"},
+    {"scenario": "Repeated custom outcomes", "expression": "S = sspace(at(4,4), view(14,20), outcomes(\"A\", \"B\"), repeat(3))"}
+  ]
+}

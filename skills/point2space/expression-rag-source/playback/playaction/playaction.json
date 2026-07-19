@@ -1,0 +1,24 @@
+{
+  "expression": "playaction",
+  "description": "Clickable button that replays existing commands on click. Accepts variable references to commands, a display label, execution mode, and animation duration. Defaults to parallel for multiple commands, sequence for one.",
+  "utility": "Create a clickable button that replays commands on click",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position" },
+    { "name": "commandVars", "type": "variable references", "required": true, "description": "One or more variable references to existing commands to replay" },
+    { "name": "display", "type": "display(\"label\") or display(\"label\", \"playingLabel\")", "required": false, "description": "Button text. Second string shown while playing. Defaults to 'Play'" },
+    { "name": "type", "type": "type(parallel|sequence)", "required": false, "description": "Execution mode. Defaults to parallel for multiple commands, sequence for one" },
+    { "name": "duration", "type": "t(seconds)", "required": false, "description": "Animation duration" },
+    { "name": "styles", "type": "style expressions", "required": false, "description": "Optional styling such as fs(fontSize)" }
+  ],
+  "alternates": [
+    { "variant": "Single command", "syntax": "playaction(at(3, 4), A, display(\"Play\"))", "description": "Replay one command on click" },
+    { "variant": "Multiple commands parallel", "syntax": "playaction(at(3, 4), A, B, C, display(\"Play\"), type(parallel))", "description": "Replay multiple commands simultaneously" },
+    { "variant": "Sequential execution", "syntax": "playaction(at(3, 4), A, B, C, display(\"Play\"), type(sequence))", "description": "Replay commands one after another" },
+    { "variant": "Dual-label button", "syntax": "playaction(at(3, 4), A, display(\"Play\", \"Playing...\"), t(2))", "description": "Button shows different text while playing" }
+  ],
+  "examples": [
+    { "scenario": "Play button for LCM ladder method", "expression": "ladderlcm_1 = ladderlcm(at(9.2, 19.5), view(13.9, 13.3), a, b)\nplayaction(at(5.4, 35.8), ladderlcm_1, display(\"Play\"), fs(26))" },
+    { "scenario": "Button to replay a sequence of shapes", "expression": "playaction(at(3, 4), A, B, C, display(\"Play\"), type(sequence))" },
+    { "scenario": "Button with dual labels and duration", "expression": "playaction(at(3, 4), A, display(\"Play\", \"Playing...\"), t(2))" }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "expression": "coplanar3d",
+  "_requires": ["g3d", "point3d"],
+  "description": "Tests and visualizes whether four 3D points are coplanar (lie on the same plane).",
+  "utility": "Test coplanarity of four 3D points",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "P1", "type": "point3d", "required": true, "description": "First point"},
+    {"name": "P2", "type": "point3d", "required": true, "description": "Second point"},
+    {"name": "P3", "type": "point3d", "required": true, "description": "Third point"},
+    {"name": "P4", "type": "point3d", "required": true, "description": "Fourth point"}
+  ],
+  "examples": [
+    {"scenario": "Four coplanar points", "expression": "G = g3d(at(4,23), view(30, 30))\ncop = coplanar3d(G, point3d(G, 1, 0, 0), point3d(G, 0, 1, 0), point3d(G, -1, 0, 0), point3d(G, 0, -1, 0))"},
+    {"scenario": "Non-coplanar points", "expression": "cop = coplanar3d(G, point3d(G, 1, 0, 0), point3d(G, 0, 1, 0), point3d(G, 0, 0, 1), point3d(G, 1, 1, 1))"}
+  ]
+}

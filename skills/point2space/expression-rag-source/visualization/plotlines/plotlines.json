@@ -1,0 +1,13 @@
+{
+  "expression": "plotlines",
+  "_requires": ["g2d"],
+  "description": "Plot multiple lines/functions simultaneously",
+  "utility": "Display multiple line plots on same graph",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "Coordinate system"},
+    {"name": "lines", "type": "line | array", "required": true, "description": "Lines or line array to plot"}
+  ],
+  "examples": [
+    {"scenario": "Multiple lines", "expression": "plotlines(g, [L1, L2, L3])"}
+  ]
+}

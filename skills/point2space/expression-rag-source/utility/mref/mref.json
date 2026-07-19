@@ -1,0 +1,24 @@
+{
+  "expression": "mref",
+  "description": "Returns a circled number for equation references, formatted as (number) for display",
+  "utility": "Create numbered references for equations and steps in documentation",
+  "arguments": [
+    {
+      "name": "number",
+      "type": "number",
+      "required": true,
+      "description": "Numeric value to format as circled reference"
+    }
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "Create circled numbers for references",
+      "expression": "write(8, 4, \"From \" + mref(1) + \" we get \" + mref(2))"
+    },
+    {
+      "scenario": "Reference in concatenated string",
+      "expression": "text = \"Step \" + mref(1) + \": calculate\""
+    }
+  ]
+}

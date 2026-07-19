@@ -1,0 +1,10 @@
+{
+  "expression": "frustumfold",
+  "_requires": [],
+  "description": "Frustum net unfolding pattern",
+  "utility": "Display truncated cone as flat net",
+  "arguments": [],
+  "examples": [
+    {"scenario": "Frustum net", "expression": "frustumfold()"}
+  ]
+}

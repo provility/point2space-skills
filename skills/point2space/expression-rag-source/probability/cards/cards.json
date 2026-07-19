@@ -1,0 +1,14 @@
+{
+  "expression": "cards",
+  "_requires": [],
+  "description": "Generates a filtered deck of cards. Used as an experiment component inside sspace(). Filters by suit, color, face, or rank.",
+  "utility": "Define a card deck for a sample space",
+  "arguments": [
+    {"name": "filters", "type": "strings", "required": false, "description": "Suit names (hearts, spades, diamonds, clubs), color (red, black), face, or rank (A, 2-10, J, Q, K)"}
+  ],
+  "examples": [
+    {"scenario": "Full deck", "expression": "S = sspace(at(4,4), view(14,20), cards())"},
+    {"scenario": "Hearts only", "expression": "S = sspace(at(4,4), view(14,20), cards(hearts))"},
+    {"scenario": "Face cards only", "expression": "S = sspace(at(4,4), view(14,20), cards(face))"}
+  ]
+}

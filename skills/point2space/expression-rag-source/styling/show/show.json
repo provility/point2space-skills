@@ -1,0 +1,55 @@
+{
+  "expression": "show",
+  "description": "Interactive show-only command that shows the specified shapes and hides everything else. Creates a mutator icon button. show() always uses show-only behavior. Auto-clears after t() duration (default 5 seconds). Triggered by clicking the mutator icon.",
+  "utility": "Show specified shapes and hide everything else (show-only mode)",
+  "arguments": [
+    {
+      "name": "shapes",
+      "type": "variable references",
+      "required": true,
+      "description": "One or more variable references to shapes to show - all other shapes will be hidden"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Auto-clear duration. t(0) = permanent. Defaults to 5 seconds. After clearing, all shapes return to their original visibility."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Show only specified shapes",
+      "syntax": "show(A, B)",
+      "description": "Show only A and B, hide everything else (auto-clears after 5s)"
+    },
+    {
+      "variant": "Show only with custom duration",
+      "syntax": "show(A, B, t(10))",
+      "description": "Show only A and B for 10 seconds, then restore all"
+    },
+    {
+      "variant": "Show only permanently",
+      "syntax": "show(A, B, t(0))",
+      "description": "Show only A and B permanently until manually cleared"
+    },
+    {
+      "variant": "With type(only) (accepted but optional)",
+      "syntax": "show(A, B, type(only))",
+      "description": "Same as show(A, B) — type(only) is accepted but optional"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Focus on a triangle and its label",
+      "expression": "show(triangle_1, label_1)"
+    },
+    {
+      "scenario": "Show only specific construction lines",
+      "expression": "show(L1, L2, L3)"
+    },
+    {
+      "scenario": "Show only a graph and specific shapes permanently",
+      "expression": "show(G, P1, P2, C, t(0))"
+    }
+  ]
+}

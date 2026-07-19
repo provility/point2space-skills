@@ -1,0 +1,13 @@
+{
+  "expression": "inner",
+  "_requires": [],
+  "description": "Specify inner radius function for washer/disk method",
+  "utility": "Define inner boundary in solids of revolution",
+  "arguments": [
+    {"name": "function", "type": "string | number", "required": true, "description": "Inner radius as function or constant"}
+  ],
+  "examples": [
+    {"scenario": "Constant inner radius", "expression": "inner(\"0.5\")"},
+    {"scenario": "Function inner radius", "expression": "inner(\"x/2\")"}
+  ]
+}

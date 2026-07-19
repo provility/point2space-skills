@@ -1,0 +1,72 @@
+{
+  "expression": "textscale",
+  "_requires": [],
+  "description": "Scales selected text up by a factor, holds at the larger size, then scales back to original size. Accepts any number of select variables, even across different write components. Default scale factor is 2x. Supports animation duration and color customization during scaling.",
+  "utility": "Animate text scaling — grow and shrink text elements with optional timing and color",
+  "arguments": [
+    {
+      "name": "select",
+      "type": "variable",
+      "required": true,
+      "description": "Select variable(s) to scale — one or more selections from select() or selectexcept()"
+    },
+    {
+      "name": "size",
+      "type": "size(factor)",
+      "required": false,
+      "description": "Scale factor (default 2). Example: size(1.5) scales to 1.5x original size"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Animation duration in seconds"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color during scaling"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Default scale (2x)",
+      "syntax": "textscale(select1)",
+      "description": "Scale selection by default 2x factor"
+    },
+    {
+      "variant": "Multiple selections",
+      "syntax": "textscale(select1, select2)",
+      "description": "Scale multiple selections simultaneously"
+    },
+    {
+      "variant": "Custom scale factor",
+      "syntax": "textscale(select1, size(1.5))",
+      "description": "Scale by custom factor (1.5x in this example)"
+    },
+    {
+      "variant": "With duration and color",
+      "syntax": "textscale(select1, size(2), t(0.5), c(red))",
+      "description": "Scale with specified duration and stroke color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Scale area strip expression to emphasize",
+      "expression": "text_scale_1 = textscale(select_2, size(2))"
+    },
+    {
+      "scenario": "Scale hyperbola equation for rearrangement",
+      "expression": "text_scale_1=textscale(select_1,size(1.5),notes(\"Rearrange this equation to find math(b^2)\"))"
+    },
+    {
+      "scenario": "Scale multiple selections together",
+      "expression": "text_scale_1 = textscale(select_5, select_6, select_7, size(2))"
+    },
+    {
+      "scenario": "Scale x^2 and x terms in quadratic equation with deferred playback",
+      "expression": "write_1=write(at(8,4),\"ax^2 + bx + c = 0\",t(5))\nselect_4 = select(write_1, \"x^2\", 1)\nselect_5 = select(write_1, \"x\", 2)\ntext_scale_1=textscale(select_4,size(1.2),defer())\ntext_scale_2=textscale(select_5,size(1.2),defer())"
+    }
+  ]
+}

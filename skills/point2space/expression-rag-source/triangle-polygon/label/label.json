@@ -1,0 +1,105 @@
+{
+  "expression": "label",
+  "_requires": ["g2d"],
+  "description": "Places a text annotation at a specified position on the graph, supporting ASCII-to-LaTeX math notation, offset positioning, and rotation.",
+  "utility": "Add text label at specified position on graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "position",
+      "type": "at(point) | at(shape) | at(item())",
+      "required": true,
+      "description": "Position using at() expression (required)"
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": true,
+      "description": "Label text in quotes (ASCII math converted to LaTeX)"
+    },
+    {
+      "name": "buff",
+      "type": "buff(row, col)",
+      "required": false,
+      "description": "Offset from position in logical units"
+    },
+    {
+      "name": "rotation",
+      "type": "rotation(degrees)",
+      "required": false,
+      "description": "Rotate label text by degrees"
+    },
+    {
+      "name": "renderType",
+      "type": "type(write) | type(print)",
+      "required": false,
+      "description": "type(write) for pen animation, type(print) for instant display"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Label at angle",
+      "syntax": "label(G, at(angle_A), \"A\", buff(-1.0, 1.0))",
+      "description": "Label positioned at angle with offset"
+    },
+    {
+      "variant": "Label at edge",
+      "syntax": "label(G, at(item(triangle, type(edge), 1)), \"a\")",
+      "description": "Label at edge midpoint"
+    },
+    {
+      "variant": "Label at point",
+      "syntax": "label(G, at(point_A), \"A\", buff(0.5, 0.5))",
+      "description": "Label near a point with offset"
+    },
+    {
+      "variant": "Rotated label",
+      "syntax": "label(G, at(line), \"side\", rotation(30))",
+      "description": "Label rotated to match line angle"
+    },
+    {
+      "variant": "Instant display",
+      "syntax": "label(G, at(P), \"text\", type(print))",
+      "description": "Label without pen animation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Label angle A with offset",
+      "expression": "label_A = label(graph_1, at(angle_A), \"A\", buff(-1.0, 1.0))"
+    },
+    {
+      "scenario": "Label angle B with offset",
+      "expression": "label_B = label(graph_1, at(angle_B), \"B\", buff(-1.0, -1.8))"
+    },
+    {
+      "scenario": "Label angle C with offset",
+      "expression": "label_C = label(graph_1, at(angle_C), \"C\", buff(1.0, -1))"
+    },
+    {
+      "scenario": "Label edge (side a) with rotation",
+      "expression": "label_a = label(graph_1, at(item(triangle_1, type(edge), 2)), \"a\", buff(-1.5, 1), rotation(26))"
+    },
+    {
+      "scenario": "Label side c at edge midpoint",
+      "expression": "label_c = label(graph_1, at(item(triangle_1, type(edge), 1)), \"c\", buff(0, -0.5))"
+    },
+    {
+      "scenario": "Label side b with offset",
+      "expression": "label_b = label(graph_1, at(item(triangle_1, type(edge), 3)), \"b\", buff(-1.5, -1.5))"
+    },
+    {
+      "scenario": "Label at height line",
+      "expression": "label_h = label(graph_1, at(line_height, 3), \"h\", buff(0, 0.5))"
+    },
+    {
+      "scenario": "Greek letter label",
+      "expression": "label_theta = label(graph_1, at(angle_2), \"theta\", buff(-0.9, -2))"
+    }
+  ]
+}

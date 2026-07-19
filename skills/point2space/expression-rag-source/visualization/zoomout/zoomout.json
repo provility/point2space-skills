@@ -1,0 +1,12 @@
+{
+  "expression": "zoomout",
+  "_requires": ["g2d"],
+  "description": "Zoom out on coordinate system view",
+  "utility": "Reduce magnification to see broader view",
+  "arguments": [
+    {"name": "factor", "type": "number", "required": false, "description": "Zoom factor (default: 1.5)"}
+  ],
+  "examples": [
+    {"scenario": "Zoom out", "expression": "zoomout(2)"}
+  ]
+}

@@ -1,0 +1,1 @@
+{"expression":"unwrap","_requires":[],"description":"Unwraps a 3D surface to a flat 2D pattern.","utility":"Unwrap 3D surface to 2D","arguments":[{"name":"solidRef","type":"variable","required":true,"description":"Solid or surface to unwrap"}],"examples":[{"scenario":"Unwrap solid","expression":"unwrap(solid_1)"},{"scenario":"Unwrap cylinder","expression":"unwrap(cyl_1)"}]}

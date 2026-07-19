@@ -1,0 +1,24 @@
+{
+  "expression": "cylinderfold",
+  "_requires": ["sheetcircle"],
+  "description": "Folds a circular sheet into a cylinder. Animates the sheet rolling into a cylindrical 3D shape with optional height specification.",
+  "utility": "Fold a circular sheet into a cylinder",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "sheetCircle", "type": "sheetcircle variable", "required": true, "description": "Reference to the circular sheet to fold"},
+    {"name": "height", "type": "number", "required": false, "description": "Cylinder height"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Cylinder fold from circular sheet",
+      "expression": "sc_1 = sheetcircle(at(4,4), view(14,14), 3, c(navy), fc(lightyellow), fo(0.5))\ncyl_1 = cylinderfold(at(4,22), sc_1, 5, c(navy), fc(lightyellow), fo(0.5))"
+    },
+    {
+      "scenario": "Cylinder fold without explicit height",
+      "expression": "sc_1 = sheetcircle(at(4,4), view(14,14), 4, c(crimson), fc(cyan), fo(0.3))\ncyl_1 = cylinderfold(at(4,22), sc_1, c(crimson), fc(cyan), fo(0.3))"
+    }
+  ]
+}

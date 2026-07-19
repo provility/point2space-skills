@@ -1,0 +1,43 @@
+{
+  "expression": "perp",
+  "_requires": ["g2d", "line"],
+  "description": "Creates a line perpendicular to an existing line through a given point.",
+  "utility": "Create a perpendicular line through a point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "line",
+      "type": "line",
+      "required": true,
+      "description": "Existing line to be perpendicular to"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "Point the perpendicular line passes through"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Perpendicular line",
+      "syntax": "perp(G, line, point)",
+      "description": "Line perpendicular to existing line through given point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Perpendicular from unit circle point to x-axis",
+      "expression": "graph_1 = g2d(at(4,19), size(20), range(-2, 2), type(geometry)); circle_1 = circle(graph_1, \"x^2 + y^2 = 1\"); point_1 = interpolate(graph_1, circle_1, 0, 1); line_2 = perp(graph_1, line(graph_1, \"y = 0\"), point_1, type(segment))"
+    },
+    {
+      "scenario": "Perpendicular from point to a line segment for slope animation",
+      "expression": "graph_1 = g2d(at(4,19), size(16), range(-5, 5), type(geometry)); point_1 = point(graph_1, -3, -2); point_2 = point(graph_1, 3, 2); line_1 = line(graph_1, point_1, point_2, type(segment)); point_3 = point(graph_1, -3.4, 3.0); line_2 = perp(graph_1, line_1, point_3, type(line))"
+    }
+  ]
+}

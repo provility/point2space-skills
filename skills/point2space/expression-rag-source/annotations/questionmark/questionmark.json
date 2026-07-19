@@ -1,0 +1,43 @@
+{
+  "expression": "questionmark",
+  "_requires": ["g2d"],
+  "description": "Draws a question mark annotation between two endpoints. Creates a question mark symbol to indicate items requiring clarification with optional styling.",
+  "utility": "Mark problematic or unclear items with question mark symbols",
+  "arguments": [
+    {
+      "name": "from",
+      "type": "at() expression",
+      "required": true,
+      "description": "Starting point for the question mark, specified as at(row, col)"
+    },
+    {
+      "name": "to",
+      "type": "at() expression",
+      "required": true,
+      "description": "Ending point for the question mark, specified as at(row, col)"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with color",
+      "syntax": "questionmark(at(r1, c1), at(r2, c2), c(orange))",
+      "description": "Question mark with orange color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic question mark",
+      "expression": "questionmark(at(2,1), at(2,2))"
+    },
+    {
+      "scenario": "Question mark with color",
+      "expression": "questionmark(at(1,5), at(1,6), c(orange))"
+    }
+  ]
+}

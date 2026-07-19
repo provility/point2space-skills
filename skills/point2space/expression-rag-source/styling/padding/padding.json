@@ -1,0 +1,31 @@
+{
+  "expression": "pd",
+  "description": "Sets padding around text content using CSS-style syntax",
+  "utility": "Control spacing around text with 1, 2, 3, or 4 value syntax",
+  "arguments": [
+    {
+      "name": "values",
+      "type": "number(s)",
+      "required": true,
+      "description": "Padding in pixels: 1 value (all), 2 (vertical/horizontal), 3 (top/sides/bottom), or 4 (top/right/bottom/left)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Same padding all sides",
+      "expression": "text(\"Hello\") | pd(10)"
+    },
+    {
+      "scenario": "Vertical and horizontal padding",
+      "expression": "text(\"Content\") | pd(5, 20)"
+    },
+    {
+      "scenario": "Top/sides/bottom padding",
+      "expression": "text(\"Text\") | pd(10, 15, 20)"
+    },
+    {
+      "scenario": "Individual side padding (top, right, bottom, left)",
+      "expression": "text(\"Box\") | pd(5, 10, 15, 20)"
+    }
+  ]
+}

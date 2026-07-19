@@ -1,0 +1,19 @@
+{
+  "expression": "doublecone3d",
+  "_requires": [],
+  "description": "Creates a 3D double cone (two opposite cones joined at their base). Standalone ThreeJS solid with at() positioning.",
+  "utility": "Create a 3D double cone",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "radius", "type": "number", "required": false, "description": "Base radius (default: 1)"},
+    {"name": "height", "type": "number", "required": false, "description": "Total height (default: 4)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity"}
+  ],
+  "examples": [
+    {"scenario": "Double cone", "expression": "D = doublecone3d(at(4,4), view(14,14), 2, 6, c(navy), fc(lightyellow), fo(0.5))"},
+    {"scenario": "Simple double cone", "expression": "D = doublecone3d(at(4,4), view(12,12))"}
+  ]
+}

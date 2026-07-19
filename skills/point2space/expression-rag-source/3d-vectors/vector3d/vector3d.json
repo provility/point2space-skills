@@ -1,0 +1,75 @@
+{
+  "expression": "vector3d",
+  "_requires": ["g3d"],
+  "description": "Creates a directed 3D vector arrow between two points in a 3D graph, defined by six coordinates or two point expressions. The vector renders as an arrow and stores start and end positions.",
+  "utility": "Create a directed 3D vector arrow between two points",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "start and end",
+      "type": "x1, y1, z1, x2, y2, z2 | point3d, point3d",
+      "required": true,
+      "description": "Six numeric coordinates (x1, y1, z1, x2, y2, z2) or two point3d expressions defining start and end"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From six coordinates",
+      "syntax": "vector3d(G, x1, y1, z1, x2, y2, z2)",
+      "description": "Vector from (x1,y1,z1) to (x2,y2,z2)"
+    },
+    {
+      "variant": "From two point3d variables",
+      "syntax": "vector3d(G, P1, P2)",
+      "description": "Vector from point3d P1 to point3d P2"
+    },
+    {
+      "variant": "From origin",
+      "syntax": "vector3d(G, 0, 0, 0, 3, 4, 5)",
+      "description": "Vector starting at origin pointing to (3,4,5)"
+    },
+    {
+      "variant": "With color styling",
+      "syntax": "vector3d(G, 0, 0, 0, 1, 0, 0, c(red))",
+      "description": "Red-colored vector along x-axis"
+    },
+    {
+      "variant": "Component form (3 values)",
+      "syntax": "vector3d(G, x, y, z)",
+      "description": "Vector from origin with components (x,y,z)"
+    },
+    {
+      "variant": "Spherical coordinates",
+      "syntax": "vector3d(G, r, theta, phi, type(spherical))",
+      "description": "Vector in spherical coordinates"
+    },
+    {
+      "variant": "Cylindrical coordinates",
+      "syntax": "vector3d(G, r, theta, z, type(cylindrical))",
+      "description": "Vector in cylindrical coordinates"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "3D vector from origin for scalar triple product",
+      "expression": "vecU = vector3d(G, 0, 0, 0, 2, 1, 3, c(red))"
+    },
+    {
+      "scenario": "3D vector between two 3D points",
+      "expression": "vector_1 = vector3d(G, point3d(G, -3.9, -2.4, 0.0), point3d(G, -0.8, 0.3, 0.0))"
+    },
+    {
+      "scenario": "Create three basis vectors along x, y, z axes with colors",
+      "expression": "G = g3d(at(4,23), view(30, 30))\ni = vector3d(G, 0, 0, 0, 1, 0, 0, c(red))\nj = vector3d(G, 0, 0, 0, 0, 1, 0, c(green))\nk = vector3d(G, 0, 0, 0, 0, 0, 1, c(blue))"
+    },
+    {
+      "scenario": "Vector in component form from origin",
+      "expression": "V = vector3d(G, 3, 4, 5, c(blue))"
+    }
+  ]
+}

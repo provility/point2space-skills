@@ -1,0 +1,22 @@
+{
+    "expression": "hatchangle",
+    "_requires": [
+        "event"
+    ],
+    "description": "Sets a hatch pattern angle for an event highlight. When two events share outcomes, each event draws diagonal lines at its own angle. Overlapping cells show a crosshatch pattern, making the intersection visually obvious.",
+    "utility": "Set hatch pattern angle for overlapping events",
+    "arguments": [
+        {
+            "name": "degrees",
+            "type": "number",
+            "required": true,
+            "description": "Hatch line angle in degrees (e.g., 45, -45)"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Two overlapping events with crosshatch",
+            "expression": "S = sspace(coin(3), at(4,10), view(10,10))\nE = event(S, \"at least 2 H\", fc(red), hatchangle(45))\nF = event(S, \"first = T\", fc(blue), hatchangle(-45))"
+        }
+    ]
+}

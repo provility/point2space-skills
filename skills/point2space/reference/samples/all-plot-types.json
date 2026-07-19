@@ -1,0 +1,152 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_plot_explicit": {
+      "id": "slide_plot_explicit",
+      "name": "Explicit Plot",
+      "expressions": [
+        "title_1=title(at(1.2,13.1),\"Explicit Plot\",type(slideup),fc(steelblue),pd(10),border(steelblue,radius(12),shadow(12)),fs(28),ff(\"Gill Sans\"),c(white))",
+        "G1=g2d(at(2.5,28.5),22,22,type(plotting))",
+        "dd_eq1=dropdown(at(6.2,3.8),\"eq1\",value(\"a*x^2 + b*x + c\",\"a*sin(b*x)\",\"a*exp(-b*x^2)\"),\"f(x)\",type(math),ref(1))",
+        "desc_1=desc(at(9.5,3.5),\"text(Let’s define values for each variable in the above equation.)\",fs(20))",
+        "varanim_a=variableanimator(at(12.5,3.5),\"a\",1,3)",
+        "varanim_b=variableanimator(at(16,3.5),\"b\",2,5)",
+        "varanim_c=variableanimator(at(19.5,3.5),\"c\",-3,2)",
+        "plot_1=plot(G1,eq1,c(steelblue),notes(\"Now, draw the plot for the selected equation.\"))",
+        "obrace_1=overbrace(at(12.5,9.3),at(21.2,9.4),\"\",c(steelblue))",
+        "paragraph_1=paragraph(at(13.2,11.3),11.8,6.8,para_str_1,ff(\"Gill Sans\"),effect(fadein),c(steelblue))",
+        "play_a=playanimator(varanim_a)",
+        "play_b=playanimator(varanim_b)",
+        "play_c=playanimator(varanim_c)",
+        "desc_2=desc(at(23,3.5),\"text(Animate parameters to see the curve transform)\",fs(20))",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Now, animate the values and observe how the graph changes.\n"
+        }
+      ]
+    },
+    "slide_plot_implicit": {
+      "id": "slide_plot_implicit",
+      "name": "Implicit Curve",
+      "expressions": [
+        "title_1=title(at(1.2,13.1),\"Implicit Curve\",type(fadescale),fc(darkred),pd(10),border(darkred,radius(12),shadow(12)),fs(28),ff(\"Gill Sans\"),c(white))",
+        "G2=g2d(at(3,24.5),25,25,type(plotting))",
+        "dd_eq2=dropdown(at(6.2,4.8),\"eq2\",value(\"x^2/a^2 + y^2/b^2 = 1\",\"(x^2 + y^2)^2 = a^2*(x^2 - y^2)\",\"x^3 + y^3 = a*x*y\"),\"Curve\",type(math),ref(1))",
+        "desc_1=desc(at(9,4.5),\"text(Let’s define values for each variable in the above equation..)\",fs(20))",
+        "varanim_a=variableanimator(at(12,5),\"a\",1,3)",
+        "varanim_b=variableanimator(at(15.5,5),\"b\",2,4)",
+        "plot_1=implicitplot(G2,eq2,c(teal),notes(\"Now, draw the plot for the selected equation.\"))",
+        "obrace_1=overbrace(at(11.9,10.1),at(17,10.2),c(black),s(1))",
+        "desc_2=desc(at(14,11),\"text(Watch the implicit curve reshape as the parameters change.)\",fs(16),c(maroon))",
+        "play_a=playanimator(varanim_a)",
+        "play_b=playanimator(varanim_b)",
+        ""
+      ],
+      "paraVariables": []
+    },
+    "slide_plot_piecewise": {
+      "id": "slide_plot_piecewise",
+      "name": "Piecewise Plot",
+      "expressions": [
+        "title_1=title(at(1.2,13.1),\"Piecewise Plot\",type(fadescale),fc(purple),pd(10),border(purple,radius(12),shadow(12)),fs(28),ff(\"Gill Sans\"),c(white))",
+        "G4=g2d(at(0.5,30.5),25,25,type(plotting))",
+        "dd_pwa=dropdown(at(5.2,3.8),\"pwa\",value(\"-a*x + c\",\"a*x^2\",\"a\"),\"x<0\",type(math),ref(1))",
+        "dd_pwb=dropdown(at(5.2,11.8),\"pwb\",value(\"a*x + c\",\"-a*x^2\",\"-a\"),\"x>=0\",type(math),ref(1))",
+        "desc_1=desc(at(8,3.5),\"text(Let’s define values for each variable in the above equation..)\",fs(20))",
+        "varanim_a=variableanimator(at(10.5,3.5),\"a\",1,3)",
+        "varanim_c=variableanimator(at(14,3.5),\"c\",-3,2)",
+        "plot_1=plot(G4, pwa, \"x<0\", pwb, \"x>=0\", c(purple),notes(\"Now, draw the plot for the selected equation.\"))",
+        "obrace_1=overbrace(at(10.4,8.6),at(15.5,8.7),c(black),s(1))",
+        "desc_2=desc(at(12.5,9.5),\"text(Each piece responds independently to the parameter shift)\",fs(16))",
+        "play_a=playanimator(varanim_a)",
+        "play_c=playanimator(varanim_c)"
+      ],
+      "paraVariables": []
+    },
+    "slide_plot_inequality": {
+      "id": "slide_plot_inequality",
+      "name": "Inequality Region",
+      "expressions": [
+        "title_1=title(at(2.7,25.6),\"Inequality Region\",type(slideup),fc(darkorange),pd(10),border(darkorange,radius(12),shadow(12)),fs(28),ff(\"Gill Sans\"),c(white))",
+        "G5=g2d(at(7,5),25,25,type(plotting))",
+        "dd_eq5=dropdown(at(4.7,5.3),\"eq5\",value(\"y < a*x^2 + c\",\"x^2/a^2 + y^2/b^2 <= 1\",\"y >= a*sin(b*x)\"),\"Region\",type(math),ref(2))",
+        "desc_1=desc(at(7,30.5),\"text(Let’s define values for each variable in the above equation..)\",fs(20))",
+        "varanim_a=variableanimator(at(10,30),\"a\",1,3)",
+        "varanim_b=variableanimator(at(13,30),\"b\",2,5)",
+        "varanim_c=variableanimator(at(16,30),\"c\",-3,2)",
+        "plot_1=inequalityplot(G5, eq5, c(orange), fo(0.3),notes(\"Now, draw the plot for the selected equation.\"))",
+        "obrace_1=overbrace(at(9.4,34.8),at(18.2,34.8))",
+        "desc_2=desc(at(13,36),\"text(The shaded region expands and contracts with the parameters)\",fs(16),c(orange))",
+        "play_a=playanimator(varanim_a)",
+        "play_b=playanimator(varanim_b)",
+        "play_c=playanimator(varanim_c)",
+        ""
+      ],
+      "paraVariables": []
+    },
+    "slide_plot_parametric": {
+      "id": "slide_plot_parametric",
+      "name": "Parametric Plot",
+      "expressions": [
+        "title_1=title(at(1.2,13.1),\"Parametric Plot\",type(slideup),fc(darkgreen),pd(10),border(darkgreen,radius(12),shadow(12)),fs(28),ff(\"Gill Sans\"),c(white))",
+        "G3=g2d(at(0.5,29),25,25,type(plotting))",
+        "dd_xp=dropdown(at(5.7,4.3),\"xp\",value(\"a*cos(t)\",\"a*(t - sin(t))\",\"a*cos(t)^3\"),\"x(t)\",type(math),ref(2))",
+        "dd_yp=dropdown(at(5.7,13.3),\"yp\",value(\"b*sin(t)\",\"a*(1 - cos(t))\",\"b*sin(t)^3\"),\"y(t)\",type(math),ref(3))",
+        "paragraph_1=paragraph(at(8.5,6.2),22.1,2.8,para_str_1,ff(\"Gill Sans\"),effect(fadein),c(teal))",
+        "arect_1 = annotationrect(at(8.5, 6.5), at(8.5, 28), at(11.3, 28), at(11.3, 6.5))",
+        "hide_1 = hide(arect_1, paragraph_1)",
+        "desc_1=desc(at(12,3.5),\"text(Let’s define values for each variable in the above equation..)\",fs(20))",
+        "varanim_a=variableanimator(at(15.5,4),\"a\",1,3)",
+        "varanim_b=variableanimator(at(19,4),\"b\",1,3)",
+        "plot_1=paraplot(G3, xp, yp, range(0, 2*pi), c(green),notes(\"Now, draw the plot for the selected equation.\"))",
+        "obrace_1=overbrace(at(15.4,9.1),at(20.5,9.2),c(black),s(1))",
+        "desc_2=desc(at(17.5,10.5),\"text(Scaling the parametric components stretches the path)\",fs(16),c(green),s(2))",
+        "play_a=playanimator(varanim_a)",
+        "play_b=playanimator(varanim_b)",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Since this is a parametric plot, we have two equations."
+        }
+      ]
+    },
+    "slide_plot_piecewise2": {
+      "id": "slide_plot_piecewise2",
+      "name": "Piecewise Continuity",
+      "expressions": [
+        "title_1=title(at(1.2,13.1),\"Piecewise Continuity\",type(fadescale),fc(saddlebrown),pd(10),border(saddlebrown,radius(12),shadow(12)),fs(28),ff(\"Gill Sans\"),c(white))",
+        "G6=g2d(at(4,24),20.3,30.6,type(plotting))",
+        "dd_ca=dropdown(at(5.7,3.8),\"ca\",value(\"a*sin(b*x)\",\"a*abs(x) + c\",\"a*x^2 + c\"),\"x<0\",type(math),ref(1))",
+        "dd_cb=dropdown(at(5.7,14.3),\"cb\",value(\"a*cos(b*x)\",\"-a*abs(x) + c\",\"a*sqrt(abs(x))\"),\"x>=0\",type(math),ref(1))",
+        "desc_1=desc(at(8.5,4),\"text(Let’s define values for each variable in the above equation..)\",fs(20))",
+        "varanim_a=variableanimator(at(12,4),\"a\",1,3)",
+        "varanim_b=variableanimator(at(15,4),\"b\",2,5)",
+        "varanim_c=variableanimator(at(18.5,4),\"c\",-3,2)",
+        "plot_1=plot(G6, ca, \"x<0\", cb, \"x>=0\", c(brown),notes(\"Now, draw the plot for the selected equation.\"))",
+        "obrace_1=overbrace(at(11.9,8.8),at(20.7,8.8),c(brown))",
+        "desc_2=desc(at(17,9.5),\"text(Observe how continuity at x=0 depends on the chosen pieces)\",fs(16))",
+        "play_a=playanimator(varanim_a)",
+        "play_b=playanimator(varanim_b)",
+        "play_c=playanimator(varanim_c)"
+      ],
+      "paraVariables": []
+    }
+  },
+  "settings": {},
+  "slideOrder": [
+    "slide_plot_explicit",
+    "slide_plot_implicit",
+    "slide_plot_parametric",
+    "slide_plot_piecewise",
+    "slide_plot_inequality",
+    "slide_plot_piecewise2"
+  ],
+  "activeSlideId": "slide_plot_explicit",
+  "id": "fb9f1844-50fc-4925-817b-713bf2df232a",
+  "name": "All Plot Types"
+}

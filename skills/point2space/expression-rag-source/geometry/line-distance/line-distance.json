@@ -1,0 +1,13 @@
+{
+  "expression": "line distance",
+  "_requires": ["g2d", "line"],
+  "description": "Get the length or distance measurement of a line segment.",
+  "utility": "Measure length of a line segment",
+  "syntax": "measure(G, line)",
+  "examples": [
+    {
+      "scenario": "Measure length of a line segment",
+      "expression": "d = measure(G, L)"
+    }
+  ]
+}

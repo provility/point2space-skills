@@ -1,0 +1,65 @@
+{
+  "expression": "reverse",
+  "_requires": ["g2d"],
+  "description": "Creates a direction-reversed copy of a vector or line, flipping tip and tail while preserving magnitude, placed at a specified starting point.",
+  "utility": "Create a direction-reversed copy of a vector placed at a new point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The graph container"
+    },
+    {
+      "name": "vector",
+      "type": "vector | line",
+      "required": true,
+      "description": "The vector or line to reverse"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "The new starting point for the reversed vector"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Reverse at a point expression",
+      "syntax": "reverse(G, vec, point)",
+      "description": "Reverse vector direction and place at the given point"
+    },
+    {
+      "variant": "Reverse at coordinates",
+      "syntax": "reverse(G, vec, x, y)",
+      "description": "Reverse vector direction and place at (x, y)"
+    },
+    {
+      "variant": "Reverse a line",
+      "syntax": "reverse(G, line, point)",
+      "description": "Reverse a line direction as a vector at the given point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Reverse a vector at the origin",
+      "expression": "P1 = point(G, 1, 1)\nP2 = point(G, 4, 3)\nV = vector(G, P1, P2)\nR = reverse(G, V, point(G, 0, 0))"
+    },
+    {
+      "scenario": "Reverse a vector at its own tip (tail-to-tail)",
+      "expression": "O = point(G, 0, 0)\nA = point(G, 3, 2)\nV = vector(G, O, A)\nR = reverse(G, V, point(G, 3, 2))"
+    },
+    {
+      "scenario": "Reverse a vector at explicit coordinates",
+      "expression": "O = point(G, 0, 0)\nV = vector(G, O, point(G, 3, 2))\nR = reverse(G, V, 5, 5)"
+    },
+    {
+      "scenario": "Reverse a line as a vector",
+      "expression": "A = point(G, 0, 0)\nB = point(G, 4, 3)\nL = line(G, A, B)\nR = reverse(G, L, point(G, 0, 0))"
+    },
+    {
+      "scenario": "Reverse a vector direction in vector movements",
+      "expression": "G=g2d(at(3,6),25,range(-1,5,1),type(geometry)); vector_1 = vector(G, point(G, 2.3, 1.2), point(G, 3.2, 1.7)); rev_1 = reverse(G, vector_1)"
+    }
+  ]
+}

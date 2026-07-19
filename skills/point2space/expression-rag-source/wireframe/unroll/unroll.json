@@ -1,0 +1,15 @@
+{
+  "expression": "unroll",
+  "_requires": [],
+  "description": "Unroll cylindrical or rolled surfaces",
+  "utility": "Flatten rolled shapes into flat patterns",
+  "arguments": [
+    {"name": "shape", "type": "3D shape", "required": true, "description": "Shape to unroll"}
+  ],
+  "examples": [
+    {
+      "scenario": "Unroll star template",
+      "expression": "unroll_1=unroll(at(20,5),ts_1)"
+    }
+  ]
+}

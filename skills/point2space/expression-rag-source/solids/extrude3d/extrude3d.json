@@ -1,0 +1,18 @@
+{
+  "expression": "extrude3d",
+  "_requires": [],
+  "description": "Extrusion solid with optional cross-section profile. Extrudes a 2D profile along a height.",
+  "utility": "Create an extrusion solid from a 2D profile",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "profile", "type": "profile2d reference", "required": true, "description": "2D profile to extrude"},
+    {"name": "height", "type": "number", "required": true, "description": "Extrusion height"},
+    {"name": "extrusionprofile", "type": "extrusionprofile(name)", "required": false, "description": "Cross-section profile shape"},
+    {"name": "taper", "type": "taper(factor)", "required": false, "description": "Taper factor"}
+  ],
+  "examples": [
+    {"scenario": "Extrude with rectangle profile", "expression": "E = extrude3d(at(4,4), view(14,14), profile_1, 5, extrusionprofile(\"rectangle\"), c(navy), fc(lightyellow), fo(0.5))"},
+    {"scenario": "Extrude with taper", "expression": "E = extrude3d(at(4,4), view(14,14), profile_1, 4, taper(0.5))"}
+  ]
+}

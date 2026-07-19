@@ -1,0 +1,27 @@
+{
+  "expression": "fs",
+  "description": "Sets the font size for text elements in pixels",
+  "utility": "Control text size by specifying pixel value",
+  "arguments": [
+    {
+      "name": "size",
+      "type": "number",
+      "required": true,
+      "description": "Font size in pixels (e.g., 24, 35)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Standard text size",
+      "expression": "text(\"Hello\") | fs(24)"
+    },
+    {
+      "scenario": "Large heading",
+      "expression": "text(\"Title\") | fs(48)"
+    },
+    {
+      "scenario": "Small annotation",
+      "expression": "text(\"note\") | fs(12)"
+    }
+  ]
+}

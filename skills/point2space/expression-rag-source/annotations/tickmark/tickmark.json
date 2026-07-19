@@ -1,0 +1,43 @@
+{
+  "expression": "tickmark",
+  "_requires": ["g2d"],
+  "description": "Draws a tick mark annotation between two endpoints. Creates a small perpendicular mark to indicate correctness or completion with optional styling.",
+  "utility": "Mark correct answers or completed items with tick symbols",
+  "arguments": [
+    {
+      "name": "from",
+      "type": "at() expression",
+      "required": true,
+      "description": "Starting point for the tick mark, specified as at(row, col)"
+    },
+    {
+      "name": "to",
+      "type": "at() expression",
+      "required": true,
+      "description": "Ending point for the tick mark, specified as at(row, col)"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with color",
+      "syntax": "tickmark(at(r1, c1), at(r2, c2), c(green))",
+      "description": "Tick mark with green color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic tick mark",
+      "expression": "tickmark(at(2,1), at(2,2))"
+    },
+    {
+      "scenario": "Green tick mark",
+      "expression": "tickmark(at(1,3), at(1,4), c(green))"
+    }
+  ]
+}

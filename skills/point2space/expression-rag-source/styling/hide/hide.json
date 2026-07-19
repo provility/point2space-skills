@@ -1,0 +1,55 @@
+{
+  "expression": "hide",
+  "description": "Interactive command that hides one or more shapes on the canvas. Creates a mutator icon button. When t() is specified, shapes are hidden temporarily and auto-restored after the duration. Not auto-playable -- triggered by clicking the mutator icon.",
+  "utility": "Hide one or more shapes from the canvas with optional auto-restore",
+  "arguments": [
+    {
+      "name": "shapes",
+      "type": "variable references",
+      "required": true,
+      "description": "One or more variable references to shapes to hide - e.g., A, B, L"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Auto-restore duration. t(0) = permanent hide. Defaults to 5 seconds if t() is specified."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Hide single shape",
+      "syntax": "hide(A)",
+      "description": "Hide one shape (auto-restores after default duration)"
+    },
+    {
+      "variant": "Hide multiple shapes",
+      "syntax": "hide(A, B, C)",
+      "description": "Hide several shapes at once"
+    },
+    {
+      "variant": "Hide with timed auto-restore",
+      "syntax": "hide(A, B, t(3))",
+      "description": "Hide shapes for 3 seconds, then auto-restore"
+    },
+    {
+      "variant": "Hide permanently",
+      "syntax": "hide(A, B, t(0))",
+      "description": "Hide shapes permanently (no auto-restore)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Hide arcs and points after intersection",
+      "expression": "hide_1 = hide(arc_2, arc_1,point_A,point_B,point_C)"
+    },
+    {
+      "scenario": "Hide tip after showing",
+      "expression": "hide_1 = hide(tip_1)"
+    },
+    {
+      "scenario": "Hide annotation and arrows",
+      "expression": "hide_2 = hide(write_11, text_copy_5, arrow_1)"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "expression": "curvemarker3d",
+  "_requires": ["g3d"],
+  "description": "Places a bracket-style dimension marker between two UV positions on a surface. UV values are 0–1 ratios.",
+  "utility": "Add a dimension marker between two points on a 3D surface",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container"
+    },
+    {
+      "name": "surface",
+      "type": "surface reference",
+      "required": true,
+      "description": "The surface to place the marker on (plot3d, paraplot3d)"
+    },
+    {
+      "name": "u1",
+      "type": "number (0–1)",
+      "required": true,
+      "description": "U coordinate of the start point"
+    },
+    {
+      "name": "v1",
+      "type": "number (0–1)",
+      "required": true,
+      "description": "V coordinate of the start point"
+    },
+    {
+      "name": "u2",
+      "type": "number (0–1)",
+      "required": true,
+      "description": "U coordinate of the end point"
+    },
+    {
+      "name": "v2",
+      "type": "number (0–1)",
+      "required": true,
+      "description": "V coordinate of the end point"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": true,
+      "description": "Bracket offset from the surface along its normal"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Optional label text for the marker"
+    },
+    {
+      "name": "arrowhead",
+      "type": "arrowhead()",
+      "required": false,
+      "description": "Optional arrowhead decoration"
+    },
+    {
+      "name": "buff",
+      "type": "buff(u, v)",
+      "required": false,
+      "description": "Optional UV buffer offset for the marker endpoints"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic dimension marker",
+      "syntax": "curvemarker3d(G, surface, u1, v1, u2, v2, height)",
+      "description": "Bracket marker between two UV positions"
+    },
+    {
+      "variant": "With label",
+      "syntax": "curvemarker3d(G, surface, u1, v1, u2, v2, height, \"label\")",
+      "description": "Labeled dimension marker"
+    },
+    {
+      "variant": "With label, arrowhead and buffer",
+      "syntax": "curvemarker3d(G, surface, u1, v1, u2, v2, height, \"label\", arrowhead(), buff(u, v))",
+      "description": "Full-featured dimension marker"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Dimension marker across a surface",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nS = plot3d(G, \"x^2 + y^2\")\ncurvemarker3d(G, S, 0, 0.5, 1, 0.5, 0.5)"
+    },
+    {
+      "scenario": "Labeled marker with arrowhead",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nS = plot3d(G, \"sin(x)*cos(y)\")\ncurvemarker3d(G, S, 0.2, 0.3, 0.8, 0.3, 0.3, \"width\", arrowhead())"
+    }
+  ]
+}

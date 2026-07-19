@@ -1,0 +1,14 @@
+{
+  "expression": "combine3d",
+  "_requires": [],
+  "description": "Combines multiple 3D shapes/solids into a single 3D visualization. Each argument is a variable reference to a shape or solid.",
+  "utility": "Combine multiple 3D shapes",
+  "arguments": [
+    {"name": "shapes", "type": "3D shape variables", "required": true, "description": "Two or more 3D shape references"},
+    {"name": "position", "type": "at(row, col)", "required": false, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"}
+  ],
+  "examples": [
+    {"scenario": "Combine cylinder and cone", "expression": "C1 = cylinder3d(at(4,4), view(12,12), 2, 4)\nC2 = cone3d(at(4,4), view(12,12), 2, 3)\nR = combine3d(C1, C2, at(4,16), view(14,14))"}
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "expression": "summary",
+  "description": "Computes aggregations (sum, mean, min, max, count, median) for table rows or columns and displays the result at the table edge",
+  "utility": "Display aggregated statistics for table columns or rows",
+  "arguments": [
+    {
+      "name": "table",
+      "type": "variable",
+      "required": true,
+      "description": "Reference to a table expression"
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "required": true,
+      "description": "1-based row or column index to aggregate"
+    },
+    {
+      "name": "direction",
+      "type": "type(col|row)",
+      "required": true,
+      "description": "type(col) for column aggregation (result at bottom) or type(row) for row aggregation (result at right)"
+    },
+    {
+      "name": "function",
+      "type": "string",
+      "required": true,
+      "description": "Aggregation function: \"sum\", \"mean\", \"min\", \"max\", \"count\", or \"median\""
+    },
+    {
+      "name": "color",
+      "type": "c(color)",
+      "required": false,
+      "description": "Text color of summary value"
+    },
+    {
+      "name": "backgroundColor",
+      "type": "fc(color)",
+      "required": false,
+      "description": "Background color of summary cell"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Column sum",
+      "syntax": "summary(T, 1, type(col), \"sum\")",
+      "description": "Sum of column 1, displayed at bottom"
+    },
+    {
+      "variant": "Row mean with styling",
+      "syntax": "summary(T, 2, type(row), \"mean\", c(blue), fc(yellow))",
+      "description": "Mean of row 2 at right with blue text on yellow background"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Sum of first column",
+      "expression": "T = table(at(1,3), \"x\", \"x^2\", range(1,5,1)); summary(T, 1, type(col), \"sum\")"
+    },
+    {
+      "scenario": "Median of second row with color",
+      "expression": "summary(T, 2, type(row), \"median\", c(red))"
+    }
+  ]
+}

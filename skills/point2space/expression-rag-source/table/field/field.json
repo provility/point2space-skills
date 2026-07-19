@@ -1,0 +1,97 @@
+{
+  "expression": "field",
+  "description": "Defines a column in a tracetable by combining a shape reference, property name, and display label. Also supports function definitions with a variable name instead of a shape property.",
+  "utility": "Define a tracetable column that tracks a shape property or function value",
+  "arguments": [
+    {
+      "name": "reference",
+      "type": "shape variable | function name",
+      "required": true,
+      "description": "The shape or function to track — e.g., a point, circle, angle, vector, line, or user-defined function"
+    },
+    {
+      "name": "property / variable",
+      "type": "string",
+      "required": true,
+      "description": "For shapes: property name to extract (e.g., 'x', 'radius', 'degrees', 'sin'). For functions: variable name to evaluate with (e.g., 'x', 't')"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": true,
+      "description": "Display label for the column header. Supports AsciiMath notation for math rendering."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point x coordinate",
+      "syntax": "field(A, 'x', \"X\")",
+      "description": "Track x coordinate of point A"
+    },
+    {
+      "variant": "Point y coordinate",
+      "syntax": "field(A, 'y', \"Y\")",
+      "description": "Track y coordinate of point A"
+    },
+    {
+      "variant": "Circle radius",
+      "syntax": "field(C, 'radius', \"R\")",
+      "description": "Track radius of circle C"
+    },
+    {
+      "variant": "Circle area",
+      "syntax": "field(C, 'area', \"Area\")",
+      "description": "Track area of circle C"
+    },
+    {
+      "variant": "Line slope",
+      "syntax": "field(L, 'slope', \"Slope\")",
+      "description": "Track slope of line L"
+    },
+    {
+      "variant": "Line distance",
+      "syntax": "field(L, 'distance', \"Length\")",
+      "description": "Track length of line L"
+    },
+    {
+      "variant": "Vector magnitude",
+      "syntax": "field(V, 'magnitude', \"|V|\")",
+      "description": "Track magnitude of vector V"
+    },
+    {
+      "variant": "Angle degrees",
+      "syntax": "field(angle_1, 'degrees', \"θ°\")",
+      "description": "Track angle measure in degrees"
+    },
+    {
+      "variant": "Angle sine",
+      "syntax": "field(angle_1, 'sin', \"sin θ\")",
+      "description": "Track sine of angle"
+    },
+    {
+      "variant": "Function value",
+      "syntax": "field(f, 'x', \"f(x)\")",
+      "description": "Track f(x) as variable x changes. f must be a function definition."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Track point coordinates",
+      "expression": "tracetable(at(10, 6), slidingwindow(10), field(A, 'x', \"X\"), field(A, 'y', \"Y\"))"
+    },
+    {
+      "scenario": "Track trig ratios of an angle",
+      "expression": "tracetable(at(10, 6), slidingwindow(10), field(angle_1, 'degrees', \"θ°\"), field(angle_1, 'sin', \"sin θ\"), field(angle_1, 'cos', \"cos θ\"), field(angle_1, 'tan', \"tan θ\"))"
+    },
+    {
+      "scenario": "Track a function and shape together",
+      "expression": "f(x) = x^2\ntracetable(at(10, 6), slidingwindow(10), field(A, 'x', \"x\"), field(f, 'x', \"f(x)\"), field(C, 'radius', \"R\"))"
+    }
+  ],
+  "notes": [
+    "Used exclusively inside tracetable() — not a standalone expression",
+    "For shapes: the property name must be a valid property for that shape type (same properties as p() function)",
+    "For functions: the variable name must exist in the expression context and have a current numeric value",
+    "Supported shape properties include: point (x, y), line (distance, slope), circle (radius, diameter, area, circumference), vector (magnitude, direction), angle (degrees, sin, cos, tan, csc, sec, cot), triangle (area, in_radius, circum_radius), polygon (perimeter, num_sides, angle), conic (eccentricity, semimajor, semiminor, etc.)"
+  ]
+}

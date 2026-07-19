@@ -1,0 +1,31 @@
+{
+  "expression": "distancemarker",
+  "_requires": [],
+  "description": "Annotation-layer distance measurement between two canvas positions using at() coordinates. Draws end markers and an optional centered text label on the annotation layer. Use this for measurements outside of 2D graphs (e.g. between write blocks, images, or canvas positions). For measuring shapes inside 2D graphs, use measure() instead.",
+  "utility": "Create distance measurement annotation between two canvas positions outside of 2D graphs",
+  "arguments": [
+    { "name": "from", "type": "at(row, col)", "required": true, "description": "Start position on the canvas using at() coordinates" },
+    { "name": "to", "type": "at(row, col)", "required": true, "description": "End position on the canvas using at() coordinates" },
+    { "name": "text", "type": "string", "required": false, "description": "Label text for the measurement" },
+    { "name": "buff", "type": "buff(x)", "required": false, "description": "Perpendicular offset for label positioning" },
+    { "name": "color", "type": "c(colorName)", "required": false, "description": "Color for measurement line and markers" }
+  ],
+  "alternates": [
+    { "variant": "Simple distance marker", "syntax": "distancemarker(at(r1, c1), at(r2, c2))", "description": "Measurement between two canvas positions" },
+    { "variant": "With label", "syntax": "distancemarker(at(r1, c1), at(r2, c2), \"5 cm\")", "description": "Measurement with custom text label" },
+    { "variant": "With offset and color", "syntax": "distancemarker(at(r1, c1), at(r2, c2), \"d\", buff(-1.5), c(green))", "description": "Measurement with offset and color" }
+  ],
+  "examples": [
+    {
+      "scenario": "Distance marker showing vertex distance with label and fadeout",
+      "expression": "dm_1=distancemarker(at(8,43),at(18,43),\"8\",fadeout(2),c(green))"
+    },
+    {
+      "scenario": "Distance marker showing foci distance with offset buff and fadeout",
+      "expression": "dm_2=distancemarker(at(6,47),at(20,47),\"12\",buff(-1.5),fadeout(2),c(green))"
+    },
+    { "scenario": "Distance marker between two absolute positions for building height", "expression": "dm_1=distancemarker(at(18,20),at(27,20),t(1))" },
+    { "scenario": "Distance marker with custom text label and buff for max height", "expression": "dm_4=distancemarker(at(8,43),at(25,43),\"text(max -- height)\",buff(-2.5))" },
+    { "scenario": "Distance marker with text label and color", "expression": "dm_6=distancemarker(at(25,44),at(8,44),\"75m\",buff(0.5),c(teal))" }
+  ]
+}

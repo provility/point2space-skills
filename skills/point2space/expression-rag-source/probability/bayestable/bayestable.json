@@ -1,0 +1,40 @@
+{
+    "expression": "bayestable",
+    "_requires": [],
+    "description": "Creates a Bayes' theorem computation table. Define hypotheses with priors using hypothesis() and likelihoods using likelihood(). Joint probabilities and posteriors are computed automatically. A total row shows the sum of joints.",
+    "utility": "Create a Bayes' theorem computation table",
+    "arguments": [
+        {
+            "name": "position",
+            "type": "at(row, col)",
+            "required": true,
+            "description": "Canvas position"
+        },
+        {
+            "name": "hypotheses",
+            "type": "hypothesis()",
+            "required": true,
+            "description": "One or more hypothesis() definitions with labels and prior probabilities"
+        },
+        {
+            "name": "likelihoods",
+            "type": "likelihood()",
+            "required": true,
+            "description": "One likelihood() per hypothesis (in order), each specifying P(A|E_i)"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Classic bag problem: P(Bag II | Red ball drawn)",
+            "expression": "BT = bayestable(at(4,10),\n    hypothesis(\"Bag I\", probability(1, 2)),\n    hypothesis(\"Bag II\", probability(1, 2)),\n    likelihood(probability(3, 7)),\n    likelihood(probability(5, 11)))"
+        },
+        {
+            "scenario": "Factory defect problem with 3 machines",
+            "expression": "BT = bayestable(at(4,10),\n    hypothesis(\"Machine A\", probability(25, 100)),\n    hypothesis(\"Machine B\", probability(35, 100)),\n    hypothesis(\"Machine C\", probability(40, 100)),\n    likelihood(probability(5, 100)),\n    likelihood(probability(4, 100)),\n    likelihood(probability(2, 100)))"
+        },
+        {
+            "scenario": "Medical test: P(Disease | Positive test)",
+            "expression": "BT = bayestable(at(4,10),\n    hypothesis(\"Has HIV\", probability(1, 1000)),\n    hypothesis(\"No HIV\", probability(999, 1000)),\n    likelihood(probability(9, 10)),\n    likelihood(probability(1, 100)))"
+        }
+    ]
+}

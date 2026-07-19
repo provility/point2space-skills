@@ -1,0 +1,45 @@
+{
+  "expression": "section",
+  "description": "Named marker or bookmark within a slide's expression list, can be referenced by goto() for navigation",
+  "utility": "Mark a point in a slide for jump-to navigation",
+  "arguments": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Quoted name of the section to create"
+    },
+    {
+      "name": "shapeRef",
+      "type": "ref(shape)",
+      "required": false,
+      "description": "Optional reference to shape where section icon is drawn"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Named section only",
+      "syntax": "section(\"name\")",
+      "description": "Create a navigation bookmark without visual indicator"
+    },
+    {
+      "variant": "Section with visual marker",
+      "syntax": "section(\"name\", ref(shape))",
+      "description": "Create section and draw icon next to the referenced shape"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Section for navigation in lesson",
+      "expression": "section_1 = section(\"explanation\", t(2), ref(graph_1))"
+    },
+    {
+      "scenario": "Section for slide reference",
+      "expression": "section_1 = section(\"slide-2\", t(2), ref(paragraph_1))"
+    },
+    {
+      "scenario": "Section for revolution solid",
+      "expression": "section_1 = section(\"revolve solid\", t(2), ref(region_1))"
+    }
+  ]
+}

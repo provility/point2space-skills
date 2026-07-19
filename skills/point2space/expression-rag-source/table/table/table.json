@@ -1,0 +1,121 @@
+{
+  "expression": "table",
+  "description": "Creates a data table that evaluates mathematical formulas over a range of input values, displaying computed results in a labeled grid.",
+  "utility": "Create a data table evaluating formulas over a range of values",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Position on canvas using logical row, col coordinates"
+    },
+    {
+      "name": "formulas",
+      "type": "string (one or more)",
+      "required": true,
+      "description": "Column formulas as quoted strings - e.g., \"x\", \"x^2\", \"sin(x)\". Can also pass function references defined via funcdef. Supports function calls like \"f(x+1)\". Use comma to separate formula from display label: \"f(x), f(x)=3x+1\" evaluates f(x) but shows f(x)=3x+1 as header."
+    },
+    {
+      "name": "range",
+      "type": "range(start, end) | range(start, end, step) | range(v1, v2, ...)",
+      "required": true,
+      "description": "Values to evaluate: range(0, 5) for 0 to 5, range(0, 10, 2) for step of 2, or range(0.5, 0.9, 0.99) for explicit values"
+    },
+    {
+      "name": "header",
+      "type": "header(\"label1\", \"label2\", ...)",
+      "required": false,
+      "description": "Custom column headers as quoted strings. If omitted, formula strings are used as headers."
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Table color - e.g., c(blue), c(red), c(green)"
+    },
+    {
+      "name": "fontSize",
+      "type": "fs(size)",
+      "required": false,
+      "description": "Font size for table cells - e.g., fs(16)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic two-column table with range",
+      "syntax": "T = table(at(row, col), \"x\", \"x^2\", range(0, 5))",
+      "description": "Table with x values from 0 to 5, computing x^2"
+    },
+    {
+      "variant": "Multi-column table with step",
+      "syntax": "T = table(at(row, col), \"x\", \"x^2\", \"2*x\", range(0, 5, 1))",
+      "description": "Three-column table: x, x^2, and 2*x with step size 1"
+    },
+    {
+      "variant": "Table with explicit values",
+      "syntax": "T = table(at(row, col), \"x\", \"(x-1)/(x^2-1)\", range(0.5, 0.9, 0.99, 0.999, 1.001, 1.01, 1.1, 2))",
+      "description": "Table with hand-picked x-values, useful for limit exploration"
+    },
+    {
+      "variant": "Table with function definition references",
+      "syntax": "f(x) = x^2\nT = table(at(row, col), \"x\", f, range(0, 5))",
+      "description": "Column uses a previously defined function"
+    },
+    {
+      "variant": "Table with custom headers",
+      "syntax": "T = table(at(row, col), header(\"n\", \"n^2\", \"\\\\sin(n)\"), \"n\", \"n^2\", \"sin(n)\", range(1, 10))",
+      "description": "Custom LaTeX headers separate from formula definitions"
+    },
+    {
+      "variant": "Colored table",
+      "syntax": "T = table(at(row, col), \"x\", \"x^2\", range(0, 5), c(blue))",
+      "description": "Table with blue color styling"
+    },
+    {
+      "variant": "Table with font size",
+      "syntax": "T = table(at(row, col), \"x\", \"formula\", range(0, 5), fs(16))",
+      "description": "Table with custom font size"
+    },
+    {
+      "variant": "Table with display labels",
+      "syntax": "T = table(at(row, col), \"x\", \"f(x), f(x)=3x+1\", \"g(x), f(x+1)=3(x+1)+1\", range(-2, 2, 1))",
+      "description": "Comma separates the formula (before comma) from the display header (after comma). The formula is evaluated, the display label is shown in the header."
+    },
+    {
+      "variant": "Table with function calls",
+      "syntax": "f(x) = 3x+1\nT = table(at(row, col), \"x\", \"f(x)\", \"f(x+1)\", range(-2, 2, 1))",
+      "description": "Table columns can use function calls with expressions like f(x+1). User-defined functions are available in the evaluation scope."
+    },
+    {
+      "variant": "Table with piecewise function",
+      "syntax": "f(x) = piecewise(\"1\", \"x >= -0.5 and x <= 0.5\", \"0\")\nT = table(at(row, col), \"x\", \"f(x)\", range(-2, 2, 0.5))",
+      "description": "Table columns can reference piecewise functions defined via funcdef"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Table of x, log(x), e^x values",
+      "expression": "T=table(at(6,3),\"x\",\"log(x)\",\"e^x\",range(0,4,1))"
+    },
+    {
+      "scenario": "Table with function references for limit",
+      "expression": "t=table(at(11,37),\"x\",f,g,value(2,1.5,1.1,1.01,1.001))"
+    },
+    {
+      "scenario": "Table with derivative columns",
+      "expression": "T=table(at(5,9),\"x\",\"x^2\",\"2*x\",range(0,5,1))"
+    },
+    {
+      "scenario": "Table for box optimization",
+      "expression": "table_1=table(at(3,33),\"x\",\"x*(12-2x)^2\",range(0,6),fs(20))"
+    },
+    {
+      "scenario": "Table comparing f(x) and f(x+1) with display labels",
+      "expression": "f(x) = 3x+1\nT = table(at(1, 30), \"x\", \"f(x), f(x)=3x+1\", \"f(x+1), f(x+1)=3(x+1)+1\", range(-2, 2, 1))"
+    },
+    {
+      "scenario": "Table with piecewise function and function product",
+      "expression": "f(t) = piecewise(\"1\", \"t >= -0.5 and t <= 0.5\", \"0\")\nw=3\ng(t)=\"f(t)*cos(wt)\"\nT=table(at(1.2,19.8),\"t\",\"f(t)\",\"g(t)\",range(-2,2,0.5))"
+    }
+  ]
+}

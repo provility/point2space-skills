@@ -1,0 +1,18 @@
+{
+  "expression": "scatter",
+  "_requires": ["stattable"],
+  "description": "Standalone scatter plot from paired data columns in a stattable.",
+  "utility": "Create a scatter plot from statistical table data",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "table", "type": "stattable variable", "required": true, "description": "Reference to stattable"},
+    {"name": "xcol", "type": "xcol(n)", "required": false, "description": "X-axis column"},
+    {"name": "col", "type": "col(n)", "required": false, "description": "Y-axis column"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Point color"}
+  ],
+  "examples": [
+    {"scenario": "Scatter plot", "expression": "scatter(at(14,4), view(10,8), T, xcol(1), col(2), c(coral))"},
+    {"scenario": "Simple scatter", "expression": "scatter(at(14,4), T, c(blue))"}
+  ]
+}

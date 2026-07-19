@@ -1,0 +1,24 @@
+{
+  "expression": "viewscale3d",
+  "_requires": ["g3d"],
+  "description": "Controls the zoom level of a g3d 3D view. Values greater than 1 zoom in, values less than 1 zoom out.",
+  "utility": "Set the zoom/scale factor for a g3d graph",
+  "arguments": [
+    {
+      "name": "factor",
+      "type": "number",
+      "required": true,
+      "description": "Scale factor (>1 zooms in, <1 zooms out)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Zoom in 1.5x",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-3, 3, 1), \"lhs\", viewscale3d(1.5))"
+    },
+    {
+      "scenario": "Zoom out to 0.8x",
+      "expression": "G = g3d(at(5, 15), view(30, 30), range(-10, 10), \"rhs\", viewscale3d(0.8))"
+    }
+  ]
+}

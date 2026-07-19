@@ -1,0 +1,33 @@
+{
+  "expression": "showonly",
+  "description": "Hides all shapes except those specified, effectively focusing attention on selected objects",
+  "utility": "Temporarily hide all shapes except specified ones for step-by-step visualization",
+  "arguments": [
+    {
+      "name": "shapes",
+      "type": "shape reference(s)",
+      "required": true,
+      "description": "One or more shape variable references to display"
+    },
+    {
+      "name": "duration",
+      "type": "expression",
+      "required": false,
+      "description": "Optional t() expression to auto-clear after specified seconds"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Show only one shape",
+      "expression": "showonly(A)"
+    },
+    {
+      "scenario": "Show multiple shapes",
+      "expression": "showonly(A, B, C)"
+    },
+    {
+      "scenario": "Show shapes with auto-clear after 2 seconds",
+      "expression": "showonly(A, B, t(2))"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "expression": "angle",
+  "_requires": ["g2d"],
+  "description": "Draws an angle arc at a vertex between two rays, supporting interior, exterior, reflex, and right angle types with automatic 90-degree square marker detection. When two lines are parallel, returns value 0 using midpoint of line1 as vertex.",
+  "utility": "Create angle arc visualization at vertex between two rays",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "vertex",
+      "type": "point | item() result",
+      "required": true,
+      "description": "Vertex point where angle is measured (or item() extraction)"
+    },
+    {
+      "name": "point1",
+      "type": "point",
+      "required": true,
+      "description": "First ray endpoint (if not using item())"
+    },
+    {
+      "name": "point2",
+      "type": "point",
+      "required": true,
+      "description": "Second ray endpoint (if not using item())"
+    },
+    {
+      "name": "arcsize",
+      "type": "arcsize(number)",
+      "required": false,
+      "description": "Size of angle arc in pixels, e.g. arcsize(35). Default: arcsize(35)"
+    },
+    {
+      "name": "type",
+      "type": "type(interior|ext1|ext2|reflex|opposite|right)",
+      "required": false,
+      "description": "Angle type: interior (default), ext1/ext2 (exterior), reflex (>180), right (force square marker)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From three points",
+      "syntax": "angle(G, vertex, point1, point2)",
+      "description": "Angle arc at vertex between two points"
+    },
+    {
+      "variant": "From item() extraction",
+      "syntax": "angle(G, item(triangle, type(angle), 1), arcsize(35))",
+      "description": "Angle at first vertex of triangle"
+    },
+    {
+      "variant": "With custom arc size",
+      "syntax": "angle(G, V, P1, P2, arcsize(35))",
+      "description": "Angle arc with explicit arc size"
+    },
+    {
+      "variant": "Interior angle",
+      "syntax": "angle(G, V, P1, P2, type(interior))",
+      "description": "Explicit interior angle (default)"
+    },
+    {
+      "variant": "Exterior angle",
+      "syntax": "angle(G, V, P1, P2, type(ext1))",
+      "description": "First exterior angle"
+    },
+    {
+      "variant": "Right angle marker",
+      "syntax": "angle(G, V, P1, P2, type(right))",
+      "description": "Force right angle square marker"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Extract angle from a SAS triangle for sine law proof",
+      "expression": "graph_1 = g2d(at(-10, 11.4), size(25), range(-1, 8), grid(noaxes), type(geometry)); triangle_1 = sas(graph_1, 5, 40, 6, point(graph_1, 0, 0)); angle_A = angle(graph_1, item(triangle_1, type(angle), 1))"
+    },
+    {
+      "scenario": "Extract all three angles of a triangle and label them",
+      "expression": "angle_A = angle(graph_1, item(triangle_1, type(angle), 1)); label_A = label(graph_1, at(angle_A), \"A\", buff(-1.0, 1.0)); angle_B = angle(graph_1, item(triangle_1, type(angle), 2)); label_B = label(graph_1, at(angle_B), \"B\", buff(-1, -2.3)); angle_C = angle(graph_1, item(triangle_1, type(angle), 3)); label_C = label(graph_1, at(angle_C), \"C\", buff(0, -0.5))"
+    },
+    {
+      "scenario": "Right angle with interior type and radius for Pythagorean theorem",
+      "expression": "graph_2 = g2d(at(45,31), 17.7, 24.7, range(-1, 5, 1), range(-1, 5, 1), type(uniform), grid(noaxes)); triangle_2 = sss(graph_2, 3, 4, point(graph_2, 0, 0), t(1)); angle_2 = angle(graph_2, item(triangle_2, type(angle), 1), arcsize(35), type(interior), c(black), t(0.5))"
+    },
+    {
+      "scenario": "Angle between two line segments with arrowhead styling",
+      "expression": "graph_1 = g2d(at(3,14), size(21.5), range(-1, 6), type(geometry)); line_1 = line(graph_1, point(graph_1, 0.0, 0.0), point(graph_1, 5.0, 3.0), type(segment), c(steelblue)); line_2 = line(graph_1, point(graph_1, 0.0, 0.0), point(graph_1, 5.0, 0.0), type(segment), c(steelblue)); angle_1 = angle(graph_1, line_1, line_2, type(interior), arcsize(35), arrowhead(start), c(darkred))"
+    },
+    {
+      "scenario": "Angle between tangent and normal lines on a plot with custom arc size",
+      "expression": "graph_1 = g2d(at(3,7), 21.5, 32.4, range(-5, 5), range(-5, 5), type(plotting))\nplot_1=plot(graph_1,\"1/(x)\",range(-5,5))\ntangent_1 = tangent(graph_1, plot_1, 1)\nnormal_1 = normal(graph_1, plot_1, 1)\nangle_1=angle(graph_1,tangent_1,normal_1,arcsize(35))"
+    },
+    {
+      "scenario": "Right angle marker from perpendicular projection",
+      "expression": "foot = project(G, side_line, P); angle_right = angle(G, foot, P, A, arcsize(35), type(right), c(blue))"
+    },
+    {
+      "scenario": "Animated angle using variable for SAS triangle",
+      "expression": "mathexpr_1 = variableanimator(at(1,4), \"t\", 20, 120); graph_1 = g2d(at(2,18), size(25.9), range(-6, 7), type(geometry)); triangle_1 = sas(graph_1, 5, t, 6, point(graph_1, 0, 0)); angle_A = angle(graph_1, item(triangle_1, type(angle), 1)); playanim_1 = playanimator(mathexpr_1, t(3))"
+    },
+    {
+      "scenario": "Animated angle on unit circle with arrowhead",
+      "expression": "varanim_t = variableanimator(at(2, 30), \"t\", 0, 360)\nG = g2d(at(4, 1), size(20), range(-2, 2), type(geometry), grid())\nO = point(G, 0, 0, s(3))\nuc = circle(G, O, radius(1), c(steelblue), s(2))\nP = anglepoint(G, uc, t, c(crimson), s(5))\nxaxis_pt = point(G, 1, 0, defer())\nangle_1 = angle(G, O, xaxis_pt, P, arcsize(35), arrowhead(start), c(orange), s(3))\nplay_anim = playanimator(varanim_t, t(8))"
+    }
+  ],
+  "notes": [
+    "Preferred over arc() for all angle marking. Use angle() whenever you need to show an angle at a vertex — it supports arrowhead(), arcsize(), type (interior/exterior/reflex/right), and works with animated variables.",
+    "For unit circle or rotation angles, define a reference point on the positive x-axis (e.g. point(G, 1, 0, defer())) as one ray endpoint, the origin as vertex, and the moving point as the other ray endpoint."
+  ]
+}

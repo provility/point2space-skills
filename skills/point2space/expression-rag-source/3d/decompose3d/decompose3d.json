@@ -1,0 +1,44 @@
+{
+  "expression": "decompose3d",
+  "_requires": ["g3d"],
+  "description": "Decomposes a 3D vector into components along world axes or a reference direction",
+  "utility": "Show component vectors along x, y, z axes or projected onto a reference vector",
+  "arguments": [
+    {"name": "vector", "type": "vector3d|line3d", "required": true, "description": "The vector to decompose"}
+  ],
+  "alternates": [
+    {
+      "variant": "axis component (default x)",
+      "syntax": "decompose3d(vector) or decompose3d(vector, \"x\")",
+      "description": "Get x, y, or z component vector"
+    },
+    {
+      "variant": "reference vector component",
+      "syntax": "decompose3d(vector, reference_vector)",
+      "description": "Get parallel component along reference vector"
+    },
+    {
+      "variant": "perpendicular component",
+      "syntax": "decompose3d(vector, reference_vector, \"perp\")",
+      "description": "Get perpendicular component relative to reference vector"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "x component of vector",
+      "expression": "V = vector3d(g, 0, 0, 0, 3, 2, 1); decompose3d(V)"
+    },
+    {
+      "scenario": "y component of vector",
+      "expression": "V = vector3d(g, 0, 0, 0, 3, 2, 1); decompose3d(V, \"y\")"
+    },
+    {
+      "scenario": "parallel component along reference",
+      "expression": "V = vector3d(g, 0, 0, 0, 3, 2, 1); B = vector3d(g, 0, 0, 0, 1, 1, 0); decompose3d(V, B)"
+    },
+    {
+      "scenario": "perpendicular component",
+      "expression": "V = vector3d(g, 0, 0, 0, 3, 2, 1); B = vector3d(g, 0, 0, 0, 1, 0, 0); decompose3d(V, B, \"perp\")"
+    }
+  ]
+}

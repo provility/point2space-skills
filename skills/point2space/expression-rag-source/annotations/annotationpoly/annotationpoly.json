@@ -1,0 +1,63 @@
+{
+  "expression": "annotationpoly",
+  "_requires": ["g2d"],
+  "description": "Draws a polygonal annotation connecting at least two anchor points. Creates a polygon by connecting the specified points in sequence with optional styling.",
+  "utility": "Highlight or annotate polygonal regions in diagrams with multiple vertices",
+  "arguments": [
+    {
+      "name": "point1",
+      "type": "at() expression",
+      "required": true,
+      "description": "First anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "point2",
+      "type": "at() expression",
+      "required": true,
+      "description": "Second anchor point, specified as at(row, col)"
+    },
+    {
+      "name": "additionalPoints",
+      "type": "at() expression",
+      "required": false,
+      "description": "Additional anchor points for the polygon"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "two points",
+      "syntax": "annotationpoly(at(r1, c1), at(r2, c2))",
+      "description": "Line segment between two points"
+    },
+    {
+      "variant": "triangle",
+      "syntax": "annotationpoly(at(r1, c1), at(r2, c2), at(r3, c3), c(blue))",
+      "description": "Triangle with three vertices and color"
+    },
+    {
+      "variant": "polygon",
+      "syntax": "annotationpoly(at(r1, c1), at(r2, c2), at(r3, c3), at(r4, c4), at(r5, c5))",
+      "description": "Polygon with five vertices"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Two-point line",
+      "expression": "annotationpoly(at(1,1), at(3,3))"
+    },
+    {
+      "scenario": "Triangle annotation",
+      "expression": "annotationpoly(at(1,2), at(3,1), at(3,4), c(red))"
+    },
+    {
+      "scenario": "Pentagon with styling",
+      "expression": "annotationpoly(at(2,2), at(2,5), at(3,6), at(4,5), at(4,2), dash())"
+    }
+  ]
+}

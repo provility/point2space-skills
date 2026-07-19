@@ -1,0 +1,14 @@
+{
+  "expression": "axis",
+  "_requires": [],
+  "description": "Specifies the axis of revolution or extrusion. Used inside revolvedisk, revolvewasher, revolveshell, and extrude3d. Accepts bare identifiers x, y, or z without quotes.",
+  "utility": "Specify axis of revolution or extrusion",
+  "arguments": [
+    {"name": "direction", "type": "x | y | z", "required": true, "description": "Axis direction (defaults to y for revolve, z for extrude)"}
+  ],
+  "examples": [
+    {"scenario": "X-axis revolution", "expression": "revolvedisk(at(2,1), view(21,26), region_1, axis(x), fc(blue))"},
+    {"scenario": "Y-axis revolution", "expression": "revolvedisk(at(2,1), view(21,26), region_1, axis(y), fc(red))"},
+    {"scenario": "Z-axis extrusion", "expression": "extrude3d(at(4,4), view(14,14), profile_1, 5, axis(z), c(navy))"}
+  ]
+}

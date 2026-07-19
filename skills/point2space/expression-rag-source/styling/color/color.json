@@ -1,0 +1,66 @@
+{
+  "expression": "c",
+  "description": "Inline modifier that sets the stroke color of a shape. Accepts CSS color names (unquoted) or hex color strings (quoted).",
+  "utility": "Set stroke/outline color on shapes using inline modifier",
+  "arguments": [
+    {
+      "name": "color",
+      "type": "colorName | \"#hex\"",
+      "required": true,
+      "description": "Color name (unquoted) or hex string (quoted) - e.g., red, blue, \"#ff0000\""
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Named color",
+      "syntax": "c(red)",
+      "description": "Set color using a standard color name"
+    },
+    {
+      "variant": "Hex color",
+      "syntax": "c(\"#ff0000\")",
+      "description": "Set color using a hex color code"
+    },
+    {
+      "variant": "Inside shape expression",
+      "syntax": "circle(G, 3, -2, 0, c(red))",
+      "description": "Color applied as inline modifier to a shape"
+    },
+    {
+      "variant": "Inside plot expression",
+      "syntax": "plot(G, \"x^2\", c(blue))",
+      "description": "Color applied to a plot curve"
+    },
+    {
+      "variant": "Inside write expression",
+      "syntax": "write(at(3,2), \"x^2 + y^2\", c(blue))",
+      "description": "Color applied to math text rendering"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Red circle in Venn diagram",
+      "expression": "C1 = circle(G, 3, -2, 0, c(red))"
+    },
+    {
+      "scenario": "Blue plot curve",
+      "expression": "plot(G1, eq1, c(blue))"
+    },
+    {
+      "scenario": "Green tangent line",
+      "expression": "tangent(G, pl1, b, c(blue))"
+    },
+    {
+      "scenario": "Colored triangle with no stroke opacity",
+      "expression": "T = sss(G, 5, 4, 3, c(red), so(0), fo(0))"
+    },
+    {
+      "scenario": "Blue table with color",
+      "expression": "t = table(at(1,7), \"x\", eq, slopeeq, range(2, 1.5, 1.1, 1.01, 1.001), c(blue))"
+    },
+    {
+      "scenario": "Colored text with write",
+      "expression": "write_1 = write(at(11,3), \"sqrt(a^2-x^2) = sqrt(a^2-a^2sin^2(theta))\", c(blue))"
+    }
+  ]
+}

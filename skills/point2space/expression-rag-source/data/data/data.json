@@ -1,0 +1,24 @@
+{
+  "expression": "data",
+  "description": "Defines a column of asciimath string values for use in datatable expressions",
+  "utility": "Provide explicit column data to datatable",
+  "arguments": [
+    {
+      "name": "values",
+      "type": "string|number",
+      "required": true,
+      "description": "One or more quoted asciimath strings or numeric values as column entries"
+    }
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "Column of numeric strings",
+      "expression": "data(\"1\", \"2\", \"3\")"
+    },
+    {
+      "scenario": "Column of asciimath expressions",
+      "expression": "data(\"x^2\", \"sin(x)\", \"sqrt(2)\")"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "expression": "annotationline",
+  "_requires": ["g2d"],
+  "description": "Draws an annotation line between two endpoints with optional styling. Endpoints are resolved from point references (at() expressions) and supports color, style, dash, and fadeout styling.",
+  "utility": "Annotate diagrams with styled lines between specified points",
+  "arguments": [
+    {
+      "name": "from",
+      "type": "at() expression",
+      "required": true,
+      "description": "Starting point for the annotation line, specified as at(row, col)"
+    },
+    {
+      "name": "to",
+      "type": "at() expression",
+      "required": true,
+      "description": "Ending point for the annotation line, specified as at(row, col)"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with color",
+      "syntax": "annotationline(at(r1, c1), at(r2, c2), c(red))",
+      "description": "Line with red color"
+    },
+    {
+      "variant": "with multiple styles",
+      "syntax": "annotationline(at(r1, c1), at(r2, c2), c(blue), s(solid))",
+      "description": "Line with blue color and solid style"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Horizontal separator between x-intercept and y-intercept calculations (axis intercepts lesson)",
+      "expression": "aline_1 = annotationline(at(28,23), at(41,23))"
+    },
+    {
+      "scenario": "Separator line between coefficient calculations with timing (diameter through center lesson)",
+      "expression": "aline_1=annotationline(at(31,16),at(38,16),t(0.5))"
+    },
+    {
+      "scenario": "Section divider line with teal color",
+      "expression": "aline_1 = annotationline(at(1,27), at(24,28), s(1), c(teal))"
+    },
+    {
+      "scenario": "Dashed diagonal annotation line",
+      "expression": "aline_1 = annotationline(at(10,35), at(19,44), dash(), s(1))"
+    }
+  ]
+}

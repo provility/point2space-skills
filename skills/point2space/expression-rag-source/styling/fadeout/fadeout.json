@@ -1,0 +1,60 @@
+{
+  "expression": "fadeout",
+  "description": "Inline style modifier that automatically fades out a shape after a delay. Placed inside a shape expression. Useful for temporary markers and annotations.",
+  "utility": "Add auto-fade-out behavior to a shape after a configurable delay",
+  "arguments": [
+    {
+      "name": "delay",
+      "type": "number",
+      "required": false,
+      "description": "Seconds to wait before fading starts. Defaults to 5 if omitted. Use 0 to disable auto-fade (shape stays visible)."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "required": false,
+      "description": "Fade animation duration in seconds. Defaults to 0.5."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Default fade-out (5s delay, 0.5s fade)",
+      "syntax": "fadeout()",
+      "description": "Fade out after 5 seconds with 0.5 second fade animation"
+    },
+    {
+      "variant": "Custom delay",
+      "syntax": "fadeout(3)",
+      "description": "Fade out after 3 seconds"
+    },
+    {
+      "variant": "Custom delay and duration",
+      "syntax": "fadeout(3, 1)",
+      "description": "Fade out after 3 seconds with 1 second fade animation"
+    },
+    {
+      "variant": "No auto-fade (stay visible)",
+      "syntax": "fadeout(0)",
+      "description": "Disable auto-fade-out, shape stays visible permanently"
+    },
+    {
+      "variant": "Inside an annotation expression",
+      "syntax": "annotationline(at(3,5), at(3,12), fadeout(2))",
+      "description": "Annotation that fades out after 2 seconds"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Label with auto fade-out after 3 seconds",
+      "expression": "label(G, P, \"step 1\", fadeout(3))"
+    },
+    {
+      "scenario": "Label with custom fade timing",
+      "expression": "label(G, P, \"temp\", fadeout(5, 1))"
+    },
+    {
+      "scenario": "Shape that never auto-fades",
+      "expression": "label(G, P, \"permanent\", fadeout(0))"
+    }
+  ]
+}

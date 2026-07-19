@@ -1,0 +1,32 @@
+{
+    "expression": "hypothesis",
+    "_requires": [
+        "bayestable"
+    ],
+    "description": "Defines a hypothesis with its prior probability for use inside bayestable(). The prior is specified using probability(num, den) for the fraction num/den.",
+    "utility": "Define a Bayes hypothesis with prior probability",
+    "arguments": [
+        {
+            "name": "label",
+            "type": "quoted string",
+            "required": true,
+            "description": "Display label for the hypothesis (e.g., \"Bag I\", \"Machine A\")"
+        },
+        {
+            "name": "prior",
+            "type": "probability(num, den)",
+            "required": true,
+            "description": "Prior probability as a fraction num/den"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Equal prior",
+            "expression": "hypothesis(\"Bag I\", probability(1, 2))"
+        },
+        {
+            "scenario": "Percentage-style prior",
+            "expression": "hypothesis(\"Machine A\", probability(25, 100))"
+        }
+    ]
+}

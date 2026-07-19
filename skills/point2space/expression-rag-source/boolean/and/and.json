@@ -1,0 +1,22 @@
+{
+  "expression": "and",
+  "_requires": ["g2d"],
+  "description": "Computes the intersection (logical AND) of clippable shapes. Returns the overlapping region of all input shapes. Useful for creating lens-shaped regions, overlapping areas, and geometric intersections.",
+  "utility": "Find the overlapping region of multiple shapes",
+  "arguments": [
+    { "name": "G", "type": "g2d reference", "required": true, "description": "The 2D grapher container" },
+    { "name": "shape1", "type": "clippable shape", "required": true, "description": "First shape to intersect" },
+    { "name": "shape2", "type": "clippable shape", "required": true, "description": "Second shape to intersect" },
+    { "name": "shapeN", "type": "clippable shape", "required": false, "description": "Additional shapes to intersect (optional)" }
+  ],
+  "alternates": [
+    { "variant": "Two circles", "syntax": "and(G, C1, C2)", "description": "Intersection of two circles (lens shape)" },
+    { "variant": "Two rectangles", "syntax": "and(G, R1, R2)", "description": "Overlapping rectangular region" },
+    { "variant": "Three shapes", "syntax": "and(G, shape1, shape2, shape3)", "description": "Intersection of three or more shapes" }
+  ],
+  "examples": [
+    { "scenario": "Lens from two overlapping circles", "expression": "G = g2d()\nC1 = circle(G, 3, 0, 0)\nC2 = circle(G, 3, 4, 0)\nI = and(G, C1, C2)" },
+    { "scenario": "Overlapping square region", "expression": "G = g2d()\nR1 = rect(G, 0, 0, 4, 4)\nR2 = rect(G, 2, 2, 4, 4)\nI = and(G, R1, R2)" },
+    { "scenario": "Triple intersection", "expression": "G = g2d()\nC1 = circle(G, 3, 0, 0)\nC2 = circle(G, 3, 3, 0)\nC3 = circle(G, 3, 1.5, 2.5)\nI = and(G, C1, C2, C3)" }
+  ]
+}

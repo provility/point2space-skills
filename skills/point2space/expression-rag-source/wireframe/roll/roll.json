@@ -1,0 +1,23 @@
+{
+  "expression": "roll",
+  "_requires": ["sheetrect"],
+  "description": "Rolls a rectangular sheet into a cylinder shape.",
+  "utility": "Roll a sheet into a cylinder",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "sheetRef", "type": "sheetrect variable", "required": true, "description": "Sheet to roll"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity"}
+  ],
+  "examples": [
+    {
+      "scenario": "Roll sheet into cylinder",
+      "expression": "sheet = sheetrect(at(4,4), view(14,14), 6, 4, c(navy), fc(lightyellow), fo(0.5))\nroll_1 = roll(at(4,22), sheet, c(navy), fc(lightyellow), fo(0.5))"
+    },
+    {
+      "scenario": "Simple roll",
+      "expression": "roll_1 = roll(at(4,22), sheet_1)"
+    }
+  ]
+}

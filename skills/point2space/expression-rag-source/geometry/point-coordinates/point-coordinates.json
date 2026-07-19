@@ -1,0 +1,45 @@
+{
+  "expression": "point (coordinates)",
+  "_requires": ["g2d"],
+  "description": "Extracts numeric coordinate values from a point or evaluates a function at a given x value. Useful for computing with point positions in expressions.",
+  "utility": "Extract x/y coordinates from a point or evaluate a function at x",
+  "arguments": [
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "The point to extract coordinates from"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Extract x coordinate",
+      "syntax": "x(point)",
+      "description": "Get x-coordinate as numeric value for use in expressions"
+    },
+    {
+      "variant": "Extract y coordinate",
+      "syntax": "y(point)",
+      "description": "Get y-coordinate as numeric value for use in expressions"
+    },
+    {
+      "variant": "Point from function evaluation",
+      "syntax": "point(G, x, f(x))",
+      "description": "Point on function curve at x, using a defined function"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Point computed from function value",
+      "expression": "f(x) = x^2\np = point(G, b, f(b))"
+    },
+    {
+      "scenario": "Use x-coordinate in another expression",
+      "expression": "dx = x(B) - x(A)"
+    },
+    {
+      "scenario": "Use y-coordinate in another expression",
+      "expression": "dy = y(B) - y(A)"
+    }
+  ]
+}

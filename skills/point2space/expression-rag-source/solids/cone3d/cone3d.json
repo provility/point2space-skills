@@ -1,0 +1,21 @@
+{
+  "expression": "cone3d",
+  "_requires": [],
+  "description": "Standalone ThreeJS cone solid. Uses at() and view() for positioning. Use type(inverted) to flip the cone upside down.",
+  "utility": "Create a 3D cone solid",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "radius", "type": "number", "required": true, "description": "Base radius"},
+    {"name": "height", "type": "number", "required": true, "description": "Cone height"},
+    {"name": "type", "type": "type(inverted)", "required": false, "description": "Flip cone upside down"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {"scenario": "Cone with styling", "expression": "S = cone3d(at(10,10), view(25,25), 3, 5, c(green), fc(cyan), fo(0.5))"},
+    {"scenario": "Short wide cone", "expression": "S = cone3d(at(10,10), view(25,25), 4, 2, c(brown), fc(wheat), fo(0.4))"},
+    {"scenario": "Inverted cone", "expression": "S = cone3d(at(10,10), view(25,25), 2, 5, type(inverted), c(navy), fc(lightyellow), fo(0.5))"}
+  ]
+}

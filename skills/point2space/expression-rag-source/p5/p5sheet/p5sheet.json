@@ -1,0 +1,30 @@
+{
+  "expression": "p5sheet",
+  "_requires": [],
+  "description": "Creates an interactive p5.js canvas at a grid position. The user writes JavaScript in a Script Editor (opened by clicking the canvas). The script has access to standard p5.js drawing functions (rect, ellipse, line, text, fill, stroke, background, etc.) plus custom Point2Space APIs: pvector, distanceMarker, curveMarker, angleMarker, phaseStepper, bridge, effect, and physics (enablePhysics, circleBody, rectBody, groundBody, updateRef, applyForce, setVelocity, removeBody). Call canvas() in setup() to initialize the drawing surface. Use the fields proxy to read/write studio expression variables (e.g. fields.a reads variable a).",
+  "utility": "Create an interactive p5.js scripting canvas",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position on the studio grid" },
+    { "name": "viewSize", "type": "view(height, width)", "required": false, "description": "Canvas size in grid units (default: view(20, 6))" },
+    { "name": "xRange", "type": "range(min, max)", "required": false, "description": "X-axis coordinate range (first range expression)" },
+    { "name": "yRange", "type": "range(min, max)", "required": false, "description": "Y-axis coordinate range (second range expression)" }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic p5sheet canvas",
+      "expression": "S = p5sheet(at(2, 1), view(25, 7))"
+    },
+    {
+      "scenario": "p5sheet with coordinate ranges",
+      "expression": "S = p5sheet(at(4, 4), view(20, 20), range(-5, 5), range(-5, 5))"
+    },
+    {
+      "scenario": "Minimal script structure",
+      "expression": "S = p5sheet(at(2, 1), view(25, 7))\n// Then click the p5sheet to open Script Editor and write:\n// function setup() { canvas(); }\n// function draw() { background(255); ellipse(width/2, height/2, 100); }"
+    },
+    {
+      "scenario": "Physics simulation with bouncing ball synced to a g2d point",
+      "expression": "graph_1 = g2d(at(2.9, 29.6), 20, 20, range(-1, 5), range(-1, 5), type(plotting))\npoint_1 = point(graph_1, 2.2, 4.2, c(crimson), fc(gold))\nsketch_1 = p5sheet(at(3, 4.2), view(20, 20), range(-5, 5), range(0, 5), p5_script_1)"
+    }
+  ]
+}

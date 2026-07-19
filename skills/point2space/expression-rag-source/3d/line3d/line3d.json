@@ -1,0 +1,95 @@
+{
+  "expression": "line3d",
+  "_requires": ["g3d", "point3d"],
+  "description": "Creates a line segment in 3D space between two endpoints. For equation-based line forms, use parametricline3d, symmetricline3d, cartesianline3d, pointvectorline3d, or directionline3d.",
+  "utility": "Create a line segment between two 3D points",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "point1",
+      "type": "point3d",
+      "required": true,
+      "description": "Start point of the line segment"
+    },
+    {
+      "name": "point2",
+      "type": "point3d",
+      "required": true,
+      "description": "End point of the line segment"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From two point variables",
+      "syntax": "line3d(G, P1, P2)",
+      "description": "Line segment from point P1 to point P2"
+    },
+    {
+      "variant": "From inline coordinates",
+      "syntax": "line3d(G, 0, 0, 0, 3, 4, 5)",
+      "description": "Line segment using six inline coordinates (x1,y1,z1, x2,y2,z2)"
+    },
+    {
+      "variant": "With color",
+      "syntax": "line3d(G, P1, P2, c(blue))",
+      "description": "Line with a custom color"
+    },
+    {
+      "variant": "Forward movement",
+      "syntax": "forward3d(line, distance)",
+      "description": "Shift line along its direction by distance"
+    },
+    {
+      "variant": "Backward movement",
+      "syntax": "backward3d(line, distance)",
+      "description": "Shift line opposite to its direction by distance"
+    },
+    {
+      "variant": "Perpendicular shift",
+      "syntax": "perpshift3d(line, distance, ax, ay, az)",
+      "description": "Shift line sideways perpendicular to its direction and an axis vector (ax, ay, az)"
+    },
+    {
+      "variant": "Reverse direction",
+      "syntax": "reverse3d(line)",
+      "description": "Flip the direction of the line (swap start and end)"
+    },
+    {
+      "variant": "Place at point",
+      "syntax": "placeat3d(line, point)",
+      "description": "Copy line to a new starting location"
+    },
+    {
+      "variant": "Parallel through point",
+      "syntax": "pll3d(line, point)",
+      "description": "Create a parallel line passing through a point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line between two 3D points",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nP1 = point3d(G, 0, 0, 0)\nP2 = point3d(G, 3, 4, 5)\nL = line3d(G, P1, P2)"
+    },
+    {
+      "scenario": "Line from inline coordinates with color",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = line3d(G, 0, 0, 0, 3, 4, 5, c(red))"
+    },
+    {
+      "scenario": "Line with forward extension",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = line3d(G, point3d(G, 0, 0, 0), point3d(G, 1, 0, 0))\nfwd = forward3d(L, 2)"
+    },
+    {
+      "scenario": "Parallel line through a point",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = line3d(G, point3d(G, 0, 0, 0), point3d(G, 3, 0, 0))\nP = point3d(G, 0, 2, 0)\nL2 = pll3d(L, P)"
+    },
+    {
+      "scenario": "Point on a line at the midpoint",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = line3d(G, point3d(G, 0, 0, 0), point3d(G, 4, 4, 4))\nmid = point3d(G, L, 0.5)"
+    }
+  ]
+}

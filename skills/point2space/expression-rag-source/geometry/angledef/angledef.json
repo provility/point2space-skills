@@ -1,0 +1,15 @@
+{
+  "expression": "angledef",
+  "_requires": [],
+  "description": "Computes the angle at vertex B formed by rays BA and BC. Returns the angle in degrees. Pure computation, no graph required.",
+  "utility": "Compute angle from three points",
+  "arguments": [
+    {"name": "pointA", "type": "point tuple or variable", "required": true, "description": "First ray endpoint"},
+    {"name": "pointB", "type": "point tuple or variable", "required": true, "description": "Vertex point"},
+    {"name": "pointC", "type": "point tuple or variable", "required": true, "description": "Second ray endpoint"}
+  ],
+  "examples": [
+    {"scenario": "Right angle", "expression": "a = angledef((0,1), (0,0), (1,0))"},
+    {"scenario": "Using variables", "expression": "A = (2, 3)\nB = (0, 0)\nC = (4, 0)\na = angledef(A, B, C)"}
+  ]
+}

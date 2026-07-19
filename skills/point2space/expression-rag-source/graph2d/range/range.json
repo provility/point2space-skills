@@ -1,0 +1,83 @@
+{
+  "expression": "range",
+  "description": "Defines the visible axis range with minimum and maximum bounds, optional tick step spacing, and scale type such as trigonometric or logarithmic.",
+  "utility": "Set axis range with min, max, optional step, and optional scale type for a graph axis",
+  "arguments": [
+    {
+      "name": "min",
+      "type": "number | expression",
+      "required": true,
+      "description": "Minimum value on the axis (e.g., -5, -2*pi)"
+    },
+    {
+      "name": "max",
+      "type": "number | expression",
+      "required": true,
+      "description": "Maximum value on the axis (e.g., 5, 2*pi)"
+    },
+    {
+      "name": "step",
+      "type": "number | expression",
+      "required": false,
+      "description": "Tick spacing on the axis (e.g., 1, 0.5, pi/4). If omitted, step is calculated automatically."
+    },
+    {
+      "name": "scale",
+      "type": "\"trig\" | \"log\" | \"ln\" | \"im\"",
+      "required": false,
+      "description": "Scale type for axis labels. 'trig' shows pi-fraction labels, 'log' is base-10 log, 'ln' is natural log, 'im' shows imaginary unit labels."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic range (min and max)",
+      "syntax": "range(min, max)",
+      "description": "Set axis bounds with automatic tick step"
+    },
+    {
+      "variant": "Range with step",
+      "syntax": "range(min, max, step)",
+      "description": "Set axis bounds with explicit tick spacing"
+    },
+    {
+      "variant": "Trig range with pi labels",
+      "syntax": "range(-2*pi, 2*pi, pi/4, \"trig\")",
+      "description": "Pi-based axis labels for trigonometric function plots"
+    },
+    {
+      "variant": "Range for plot domain restriction",
+      "syntax": "plot(G, \"f(x)\", range(a, b))",
+      "description": "When used inside plot(), restricts the plotted domain"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Standard symmetric range",
+      "expression": "G = g2d(at(2,2), 20, 20, range(-5, 5), range(-5, 5), type(plotting))"
+    },
+    {
+      "scenario": "Range with custom step on both axes",
+      "expression": "G = g2d(at(2,3), 30, 30, range(-2, 2, 0.5), range(-2, 2, 1), type(plotting))"
+    },
+    {
+      "scenario": "Asymmetric range for positive-heavy data",
+      "expression": "G = g2d(at(1,14), 12, 18, range(-1, 5, 1), range(-1, 15, 2), type(plotting))"
+    },
+    {
+      "scenario": "Single x-range only (y defaults to -5 to 5)",
+      "expression": "G = g2d(at(2,2), 20, 30, range(-1, 10), type(plotting))"
+    },
+    {
+      "scenario": "Trig range for sine/cosine plotting",
+      "expression": "G = g2d(at(2,2), 20, 30, range(-2*pi, 2*pi, pi/4, \"trig\"), range(-2, 2), type(trig))"
+    },
+    {
+      "scenario": "Inverse trig range on y-axis",
+      "expression": "G = g2d(at(2,2), 20, 30, range(-1, 1), range(-pi, pi, pi/4, \"trig\"), type(trig))"
+    },
+    {
+      "scenario": "Range used in polar plot domain",
+      "expression": "plot(G, \"theta\", range(0, 4*pi))"
+    }
+  ]
+}

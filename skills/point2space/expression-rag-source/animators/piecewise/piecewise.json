@@ -1,0 +1,28 @@
+{
+  "expression": "piecewise",
+  "_requires": ["g2d", "plot"],
+  "description": "Plot piecewise-defined functions with multiple conditions using piecewiseplot(), or plot functions with excluded points (holes) using plot() with a condition",
+  "utility": "Display functions defined by different rules in different domains",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "Coordinate system"},
+    {"name": "conditions", "type": "array", "required": true, "description": "Condition-expression pairs"}
+  ],
+  "examples": [
+    {
+      "scenario": "Function with discontinuity at x=0 (hole) for squeeze theorem",
+      "expression": "G=g2d(at(4,3),30,30,range(-2,2,0.5),range(-2,2,1), type(plotting))\nplot(G,\"sin(x)/x\",\"x != 0\")"
+    },
+    {
+      "scenario": "Function with removable discontinuity (hole)",
+      "expression": "plot_1 = plot(G, \"(x^2-1)/(x-1)\", \"x != 1\", c(teal))"
+    },
+    {
+      "scenario": "Piecewise with two branches using variables for sin/cos",
+      "expression": "ca = \"a*sin(b*x)\"\ncb = \"a*cos(b*x)\"\npiecewiseplot(G6, ca, \"x<0\", cb, \"x>=0\", c(brown))"
+    },
+    {
+      "scenario": "Piecewise linear branches with variables",
+      "expression": "pwa = \"-a*x + c\"\npwb = \"a*x + c\"\npiecewiseplot(G4, pwa, \"x<0\", pwb, \"x>=0\", c(purple))"
+    }
+  ]
+}

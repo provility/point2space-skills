@@ -1,0 +1,24 @@
+{
+  "expression": "section3d",
+  "_requires": ["g3d", "point3d"],
+  "description": "Divides a line segment in a given ratio using the section formula. Supports internal division, external division, and midpoint.",
+  "utility": "Find the point that divides a segment in a given ratio",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "pointA", "type": "point3d", "required": true, "description": "First endpoint"},
+    {"name": "pointB", "type": "point3d", "required": true, "description": "Second endpoint"},
+    {"name": "m", "type": "number", "required": true, "description": "First ratio component (or single ratio for midpoint form)"},
+    {"name": "n", "type": "number", "required": false, "description": "Second ratio component"},
+    {"name": "type", "type": "type(external)", "required": false, "description": "Use type(external) for external division"}
+  ],
+  "alternates": [
+    {"variant": "Internal division", "syntax": "section3d(G, A, B, m, n)", "description": "Point dividing AB internally in ratio m:n"},
+    {"variant": "External division", "syntax": "section3d(G, A, B, m, n, type(external))", "description": "Point dividing AB externally in ratio m:n"},
+    {"variant": "Midpoint (single ratio)", "syntax": "section3d(G, A, B, 0.5)", "description": "Midpoint of segment AB"}
+  ],
+  "examples": [
+    {"scenario": "Internal division in 2:3", "expression": "G = g3d(at(4,23), view(30, 30))\nA = point3d(G, 1, 2, 3)\nB = point3d(G, 4, 6, 8)\nP = section3d(G, A, B, 2, 3)"},
+    {"scenario": "External division", "expression": "P = section3d(G, A, B, 2, 3, type(external))"},
+    {"scenario": "Midpoint", "expression": "M = section3d(G, A, B, 0.5)"}
+  ]
+}

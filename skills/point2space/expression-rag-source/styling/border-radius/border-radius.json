@@ -1,0 +1,37 @@
+{
+  "expression": "br",
+  "description": "Adds a border shadow effect and/or border color to shapes in g2d",
+  "utility": "Apply decorative border styling with color and/or shadow",
+  "arguments": [
+    {
+      "name": "shadow",
+      "type": "number",
+      "required": false,
+      "description": "Shadow intensity from 0 (none) to 1 (full), can be specified in any order"
+    },
+    {
+      "name": "color",
+      "type": "string or color name",
+      "required": false,
+      "description": "Color value (e.g., red, \"#ff0000\"), can be specified in any order"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Border shadow only",
+      "expression": "circle(0, 1) | br(0.4)"
+    },
+    {
+      "scenario": "Border color only",
+      "expression": "square(0, 2) | br(red)"
+    },
+    {
+      "scenario": "Color and shadow together",
+      "expression": "circle(0, 1) | br(red, 0.4)"
+    },
+    {
+      "scenario": "Hex color with shadow (any order)",
+      "expression": "polygon([[0, 0], [1, 0], [1, 1]]) | br(0.6, \"#0000ff\")"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "expression": "areapart",
+  "_requires": ["sheetrect", "area"],
+  "description": "Renders a single area region at a specified canvas position. Takes a reference to an area grid expression and renders it standalone for decomposition/rejoin animations.",
+  "utility": "Render an area region at a canvas position for decomposition",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Canvas position for the rendered area part"
+    },
+    {
+      "name": "areaRef",
+      "type": "variable",
+      "required": true,
+      "description": "Reference to an area grid expression"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(color)",
+      "required": false,
+      "description": "Fill color"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(number)",
+      "required": false,
+      "description": "Fill opacity (0-1)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Decompose four area regions with rejoin",
+      "expression": "s = sheetrect(at(2,2), view(10,10), 5, 5, fc(lightyellow), fo(0.2))\nag1 = area(s, range(0, 0.6), range(0, 0.6), size(3,3), fc(red), fo(0.15))\nag2 = area(s, range(0.6, 1), range(0, 0.6), size(2,3), fc(green), fo(0.15))\nag3 = area(s, range(0, 0.6), range(0.6, 1), size(3,2), fc(green), fo(0.15))\nag4 = area(s, range(0.6, 1), range(0.6, 1), size(2,2), fc(blue), fo(0.15))\nap1 = areapart(at(3.2,17.4), ag1, fc(red), fo(0.3))\nap2 = areapart(at(3.2,26.2), ag2, fc(green), fo(0.3))\nap3 = areapart(at(11,17.8), ag3, fc(green), fo(0.3))\nap4 = areapart(at(10.9,26.3), ag4, fc(blue), fo(0.3))\nrejoin(ap1, ap2, ap3, ap4)"
+    }
+  ]
+}

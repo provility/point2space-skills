@@ -1,0 +1,38 @@
+{
+  "expression": "perp3d",
+  "_requires": ["g3d"],
+  "description": "Creates a perpendicular line or vector through a point in 3D space",
+  "utility": "Draw a perpendicular copy of a line/vector passing through a specified point, using a reference axis",
+  "arguments": [
+    {"name": "vector_or_line", "type": "vector3d|line3d", "required": true, "description": "The reference vector or line to make perpendicular to"},
+    {"name": "point", "type": "point3d", "required": true, "description": "The point the perpendicular should pass through"},
+    {"name": "axis_vector", "type": "vector3d", "required": true, "description": "Reference axis vector to determine perpendicular direction"}
+  ],
+  "alternates": [
+    {
+      "variant": "with coordinates for axis",
+      "syntax": "perp3d(vector_or_line, point, axis_x, axis_y, axis_z)",
+      "description": "Specify the axis using x, y, z coordinates instead of vector3d"
+    },
+    {
+      "variant": "with custom length",
+      "syntax": "perp3d(vector_or_line, point, axis, length)",
+      "description": "Create perpendicular with custom length"
+    },
+    {
+      "variant": "using coordinates for point",
+      "syntax": "perp3d(vector_or_line, x, y, z, axis)",
+      "description": "Specify the point using x, y, z coordinates"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "perpendicular using vectors",
+      "expression": "V = vector3d(g, 0, 0, 0, 1, 0, 0); A = vector3d(g, 0, 0, 0, 0, 0, 1); perp3d(V, point3d(g, 0, 0, 0), A)"
+    },
+    {
+      "scenario": "perpendicular using coordinates",
+      "expression": "V = vector3d(g, 0, 0, 0, 1, 0, 0); perp3d(V, point3d(g, 1, 1, 0), 0, 0, 1)"
+    }
+  ]
+}

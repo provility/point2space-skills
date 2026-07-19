@@ -1,0 +1,47 @@
+{
+    "expression": "pdtable",
+    "_requires": [
+        "pmf",
+        "binomial"
+    ],
+    "description": "Creates a probability distribution table from a PMF or binomial chart. Shows X values and P(X=x) in tabular form. Optionally adds computation columns for E(X) and Var(X) with a sum row.",
+    "utility": "Create a probability distribution table",
+    "arguments": [
+        {
+            "name": "chart",
+            "type": "pmf/binomial variable",
+            "required": true,
+            "description": "Reference to a PMF or binomial chart"
+        },
+        {
+            "name": "position",
+            "type": "at(row, col)",
+            "required": true,
+            "description": "Canvas position"
+        },
+        {
+            "name": "columns",
+            "type": "col(xp) / col(x2p)",
+            "required": false,
+            "description": "Optional computation columns: col(xp) for x*P(x) (E(X)), col(x2p) for x^2*P(x) (Var(X))"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Basic distribution table",
+            "expression": "S = sspace(dice(2), at(4,10), view(12,12))\nP = pmf(S, sum, at(4,24), view(10,10))\nPDT = pdtable(P, at(18,10))"
+        },
+        {
+            "scenario": "With E(X) computation column",
+            "expression": "PDT = pdtable(P, at(18,10), col(xp))"
+        },
+        {
+            "scenario": "With both E(X) and Var(X) columns",
+            "expression": "PDT = pdtable(P, at(18,10), col(xp), col(x2p))"
+        },
+        {
+            "scenario": "From binomial distribution",
+            "expression": "B = binomial(10, 0.5, at(4,10), view(10,10))\nPDT = pdtable(B, at(18,10), col(xp))"
+        }
+    ]
+}

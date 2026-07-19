@@ -1,0 +1,25 @@
+{
+  "expression": "play",
+  "description": "Replays multiple existing commands in parallel or sequential order. Accepts variable references to existing commands. Defaults based on argument count: single argument uses sequence mode, multiple arguments use parallel mode. Can explicitly specify mode with type() and control duration with t(). Optionally accepts media() for audio playback.",
+  "utility": "Replay existing commands in parallel or sequence, optionally with audio",
+  "arguments": [
+    { "name": "commandVars", "type": "variable references", "required": true, "description": "One or more variable references to existing command/shape expressions to replay" },
+    { "name": "type", "type": "type(parallel) | type(sequence)", "required": false, "description": "Execution mode: 'parallel' plays simultaneously, 'sequence' plays one after another" },
+    { "name": "duration", "type": "t(seconds)", "required": false, "description": "Optional override for animation duration" },
+    { "name": "media", "type": "media(...)", "required": false, "description": "Audio to play in parallel with the replayed commands" }
+  ],
+  "alternates": [
+    { "variant": "Default parallel", "syntax": "play(A, B, C)", "description": "Play multiple commands simultaneously (default for 2+ args)" },
+    { "variant": "Explicit parallel", "syntax": "play(A, B, C, type(parallel))", "description": "Explicitly specify parallel mode" },
+    { "variant": "Sequential", "syntax": "play(A, B, C, type(sequence))", "description": "Play commands one after another" },
+    { "variant": "With custom duration", "syntax": "play(A, B, t(3))", "description": "Override animation duration" },
+    { "variant": "Single command (sequence default)", "syntax": "play(A)", "description": "Play single command (uses sequence mode)" },
+    { "variant": "With audio", "syntax": "play(A, B, media(...))", "description": "Play commands with audio" }
+  ],
+  "examples": [
+    { "scenario": "Parallel play of text copies", "expression": "play_1 = play(text_copy_1, text_copy_2, text_copy_3, type(parallel))" },
+    { "scenario": "Parallel play of points and labels for ellipse", "expression": "play_2 = play(label_2, point_2, point_1, label_1,label_7,label_8, type(parallel))" },
+    { "scenario": "Sequence play for distance marker", "expression": "play_4 = play(dm_4, type(sequence))" },
+    { "scenario": "Play deferred polygon animation in parallel", "expression": "play_6 = play(polyanim_1, point_1, type(parallel))" }
+  ]
+}

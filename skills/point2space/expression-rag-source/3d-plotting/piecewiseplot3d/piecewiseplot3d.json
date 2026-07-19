@@ -1,0 +1,78 @@
+{
+  "expression": "piecewiseplot3d",
+  "_requires": ["g3d"],
+  "description": "Renders a piecewise-defined 3D surface with alternating expression-condition pairs in x and y.",
+  "utility": "Plot a piecewise-defined surface on a g3d graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container"
+    },
+    {
+      "name": "expression1",
+      "type": "string",
+      "required": true,
+      "description": "First piece expression in x, y"
+    },
+    {
+      "name": "condition1",
+      "type": "string",
+      "required": true,
+      "description": "Domain condition for the first piece"
+    },
+    {
+      "name": "expression2",
+      "type": "string",
+      "required": true,
+      "description": "Second piece expression in x, y"
+    },
+    {
+      "name": "condition2",
+      "type": "string",
+      "required": true,
+      "description": "Domain condition for the second piece"
+    },
+    {
+      "name": "xRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Domain for x variable"
+    },
+    {
+      "name": "yRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Domain for y variable"
+    },
+    {
+      "name": "styles",
+      "type": "style expressions",
+      "required": false,
+      "description": "Optional: c(), fc(), fo() for color and styling"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Two-piece surface",
+      "syntax": "piecewiseplot3d(G, \"expr1\", \"cond1\", \"expr2\", \"cond2\")",
+      "description": "Plot a two-piece piecewise surface"
+    },
+    {
+      "variant": "With domain and styling",
+      "syntax": "piecewiseplot3d(G, \"expr1\", \"cond1\", \"expr2\", \"cond2\", range(-3, 3), range(-3, 3), c(blue))",
+      "description": "Piecewise surface with explicit domain and color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Piecewise surface split at x = 0",
+      "expression": "G = g3d(at(10,10), view(30, 30))\npiecewiseplot3d(G, \"x^2 + y^2\", \"x > 0\", \"x - y\", \"x <= 0\")"
+    },
+    {
+      "scenario": "Piecewise surface with styling",
+      "expression": "G = g3d(at(10,10), view(30, 30))\npiecewiseplot3d(G, \"sin(x)*cos(y)\", \"x + y > 0\", \"0\", \"x + y <= 0\", range(-3, 3), range(-3, 3), c(teal))"
+    }
+  ]
+}

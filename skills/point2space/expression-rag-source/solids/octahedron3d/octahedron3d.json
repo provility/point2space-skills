@@ -1,0 +1,18 @@
+{
+  "expression": "octahedron3d",
+  "_requires": [],
+  "description": "Standalone ThreeJS regular octahedron solid. Uses at() and view() for positioning.",
+  "utility": "Create a regular octahedron solid",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "sideLength", "type": "number", "required": true, "description": "Edge length"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {"scenario": "Octahedron solid", "expression": "S = octahedron3d(at(4,4), view(14,14), 3, c(navy), fc(lightyellow), fo(0.5))"},
+    {"scenario": "Small octahedron", "expression": "S = octahedron3d(at(4,4), view(10,10), 2, c(purple))"}
+  ]
+}

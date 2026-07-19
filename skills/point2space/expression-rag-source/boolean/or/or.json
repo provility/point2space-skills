@@ -1,0 +1,22 @@
+{
+  "expression": "or",
+  "_requires": ["g2d"],
+  "description": "Computes the union (logical OR) of clippable shapes. Returns the combined area of all input shapes. Useful for creating merged regions, Venn diagrams, and complex composite shapes.",
+  "utility": "Combine multiple shapes into a single merged region",
+  "arguments": [
+    { "name": "G", "type": "g2d reference", "required": true, "description": "The 2D grapher container" },
+    { "name": "shape1", "type": "clippable shape", "required": true, "description": "First shape to union" },
+    { "name": "shape2", "type": "clippable shape", "required": true, "description": "Second shape to union" },
+    { "name": "shapeN", "type": "clippable shape", "required": false, "description": "Additional shapes to union (optional)" }
+  ],
+  "alternates": [
+    { "variant": "Two circles", "syntax": "or(G, C1, C2)", "description": "Union of two circles (Venn diagram shape)" },
+    { "variant": "Two squares", "syntax": "or(G, S1, S2)", "description": "L-shaped or T-shaped union" },
+    { "variant": "Multiple shapes", "syntax": "or(G, shape1, shape2, shape3)", "description": "Union of three or more shapes" }
+  ],
+  "examples": [
+    { "scenario": "Venn diagram from two circles", "expression": "G = g2d()\nC1 = circle(G, 3, 0, 0)\nC2 = circle(G, 3, 4, 0)\nU = or(G, C1, C2)" },
+    { "scenario": "L-shaped union from two squares", "expression": "G = g2d()\nS1 = square(G, 0, 0, 4)\nS2 = square(G, 2, 2, 4)\nU = or(G, S1, S2)" },
+    { "scenario": "Union of three circles", "expression": "G = g2d()\nC1 = circle(G, 2, -2, 0)\nC2 = circle(G, 2, 2, 0)\nC3 = circle(G, 2, 0, 3)\nU = or(G, C1, C2, C3)" }
+  ]
+}

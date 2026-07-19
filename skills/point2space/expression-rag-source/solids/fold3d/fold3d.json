@@ -1,0 +1,25 @@
+{
+  "expression": "fold",
+  "_requires": ["cut"],
+  "description": "Folds a wireframe cut pattern into its 3D solid shape. Takes a reference to a cut expression and animates the flat pattern assembling into the corresponding 3D form.",
+  "utility": "Fold a cut pattern into a 3D solid",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "cutRef", "type": "cut variable", "required": true, "description": "Reference to the cut expression to fold"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "lockAt", "type": "lockat(...)", "required": false, "description": "Camera lock position"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Fold a corner-cut sheet into a box",
+      "expression": "sh_1 = sheetrect(at(6,9), view(12.2,19.3), 10, 8, c(crimson), fc(cyan), fo(0.2), so(0.4))\ncut_1 = cut(at(6,9), sh_1, cuttype(corner), 1.5, fc(lightblue), c(cyan), fo(0.2))\nfold_1 = fold(at(6,32), cut_1, view(14,14), c(crimson), fc(cyan), fo(0.3))"
+    },
+    {
+      "scenario": "Fold a sector-cut circular sheet into a cone",
+      "expression": "sc_1 = sheetcircle(at(2,6), view(14,14), 4, c(navy), fc(lightyellow), fo(0.5))\ncut_1 = cut(at(2,14), sc_1, cuttype(sector), 90)\nfold_1 = fold(at(2,28), cut_1, view(14,14), c(navy), fc(lightyellow), fo(0.5))"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "expression": "inputaiaction",
+  "_requires": [],
+  "description": "Creates a button that calls a backend AI math endpoint and replays commands with the response. On click: collects all param() key-value pairs, POSTs to /api/math/{actionName} with the params as the request body, and replays the referenced command variables with the response data.",
+  "utility": "Create an AI-powered action button for math operations",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position of the button" },
+    { "name": "actionName", "type": "quoted string", "required": true, "description": "Backend action name. Supported: 'solve', 'factor', 'simplify', 'expand', 'isolate', 'differentiate'" },
+    { "name": "params", "type": "param(\"key\", \"value\")", "required": false, "description": "Key-value parameters sent to the backend. Value can be a string literal or a variable reference (resolved to its value). Multiple param() sub-expressions allowed." },
+    { "name": "commandRefs", "type": "variable references", "required": false, "description": "Command variables to replay after the API response returns" },
+    { "name": "displayLabel", "type": "display(\"label\")", "required": false, "description": "Button label text (default: 'Run'). Supports two values: display(\"label\", \"playingLabel\") for different text while running." },
+    { "name": "playMode", "type": "type(parallel|sequence)", "required": false, "description": "How to replay referenced commands. Default: sequence for 1 command, parallel for multiple." },
+    { "name": "duration", "type": "t(seconds)", "required": false, "description": "Animation duration for the replayed commands" }
+  ],
+  "examples": [
+    {
+      "scenario": "Solve equation button",
+      "expression": "W = write(at(2, 2), \"2x + 3 = 7\")\ninputaiaction(at(4, 2), \"solve\", param(\"expression\", \"2x + 3 = 7\"), W, display(\"Solve\"))"
+    },
+    {
+      "scenario": "Factor with variable param",
+      "expression": "eq1 = \"x^2 - 4\"\nW = write(at(2, 2), eq1)\ninputaiaction(at(4, 2), \"factor\", param(\"expression\", eq1), W, display(\"Factor\"))"
+    },
+    {
+      "scenario": "Simplify with parallel replay and custom duration",
+      "expression": "inputaiaction(at(5, 10), \"simplify\", param(\"expression\", \"(x^2-1)/(x-1)\"), A, B, type(parallel), t(2), display(\"Simplify\", \"Simplifying...\"))"
+    }
+  ]
+}

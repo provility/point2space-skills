@@ -1,0 +1,60 @@
+{
+  "expression": "directionline3d",
+  "_requires": ["g3d", "point3d"],
+  "description": "Creates a 3D line through a point with given direction ratios (a, b, c).",
+  "utility": "Create a 3D line from a point and direction ratios",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "point",
+      "type": "point3d or 3 coordinates",
+      "required": true,
+      "description": "Starting point as a point3d variable or 3 inline coordinates"
+    },
+    {
+      "name": "a",
+      "type": "number",
+      "required": true,
+      "description": "x direction ratio"
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "required": true,
+      "description": "y direction ratio"
+    },
+    {
+      "name": "c",
+      "type": "number",
+      "required": true,
+      "description": "z direction ratio"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From point3d variable",
+      "syntax": "directionline3d(G, P, 2, -1, 4)",
+      "description": "Line through point3d P with direction ratios 2, -1, 4"
+    },
+    {
+      "variant": "From inline coordinates",
+      "syntax": "directionline3d(G, 0, 0, 0, 1, 1, 1)",
+      "description": "Line through (0,0,0) with direction ratios 1, 1, 1"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line through a point with direction ratios",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nP = point3d(G, 1, 2, 3)\nL = directionline3d(G, P, 2, -1, 4)"
+    },
+    {
+      "scenario": "Line through origin along diagonal",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = directionline3d(G, 0, 0, 0, 1, 1, 1, c(teal))"
+    }
+  ]
+}

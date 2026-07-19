@@ -1,0 +1,74 @@
+{
+  "expression": "curve3d",
+  "_requires": ["g3d"],
+  "description": "Renders a parametric 3D curve from component functions x(t), y(t), z(t) over a parameter range.",
+  "utility": "Plot a parametric space curve x(t), y(t), z(t) in 3D",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container created with g3d()"
+    },
+    {
+      "name": "x(t)",
+      "type": "string",
+      "required": true,
+      "description": "X component as a function of t, in quotes"
+    },
+    {
+      "name": "y(t)",
+      "type": "string",
+      "required": true,
+      "description": "Y component as a function of t, in quotes"
+    },
+    {
+      "name": "z(t)",
+      "type": "string",
+      "required": true,
+      "description": "Z component as a function of t, in quotes"
+    },
+    {
+      "name": "tRange",
+      "type": "range(tMin, tMax)",
+      "required": false,
+      "description": "Parameter domain for t. Default: 0 to 2π"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Curve color - e.g., c(teal), c(green)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic parametric curve",
+      "syntax": "curve3d(G, \"x(t)\", \"y(t)\", \"z(t)\", range(tMin, tMax))",
+      "description": "Space curve with three component functions of t"
+    },
+    {
+      "variant": "With color",
+      "syntax": "curve3d(G, \"x(t)\", \"y(t)\", \"z(t)\", range(tMin, tMax), c(teal))",
+      "description": "Parametric curve with color styling"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Helix curve",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nhelix = curve3d(G, \"cos(t)\", \"sin(t)\", \"0.3*t\", range(0, 4*pi), c(teal))"
+    },
+    {
+      "scenario": "Trefoil knot curve",
+      "expression": "G = g3d(at(4,4), view(16, 8))\nknot = curve3d(G, \"sin(t)+2*sin(2*t)\", \"cos(t)-2*cos(2*t)\", \"-sin(3*t)\", range(0, 2*pi))"
+    },
+    {
+      "scenario": "Straight-line parametric curve with color",
+      "expression": "G = g3d(at(5,5), view(20, 20))\nc1 = curve3d(G, \"t\", \"0.5*t\", \"0\", range(0, 4), c(green))"
+    },
+    {
+      "scenario": "Curve with tangent vector",
+      "expression": "G = g3d(at(4,23), view(30, 30))\ncurve = curve3d(G, \"cos(t)\", \"sin(t)\", \"t\", range(0, 2*pi))\ntangent = tangentvec(G, curve, 1)"
+    }
+  ]
+}

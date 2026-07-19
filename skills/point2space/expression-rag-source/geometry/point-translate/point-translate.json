@@ -1,0 +1,45 @@
+{
+  "expression": "translate (point)",
+  "_requires": ["g2d", "point"],
+  "description": "Creates a point by translating (shifting) an existing point by a given dx, dy offset.",
+  "utility": "Shift a point by an (dx, dy) offset",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "Point to translate"
+    },
+    {
+      "name": "dx",
+      "type": "number",
+      "required": true,
+      "description": "Horizontal offset"
+    },
+    {
+      "name": "dy",
+      "type": "number",
+      "required": true,
+      "description": "Vertical offset"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point from translation",
+      "syntax": "translate(G, point, dx, dy)",
+      "description": "Point shifted by (dx, dy) offset"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Translate point by offset",
+      "expression": "P2 = translate(G, P1, 3, -2)"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "expression": "prob",
+  "_requires": [],
+  "description": "Computes probability value from a distribution at a given x.",
+  "utility": "Calculate probability from a distribution",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "distribution", "type": "normdist reference", "required": true, "description": "Distribution to query"},
+    {"name": "x", "type": "number", "required": true, "description": "X value to evaluate"}
+  ],
+  "examples": [
+    {"scenario": "Probability at x=1.5", "expression": "N = normdist(at(4,4), view(12,16), 0, 1)\nP = prob(at(18,4), N, 1.5)"},
+    {"scenario": "Probability at x=0", "expression": "P = prob(at(18,4), N, 0)"}
+  ]
+}

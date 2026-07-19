@@ -1,0 +1,13 @@
+{
+  "expression": "choose",
+  "_requires": [],
+  "description": "Specifies r (number of items to select) in permutation or combination expressions.",
+  "utility": "Set selection count",
+  "arguments": [
+    {"name": "count", "type": "number", "required": false, "description": "Number of items to select (default: 1)"}
+  ],
+  "examples": [
+    {"scenario": "Choose 3", "expression": "permutation(at(4,4), view(14,20), set(\"A\", \"B\", \"C\", \"D\"), choose(3))"},
+    {"scenario": "Choose 2", "expression": "combination(at(4,4), view(14,20), set(1, 2, 3), choose(2))"}
+  ]
+}

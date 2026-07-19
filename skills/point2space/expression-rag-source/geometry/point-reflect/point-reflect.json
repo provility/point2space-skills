@@ -1,0 +1,39 @@
+{
+  "expression": "reflect (point)",
+  "_requires": ["g2d", "line"],
+  "description": "Creates a point by reflecting (mirroring) an existing point across a line.",
+  "utility": "Mirror a point across a line",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "line",
+      "type": "line",
+      "required": true,
+      "description": "Line to reflect across"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "Point to reflect"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point from reflection",
+      "syntax": "reflect(G, line, point)",
+      "description": "Mirror of point across a line"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Reflect point across line",
+      "expression": "P2 = reflect(G, L, P1)"
+    }
+  ]
+}

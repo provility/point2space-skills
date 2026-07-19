@@ -1,0 +1,19 @@
+{
+  "expression": "slice",
+  "_requires": [],
+  "description": "Specifies the cross-section slice position along a solid's profile for revolve operations. Value is normalized 0-1 where 0 is the start and 1 is the end of the profile.",
+  "utility": "Set cross-section slice position for solids of revolution",
+  "arguments": [
+    {"name": "position", "type": "number", "required": true, "description": "Slice position along the profile (0 to 1, default 0.5 = midpoint)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Slice at midpoint",
+      "expression": "revolvewasher(at(2,1), view(17,16.9), region_1, region_2, axis(x), fc(red), sweep(0,360), slice(0.5))"
+    },
+    {
+      "scenario": "Slice at 30% along profile",
+      "expression": "revolvedisk(at(2,1), view(21,26), region_1, axis(y), fc(blue), slice(0.3))"
+    }
+  ]
+}

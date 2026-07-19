@@ -1,0 +1,15 @@
+{
+  "expression": "clipper",
+  "_requires": ["g2d"],
+  "description": "Boolean shape operations: union, intersection, difference",
+  "utility": "Combine shapes: and(g,s1,s2), or(g,s1,s2), diff(g,s1,s2), xor(g,s1,s2)",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "Coordinate system"},
+    {"name": "shape1", "type": "circle | polygon | rect", "required": true, "description": "First shape"},
+    {"name": "shape2", "type": "circle | polygon | rect", "required": true, "description": "Second shape"}
+  ],
+  "examples": [
+    {"scenario": "Union", "expression": "result = or(g, circle(g, 1, 1, 2), circle(g, 2, 1, 2))"},
+    {"scenario": "Difference", "expression": "result = diff(g, circle(g, 0, 0, 5), circle(g, 0, 0, 2))"}
+  ]
+}

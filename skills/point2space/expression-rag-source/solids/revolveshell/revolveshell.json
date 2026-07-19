@@ -1,0 +1,22 @@
+{
+  "expression": "revolveshell",
+  "_requires": ["g2d", "region"],
+  "description": "Solid of revolution using the shell method. Takes regions and revolves around an axis using cylindrical shells.",
+  "utility": "Visualize solids of revolution using the shell method",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": true, "description": "View size"},
+    {"name": "region", "type": "region reference", "required": true, "description": "Region to revolve"},
+    {"name": "axis", "type": "axis(x) or axis(y)", "required": true, "description": "Axis of revolution"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "rulings", "type": "rulings3d(count)", "required": false, "description": "Number of ruling lines"},
+    {"name": "sweep", "type": "sweep(start, end)", "required": false, "description": "Sweep angle range"}
+  ],
+  "examples": [
+    {
+      "scenario": "Shell method around x-axis",
+      "expression": "region_1=region(graph_1, plot_1, line_1, line_2, line_3)\nrevolve_1=revolveshell(at(2,1),view(17,16.9),region_1,region_2,axis(x),fc(purple),rulings3d(64),sweep(0,360),slice(0.5))"
+    }
+  ],
+  "_note": "Pipeline: g2d -> plot/line -> region() -> revolveshell."
+}

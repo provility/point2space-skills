@@ -1,0 +1,51 @@
+{
+  "expression": "boxprod",
+  "_requires": ["g3d", "vector3d"],
+  "description": "Represents a parallelepiped (3D box) formed by the box product of three vectors. Can be constructed from three vectors, an origin with three points, or nine coordinates.",
+  "utility": "Create a 3D parallelepiped (box) from three vectors.",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "The 3D graph context"
+    },
+    {
+      "name": "vectors/points",
+      "type": "three vector3d | origin + three point3d | nine numbers",
+      "required": true,
+      "description": "Either: three vector3d expressions; one origin point3d + three point3d for endpoints; or nine coordinates"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "three vectors",
+      "syntax": "boxprod(g, vecU, vecV, vecW)",
+      "description": "Three vector3d expressions sharing a common start point (the origin)"
+    },
+    {
+      "variant": "origin and three points",
+      "syntax": "boxprod(g, origin, pU, pV, pW)",
+      "description": "Origin point3d and three endpoint point3d; vectors are from origin to each point"
+    },
+    {
+      "variant": "nine coordinates",
+      "syntax": "boxprod(g, ux,uy,uz, vx,vy,vz, wx,wy,wz)",
+      "description": "Nine numeric coordinates representing three edge vectors from origin (0,0,0)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Create box from three vectors",
+      "expression": "G = g3d(at(4,23), view(20, 20)); U = vector3d(G, 0, 0, 0, 1, 0, 0); V = vector3d(G, 0, 0, 0, 0, 1, 0); W = vector3d(G, 0, 0, 0, 0, 0, 1); B = boxprod(G, U, V, W)"
+    },
+    {
+      "scenario": "Create box from origin and three points",
+      "expression": "G = g3d(at(4,23), view(20, 20)); O = point3d(G, 0, 0, 0); P1 = point3d(G, 1, 0, 0); P2 = point3d(G, 0, 1, 0); P3 = point3d(G, 0, 0, 1); B = boxprod(G, O, P1, P2, P3)"
+    },
+    {
+      "scenario": "Create box from nine coordinates",
+      "expression": "G = g3d(at(4,23), view(20, 20)); B = boxprod(G, 1, 0, 0, 0, 1, 0, 0, 0, 1)"
+    }
+  ]
+}

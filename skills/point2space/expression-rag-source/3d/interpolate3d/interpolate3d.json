@@ -1,0 +1,25 @@
+{
+  "expression": "interpolate3d",
+  "_requires": ["g3d"],
+  "description": "Interpolates along a 3D shape or between two 3D points. Supports static and animated forms.",
+  "utility": "Find a point at a ratio along a 3D shape or between two 3D points",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "shape or P1", "type": "line3d | point3d", "required": true, "description": "Shape to interpolate along, or first point"},
+    {"name": "ratio or P2", "type": "number | point3d", "required": true, "description": "Ratio for shape form, or second point"},
+    {"name": "ratio / toRatio", "type": "number", "required": false, "description": "For point-to-point: the ratio. For animated: the ending ratio"}
+  ],
+  "alternates": [
+    {"variant": "Along shape", "syntax": "interpolate3d(G, shape, ratio)", "description": "Point at ratio along a 3D shape"},
+    {"variant": "Between two points", "syntax": "interpolate3d(G, P1, P2, ratio)", "description": "Point at ratio between two 3D points"},
+    {"variant": "Animated between points", "syntax": "interpolate3d(G, P1, P2, fromRatio, toRatio)", "description": "Animated point between two 3D points"},
+    {"variant": "On parametric surface", "syntax": "interpolate3d(G, surface, uRatio, vRatio, type(surface))", "description": "Point at (u, v) ratios on a paraplot3d surface. uRatio and vRatio are 0-1 fractions of each parameter range."}
+  ],
+  "examples": [
+    {"scenario": "Midpoint of a line3d", "expression": "P = interpolate3d(G, L, 0.5)"},
+    {"scenario": "Point between two 3D points", "expression": "A = point3d(G, 0, 0, 0)\nB = point3d(G, 6, 4, 2)\nM = interpolate3d(G, A, B, 0.5)"},
+    {"scenario": "Animated point along segment", "expression": "P = interpolate3d(G, A, B, 0, 1)"},
+    {"scenario": "Corner point on a parametric surface", "expression": "dvOuter = paraplot3d(G, \"r*sin(u)*cos(v)\", \"r*sin(u)*sin(v)\", \"r*cos(u)\", range(pi/4, pi/4+pi/8), range(pi/2, pi/2+pi/6), c(dodgerblue), fc(dodgerblue), fo(0.95))\npCornerA = interpolate3d(G, dvOuter, 0, 0, type(surface))\npCornerB = interpolate3d(G, dvOuter, 1, 0, type(surface))"},
+    {"scenario": "Point at arbitrary location on a surface patch", "expression": "point_1 = interpolate3d(G, dvOuter, 0.1, 0.9, type(surface))"}
+  ]
+}

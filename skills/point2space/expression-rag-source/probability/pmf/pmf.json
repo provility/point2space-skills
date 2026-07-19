@@ -1,0 +1,17 @@
+{
+  "expression": "pmf",
+  "_requires": [],
+  "description": "Displays a probability mass function from a sample space, binomial distribution, or manual data. Standalone chart with at() positioning.",
+  "utility": "Create a PMF visualization",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "source", "type": "sspace/binomial variable", "required": false, "description": "Source sample space or binomial distribution"},
+    {"name": "randomVariable", "type": "quoted string", "required": false, "description": "Random variable to plot (sum, max, min, product, heads)"},
+    {"name": "chartType", "type": "type(bar|lollipop)", "required": false, "description": "Chart display type"}
+  ],
+  "examples": [
+    {"scenario": "PMF from dice sample space", "expression": "S = sspace(at(4,4), view(14,20), dice(2))\nP = pmf(at(18,4), view(10,16), S, \"sum\")"},
+    {"scenario": "PMF from binomial", "expression": "B = binomial(at(4,4), view(10,16), 10, 0.3)\nP = pmf(at(16,4), view(10,16), B)"}
+  ]
+}

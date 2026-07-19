@@ -1,0 +1,86 @@
+{
+  "expression": "implicit3d",
+  "_requires": ["g3d"],
+  "description": "Renders an implicit 3D surface where f(x,y,z) = 0 over a bounded domain. Accepts both f(x,y,z) = 0 and LHS = RHS formats.",
+  "utility": "Plot an implicit 3D surface f(x,y,z) = 0 on a g3d graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container created with g3d()"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": true,
+      "description": "Implicit equation as a quoted string where the expression equals zero, e.g., \"x^2 + y^2 + z^2 - 1\" for a unit sphere"
+    },
+    {
+      "name": "xRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Domain for x variable. Defaults to g3d axis range if omitted"
+    },
+    {
+      "name": "yRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Domain for y variable. Defaults to g3d axis range if omitted"
+    },
+    {
+      "name": "zRange",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Domain for z variable. Defaults to g3d axis range if omitted"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Surface color - e.g., c(blue), c(teal)"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Surface fill opacity from 0 to 1 - e.g., fo(0.8)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Implicit surface with auto domain",
+      "syntax": "implicit3d(G, \"x^2 + y^2 + z^2 - 1\")",
+      "description": "Implicit surface using g3d default axis ranges"
+    },
+    {
+      "variant": "Implicit surface with explicit bounds",
+      "syntax": "implicit3d(G, \"x^2 + y^2 - z^2\", range(-3, 3), range(-3, 3), range(-3, 3))",
+      "description": "Implicit surface with x, y, and z domain bounds"
+    },
+    {
+      "variant": "Implicit surface with styling",
+      "syntax": "implicit3d(G, \"x^2 + y^2 + z^2 - 1\", c(blue), fo(0.8))",
+      "description": "Styled implicit surface with color and opacity"
+    },
+    {
+      "variant": "Equation form (LHS = RHS)",
+      "syntax": "implicit3d(G, \"x^2 + y^2 + z^2 = 1\")",
+      "description": "Implicit surface written in equation form (auto-converted)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Implicit sphere",
+      "expression": "G = g3d(at(4,23), view(16.1, 14.5))\nsphere = implicit3d(G, \"x^2 + y^2 + z^2 - 1\")"
+    },
+    {
+      "scenario": "Cone with explicit bounds",
+      "expression": "G = g3d(at(4,23), view(16.1, 14.5))\ncone = implicit3d(G, \"x^2 + y^2 - z^2\", range(-3, 3), range(-3, 3), range(-3, 3))"
+    },
+    {
+      "scenario": "Ellipsoid with color",
+      "expression": "G = g3d(at(4,23), view(16.1, 14.5))\nellipsoid = implicit3d(G, \"x^2/4 + y^2/9 + z^2 - 1\", c(teal))"
+    }
+  ]
+}

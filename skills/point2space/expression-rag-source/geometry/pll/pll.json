@@ -1,0 +1,43 @@
+{
+  "expression": "pll",
+  "_requires": ["g2d", "line"],
+  "description": "Creates a line parallel to an existing line through a given point.",
+  "utility": "Create a parallel line through a point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "line",
+      "type": "line",
+      "required": true,
+      "description": "Existing line to be parallel to"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "Point the parallel line passes through"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Parallel line",
+      "syntax": "pll(G, line, point)",
+      "description": "Line parallel to existing line through given point"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line parallel to L through point P",
+      "expression": "P2 = pll(G, L, P)"
+    },
+    {
+      "scenario": "Parallel reference line through circle center for secant-circle tangency analysis",
+      "expression": "parallel_ref = pll(G, secant_line, center, c(gray))"
+    }
+  ]
+}

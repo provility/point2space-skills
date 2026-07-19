@@ -1,0 +1,13 @@
+{
+  "expression": "anchor",
+  "description": "Creates a positional anchor marker at a logical position. Renders a small anchor icon. Used as a visual reference point that other components can attach to via at(). Play is a no-op — the icon only displays when nothing is being played.",
+  "utility": "Create a visual reference anchor at a position for other expressions to attach to",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Logical position on the canvas grid" }
+  ],
+  "examples": [
+    { "scenario": "Anchor for text copy positioning", "expression": "anchor_1 = anchor(at(11,4))" },
+    { "scenario": "Anchor for goto target", "expression": "anchor_1 = anchor(at(16,34))" },
+    { "scenario": "Anchor for scrolling target", "expression": "anchor_1 = anchor(at(15,28))" }
+  ]
+}

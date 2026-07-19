@@ -1,0 +1,18 @@
+{
+    "expression": "eventcaption",
+    "_requires": ["event"],
+    "description": "Inline probability caption that animates in sync with event() phases. Must be passed to an event() expression either inline or as a variable. Fades in at the start of its phase during playback. The display() label uses AsciiMath; the computed fraction is appended automatically.",
+    "utility": "Display synced probability caption inside an event",
+    "arguments": [
+        {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position for the caption text"},
+        {"name": "type", "type": "type(conditional|given|intersection|event|sample)", "required": false, "description": "Phase and value: given (P(F), synced to given phase), event (P(E)), intersection (P(E∩F)), conditional (P(E|F), default, synced to event phase), sample (1/|S|)"},
+        {"name": "display", "type": "display(\"label\")", "required": false, "description": "Custom AsciiMath label for the left-hand side (e.g., \"P(E|F)\", \"P(E nn F)\")"},
+        {"name": "color", "type": "c(color)", "required": false, "description": "Text color"},
+        {"name": "fontSize", "type": "fs(size)", "required": false, "description": "Font size"}
+    ],
+    "examples": [
+        {"scenario": "Conditional probability with captions", "expression": "S = sspace(coin(3), at(4,10), view(10,10))\nc1 = eventcaption(at(16, 24), type(given), display(\"P(F)\"))\nc2 = eventcaption(at(18, 24), type(intersection), display(\"P(E nn F)\"))\nc3 = eventcaption(at(20, 24), type(conditional), display(\"P(E|F)\"))\nE = event(S, \"at least 2 H\", given(\"first = T\", hatchangle(20), c(steelblue)), fc(red), t(1), c1, c2, c3)"},
+        {"scenario": "Sample point probability", "expression": "c0 = eventcaption(at(14, 24), type(sample), display(\"P(omega)\"))\nE = event(S, \"at least 2 H\", fc(red), c0)"},
+        {"scenario": "Inline inside event", "expression": "E = event(S, \"all b\",\n    given(\"at least 1 b\", hatchangle(20), c(steelblue)),\n    fc(red), t(1),\n    eventcaption(at(16,10), type(given), display(\"P(F)\")),\n    eventcaption(at(18,10), type(conditional), display(\"P(E|F)\"))\n)"}
+    ]
+}

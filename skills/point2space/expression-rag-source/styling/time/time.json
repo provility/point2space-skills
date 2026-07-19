@@ -1,0 +1,43 @@
+{
+  "expression": "t",
+  "description": "Controls animation timing for shape appearance, visibility, and exit",
+  "utility": "Specify enter duration, stay duration, and exit duration in seconds",
+  "arguments": [
+    {
+      "name": "enterDuration",
+      "type": "number",
+      "required": false,
+      "description": "Time in seconds for shape to animate in (default: 0 for no animation)"
+    },
+    {
+      "name": "stayDuration",
+      "type": "number",
+      "required": false,
+      "description": "Time in seconds for shape to remain visible (optional)"
+    },
+    {
+      "name": "exitDuration",
+      "type": "number",
+      "required": false,
+      "description": "Time in seconds for shape to animate out (defaults to enter duration if not specified)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "No animation, instant display",
+      "expression": "circle(0, 1) | t()"
+    },
+    {
+      "scenario": "Animate in over 2 seconds (backwards compatible)",
+      "expression": "point(1, 2) | t(2)"
+    },
+    {
+      "scenario": "Enter 0.5s, stay visible 3s, exit 0.3s",
+      "expression": "line([0, 0], [1, 1]) | t(0.5, 3, 0.3)"
+    },
+    {
+      "scenario": "Enter 0.5s, stay 3s, exit defaults to enter",
+      "expression": "square(0, 2) | t(0.5, 3)"
+    }
+  ]
+}

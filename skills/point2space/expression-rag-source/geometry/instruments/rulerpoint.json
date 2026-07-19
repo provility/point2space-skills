@@ -1,0 +1,44 @@
+{
+  "expression": "rulerpoint",
+  "_requires": ["g2d", "point"],
+  "description": "Marks a point on the graph using the ruler instrument with a specified orientation. The result behaves as a point and can be used by line(), vector(), etc.",
+  "utility": "Place a point with ruler animation and orientation — result is reusable as a point geometry",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph to draw on"
+    },
+    {
+      "name": "P",
+      "type": "point",
+      "required": true,
+      "description": "The position to mark"
+    },
+    {
+      "name": "type(orientation)",
+      "type": "type",
+      "required": false,
+      "description": "Ruler orientation: leftToRight (default), rightToLeft, topToBottom, or bottomToTop"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "default orientation",
+      "syntax": "rulerpoint(G, P)",
+      "description": "Mark point with horizontal left-to-right ruler (default)"
+    },
+    {
+      "variant": "with orientation",
+      "syntax": "rulerpoint(G, P, type(orientation))",
+      "description": "Mark point with specified ruler orientation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Place a point using ruler instrument with left-to-right direction",
+      "expression": "point_1 = rulerpoint(G, point(G, 8.1, 3.7), type(leftToRight))"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "expression": "project3d",
+  "_requires": ["g3d"],
+  "description": "Projects a 3D point onto a plane (finds the foot of perpendicular)",
+  "utility": "Calculate the closest point on a plane to a given point",
+  "arguments": [
+    {"name": "plane", "type": "plane3d", "required": true, "description": "The plane to project onto"},
+    {"name": "point", "type": "point3d", "required": true, "description": "The point to project"}
+  ],
+  "alternates": [
+    {
+      "variant": "With defer (hidden projection)",
+      "syntax": "project3d(plane, point, defer())",
+      "description": "Project a point onto a plane without rendering the projected point visually. Useful when the result is used as input for other expressions."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "project point onto xy-plane",
+      "expression": "P = plane3d(g, 0, 0, 1, 0); A = point3d(g, 3, 4, 5); project3d(P, A)"
+    },
+    {
+      "scenario": "project point onto arbitrary plane",
+      "expression": "P = plane3d(g, 1, 1, 1, 0); A = point3d(g, 2, 2, 2); project3d(P, A)"
+    },
+    {
+      "scenario": "Project spherical point onto xy-plane (for azimuthal angle)",
+      "expression": "P = point3d(G, r, theta, phi, type(spherical))\nxyPlane = plane3d(G, \"z = 0\", type(cartesian), defer())\npProj = project3d(xyPlane, P, defer())"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "expression": "nlblock",
+  "_requires": ["nl"],
+  "description": "Shows blocks of units on a number line. Visualizes jumps or segments along the number line.",
+  "utility": "Show blocks on a number line",
+  "arguments": [
+    {
+      "name": "numberLine",
+      "type": "nl variable",
+      "required": true,
+      "description": "Reference to number line expression"
+    },
+    {
+      "name": "start",
+      "type": "number",
+      "required": true,
+      "description": "Start value on number line"
+    },
+    {
+      "name": "end",
+      "type": "number",
+      "required": true,
+      "description": "End value on number line"
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "required": true,
+      "description": "Step size for each block"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(color)",
+      "required": false,
+      "description": "Block fill color"
+    },
+    {
+      "name": "color",
+      "type": "c(color)",
+      "required": false,
+      "description": "Block stroke color"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(number)",
+      "required": false,
+      "description": "Block fill opacity"
+    },
+    {
+      "name": "yOffset",
+      "type": "buff(number)",
+      "required": false,
+      "description": "Vertical offset from number line"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Blocks from 0 to 6 by 2s",
+      "expression": "N = nl(at(4,4), 0, 10, size(20))\nnlblock(N, 0, 6, 2, fc(lightblue))"
+    },
+    {
+      "scenario": "Blocks with opacity",
+      "expression": "nlblock(N, 2, 8, 3, fc(coral), fo(0.5))"
+    }
+  ]
+}

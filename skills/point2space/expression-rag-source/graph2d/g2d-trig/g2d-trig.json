@@ -1,0 +1,24 @@
+{
+  "expression": "g2d (trig)",
+  "_requires": ["g2d"],
+  "description": "Creates a 2D graph configured for trigonometric or inverse trigonometric functions with pi-based axis labels and tick marks.",
+  "utility": "Create a 2D graph with pi-based scales for trig (sin, cos, tan) or inverse trig (arcsin, arccos, arctan)",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Logical position using at(row, col) coordinates on the canvas grid" },
+    { "name": "size/height", "type": "number (1-50)", "required": true, "description": "Geometry mode: single size value. Plotting mode: row height" },
+    { "name": "width", "type": "number (1-50)", "required": false, "description": "Column width (plotting mode only)" },
+    { "name": "range", "type": "range(min, max) | range(min, max, step)", "required": false, "description": "X-axis range, can use pi expressions like range(-2*pi, 2*pi, pi/4)" },
+    { "name": "yRange", "type": "range(min, max) | range(min, max, step)", "required": false, "description": "Y-axis range (plotting mode)" },
+    { "name": "type", "type": "type(trig) | type(invtrig)", "required": true, "description": "MANDATORY. type(trig): pi-based scale on both axes. type(invtrig): pi-based on y-axis only" },
+    { "name": "grid", "type": "grid() | grid(noaxes) | grid(nolines)", "required": false, "description": "Grid visibility options" }
+  ],
+  "alternates": [
+    { "variant": "Trig graph (pi-based both axes)", "syntax": "g2d(at(row, col), height, width, range(-2*pi, 2*pi), range(-2, 2), type(trig))", "description": "Both axes use pi-based labels for sin/cos/tan" },
+    { "variant": "Inverse trig graph (pi-based y-axis)", "syntax": "g2d(at(row, col), height, width, range(-1, 1), range(-pi, pi), type(invtrig))", "description": "Y-axis uses pi-based labels for arcsin/arccos/arctan" }
+  ],
+  "examples": [
+    { "scenario": "Trig graph for sine/cosine", "expression": "G = g2d(at(2,2), 20, 30, range(-2*pi, 2*pi), range(-2, 2), type(trig))" },
+    { "scenario": "Trig graph with pi/4 step", "expression": "G = g2d(at(2,2), 25, 35, range(-pi, pi, pi/4), range(-1.5, 1.5), type(trig))" },
+    { "scenario": "Inverse trig graph for arcsin", "expression": "G = g2d(at(2,2), 20, 30, range(-1, 1), range(-pi/2, pi/2), type(invtrig))" }
+  ]
+}

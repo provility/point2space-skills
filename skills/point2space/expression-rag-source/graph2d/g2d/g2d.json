@@ -1,0 +1,34 @@
+{
+  "expression": "g2d",
+  "description": "Creates a 2D Cartesian graph container. The type() argument is mandatory and determines the mode: geometry mode (uniform 1:1 scale for drawings) or plotting mode (stretches to fill for function graphing). Additional type values configure specialized axis scales.",
+  "utility": "Create a 2D graph container with mandatory type (geometry or plotting), position, size, ranges, grid, and border",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Logical position using at(row, col) coordinates on the canvas grid" },
+    { "name": "size/height", "type": "number (1-50)", "required": true, "description": "Geometry mode: single size value (both row and column). Plotting mode: row height in logical units" },
+    { "name": "width", "type": "number (1-50)", "required": false, "description": "Column width in logical units. Only used in plotting mode — omit in geometry mode" },
+    { "name": "range", "type": "range(min, max) | range(min, max, step)", "required": false, "description": "Geometry mode: single range for both axes (default [-1, 6]). Plotting mode: x-axis range (default [-5, 5])" },
+    { "name": "yRange", "type": "range(min, max) | range(min, max, step)", "required": false, "description": "Plotting mode only: y-axis range (default [-5, 5])" },
+    { "name": "type", "type": "type(geometry) | type(plotting) | type(trig) | type(invtrig) | type(log) | type(exp) | type(complex)", "required": true, "description": "MANDATORY. type(geometry): uniform 1:1 scale, single size, single range, default [-1, 6]. type(plotting): separate height/width and x/y ranges, stretches to fill, default [-5, 5]. type(trig): pi-based scale on both axes. type(invtrig): pi-based on y-axis only. type(log): logarithmic axes. type(exp): exponential axes. type(complex): complex plane with Re/Im labels and auto-grid" },
+    { "name": "grid", "type": "grid() | grid(noaxes) | grid(nolines) | grid(c(color), s(width))", "required": false, "description": "grid() enables grid lines with axes. grid(noaxes) hides axes/ticks/labels/grid. grid(nolines) shows axes but no gridlines. grid(c(color), s(width)) styles gridlines" },
+    { "name": "border", "type": "br(color, shadow)", "required": false, "description": "Border styling with color and shadow, e.g., br(\"black\", 0.5)" }
+  ],
+  "alternates": [
+    { "variant": "Geometry mode (default range)", "syntax": "g2d(at(row, col), size, type(geometry))", "description": "1:1 scale with default range [-1, 6], size applies to both dimensions" },
+    { "variant": "Geometry mode (custom range)", "syntax": "g2d(at(row, col), size, range(min, max), type(geometry))", "description": "1:1 scale with custom range applied to both axes" },
+    { "variant": "Geometry mode with grid", "syntax": "g2d(at(row, col), size, range(min, max), type(geometry), grid())", "description": "Geometry with gridlines visible" },
+    { "variant": "Plotting mode (default ranges)", "syntax": "g2d(at(row, col), rowHeight, colWidth, type(plotting))", "description": "Stretches to fill with default [-5, 5] on both axes" },
+    { "variant": "Plotting mode (explicit ranges)", "syntax": "g2d(at(row, col), rowHeight, colWidth, range(xMin, xMax), range(yMin, yMax), type(plotting))", "description": "Stretches to fill with explicit x and y ranges" },
+    { "variant": "Plotting mode with step sizes", "syntax": "g2d(at(row, col), rowHeight, colWidth, range(xMin, xMax, xStep), range(yMin, yMax, yStep), type(plotting))", "description": "Custom tick/gridline step sizes" },
+    { "variant": "Complex plane", "syntax": "g2d(at(row, col), size, range(min, max), type(complex))", "description": "Complex plane with Re/Im axis labels and grid auto-enabled" }
+  ],
+  "examples": [
+    { "scenario": "Geometry graph for circle equation lesson with step size", "expression": "graph_2=g2d(at(8,35),size(16.7),range(-7.2,1,1),type(geometry),grid(noaxes))" },
+    { "scenario": "Geometry graph with axes for circle on axis intercepts lesson", "expression": "graph_1=g2d(at(10,37),size(14.3),range(-1,5,2),type(geometry))" },
+    { "scenario": "Geometry graph with noaxes for diameter through center lesson", "expression": "graph_1=g2d(at(9,37),size(15.8),range(-4,5),type(geometry),grid(noaxes))" },
+    { "scenario": "Geometry graph with snap disabled for point and circle position lesson", "expression": "graph_1=g2d(at(10,37),size(17.8),range(-2,8,2),type(geometry),snap(false),grid(noaxes))" },
+    { "scenario": "Geometry graph for linear programming with intersections", "expression": "G=g2d(at(2,14),size(23),range(-1,10),type(geometry))" },
+    { "scenario": "Plotting graph for table data visualization with multiple columns", "expression": "G1=g2d(at(4,16),18.7,18,range(-1,5,1),range(-1,4),grid(\"x\",\"y\"),type(plotting))" },
+    { "scenario": "Plotting graph for function table with wider range", "expression": "G=g2d(at(1,35),20,20,range(-2.5,2.5,1),range(-1,3,0.5,1),type(plotting))" },
+    { "scenario": "Plotting graph with default ranges for triangle and line", "expression": "graph_1 = g2d(at(4,11), 19.7, 27.3, range(-5, 5, 1), type(plotting))" }
+  ]
+}

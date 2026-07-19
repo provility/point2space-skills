@@ -1,0 +1,38 @@
+{
+  "expression": "nlspan",
+  "_requires": ["nl"],
+  "description": "Shows a span/arc between two number lines. Connects corresponding values across number lines.",
+  "utility": "Show span between number lines",
+  "arguments": [
+    {
+      "name": "numberLines",
+      "type": "nl variables",
+      "required": true,
+      "description": "Two or more number line references"
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": true,
+      "description": "Value to span between number lines"
+    },
+    {
+      "name": "color",
+      "type": "c(color)",
+      "required": false,
+      "description": "Span color"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(color)",
+      "required": false,
+      "description": "Span fill color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Span value 5 between two number lines",
+      "expression": "N1 = nl(at(4,4), 0, 10, size(20))\nN2 = nl(at(8,4), 0, 10, size(20))\nnlspan(N1, N2, 5, c(red))"
+    }
+  ]
+}

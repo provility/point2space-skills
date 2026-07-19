@@ -1,0 +1,21 @@
+{
+  "expression": "inputmath",
+  "description": "MathQuill math input field bound to a variable. Accepts LaTeX input. Supports default value, display label, and custom width.",
+  "utility": "Create a math input field bound to a variable",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position" },
+    { "name": "variableName", "type": "string", "required": true, "description": "Quoted variable name to bind to" },
+    { "name": "defaultValue", "type": "value(\"latex\")", "required": true, "description": "Default LaTeX value as a quoted string" },
+    { "name": "size", "type": "size(width)", "required": false, "description": "Input field width in pixels" },
+    { "name": "display", "type": "display(\"label\")", "required": false, "description": "Optional label" }
+  ],
+  "alternates": [
+    { "variant": "Basic math input", "syntax": "expr1 = inputmath(at(3, 4), \"expr1\", value(\"x^2+1\"), display(\"f(x)\"))", "description": "Math input with label" },
+    { "variant": "With custom width", "syntax": "expr1 = inputmath(at(3, 4), \"expr1\", value(\"x^2+1\"), size(200))", "description": "Math input with specified width" }
+  ],
+  "examples": [
+    { "scenario": "Math input with label", "expression": "expr1 = inputmath(at(3, 4), \"expr1\", value(\"x^2+1\"), display(\"f(x)\"))" },
+    { "scenario": "Math input with custom width", "expression": "expr1 = inputmath(at(3, 4), \"expr1\", value(\"x^2+1\"), size(200))" },
+    { "scenario": "Math input for integral bounds", "expression": "lower = inputmath(at(5, 10), \"lower\", value(\"0\"), display(\"a\"))" }
+  ]
+}

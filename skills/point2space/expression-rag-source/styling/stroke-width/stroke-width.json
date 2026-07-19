@@ -1,0 +1,54 @@
+{
+  "expression": "s",
+  "description": "Inline modifier that sets the stroke (outline) thickness in pixels. Accepts a positive number for line width, ranging from 0.1 (very thin) to 10 (very thick), with a default of 1.",
+  "utility": "Set stroke width/thickness on shapes using inline modifier",
+  "arguments": [
+    {
+      "name": "width",
+      "type": "number",
+      "required": true,
+      "description": "Stroke width in pixels - positive number, e.g., 0.5, 1, 2, 5"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Thin stroke",
+      "syntax": "s(0.1)",
+      "description": "Very thin stroke, nearly invisible outline"
+    },
+    {
+      "variant": "Default stroke",
+      "syntax": "s(1)",
+      "description": "Standard stroke width"
+    },
+    {
+      "variant": "Medium stroke",
+      "syntax": "s(2)",
+      "description": "Medium thickness stroke"
+    },
+    {
+      "variant": "Thick stroke",
+      "syntax": "s(5)",
+      "description": "Thick visible stroke"
+    },
+    {
+      "variant": "Inside shape with other modifiers",
+      "syntax": "rect(G, 12, 4, 4, 3, fi(\"tree\", 0.7), fo(1), s(0.1))",
+      "description": "Combine stroke width with fill image and fill opacity"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Rectangle with thin stroke and fill image",
+      "expression": "r1 = rect(G, 12, 4, 4, 3, fi(\"tree\", 0.7), fo(1), s(0.1))"
+    },
+    {
+      "scenario": "Arrow with thick stroke",
+      "expression": "arrow(at(T, 1, 1), at(P1), -2, c(red), s(5))"
+    },
+    {
+      "scenario": "Standalone stroke command with width change",
+      "expression": "stroke(A, B, s(3))"
+    }
+  ]
+}

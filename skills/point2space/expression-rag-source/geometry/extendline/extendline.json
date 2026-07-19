@@ -1,0 +1,74 @@
+{
+  "expression": "extendline",
+  "_requires": ["g2d", "line"],
+  "description": "Extends a line by a given proportion in one or both directions",
+  "utility": "Lengthens, shortens, or adjusts line endpoints based on proportional scaling",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph to draw the extended line on"
+    },
+    {
+      "name": "line (or p1)",
+      "type": "line or point",
+      "required": true,
+      "description": "Either a line expression or first point of line"
+    },
+    {
+      "name": "proportion (or p2)",
+      "type": "number or point",
+      "required": true,
+      "description": "Extension proportion (when second arg is line), or second point (when second arg is point)"
+    },
+    {
+      "name": "startProportion (or proportion)",
+      "type": "number",
+      "required": false,
+      "description": "Extension proportion for start point. If omitted with two points, treated as single proportion"
+    },
+    {
+      "name": "endProportion",
+      "type": "number",
+      "required": false,
+      "description": "Extension proportion for end point (when extending in both directions)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "extend from end only",
+      "syntax": "extendline(graph, line, proportion)",
+      "description": "Extend line from end point. proportion > 1 extends beyond, < 1 shortens"
+    },
+    {
+      "variant": "extend both directions",
+      "syntax": "extendline(graph, line, startProportion, endProportion)",
+      "description": "Extend from both start and end with different proportions"
+    },
+    {
+      "variant": "from two points",
+      "syntax": "extendline(graph, p1, p2, proportion)",
+      "description": "Define line from two points, then extend"
+    },
+    {
+      "variant": "two points, both directions",
+      "syntax": "extendline(graph, p1, p2, startProp, endProp)",
+      "description": "Define line from points and extend in both directions"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Extend a line 50% longer from the end",
+      "expression": "G = g2d(-10, 10, -10, 10); L = line(G, 0, 0, 4, 0); extendline(G, L, 1.5)"
+    },
+    {
+      "scenario": "Double a line's length",
+      "expression": "G = g2d(-10, 10, -10, 10); A = point(G, 1, 1); B = point(G, 3, 3); extendline(G, A, B, 2)"
+    },
+    {
+      "scenario": "Extend in both directions asymmetrically",
+      "expression": "G = g2d(-10, 10, -10, 10); L = line(G, 0, 0, 5, 0); extendline(G, L, -0.5, 1.5, c(blue))"
+    }
+  ]
+}

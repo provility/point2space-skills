@@ -1,0 +1,89 @@
+{
+  "expression": "angle3d",
+  "_requires": ["g3d"],
+  "description": "Creates a 3D angle arc between two rays or calculates angle between geometric objects. For plane-plane (dihedral) angles, draws perpendicular rays in each plane from the line of intersection. For line-plane angles, draws arc between the line direction and its projection onto the plane. Can be anchored and projected in 3D multi-select operations.",
+  "utility": "Draw or calculate an angle in 3D space between rays, vectors, lines, or planes",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "The 3D graph container"},
+    {"name": "vertex_x", "type": "number", "required": true, "description": "X coordinate of the angle vertex"},
+    {"name": "vertex_y", "type": "number", "required": true, "description": "Y coordinate of the angle vertex"},
+    {"name": "vertex_z", "type": "number", "required": true, "description": "Z coordinate of the angle vertex"},
+    {"name": "point1_x", "type": "number", "required": true, "description": "X coordinate of the first ray endpoint"},
+    {"name": "point1_y", "type": "number", "required": true, "description": "Y coordinate of the first ray endpoint"},
+    {"name": "point1_z", "type": "number", "required": true, "description": "Z coordinate of the first ray endpoint"},
+    {"name": "point2_x", "type": "number", "required": true, "description": "X coordinate of the second ray endpoint"},
+    {"name": "point2_y", "type": "number", "required": true, "description": "Y coordinate of the second ray endpoint"},
+    {"name": "point2_z", "type": "number", "required": true, "description": "Z coordinate of the second ray endpoint"}
+  ],
+  "alternates": [
+    {
+      "variant": "with custom radius",
+      "syntax": "angle3d(graph, vertex_x, vertex_y, vertex_z, point1_x, point1_y, point1_z, point2_x, point2_y, point2_z, radius)",
+      "description": "Specify a custom radius for the angle arc"
+    },
+    {
+      "variant": "between point3d references",
+      "syntax": "angle3d(G, vertex_point, arm1_point, arm2_point)",
+      "description": "Angle arc from vertex point3d through two arm endpoint point3d references"
+    },
+    {
+      "variant": "between vectors",
+      "syntax": "angle3d(graph, vector1, vector2)",
+      "description": "Calculate angle between two vector3d expressions"
+    },
+    {
+      "variant": "between lines",
+      "syntax": "angle3d(graph, line1, line2)",
+      "description": "Calculate angle between two line3d expressions"
+    },
+    {
+      "variant": "between planes (dihedral)",
+      "syntax": "angle3d(graph, plane1, plane2)",
+      "description": "Dihedral angle between two planes. Draws perpendicular rays from the line of intersection"
+    },
+    {
+      "variant": "between line and plane",
+      "syntax": "angle3d(graph, line, plane)",
+      "description": "Angle between a line and plane. Draws arc between line direction and its projection onto the plane"
+    },
+    {
+      "variant": "Reflex angle",
+      "syntax": "angle3d(G, V, P1, P2, type(4))",
+      "description": "Reflex angle (>180 degrees)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Angle between vectors in scalar triple product",
+      "expression": "angleArc = angle3d(G, O, U, crossEnd)"
+    },
+    {
+      "scenario": "angle between two rays from vertex",
+      "expression": "angle3d(g, 0, 0, 0, 1, 0, 0, 0, 1, 0)"
+    },
+    {
+      "scenario": "angle between two vectors",
+      "expression": "angle3d(g, vector3d(g, 0, 0, 0, 1, 0, 0), vector3d(g, 0, 0, 0, 0, 1, 0))"
+    },
+    {
+      "scenario": "Dihedral angle between two planes",
+      "expression": "pl1 = plane3d(G, \"x + y = 2\", type(cartesian))\npl2 = plane3d(G, \"z = 0\", type(cartesian))\nangle3d(G, pl1, pl2)"
+    },
+    {
+      "scenario": "Angle between line and plane",
+      "expression": "L = line3d(G, point3d(G, 0, 0, 0), point3d(G, 1, 1, 1))\nP = plane3d(G, \"z = 0\", type(cartesian))\nangle3d(G, L, P)"
+    },
+    {
+      "scenario": "Reflex angle between two rays",
+      "expression": "angle3d(G, point3d(G, 0, 0, 0), point3d(G, 1, 0, 0), point3d(G, 0, 1, 0), type(4))"
+    },
+    {
+      "scenario": "Spherical coordinates: theta arc (polar angle from z-axis to radial vector)",
+      "expression": "pOrigin = point3d(G, 0, 0, 0)\nP = point3d(G, r, theta, phi, type(spherical))\nthetaArc = angle3d(G, pOrigin, point3d(G, 0, 0, r), P, arcsize(14), c(black), arrowhead(end), s(0.03))"
+    },
+    {
+      "scenario": "Spherical coordinates: phi arc (azimuthal angle in xy-plane)",
+      "expression": "pOrigin = point3d(G, 0, 0, 0)\nP = point3d(G, r, theta, phi, type(spherical))\nxyPlane = plane3d(G, \"z = 0\", type(cartesian), defer())\npProj = project3d(xyPlane, P, defer())\nphiArc = angle3d(G, pOrigin, point3d(G, r, 0, 0), pProj, arcsize(10), c(black), arrowhead(end), s(0.03))"
+    }
+  ]
+}

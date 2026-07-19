@@ -1,0 +1,83 @@
+{
+  "expression": "sss",
+  "_requires": ["g2d"],
+  "description": "Construct a right triangle from two leg lengths. The hypotenuse is computed automatically as sqrt(a^2 + b^2). The right angle is always at the base point (vertex A).",
+  "utility": "Create right triangle from two leg lengths with automatic hypotenuse",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "a",
+      "type": "number",
+      "required": true,
+      "description": "Length of first leg (extends along x-axis from right angle vertex). Must be positive."
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "required": true,
+      "description": "Length of second leg (extends perpendicular to first leg). Must be positive."
+    },
+    {
+      "name": "basePoint",
+      "type": "point",
+      "required": true,
+      "description": "Position for vertex A (the right angle vertex). Must be a point variable or point(G, x, y)."
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": false,
+      "description": "Rotation angle in degrees (rotates entire triangle around basePoint)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic right triangle",
+      "syntax": "sss(G, a, b, point(G, x, y))",
+      "description": "Right triangle with legs a and b at specified position"
+    },
+    {
+      "variant": "3-4-5 triangle",
+      "syntax": "sss(G, 3, 4, P)",
+      "description": "Classic Pythagorean triple triangle at point P"
+    },
+    {
+      "variant": "Rotated triangle",
+      "syntax": "sss(G, a, b, P, 45)",
+      "description": "Triangle rotated 45 degrees around basePoint"
+    },
+    {
+      "variant": "From line lengths",
+      "syntax": "sss(G, distance(L1), distance(L2), P)",
+      "description": "Triangle with legs equal to existing line lengths"
+    },
+    {
+      "variant": "Hidden stroke",
+      "syntax": "sss(G, 3, 4, P, so(0))",
+      "description": "Create triangle structure without visible outline (for extraction)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Pythagorean theorem: 4-4 right triangle with labeled sides and right angle",
+      "expression": "graph_1 = g2d(at(5,30), 13.4, 22, range(-1, 5, 1), range(-1, 5, 1), type(uniform), grid(noaxes)); triangle_1 = sss(graph_1, 4, 4, point(graph_1, 0, 0), t(1)); label_1 = label(graph_1, at(item(triangle_1, type(edge), 1)), \"c\", buff(0, -1.5), rotation(0)); angle_1 = angle(graph_1, item(triangle_1, type(angle), 1), arcsize(40), type(interior), c(black), t(0.5))"
+    },
+    {
+      "scenario": "3-4 right triangle for second example in Pythagorean theorem",
+      "expression": "graph_2 = g2d(at(45,31), 17.7, 24.7, range(-1, 5, 1), range(-1, 5, 1), type(uniform), grid(noaxes)); triangle_2 = sss(graph_2, 3, 4, point(graph_2, 0, 0), t(1)); angle_2 = angle(graph_2, item(triangle_2, type(angle), 1), arcsize(40), type(interior), c(black), t(0.5))"
+    },
+    {
+      "scenario": "Extract edge and label hypotenuse",
+      "expression": "label_2 = label(graph_1, at(item(triangle_1, type(edge), 2)), \"a\", buff(-2, -0.5), rotation(0)); label_4 = label(graph_1, at(item(triangle_1, type(edge), 2)), \"hypotynous\", buff(-3, -1.5), rotation(30), t(0.5))"
+    },
+    {
+      "scenario": "Measure side lengths for Pythagorean calculation",
+      "expression": "measure_1 = measure(graph_1, point(graph_1, 0.3, 4.5), point(graph_1, 4.2, 0.5), t(0.5))"
+    }
+  ]
+}

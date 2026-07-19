@@ -1,0 +1,69 @@
+{
+  "expression": "project",
+  "_requires": ["g2d", "point", "line"],
+  "description": "Computes the orthogonal projection of a point onto a line or vector, returning the foot of the perpendicular. The result is the closest point on the target to the given point.",
+  "utility": "Project a point onto a line returning the foot of the perpendicular",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "line_or_vec",
+      "type": "line | vector",
+      "required": true,
+      "description": "Line or vector to project onto"
+    },
+    {
+      "name": "point",
+      "type": "point",
+      "required": true,
+      "description": "Point to project"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Project point onto line",
+      "syntax": "project(G, L, P)",
+      "description": "Foot of perpendicular from P to line L"
+    },
+    {
+      "variant": "Project point onto vector",
+      "syntax": "project(G, V, P)",
+      "description": "Foot of perpendicular from P onto vector V"
+    },
+    {
+      "variant": "Project with styling",
+      "syntax": "project(G, L, P, c(red))",
+      "description": "Projected point colored red"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Project triangle vertex onto base to find altitude foot in sine law proof",
+      "expression": "graph_1 = g2d(at(-10, 11.4), size(25), range(-1, 8), grid(noaxes), type(geometry)); triangle_1 = sas(graph_1, 5, 40, 6, point(graph_1, 0, 0)); line_c = line(graph_1, item(triangle_1, type(edge), 1), type(segment), c(blue), defer()); point_c = item(triangle_1, type(vertex), 3); point_projected_d = project(graph_1, line_c, point_c, s(0), fo(0), t(0))"
+    },
+    {
+      "scenario": "Draw height line from projected point to vertex",
+      "expression": "line_height = line(graph_1, point_c, point_projected_d, type(segment), dash(), c(red), notes(\"This will be the height of the triangle\")); label_h = label(graph_1, at(line_height, 3), \"h\", buff(0, 0.5))"
+    },
+    {
+      "scenario": "Mark right angle at the projected foot",
+      "expression": "point_a = item(triangle_1, type(vertex), 1); angle_right = angle(graph_1, point_projected_d, point_c, point_a, c(blue))"
+    },
+    {
+      "scenario": "Project a point onto horizontal ground axis for elevation angle",
+      "expression": "ground_axis = line(G, viewer, runway_end, c(gray)); ground_projection = project(G, ground_axis, plane_point)"
+    },
+    {
+      "scenario": "Project circle center onto a secant line",
+      "expression": "G=g2d(at(2,12),size(30),range(-7,7),type(geometry)); secant_line = line(G, A, B, c(blue)); foot = project(G, secant_line, center)"
+    },
+    {
+      "scenario": "Project a point onto x-axis and y-axis for unit circle trigonometry",
+      "expression": "cos_foot = project(G, line(G, point(G, -2, 0), point(G, 2, 0)), P); sin_foot = project(G, line(G, point(G, 0, -2), point(G, 0, 2)), P)"
+    }
+  ]
+}

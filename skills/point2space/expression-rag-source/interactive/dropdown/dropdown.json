@@ -1,0 +1,23 @@
+{
+  "expression": "dropdown",
+  "description": "Dropdown selector with math notation rendering, bound to a variable. Uses display() for label, type() for value type, and ref() for default selection index. Produces an assignment.",
+  "utility": "Create mathematical dropdown selector with LaTeX rendering",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Position on canvas where dropdown appears" },
+    { "name": "variableName", "type": "string", "required": true, "description": "Quoted variable name to bind the dropdown to" },
+    { "name": "values", "type": "value(...)", "required": true, "description": "value() expression containing list of numeric or symbolic options" },
+    { "name": "display", "type": "display(\"label\")", "required": true, "description": "Label displayed next to dropdown using display() expression" },
+    { "name": "type", "type": "type(number|math)", "required": true, "description": "Value type: number for numeric values, math for symbolic/expression values" },
+    { "name": "ref", "type": "ref(index)", "required": true, "description": "1-based index of the default selected value" },
+    { "name": "styles", "type": "style expressions", "required": false, "description": "Optional styling such as c(color), fs(fontSize), etc." }
+  ],
+  "alternates": [
+    { "variant": "Numeric dropdown", "syntax": "x = dropdown(at(3, 4), \"x\", value(1, 2, 3), display(\"x\"), type(number), ref(1))", "description": "Dropdown with numeric options" },
+    { "variant": "Math expression dropdown", "syntax": "dd_eq1 = dropdown(at(2, 44), \"eq1\", value(\"a*x^2 + b*x + c\", \"a*sin(b*x)\"), display(\"f(x)\"), type(math), ref(1))", "description": "Dropdown with math expression options" }
+  ],
+  "examples": [
+    { "scenario": "Dropdown for plot equation selection", "expression": "dd_eq1 = dropdown(at(2, 44), \"eq1\", value(\"a*x^2 + b*x + c\", \"a*sin(b*x)\", \"a*exp(-b*x^2)\"), display(\"f(x)\"), type(math), ref(2))" },
+    { "scenario": "Dropdown for numeric value selection", "expression": "mathexpr_1 = dropdown(at(14, 37), \"x\", value(1, 2), display(\"x\"), type(number), ref(1))" },
+    { "scenario": "Dropdown for math expression selection", "expression": "dropdown_1 = dropdown(at(11, 37), \"x0\", value(\"x\", \"x^2\", \"sin(x)\"), display(\"x0\"), type(math), ref(1))" }
+  ]
+}

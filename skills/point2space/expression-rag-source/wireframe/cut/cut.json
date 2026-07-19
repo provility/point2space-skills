@@ -1,0 +1,26 @@
+{
+  "expression": "cut",
+  "_requires": [],
+  "description": "Remove portion of wireframe sheet with corner or sector cut",
+  "utility": "Create folding patterns by cutting material",
+  "arguments": [
+    {"name": "position", "type": "at(r, c)", "required": true, "description": "Position on grid"},
+    {"name": "sheet", "type": "variable", "required": true, "description": "Sheet variable reference"},
+    {"name": "cuttype", "type": "corner | sector", "required": false, "description": "Cut type"},
+    {"name": "size", "type": "number", "required": false, "description": "Cut size"}
+  ],
+  "examples": [
+    {
+      "scenario": "Corner cut on sheet rectangle",
+      "expression": "cut_1=cut(at(2,22),sheetrect_1,cuttype(corner),1.5)"
+    },
+    {
+      "scenario": "Sector cut on circular sheet",
+      "expression": "cut_1=cut(at(2,14),sheetcircle_1,cuttype(sector),225)"
+    },
+    {
+      "scenario": "Corner cut with styling for box optimization",
+      "expression": "cut_1=cut(at(6,9),sh_1,cuttype(corner),1.5,fc(lightblue),c(cyan),fo(0.2))"
+    }
+  ]
+}

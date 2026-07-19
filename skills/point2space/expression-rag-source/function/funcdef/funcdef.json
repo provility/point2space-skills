@@ -1,0 +1,120 @@
+{
+  "expression": "funcdef",
+  "_requires": [],
+  "description": "Natural function definition syntax. Define functions using familiar math notation. Supports scalar, point-returning, and vector-returning functions. Functions can reference and compose other user-defined functions. Derivative notation with primes is supported.",
+  "utility": "Define mathematical functions using natural notation (e.g., f(x) = sin(x))",
+  "arguments": [
+    {
+      "name": "name",
+      "type": "variable name",
+      "required": true,
+      "description": "Function name (e.g., f, g, h)"
+    },
+    {
+      "name": "parameters",
+      "type": "parameter list",
+      "required": true,
+      "description": "Parameter list in parentheses (e.g., (x), (x, y), (t))"
+    },
+    {
+      "name": "body",
+      "type": "expression",
+      "required": true,
+      "description": "Function body — scalar, point tuple (x, y), or vector {x, y}"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Scalar function",
+      "syntax": "f(x) = x^2 + 2x + 1",
+      "description": "Single-variable scalar function"
+    },
+    {
+      "variant": "Multi-variable function",
+      "syntax": "g(x, y) = x^2 + y^2",
+      "description": "Two-variable function"
+    },
+    {
+      "variant": "Point-returning function",
+      "syntax": "f(t) = (3cos(t), 3sin(t))",
+      "description": "Returns a 2D point tuple — use with point(G, f(t))"
+    },
+    {
+      "variant": "Vector-returning function",
+      "syntax": "v(t) = {cos(t), sin(t)}",
+      "description": "Returns a 2D vector — use with vector expressions"
+    },
+    {
+      "variant": "3D point-returning function",
+      "syntax": "g(t) = (cos(t), sin(t), t)",
+      "description": "Returns a 3D point tuple"
+    },
+    {
+      "variant": "Derivative evaluation",
+      "syntax": "df = f'(1)",
+      "description": "Evaluate the derivative of f at x=1"
+    },
+    {
+      "variant": "Function transformation (horizontal shift)",
+      "syntax": "g(x+1) = \"3(x+1)+1\"",
+      "description": "Define a transformed function. The parameter expression (x+1) is substituted into the body. g(x) = 3(x+1)+1, which is f(x) shifted left by 1."
+    },
+    {
+      "variant": "Function transformation (horizontal shrink)",
+      "syntax": "g(2x) = \"(2x)^2\"",
+      "description": "Define a horizontally compressed function. The parameter expression (2x) is substituted into the body."
+    },
+    {
+      "variant": "Piecewise function definition",
+      "syntax": "f(x) = piecewise(\"1\", \"x >= -0.5 and x <= 0.5\", \"0\")",
+      "description": "Define a piecewise function with alternating expression-condition pairs and an optional default value at the end. The function is callable everywhere: plot, table, arithmetic."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Scalar function and plot",
+      "expression": "f(x) = x^2\nplot_1 = plot(G, f)"
+    },
+    {
+      "scenario": "Parametric point function",
+      "expression": "f(t) = (3cos(t), 3sin(t))\nP = point(G, f(0))\nQ = point(G, f(pi/4), icon(cross))\nR = point(G, f(pi/2))"
+    },
+    {
+      "scenario": "Vector-returning function",
+      "expression": "v(t) = {cos(t), sin(t)}\nW = vector(G, (0,0), (0,0) + v(pi/2))"
+    },
+    {
+      "scenario": "Function composition with automatic inlining",
+      "expression": "f(x) = sin(x)\ng(x) = cos(x)\nh(x) = f(x) + g(x)"
+    },
+    {
+      "scenario": "Derivative evaluation",
+      "expression": "f(x) = x^3 + 2x\ndf = f'(1)\nddf = f''(2)"
+    },
+    {
+      "scenario": "Multi-variable function for 3D plotting",
+      "expression": "f(x, y) = x^2 + y^2\nP = plot3d(G, f, range(-3, 3), range(-3, 3))"
+    },
+    {
+      "scenario": "Function transformation — compare f(x) and f(x+1)",
+      "expression": "f(x) = 3x+1\ng(x+1) = 3(x+1)+1\ngraph_1 = g2d(at(1, 2), 19, 25, range(-5, 5), range(-10, 10), type(plotting))\nplot_1 = plot(graph_1, f, c(teal))\ngraph_2 = g2d(at(1, 30), 19, 25, range(-5, 5), range(-10, 10), type(plotting))\nplot_2 = plot(graph_2, g, c(red))"
+    },
+    {
+      "scenario": "Piecewise function with table and plot",
+      "expression": "f(t) = piecewise(\"1\", \"t >= -0.5 and t <= 0.5\", \"0\")\nw=3\ng(t)=\"f(t)*cos(wt)\"\ngraph_1=g2d(at(10.5,1),19,25,range(-2,2),range(-2,2,0.5),type(plotting))\nT=table(at(1.2,19.8),\"t\",\"f(t)\",\"g(t)\",range(-2,2,0.5))\nplottable_1 = plottable(graph_1, T, 2, c(teal))\nplottable_2 = plottable(graph_1, T, 3, c(teal))"
+    },
+    {
+      "scenario": "Piecewise function with three pieces",
+      "expression": "f(x) = piecewise(\"x+2\", \"x < -1\", \"1\", \"x >= -1 and x <= 1\", \"x^2\", \"x > 1\")\ngraph_1 = g2d(at(4, 4), 20, 20, range(-5, 5), range(-5, 10), type(plotting))\nplot_1 = plot(graph_1, f, c(blue))"
+    }
+  ],
+  "notes": [
+    "Converts natural syntax into FunctionDefinitionExpression internally",
+    "Automatically inlines referenced user-defined functions in the body",
+    "Supports derivative notation: f'(x), f''(x)",
+    "Point-returning functions use parenthesized tuple: f(t) = (x_expr, y_expr)",
+    "Vector-returning functions use curly braces: v(t) = {x_expr, y_expr}",
+    "Function transformation: f(expr) = body substitutes the parameter expression into the body. f(x-5) = x defines f(x) = (x-5), a horizontal shift right by 5.",
+    "Piecewise functions: f(x) = piecewise(\"expr1\", \"cond1\", ..., \"default\") defines a callable piecewise function usable in plot, table, and arithmetic."
+  ]
+}

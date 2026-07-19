@@ -1,0 +1,48 @@
+{
+  "expression": "label3d",
+  "_requires": ["g3d"],
+  "description": "Renders a text label in 3D space with fade-in animation",
+  "utility": "Display a text label at a specific position in 3D space",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "The 3D graph container"},
+    {"name": "position_x", "type": "number", "required": true, "description": "X coordinate of the label position"},
+    {"name": "position_y", "type": "number", "required": true, "description": "Y coordinate of the label position"},
+    {"name": "position_z", "type": "number", "required": true, "description": "Z coordinate of the label position"},
+    {"name": "text", "type": "string", "required": true, "description": "Label text (supports LaTeX via KaTeX)"}
+  ],
+  "alternates": [
+    {
+      "variant": "using point3d expression",
+      "syntax": "label3d(graph, point3d(position), \"text\")",
+      "description": "Use a point3d expression instead of separate coordinates"
+    },
+    {
+      "variant": "at vector endpoint",
+      "syntax": "label3d(graph, vector3d, \"text\")",
+      "description": "Place label at the end point of a vector3d expression"
+    },
+    {
+      "variant": "with buff offset",
+      "syntax": "label3d(G, P, \"text\", buff(0.5))",
+      "description": "Label with perpendicular offset using buff()"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "label at origin",
+      "expression": "label3d(g, 0, 0, 0, \"Origin\")"
+    },
+    {
+      "scenario": "label using point3d with LaTeX",
+      "expression": "label3d(g, point3d(g, 1, 1, 1), \"A = (1,1,1)\")"
+    },
+    {
+      "scenario": "Label angle theta at origin in scalar triple product",
+      "expression": "G=g3d(at(1,8), view(22.1, 22.8)); O = point3d(G, 0, 0, 0); label3d(G, O, \"theta\")"
+    },
+    {
+      "scenario": "Label with offset",
+      "expression": "label3d(G, point3d(G, 1, 2, 3), \"A\", buff(0.5))"
+    }
+  ]
+}

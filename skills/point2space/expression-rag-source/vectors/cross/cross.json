@@ -1,0 +1,56 @@
+{
+  "expression": "cross",
+  "_requires": [],
+  "description": "Cross product of two vectors. In 2D this returns a scalar (the z-component), in 3D it returns a vector. Can be used as a standalone function with vector literals or vector variables.",
+  "utility": "Calculate the cross product of two vectors",
+  "arguments": [
+    {
+      "name": "vectorA",
+      "type": "vector | point tuple",
+      "required": true,
+      "description": "First vector (vector literal {x,y}, point tuple, or vector variable)"
+    },
+    {
+      "name": "vectorB",
+      "type": "vector | point tuple",
+      "required": true,
+      "description": "Second vector (vector literal {x,y}, point tuple, or vector variable)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "2D cross product (returns scalar)",
+      "syntax": "c = cross({1, 0}, {0, 1})",
+      "description": "Cross product of two 2D vectors returns the z-component scalar"
+    },
+    {
+      "variant": "3D cross product (returns vector)",
+      "syntax": "c = cross({1, 0, 0}, {0, 1, 0})",
+      "description": "Cross product of two 3D vectors returns a perpendicular vector"
+    },
+    {
+      "variant": "Cross product with named vectors",
+      "syntax": "c = cross(a, b)",
+      "description": "Cross product of two named vector variables"
+    },
+    {
+      "variant": "Cross product via p() for graph vectors",
+      "syntax": "c = p(V1, V2, cross)",
+      "description": "Cross product of two graph vector expressions using the p() property accessor"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "2D cross product of unit vectors",
+      "expression": "c = cross({1, 0}, {0, 1})"
+    },
+    {
+      "scenario": "3D cross product",
+      "expression": "c = cross({1, 0, 0}, {0, 1, 0})"
+    },
+    {
+      "scenario": "Cross product of named vectors",
+      "expression": "a = {2, 3}\nb = {4, 1}\nc = cross(a, b)"
+    }
+  ]
+}

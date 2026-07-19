@@ -1,0 +1,27 @@
+{
+  "expression": "layout",
+  "description": "Controls table layout direction: vertical (default) or horizontal",
+  "utility": "Choose between top-to-bottom rows or left-to-right formula layout",
+  "arguments": [
+    {
+      "name": "direction",
+      "type": "string",
+      "required": true,
+      "description": "Layout direction: horizontal or vertical (default: vertical)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Vertical table layout (top to bottom)",
+      "expression": "table([[1, 2], [3, 4]]) | layout(vertical)"
+    },
+    {
+      "scenario": "Horizontal table layout (left to right)",
+      "expression": "table([[1, 2], [3, 4]]) | layout(horizontal)"
+    },
+    {
+      "scenario": "Row-based formula table",
+      "expression": "table([[x, x^2], [y, y^2]]) | layout(horizontal)"
+    }
+  ]
+}

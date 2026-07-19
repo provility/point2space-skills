@@ -1,0 +1,59 @@
+{
+  "expression": "dashedline3d",
+  "_requires": ["g3d"],
+  "description": "Creates a dashed 3D line segment between two endpoints with fade-in animation.",
+  "utility": "Draw a dashed line in 3D space",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container"
+    },
+    {
+      "name": "start",
+      "type": "point3d or 3 coordinates",
+      "required": true,
+      "description": "Start point as point3d variable or 3 inline coordinates (x, y, z)"
+    },
+    {
+      "name": "end",
+      "type": "point3d or 3 coordinates",
+      "required": true,
+      "description": "End point as point3d variable or 3 inline coordinates (x, y, z)"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Line color - e.g., c(red), c(blue)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From inline coordinates",
+      "syntax": "dashedline3d(G, 0, 0, 0, 1, 1, 1)",
+      "description": "Dashed line from coordinate pairs"
+    },
+    {
+      "variant": "From point3d variables",
+      "syntax": "dashedline3d(G, A, B)",
+      "description": "Dashed line between two point3d variables"
+    },
+    {
+      "variant": "With color",
+      "syntax": "dashedline3d(G, A, B, c(red))",
+      "description": "Dashed line with custom color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Dashed line from origin to (3,4,5)",
+      "expression": "G = g3d(at(4,23), view(30, 30))\ndashedline3d(G, 0, 0, 0, 3, 4, 5)"
+    },
+    {
+      "scenario": "Dashed line between points with color",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = point3d(G, 1, 0, 0)\nB = point3d(G, 0, 1, 0)\ndashedline3d(G, A, B, c(red))"
+    }
+  ]
+}

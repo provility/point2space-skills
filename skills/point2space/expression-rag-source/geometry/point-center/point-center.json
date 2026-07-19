@@ -1,0 +1,30 @@
+{
+  "expression": "point (center)",
+  "_requires": ["g2d"],
+  "description": "Extracts the center point from an existing shape such as a circle or line segment.",
+  "syntax": "point(G, p(obj, type(center)))",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "obj",
+      "type": "shape",
+      "required": true,
+      "description": "Shape to extract the center point from (circle, line, etc.)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get center of a circle",
+      "expression": "C = point(G, p(circ, type(center)))"
+    },
+    {
+      "scenario": "Get midpoint of a line segment",
+      "expression": "M = point(G, p(L, type(center)))"
+    }
+  ]
+}

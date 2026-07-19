@@ -1,0 +1,68 @@
+{
+  "expression": "textsplit",
+  "_requires": [],
+  "description": "Splits selected text objects apart and holds them at offset positions. Each argument can be a select variable (auto-layout offset) or a tuple with explicit position offset using buff(row, col). To gather split objects back, use textgather() separately. Supports animation duration and color customization.",
+  "utility": "Animate text splitting to multiple positions — explodes text apart and holds",
+  "arguments": [
+    {
+      "name": "selection",
+      "type": "variable | (variable, buff(row, col))",
+      "required": true,
+      "description": "Select variable or tuple with explicit offset. Multiple selections allowed. Bare variable uses auto-layout, tuple specifies exact position offset."
+    },
+    {
+      "name": "buff",
+      "type": "buff(row, col)",
+      "required": false,
+      "description": "Position offset as tuple second element: (selectVar, buff(-1, 0)) — offset (-1 row, 0 col)"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Animation duration in seconds"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Text color during split animation"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Auto-layout offset",
+      "syntax": "textsplit(S1, S2, S3)",
+      "description": "Split selections apart with automatic positioning"
+    },
+    {
+      "variant": "Explicit offset (tuple)",
+      "syntax": "textsplit((S1, buff(-1, 0)), (S2, buff(1, 0)))",
+      "description": "Split with explicit position offsets using buff(row, col) tuples"
+    },
+    {
+      "variant": "Mixed auto and explicit",
+      "syntax": "textsplit(S1, (S2, buff(0, 2)), S3)",
+      "description": "Mix auto-layout and explicit offsets in same expression"
+    },
+    {
+      "variant": "With styling",
+      "syntax": "textsplit((S1, buff(-1, 0)), (S2, buff(1, 0)), t(2), c(blue))",
+      "description": "Split with duration and color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Split n and n-1 terms in power rule",
+      "expression": "text_split_1=textsplit(tuple(select_1,buff(-1.5,0)),tuple(select_2,buff(-1.5,0)),t(2),notes(\"notes...\"))"
+    },
+    {
+      "scenario": "Split x and y difference terms",
+      "expression": "text_split_1=textsplit(tuple(select_2,buff(-2.8,0)),tuple(select_1,buff(1.2,0)),c(blue))"
+    },
+    {
+      "scenario": "Split and then gather back to original position",
+      "expression": "text_gather_1 = textgather(text_split_1)"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "expression": "nlpoint",
+  "_requires": ["nl"],
+  "description": "Creates a point (dot) on a number line at a specified value",
+  "utility": "Marks a single position on a number line with optional styling and hollow/filled appearance",
+  "arguments": [
+    {
+      "name": "numberLine",
+      "type": "nl",
+      "required": true,
+      "description": "The number line to place the point on"
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "required": true,
+      "description": "The position (value) on the number line where the point appears"
+    },
+    {
+      "name": "color",
+      "type": "color or c()",
+      "required": false,
+      "description": "Optional color using c(colorName). Defaults to black"
+    },
+    {
+      "name": "radius",
+      "type": "r() or number",
+      "required": false,
+      "description": "Optional point radius using r(size). Defaults to 6"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "required": false,
+      "description": "Optional 'open' or 'hollow' to create an unfilled point"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "filled point",
+      "syntax": "nlpoint(N, x)",
+      "description": "Create a solid filled point at position x"
+    },
+    {
+      "variant": "with color",
+      "syntax": "nlpoint(N, x, c(red))",
+      "description": "Create a colored point"
+    },
+    {
+      "variant": "hollow point",
+      "syntax": "nlpoint(N, x, 'open')",
+      "description": "Create an unfilled (hollow) circle"
+    },
+    {
+      "variant": "with radius",
+      "syntax": "nlpoint(N, x, r(8))",
+      "description": "Customize the point size"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Mark a point at x=3 on a number line",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); pt = nlpoint(N, 3)"
+    },
+    {
+      "scenario": "Red point at x=5",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); pt = nlpoint(N, 5, c(red))"
+    },
+    {
+      "scenario": "Hollow (open) point at x=2",
+      "expression": "N = nl(at(1,1), 2, 8, range(-5, 5)); pt = nlpoint(N, 2, 'open')"
+    },
+    {
+      "scenario": "Large blue point",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); pt = nlpoint(N, 7, c(blue), r(8))"
+    }
+  ]
+}

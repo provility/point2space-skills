@@ -1,0 +1,17 @@
+{
+  "expression": "ptreetrace",
+  "_requires": ["ptree"],
+  "description": "Traces a path through a probability tree, highlighting the route with optional color and label.",
+  "utility": "Trace a path in a probability tree",
+  "arguments": [
+    {"name": "ptree", "type": "ptree variable", "required": true, "description": "Reference to probability tree"},
+    {"name": "path", "type": "quoted string", "required": true, "description": "Path to trace through the tree"},
+    {"name": "label", "type": "quoted string", "required": false, "description": "Annotation label for the trace"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Trace highlight color"},
+    {"name": "spacing", "type": "buff(gap)", "required": false, "description": "Label offset"}
+  ],
+  "examples": [
+    {"scenario": "Trace HH path", "expression": "ptreetrace(T, \"HH\", \"P(HH)\", fc(coral))"},
+    {"scenario": "Trace with label", "expression": "ptreetrace(T, \"HT\", \"P(HT) = 1/4\", fc(steelblue))"}
+  ]
+}

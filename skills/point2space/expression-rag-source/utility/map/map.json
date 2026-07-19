@@ -1,0 +1,48 @@
+{
+  "expression": "map",
+  "_requires": [],
+  "description": "Linear interpolation between two values based on parameter t (0 to 1)",
+  "utility": "Compute intermediate values along a line segment: map(0.5, a, b) gives midpoint",
+  "arguments": [
+    {
+      "name": "t",
+      "type": "number",
+      "required": true,
+      "description": "Interpolation parameter (0 = start, 1 = end, 0.5 = midpoint)"
+    },
+    {
+      "name": "a",
+      "type": "number | point",
+      "required": true,
+      "description": "Start value"
+    },
+    {
+      "name": "b",
+      "type": "number | point",
+      "required": true,
+      "description": "End value"
+    }
+  ],
+  "alternates": [
+    "map(t, a, b) with numbers - linear interpolation",
+    "map(t, P1, P2) with points - point along line segment"
+  ],
+  "examples": [
+    {
+      "scenario": "Numeric interpolation",
+      "expression": "mid = map(0.5, 0, 100)"
+    },
+    {
+      "scenario": "Interpolation between points",
+      "expression": "A = point(g, 0, 0); B = point(g, 3, 4); M = point(g, map(0.5, A, B))"
+    },
+    {
+      "scenario": "Quarter point",
+      "expression": "Q = point(g, map(0.25, x(A), x(B)), map(0.25, y(A), y(B)))"
+    },
+    {
+      "scenario": "In animations",
+      "expression": "t = 0.3; interpolated = map(t, start_val, end_val)"
+    }
+  ]
+}

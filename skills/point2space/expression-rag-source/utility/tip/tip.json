@@ -1,0 +1,112 @@
+{
+  "expression": "tip",
+  "description": "Creates a textbook-style tip or note card with an arrow line connecting from an anchor shape to the tip location. Content is in PLAIN TEXT mode by default — text renders as-is without math processing. Math expressions must be wrapped in math() to render as math.",
+  "utility": "Display context-sensitive notes or tips with animated reveal effects (plain text default, use math() for math)",
+  "arguments": [
+    {
+      "name": "from",
+      "type": "at(anchor, type)",
+      "required": true,
+      "description": "Starting position of arrow line on anchor's edge (type indicates edge: topleft, right, bottomright, etc.)"
+    },
+    {
+      "name": "to",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Position where the tip card is drawn"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false,
+      "description": "Optional title for tip card (first string argument)"
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "required": true,
+      "description": "Main content text for tip card"
+    },
+    {
+      "name": "curvature",
+      "type": "number",
+      "required": false,
+      "description": "Curvature factor for connecting line (default 0)"
+    },
+    {
+      "name": "textColor",
+      "type": "c(color)",
+      "required": false,
+      "description": "Header text and border color"
+    },
+    {
+      "name": "backgroundColor",
+      "type": "fc(color)",
+      "required": false,
+      "description": "Tip background color"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Background opacity (0-1)"
+    },
+    {
+      "name": "padding",
+      "type": "pd(value)",
+      "required": false,
+      "description": "Padding inside tip card"
+    },
+    {
+      "name": "fontSize",
+      "type": "fs(size)",
+      "required": false,
+      "description": "Font size for tip content"
+    },
+    {
+      "name": "effectType",
+      "type": "type(effect)",
+      "required": false,
+      "description": "Animation effect: type(typewrite), type(reveal), type(slideup), type(fadescale), type(highlight), or type(blur)"
+    },
+    {
+      "name": "border",
+      "type": "border(...)",
+      "required": false,
+      "description": "Border styling"
+    },
+    {
+      "name": "fadeOutDelay",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Fade-out delay in seconds"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Simple tip",
+      "syntax": "tip(at(anchor1, type), at(anchor2), \"Content\")",
+      "description": "Tip with content only, default styling"
+    },
+    {
+      "variant": "Tip with title and content",
+      "syntax": "tip(at(anchor1, type), at(anchor2), \"Title\", \"Content\")",
+      "description": "Tip with separate title and content"
+    },
+    {
+      "variant": "Full styling",
+      "syntax": "tip(at(anchor1, type(right)), at(anchor2), \"Note\", \"Content\", 2, c(green), type(reveal))",
+      "description": "Tip with curve, color, and reveal animation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Displacement definition hint",
+      "expression": "tip_1=tip(at(11,14),at(11,24),\"Displacement\",\"Displacement is the change in position of an object. It is a vector that points from the initial point (A) to the final point (B).\",c(brown))"
+    },
+    {
+      "scenario": "Hint about point inside circle",
+      "expression": "tip_1=tip(at(19,44),at(26,40),\"Hint\",\"Negative values proves that the point is inside the circle\",c(teal),fc(azure),ff(\"Gill Sans\"),border(teal,s(2),radius(8),shadow(10)))"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "expression": "p",
+  "_requires": ["g2d"],
+  "description": "Extract geometric properties from shapes. Returns point coordinates or numeric values depending on the property. Use p(shape, propertyName) for simple properties, p(shape, propertyName, param) for indexed/parameterized properties, and p(shape1, shape2, propertyName) for two-shape operations. Chain p() calls to extract coordinates from point-valued properties: p(p(line, start), x).",
+  "utility": "Extract properties (coordinates, lengths, angles, areas, foci, roots, etc.) from any shape",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "point | line | vector | circle | polygon | rect | square | ellipse | parabola | hyperbola | angle | plot",
+      "required": true,
+      "description": "Shape variable to extract property from"
+    },
+    {
+      "name": "propertyName",
+      "type": "property name",
+      "required": true,
+      "description": "Property to extract — e.g., x, y, distance, slope, area, foci, roots, sin, cos, tan"
+    },
+    {
+      "name": "param",
+      "type": "number",
+      "required": false,
+      "description": "Index or parameter for indexed properties — e.g., p(polygon, corner, 1) for first corner, p(ellipse, foci, 2) for second focus"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point coordinates",
+      "syntax": "p(point, x)  or  p(point, y)",
+      "description": "Get x or y coordinate of a point"
+    },
+    {
+      "variant": "Line properties",
+      "syntax": "p(line, distance) | p(line, slope) | p(line, angle)",
+      "description": "Length, slope (rise/run), or angle from x-axis"
+    },
+    {
+      "variant": "Line point properties (chained)",
+      "syntax": "p(p(line, start), x)  or  p(p(line, center), y)",
+      "description": "Extract coordinates from start, end, center, at_ratio, y_intercept, x_intercept"
+    },
+    {
+      "variant": "Circle properties",
+      "syntax": "p(circle, radius) | p(circle, area) | p(circle, circumference)",
+      "description": "Radius, diameter, area, circumference, or center coordinates"
+    },
+    {
+      "variant": "Polygon/Triangle properties",
+      "syntax": "p(polygon, area) | p(polygon, perimeter) | p(polygon, angle, 0)",
+      "description": "Area, perimeter, num_sides, corner(index), edge(index), angle(index)"
+    },
+    {
+      "variant": "Triangle special properties",
+      "syntax": "p(triangle, in_radius) | p(triangle, circum_radius) | p(p(triangle, centroid), x)",
+      "description": "Inradius, circumradius, centroid, incenter, circumcenter, orthocenter"
+    },
+    {
+      "variant": "Vector properties",
+      "syntax": "p(vector, magnitude) | p(vector, direction)",
+      "description": "Magnitude (length), direction (angle in degrees), start, end, unit vector"
+    },
+    {
+      "variant": "Two-vector operations",
+      "syntax": "p(V1, V2, dot) | p(V1, V2, cross) | p(V1, V2, scalar_proj)",
+      "description": "Dot product, cross product, vector/scalar projection between two vectors"
+    },
+    {
+      "variant": "Conic properties",
+      "syntax": "p(ellipse, foci, 1) | p(ellipse, eccentricity) | p(parabola, directrix, 1)",
+      "description": "Foci, vertex, covertex, directrix, eccentricity, latus_rectum, semimajor, semiminor"
+    },
+    {
+      "variant": "Angle properties",
+      "syntax": "p(angle, degrees) | p(p(angle, vertex), x)",
+      "description": "Angle measure in degrees, vertex coordinates"
+    },
+    {
+      "variant": "Angle trig ratios",
+      "syntax": "p(angle, sin) | p(angle, cos) | p(angle, tan) | p(angle, csc) | p(angle, sec) | p(angle, cot)",
+      "description": "Trigonometric ratios of the angle: sine, cosine, tangent, cosecant, secant, cotangent"
+    },
+    {
+      "variant": "Plot properties",
+      "syntax": "p(p(plot, roots, 1), x) | p(p(plot, y_intercept), y)",
+      "description": "Roots, y-intercept, critical_points, inflection_points, at_x (all return points — chain with x/y)"
+    },
+    {
+      "variant": "Angle between two shapes",
+      "syntax": "p(L1, L2, angle)",
+      "description": "Angle between two lines or vectors in degrees"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Point coordinates",
+      "expression": "x_val = p(P, x)\ny_val = p(P, y)"
+    },
+    {
+      "scenario": "Line length and slope",
+      "expression": "d = p(L, distance)\nm = p(L, slope)"
+    },
+    {
+      "scenario": "Line start/end coordinates (chained)",
+      "expression": "x1 = p(p(L, start), x)\ny1 = p(p(L, start), y)\nx2 = p(p(L, end), x)\ny2 = p(p(L, end), y)"
+    },
+    {
+      "scenario": "Line midpoint",
+      "expression": "mx = p(p(L, center), x)\nmy = p(p(L, center), y)"
+    },
+    {
+      "scenario": "Circle area and radius",
+      "expression": "r = p(C, radius)\nA = p(C, area)"
+    },
+    {
+      "scenario": "Circle center coordinates",
+      "expression": "h = p(p(C, center), x)\nk = p(p(C, center), y)"
+    },
+    {
+      "scenario": "Triangle side lengths via edges",
+      "expression": "a = p(p(T, edge, 0), distance)\nb = p(p(T, edge, 1), distance)\nc = p(p(T, edge, 2), distance)"
+    },
+    {
+      "scenario": "Triangle angles",
+      "expression": "A = p(T, angle, 0)\nB = p(T, angle, 1)\nC = p(T, angle, 2)"
+    },
+    {
+      "scenario": "Triangle incircle",
+      "expression": "r = p(T, in_radius)\nIC = p(T, incenter)\ncircle(G, IC, r)"
+    },
+    {
+      "scenario": "Vector magnitude and direction",
+      "expression": "mag = p(V, magnitude)\ndir = p(V, direction)"
+    },
+    {
+      "scenario": "Dot product of two vectors",
+      "expression": "d = p(V1, V2, dot)"
+    },
+    {
+      "scenario": "Ellipse foci",
+      "expression": "F1 = point(G, p(E, foci, 1), c(red))\nF2 = point(G, p(E, foci, 2), c(red))"
+    },
+    {
+      "scenario": "Plot roots and y-intercept",
+      "expression": "root_x = p(p(pl, roots, 1), x)\ny_int = p(p(pl, y_intercept), y)"
+    },
+    {
+      "scenario": "Use in desc() template for dynamic display",
+      "expression": "desc(at(0,10), \"slope = :{p(L, slope)}:.2f\")\ndesc(at(1,10), \"length = :{p(L, distance)}:.2f\")"
+    },
+    {
+      "scenario": "Use in computedproperty for named variable",
+      "expression": "cprop = computedproperty(at(2,10), P, \"p(P, x)\", \"a\")"
+    },
+    {
+      "scenario": "Trig ratios of an angle",
+      "expression": "s = p(angle_1, sin)\nc = p(angle_1, cos)\nt = p(angle_1, tan)"
+    },
+    {
+      "scenario": "All six trig ratios",
+      "expression": "s = p(angle_1, sin)\nc = p(angle_1, cos)\nt = p(angle_1, tan)\ncsc_val = p(angle_1, csc)\nsec_val = p(angle_1, sec)\ncot_val = p(angle_1, cot)"
+    }
+  ],
+  "notes": [
+    "Point-valued properties (start, end, center, foci, corner, roots, etc.) return points — chain with p() to get x or y: p(p(shape, prop), x)",
+    "Line-valued properties (edge, directrix) return lines — chain with p() to get distance, slope, etc.",
+    "Indexed properties use a numeric parameter: p(polygon, corner, 0) for first corner (0-based), p(ellipse, foci, 1) for first focus (1-based for conics)",
+    "Angle trig properties: sin, cos, tan, csc, sec, cot — compute the trigonometric ratio from the angle's measure in radians",
+    "Template syntax for desc(): use :{expression}:.2f to display computed values with formatting"
+  ]
+}

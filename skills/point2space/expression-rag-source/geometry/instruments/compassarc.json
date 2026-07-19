@@ -1,0 +1,72 @@
+{
+  "expression": "compassarc",
+  "_requires": ["g2d"],
+  "description": "Draws an arc or full circle using an animated compass instrument. The compass visually moves, adjusts, and traces the arc on the graph.",
+  "utility": "Draw arcs and circles with compass animation — supports auto-adjust (move compass to center, set radius) or current-state (use compass as-is)",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph to draw on"
+    },
+    {
+      "name": "center",
+      "type": "point",
+      "required": false,
+      "description": "Center point for the compass (auto-adjust form). Omit to use compass's current position."
+    },
+    {
+      "name": "radius(r)",
+      "type": "radius",
+      "required": false,
+      "description": "Radius value wrapped in radius(). Required for auto-adjust form."
+    },
+    {
+      "name": "range(start, end)",
+      "type": "range",
+      "required": false,
+      "description": "Arc sweep range in degrees. Omit for a full 360° circle."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "auto-adjust full circle",
+      "syntax": "compassarc(G, center, radius(r))",
+      "description": "Moves compass to center, sets radius, traces full circle"
+    },
+    {
+      "variant": "auto-adjust arc",
+      "syntax": "compassarc(G, center, radius(r), range(start, end))",
+      "description": "Moves compass to center, sets radius, traces arc from start° to end°"
+    },
+    {
+      "variant": "current-state full circle",
+      "syntax": "compassarc(G)",
+      "description": "Traces full circle using compass's current center and radius"
+    },
+    {
+      "variant": "current-state arc",
+      "syntax": "compassarc(G, range(start, end))",
+      "description": "Traces arc from start° to end° using compass's current state"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Draw compass arc from point A with radius 5 for equilateral triangle construction",
+      "expression": "graph_1=g2d(at(1,8),size(23),range(-1,12),grid(noaxes),type(geometry))\npoint_A=point(graph_1,2,1,label(\"A\"))\narc_1=compassarc(graph_1,point_A,radius(5),range(0,90),c(crimson))"
+    },
+    {
+      "scenario": "Draw second compass arc from point B to find triangle vertex",
+      "expression": "arc_2=compassarc(graph_1,point_B,radius(5),range(180,90),c(crimson))"
+    },
+    {
+      "scenario": "Compass arc with center and radius on geometry graph",
+      "expression": "compassarc(G, point(G, 3, 3), radius(1), 20,120, t(6))"
+    },
+    {
+      "scenario": "Full compass arc with radius 4",
+      "expression": "compassarc(G,point(G, 8, 8), radius(4), t(6))"
+    }
+  ]
+}

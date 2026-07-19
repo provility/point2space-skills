@@ -1,0 +1,93 @@
+{
+  "expression": "image",
+  "description": "Embeds an uploaded image asset on the canvas at logical coordinates or within a 2D graph at graph coordinates, with an optional scale factor controlling display size.",
+  "utility": "Embed an uploaded image asset on the canvas or within a 2D graph",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at(row, col) | graph",
+      "required": true,
+      "description": "Either at(row, col) for canvas-level placement, or a g2d graph reference for graph-level placement"
+    },
+    {
+      "name": "imageName",
+      "type": "string",
+      "required": true,
+      "description": "Name of the uploaded image asset (without file extension) - e.g., \"photo\", \"balloon\", \"diagram\""
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "required": false,
+      "description": "X coordinate for graph mode positioning (used with graph reference)"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "required": false,
+      "description": "Y coordinate for graph mode positioning (used with graph reference)"
+    },
+    {
+      "name": "point",
+      "type": "point expression",
+      "required": false,
+      "description": "A point expression for graph mode positioning (alternative to x, y)"
+    },
+    {
+      "name": "scale",
+      "type": "number",
+      "required": false,
+      "description": "Scale factor for the image (default 1.0, must be positive). Multiplies the natural width and height."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Canvas mode (logical coordinates)",
+      "syntax": "image(at(row, col), \"name\")",
+      "description": "Place image at logical canvas position without scale"
+    },
+    {
+      "variant": "Canvas mode with scale",
+      "syntax": "image(at(row, col), \"name\", scale)",
+      "description": "Place image at logical canvas position with custom scale"
+    },
+    {
+      "variant": "Graph mode with x, y",
+      "syntax": "image(G, \"name\", x, y)",
+      "description": "Place image at graph coordinates (x, y)"
+    },
+    {
+      "variant": "Graph mode with x, y and scale",
+      "syntax": "image(G, \"name\", x, y, scale)",
+      "description": "Place image at graph coordinates with custom scale"
+    },
+    {
+      "variant": "Graph mode with point",
+      "syntax": "image(G, \"name\", point)",
+      "description": "Place image at a point expression's position"
+    },
+    {
+      "variant": "Graph mode with point and scale",
+      "syntax": "image(G, \"name\", point, scale)",
+      "description": "Place image at a point expression's position with custom scale"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Building image for optimization problem",
+      "expression": "image_1=image(at(18,20),\"building\",4.5,9.6)"
+    },
+    {
+      "scenario": "Image with expand effect and rotation",
+      "expression": "image_1=image(at(3,8),\"building\",8.8,10.7,effect(expand),rot(50))"
+    },
+    {
+      "scenario": "Image as fill on point",
+      "expression": "point_1=point(graph_1,1.4,2.5,fi(\"hotel-svgrepo-com\"))"
+    },
+    {
+      "scenario": "Image placed on graph point with ball",
+      "expression": "ball = image(G, \"ball\", P, 0.5)"
+    }
+  ]
+}

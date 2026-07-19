@@ -1,0 +1,75 @@
+{
+  "expression": "implicitplot",
+  "_requires": ["g2d"],
+  "description": "Renders an implicit curve defined by an equation f(x, y) = 0 on a 2D graph. Supports arbitrary algebraic curves including circles, ellipses, hyperbolas, and higher-order relations.",
+  "utility": "Plot an implicit curve f(x, y) = 0 on a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container to plot on"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": true,
+      "description": "Implicit equation as ASCII math string - e.g., \"x^2 + y^2 - 25\". The equation contains both x and y"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color - e.g., c(red)"
+    },
+    {
+      "name": "strokeWidth",
+      "type": "s(value)",
+      "required": false,
+      "description": "Stroke width - e.g., s(2)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic implicit plot",
+      "syntax": "implicitplot(G, \"f(x,y)\")",
+      "description": "Plot the implicit curve where f(x,y) = 0"
+    },
+    {
+      "variant": "With color",
+      "syntax": "implicitplot(G, \"f(x,y)\", c(red))",
+      "description": "Implicit curve with custom stroke color"
+    },
+    {
+      "variant": "Equation form",
+      "syntax": "implicitplot(G, \"x^2 + y^2 = 25\")",
+      "description": "Implicit curve written in equation form (auto-converted to f(x,y) = 0)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Implicit plot with styling",
+      "expression": "G2 = g2d(at(4,4), 20, 20, range(-5, 5), range(-5, 5), type(plotting))\nimplicitplot(G2, \"x^2*y^2 - x^2 - y^2\", c(red))"
+    },
+    {
+      "scenario": "Circle of radius 5",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-6, 6), range(-6, 6), type(plotting))\nimplicitplot(G, \"x^2 + y^2 - 25\")"
+    },
+    {
+      "scenario": "Hyperbola xy = 1",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-5, 5), range(-5, 5), type(plotting))\nimplicitplot(G, \"x*y - 1\")"
+    },
+    {
+      "scenario": "Lemniscate of Bernoulli",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-4, 4), range(-4, 4), type(plotting))\na = 3\nimplicitplot(G, \"(x^2 + y^2)^2 - a^2*(x^2 - y^2)\", c(red))"
+    },
+    {
+      "scenario": "Folium of Descartes",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-4, 4), range(-4, 4), type(plotting))\na = 3\nimplicitplot(G, \"x^3 + y^3 - a*x*y\")"
+    },
+    {
+      "scenario": "Plot x = f(y) curve using implicit form",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-5, 5), range(-5, 5), type(plotting))\nimplicitplot(G, \"x = 2 + sin(y)\", c(purple))"
+    }
+  ]
+}

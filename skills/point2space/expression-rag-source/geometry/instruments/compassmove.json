@@ -1,0 +1,30 @@
+{
+  "expression": "compassmove",
+  "_requires": ["g2d"],
+  "description": "Animates translating the compass to a new center point without changing its radius or angle",
+  "utility": "Reposition the compass center before drawing the next arc",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph containing the compass"
+    },
+    {
+      "name": "newCenter",
+      "type": "point",
+      "required": true,
+      "description": "The new center position for the compass"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Move compass to (5,5) and draw a circle",
+      "expression": "G = g2d(-10, 10, -10, 10); compassmove(G, point(G, 5, 5)); compassarc(G)"
+    },
+    {
+      "scenario": "Draw circles at two different centers with same radius",
+      "expression": "G = g2d(-10, 10, -10, 10); compassarc(G, point(G, -3, 0), radius(3)); compassmove(G, point(G, 3, 0)); compassarc(G)"
+    }
+  ]
+}

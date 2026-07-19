@@ -1,0 +1,45 @@
+{
+  "expression": "spanplane3d",
+  "_requires": ["g3d", "vector3d", "point3d"],
+  "description": "Creates a plane in 3D space from two spanning (direction) vectors and a point on the plane.",
+  "utility": "Create a plane from two spanning vectors and a point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "v1",
+      "type": "vector3d",
+      "required": true,
+      "description": "First spanning vector in the plane"
+    },
+    {
+      "name": "v2",
+      "type": "vector3d",
+      "required": true,
+      "description": "Second spanning vector in the plane (must not be parallel to v1)"
+    },
+    {
+      "name": "point",
+      "type": "point3d",
+      "required": true,
+      "description": "A point that lies on the plane"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From variable references",
+      "syntax": "spanplane3d(G, u, v, A)",
+      "description": "Plane from two vector3d variables and a point3d variable"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plane spanned by two vectors through a point",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nA = point3d(G, 1, 0, 0)\nu = vector3d(G, 0, 0, 0, 1, 1, 0)\nv = vector3d(G, 0, 0, 0, 0, 1, 1)\npl = spanplane3d(G, u, v, A)"
+    }
+  ]
+}

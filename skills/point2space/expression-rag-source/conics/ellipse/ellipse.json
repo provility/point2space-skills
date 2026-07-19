@@ -1,0 +1,98 @@
+{
+  "expression": "ellipse",
+  "_requires": ["g2d"],
+  "description": "Draws an ellipse on a 2D graph from a center point and semi-axes, or from a standard-form equation string. Center takes a point() expression or variable. Rotation uses the rotation() expression.",
+  "utility": "Draw an ellipse on a 2D graph by center+axes or equation",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph container to draw on"
+    },
+    {
+      "name": "center",
+      "type": "point expression",
+      "required": false,
+      "description": "Center of the ellipse as a point() expression or point variable. Defaults to origin if omitted"
+    },
+    {
+      "name": "a",
+      "type": "number",
+      "required": true,
+      "description": "Semi-major axis length (along the rotation direction). Must be positive"
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "required": true,
+      "description": "Semi-minor axis length (perpendicular to rotation). Must be positive"
+    },
+    {
+      "name": "rotation",
+      "type": "rotation(angle)",
+      "required": false,
+      "description": "Rotation angle using rotation() expression - e.g., rotation(pi/4). Defaults to 0 (horizontal)"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": false,
+      "description": "Alternative to parametric args - standard form equation string e.g. \"x^2/25 + y^2/9 = 1\""
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Center point + semi-axes",
+      "syntax": "ellipse(G, point(G, h, k), a, b)",
+      "description": "Ellipse at a point with semi-axes a and b"
+    },
+    {
+      "variant": "Semi-axes only (origin center)",
+      "syntax": "ellipse(G, a, b)",
+      "description": "Ellipse centered at origin with semi-axes a and b"
+    },
+    {
+      "variant": "With rotation",
+      "syntax": "ellipse(G, point(G, h, k), a, b, rotation(angle))",
+      "description": "Rotated ellipse using rotation() expression"
+    },
+    {
+      "variant": "From equation string",
+      "syntax": "ellipse(G, \"x^2/25 + y^2/9 = 1\")",
+      "description": "Ellipse defined by standard-form equation"
+    },
+    {
+      "variant": "Shifted equation",
+      "syntax": "ellipse(G, \"(x-2)^2/9 + (y+1)^2/4 = 1\")",
+      "description": "Ellipse centered at (2, -1) from equation"
+    },
+    {
+      "variant": "Foci mode",
+      "syntax": "ellipse(G, F1, F2, type(foci))",
+      "description": "Ellipse defined by two focus points with default eccentricity"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Ellipse from standard-form equation on a geometry graph",
+      "expression": "graph_1=g2d(at(3,13),size(18.2),range(-4,6),type(geometry))\nellipse_1 = ellipse(graph_1, \"x^2/9 + y^2/4 = 1\")"
+    },
+    {
+      "scenario": "Ellipse defined by two foci points with foci mode and custom sum distance",
+      "expression": "graph_1=g2d(at(4,13),size(18.2),range(-1,7),type(geometry))\nellipse_1=ellipse(graph_1,point(graph_1,4.7,5.2),point(graph_1,3.4,3.2),type(foci),2)"
+    },
+    {
+      "scenario": "Ellipse with foci, interpolated point, and focal distance lines for sum property",
+      "expression": "graph_1=g2d(at(5,9),size(23.4),range(-5,6),type(geometry))\npoint_1=point(graph_1,-3,0)\npoint_2 = point(graph_1, 3, 0, c(olive), fc(goldenrod))\nellipse_1 = ellipse(graph_1, point_1, point_2, type(foci), c(coral))\npoint_3=interpolate(graph_1,ellipse_1,0.1,1.1,fi(\"earth\",size(0.5)))\nline_1 = line(graph_1, point_1, point_3, type(segment), c(brown))\nline_2 = line(graph_1, point_2, point_3, type(segment), c(coral))"
+    },
+    {
+      "scenario": "Ellipse from equation with deferred drawing",
+      "expression": "graph_1 = g2d(at(6,35), size(20), range(-6, 6, 2), type(geometry), t(0.5))\nellipse_1 = ellipse(graph_1, \"x^2/4 + y^2/25 = 1\", defer())"
+    },
+    {
+      "scenario": "Ellipse with computed semi-major property for focal sum display",
+      "expression": "desc_3 = desc(at(26,32), \"d_1 + d_2 = 2a = 2 cdot :{p(ellipse_1, semimajor)}:.2f = :{2 * p(ellipse_1, semimajor)}:.2f\")"
+    }
+  ]
+}

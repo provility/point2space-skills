@@ -1,0 +1,88 @@
+{
+  "expression": "tangent",
+  "_requires": ["g2d", "plot"],
+  "description": "Draws a tangent line to a curve or circle at a specified point, centered at the point of tangency. For plots, specify the x-value. For circles, specify the angle in degrees. Used for visualizing instantaneous slope, derivatives, and linear approximation.",
+  "utility": "Draw a tangent line to a curve at a specific x-value or to a circle at a specific angle",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "shape",
+      "type": "plot or circle reference",
+      "required": true,
+      "description": "A previously assigned plot or circle variable"
+    },
+    {
+      "name": "param",
+      "type": "number",
+      "required": true,
+      "description": "For plots: the x-coordinate where the tangent touches the curve. For circles: the angle in degrees"
+    },
+    {
+      "name": "length",
+      "type": "number",
+      "required": false,
+      "description": "Tangent line length in model units. Defaults to 80% of the x-axis range"
+    },
+    {
+      "name": "buff",
+      "type": "buff(value)",
+      "required": false,
+      "description": "Alternative way to set tangent line length - e.g., buff(5)"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Line color - e.g., c(blue)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Tangent to a plot at x",
+      "syntax": "f = plot(G, \"f(x)\")\ntangent(G, f, x)",
+      "description": "Tangent line to f at the given x-value"
+    },
+    {
+      "variant": "Tangent with custom length",
+      "syntax": "f = plot(G, \"f(x)\")\ntangent(G, f, x, buff(5))",
+      "description": "Tangent line with specific length in model units"
+    },
+    {
+      "variant": "Tangent with color",
+      "syntax": "f = plot(G, \"f(x)\")\ntangent(G, f, x, c(blue))",
+      "description": "Colored tangent line"
+    },
+    {
+      "variant": "Tangent to a circle at angle",
+      "syntax": "C = circle(G, 3, pt)\ntangent(G, C, 45)",
+      "description": "Tangent line to circle at 45 degrees"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Tangent line to 1/x at x=1 on a plotting graph",
+      "expression": "graph_1 = g2d(at(3,7), 21.5, 32.4, range(-5, 5), range(-5, 5), type(plotting))\nplot_1=plot(graph_1,\"1/(x)\",range(-5,5))\ntangent_1 = tangent(graph_1, plot_1, 1)"
+    },
+    {
+      "scenario": "Tangent to x squared at a point with point animator",
+      "expression": "graph_1 = g2d(at(4,19), 13.8, 20.3, range(-3, 3), range(-2, 10), type(plotting))\nplot_1 = plot(graph_1, \"x^2\", t(2))\npoint_1 = point(graph_1, -2, 4)\ntangent_1 = tangent(graph_1, plot_1, point_1)\nptanim_1 = pointanimator(point_1, point(graph_1, 2, 4))"
+    },
+    {
+      "scenario": "Tangent and normal with angle between them on 1/x",
+      "expression": "graph_1 = g2d(at(3,7), 21.5, 32.4, range(-5, 5), range(-5, 5), type(plotting))\nplot_1=plot(graph_1,\"1/(x)\",range(-5,5))\ntangent_1 = tangent(graph_1, plot_1, 1)\nnormal_1 = normal(graph_1, plot_1, 1)\nangle_1=angle(graph_1,tangent_1,normal_1,radius(39))"
+    },
+    {
+      "scenario": "Tangent at x=0.8 with dashed blue line and secant approaching via variable animator",
+      "expression": "f(x) = x^2\ngraph_1=g2d(at(1,25),14,15,range(-2,3,1),range(-1,5,1), type(plotting))\npl1=plot(graph_1,f)\nb=0.8\np1=point(graph_1,b,f(b))\ntangent(graph_1,pl1,b,c(blue),dash())\nvaranim_1=variableanimator(at(2,3),\"q1x\",2,0.8)\nq1=point(graph_1,q1x,f(q1x))\nline_2=line(graph_1,p1,q1,c(red))\nplayanimator(varanim_1)"
+    },
+    {
+      "scenario": "Tangent with custom length on second graph in limit lesson",
+      "expression": "tangent_2=tangent(graph_2,pl1,b,4,c(blue),dash())"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "expression": "property (height)",
+  "_requires": ["g2d"],
+  "description": "Extract rectangle height. Returns the numeric height value of a rectangle.",
+  "utility": "Extract rectangle height",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "rect",
+      "required": true,
+      "description": "Rectangle variable to extract height from"
+    },
+    {
+      "name": "propertyName",
+      "type": "type(height)",
+      "required": true,
+      "description": "Height property using type() expression"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Rectangle height",
+      "syntax": "p(rect, type(height))",
+      "description": "Get rectangle height"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get rectangle height",
+      "expression": "h = p(rect_1, type(height))"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "expression": "lineargrid3d",
+  "_requires": ["g3d"],
+  "description": "Creates a coordinate grid on a plane anchored at a point, using the plane's spanning vectors.",
+  "utility": "Draw a linear combination coordinate grid on a 3D plane",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container"
+    },
+    {
+      "name": "plane",
+      "type": "plane3d reference",
+      "required": true,
+      "description": "The plane whose spanning vectors define the grid axes"
+    },
+    {
+      "name": "point",
+      "type": "point3d reference",
+      "required": true,
+      "description": "The anchor point (origin of the grid)"
+    },
+    {
+      "name": "styles",
+      "type": "style expressions",
+      "required": false,
+      "description": "Optional: c(), s(), fo() for color and styling"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic grid",
+      "syntax": "lineargrid3d(G, plane, point)",
+      "description": "Grid on a plane anchored at a point"
+    },
+    {
+      "variant": "Styled grid",
+      "syntax": "lineargrid3d(G, plane, point, c(gray), fo(0.3))",
+      "description": "Grid with custom color and opacity"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Linear combination grid on a span plane",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nv1 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 1, 0, 0))\nv2 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 0, 1, 0))\nP = spanplane3d(G, v1, v2, point3d(G, 0, 0, 0))\nO = point3d(G, 0, 0, 0)\ngrid = lineargrid3d(G, P, O)"
+    }
+  ]
+}

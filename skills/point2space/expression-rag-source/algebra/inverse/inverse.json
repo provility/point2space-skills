@@ -1,0 +1,24 @@
+{
+  "expression": "inverse",
+  "_requires": [],
+  "description": "Returns the inverse of a non-singular square matrix (up to 3x3).",
+  "utility": "Calculate the inverse of a square matrix",
+  "arguments": [
+    {
+      "name": "matrix",
+      "type": "matrix",
+      "required": true,
+      "description": "A non-singular square matrix variable"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Inverse of 2x2 matrix",
+      "expression": "M = [[1, 2], [3, 4]]\nMinv = inverse(M)"
+    },
+    {
+      "scenario": "Verify inverse produces identity",
+      "expression": "M = [[2, 1], [5, 3]]\nMinv = inverse(M)\nI = M * Minv"
+    }
+  ]
+}

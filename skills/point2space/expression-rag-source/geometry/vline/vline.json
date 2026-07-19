@@ -1,0 +1,37 @@
+{
+  "expression": "vline",
+  "_requires": ["g2d", "line"],
+  "description": "Creates a vertical line passing through a point or at a given x-coordinate.",
+  "utility": "Create a vertical line through a point or x-coordinate",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "point",
+      "type": "point | number",
+      "required": true,
+      "description": "Point to pass through, or x-coordinate for the vertical line"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Vertical line through point",
+      "syntax": "vline(G, point)",
+      "description": "Vertical line passing through a point (or vline(G, x) for x-coordinate)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Vertical line at x=3",
+      "expression": "V = vline(G, 3)"
+    },
+    {
+      "scenario": "Vertical lines for parabola ray intersection points",
+      "expression": "G=g2d(at(3,11),size(23),range(-6,6),type(geometry)); H1=intersect(G,P,vline(G,point(G,-2,0)),defer()); H2=intersect(G,P,vline(G,-1),defer()); H3=intersect(G,P,vline(G,0),defer())"
+    }
+  ]
+}

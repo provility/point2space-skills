@@ -1,0 +1,60 @@
+{
+  "expression": "fi",
+  "description": "Inline modifier that fills a shape's interior with an image asset instead of a solid color, clipping the image to the shape boundary with an optional scale factor.",
+  "utility": "Fill a shape with an image asset clipped to shape bounds",
+  "arguments": [
+    {
+      "name": "imageName",
+      "type": "string",
+      "required": true,
+      "description": "Name of the uploaded image asset in quotes - e.g., \"tree\", \"star\""
+    },
+    {
+      "name": "scale",
+      "type": "number",
+      "required": false,
+      "description": "Scale factor for the image, default 1. Positive number, e.g., 0.5, 0.8, 1.5"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic fill image",
+      "syntax": "fi(\"imageName\")",
+      "description": "Fill shape with image at default scale"
+    },
+    {
+      "variant": "Scaled fill image",
+      "syntax": "fi(\"imageName\", 0.7)",
+      "description": "Fill shape with image scaled to 70%"
+    },
+    {
+      "variant": "On a rectangle",
+      "syntax": "rect(G, 12, 4, 4, 3, fi(\"tree\", 0.7))",
+      "description": "Rectangle filled with a scaled image"
+    },
+    {
+      "variant": "On a square",
+      "syntax": "square(G, -2, -2, 3, fi(\"star\", 0.8))",
+      "description": "Square filled with a scaled image"
+    },
+    {
+      "variant": "On a point",
+      "syntax": "ratiopoint(G, L, r, fi(\"tree\", 1))",
+      "description": "Point marker filled with an image"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Rectangle with tree image and thin stroke",
+      "expression": "r1 = rect(G, 12, 4, 4, 3, fi(\"tree\", 0.7), fo(1), s(0.1))"
+    },
+    {
+      "scenario": "Square with star image",
+      "expression": "s1 = square(G, -2, -2, 3, fi(\"star\", 0.8))"
+    },
+    {
+      "scenario": "Point along a line with image fill and notes",
+      "expression": "P = ratiopoint(G, L, r, fi(\"tree\", 1), notes(\"You can write a long sentence here\"))"
+    }
+  ]
+}

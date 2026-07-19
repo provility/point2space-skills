@@ -1,0 +1,73 @@
+{
+  "expression": "nl",
+  "description": "Creates a horizontal number line for visualizing inequalities, intervals, and points",
+  "utility": "Foundation container for number line visualizations with customizable position, dimensions, and range",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at()",
+      "required": true,
+      "description": "Logical position using at(row, col) for placement on canvas"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": true,
+      "description": "Height of the number line in grid units"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": true,
+      "description": "Width of the number line in grid units"
+    },
+    {
+      "name": "range",
+      "type": "range(min, max) or range(min, max, step)",
+      "required": false,
+      "description": "Optional range specification. Defaults to range(0, 10)"
+    },
+    {
+      "name": "grid",
+      "type": "grid()",
+      "required": false,
+      "description": "Optional grid() to enable tick marks and labels on the number line"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "basic number line",
+      "syntax": "nl(at(row, col), height, width)",
+      "description": "Create number line with default range [0, 10]"
+    },
+    {
+      "variant": "with custom range",
+      "syntax": "nl(at(row, col), height, width, range(min, max))",
+      "description": "Specify custom minimum and maximum values"
+    },
+    {
+      "variant": "with step size",
+      "syntax": "nl(at(row, col), height, width, range(min, max, step))",
+      "description": "Include step size for tick spacing"
+    },
+    {
+      "variant": "with grid",
+      "syntax": "nl(at(row, col), height, width, range(min, max), grid())",
+      "description": "Show tick marks and labels"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Number line with grid",
+      "expression": "nl_1 = nl(at(3,9), 6, 19.4, range(0, 10), grid())"
+    },
+    {
+      "scenario": "Number line from -5 to 5 with ticks",
+      "expression": "N = nl(at(1,1), 2, 10, range(-5, 5), grid())"
+    },
+    {
+      "scenario": "Number line with custom step",
+      "expression": "N = nl(at(2,0), 2, 12, range(0, 20, 5))"
+    }
+  ]
+}

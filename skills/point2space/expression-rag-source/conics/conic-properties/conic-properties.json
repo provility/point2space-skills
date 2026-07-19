@@ -1,0 +1,69 @@
+{
+  "expression": "property (conics)",
+  "_requires": ["g2d"],
+  "description": "Extracts core geometric properties from a conic section, including foci and vertices. Uses 1-based indexing for multi-valued properties. Returns a point that can be passed to point().",
+  "utility": "Extract foci and vertices from conic sections",
+  "arguments": [
+    {
+      "name": "conic",
+      "type": "ellipse | parabola | hyperbola",
+      "required": true,
+      "description": "Conic section variable to extract property from"
+    },
+    {
+      "name": "propertyType",
+      "type": "foci, n | vertex, n",
+      "required": true,
+      "description": "Property name to extract, with 1-based index"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Ellipse focus (point)",
+      "syntax": "p(ellipse, foci, n)",
+      "description": "Get nth focus of ellipse (n = 1 or 2)"
+    },
+    {
+      "variant": "Ellipse vertex (point)",
+      "syntax": "p(ellipse, vertex, n)",
+      "description": "Get nth vertex of ellipse (n = 1 to 4: 1-2 are major axis, 3-4 are minor axis)"
+    },
+    {
+      "variant": "Parabola focus (point)",
+      "syntax": "p(parabola, foci, 1)",
+      "description": "Get the single focus of parabola"
+    },
+    {
+      "variant": "Parabola vertex (point)",
+      "syntax": "p(parabola, vertex, 1)",
+      "description": "Get the vertex of parabola"
+    },
+    {
+      "variant": "Hyperbola focus (point)",
+      "syntax": "p(hyperbola, foci, n)",
+      "description": "Get nth focus of hyperbola (n = 1 or 2)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Draw both foci of an ellipse in red",
+      "expression": "F1 = point(G, p(E, foci, 1), c(red))"
+    },
+    {
+      "scenario": "Draw second focus of an ellipse",
+      "expression": "F2 = point(G, p(E, foci, 2), c(red))"
+    },
+    {
+      "scenario": "Draw first vertex of an ellipse in green",
+      "expression": "V1 = point(G, p(E, vertex, 1), c(green))"
+    },
+    {
+      "scenario": "Draw focus of a parabola",
+      "expression": "F = point(G, p(parabola_1, type(foci, 1)), c(red))"
+    },
+    {
+      "scenario": "Draw both foci of a hyperbola",
+      "expression": "F1 = point(G, p(H, type(foci, 1)), c(red))"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "expression": "vectortrace3d",
+  "_requires": ["g3d", "vector3d"],
+  "description": "Traces vectors head-to-tail in 3D. Requires at least 2 vectors.",
+  "utility": "Draw a head-to-tail chain of 3D vectors",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container"
+    },
+    {
+      "name": "vectors",
+      "type": "vector3d references",
+      "required": true,
+      "description": "Two or more vector3d variable references to chain head-to-tail"
+    },
+    {
+      "name": "arrowSize",
+      "type": "size(number)",
+      "required": false,
+      "description": "Arrow head size. Default: 0.5"
+    },
+    {
+      "name": "styles",
+      "type": "style expressions",
+      "required": false,
+      "description": "Optional: c(), s() for color and stroke styling"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic head-to-tail trace",
+      "syntax": "vectortrace3d(G, v1, v2)",
+      "description": "Trace two 3D vectors head-to-tail"
+    },
+    {
+      "variant": "With arrow size and styling",
+      "syntax": "vectortrace3d(G, v1, v2, v3, size(0.3), c(red))",
+      "description": "Trace with custom arrow size and color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Head-to-tail trace of two 3D vectors",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nv1 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 2, 0, 0))\nv2 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 0, 3, 0))\nvectortrace3d(G, v1, v2)"
+    },
+    {
+      "scenario": "Three 3D vectors traced with styling",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nv1 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 2, 0, 0))\nv2 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 0, 3, 0))\nv3 = vector3d(G, point3d(G, 0, 0, 0), point3d(G, 0, 0, 1))\nvectortrace3d(G, v1, v2, v3, size(0.3), c(teal))"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "expression": "parallelshift",
+  "_requires": ["g2d"],
+  "description": "Creates a parallel copy of a vector or line shifted perpendicular by a given distance",
+  "utility": "Generate shifted parallel lines for geometric constructions",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container to draw shifted vector in"
+    },
+    {
+      "name": "vector",
+      "type": "vector|line",
+      "required": true,
+      "description": "Vector or line expression to shift"
+    },
+    {
+      "name": "distance",
+      "type": "number",
+      "required": true,
+      "description": "Perpendicular shift distance (positive = left/CCW, negative = right/CW)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Shift vector",
+      "syntax": "parallelshift(graph, vec, distance)",
+      "description": "Create parallel copy of vector shifted perpendicular"
+    },
+    {
+      "variant": "Shift line",
+      "syntax": "parallelshift(graph, line, distance)",
+      "description": "Create parallel copy of line shifted perpendicular"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Parallel shift a vector by -0.6 units in vector movements",
+      "expression": "G=g2d(at(3,6),25,range(-1,5,1),type(geometry)); vector_1 = vector(G, point(G, 2.3, 1.2), point(G, 3.2, 1.7)); perp_1=parallelshift(G,vector_1,-0.6)"
+    },
+    {
+      "scenario": "Shift line 1.5 units right",
+      "expression": "parallelshift(G, myLine, -1.5)"
+    }
+  ]
+}

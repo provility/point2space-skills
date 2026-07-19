@@ -1,0 +1,68 @@
+{
+  "expression": "scale3d",
+  "_requires": ["g3d"],
+  "description": "Animates scaling a 3D shape by a scale factor. Can scale around the origin or a specified center point. Supports both g3d mode (creates a new scaled shape with animation) and s3d mode (directly mutates the Three.js object scale).",
+  "utility": "Scale 3D shapes by a factor with optional center point.",
+  "arguments": [
+    {
+      "name": "container",
+      "type": "g3d | s3d",
+      "required": true,
+      "description": "The 3D graph or space context"
+    },
+    {
+      "name": "shape",
+      "type": "vector3d | line3d | point3d | polygon3d",
+      "required": true,
+      "description": "The shape to scale"
+    },
+    {
+      "name": "factor",
+      "type": "number",
+      "required": true,
+      "description": "The scale factor (> 0). Values > 1 enlarge, < 1 shrink"
+    },
+    {
+      "name": "center",
+      "type": "point3d | three numbers (cx, cy, cz)",
+      "required": false,
+      "description": "Center point for scaling. If omitted, scales around origin (0, 0, 0)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "scale around origin",
+      "syntax": "scale3d(G, shape, factor)",
+      "description": "Scale shape around the origin"
+    },
+    {
+      "variant": "scale around center point",
+      "syntax": "scale3d(G, shape, factor, cx, cy, cz)",
+      "description": "Scale shape around a specified center point with three coordinates"
+    },
+    {
+      "variant": "scale with point3d center",
+      "syntax": "scale3d(G, shape, factor, point3d)",
+      "description": "Scale shape around a point3d expression as center"
+    },
+    {
+      "variant": "s3d mode",
+      "syntax": "scale3d(S, shape, factor) or scale3d(S, shape, factor, cx, cy, cz)",
+      "description": "Directly mutate Three.js object scale"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Double the size around origin",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 1, 1, 1, 3, 3, 3); scale3d(G, V, 2)"
+    },
+    {
+      "scenario": "Halve the size around a specific center",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 1, 1, 1, 3, 3, 3); scale3d(G, V, 0.5, 2, 2, 2)"
+    },
+    {
+      "scenario": "Scale in s3d mode",
+      "expression": "S = s3d(at(4,20), 10, 10); g = group(); scale3d(S, g, 2)"
+    }
+  ]
+}

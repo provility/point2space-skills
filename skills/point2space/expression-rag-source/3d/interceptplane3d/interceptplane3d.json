@@ -1,0 +1,54 @@
+{
+  "expression": "interceptplane3d",
+  "_requires": ["g3d"],
+  "description": "Creates a plane in 3D space using intercept form x/a + y/b + z/c = 1, where a, b, c are the x, y, z axis intercepts.",
+  "utility": "Create a plane from axis intercepts",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "a",
+      "type": "number",
+      "required": true,
+      "description": "x-axis intercept"
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "required": true,
+      "description": "y-axis intercept"
+    },
+    {
+      "name": "c",
+      "type": "number",
+      "required": true,
+      "description": "z-axis intercept"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Different intercepts",
+      "syntax": "interceptplane3d(G, 2, 3, 1)",
+      "description": "Plane x/2 + y/3 + z/1 = 1"
+    },
+    {
+      "variant": "Equal intercepts",
+      "syntax": "interceptplane3d(G, 1, 1, 1)",
+      "description": "Plane x + y + z = 1"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plane with intercepts at (2, 3, 1)",
+      "expression": "G = g3d(at(4,23), view(30, 30))\npl = interceptplane3d(G, 2, 3, 1)"
+    },
+    {
+      "scenario": "Plane x + y + z = 1 with styling",
+      "expression": "G = g3d(at(4,23), view(30, 30))\npl = interceptplane3d(G, 1, 1, 1, fc(lightyellow), fo(0.3))"
+    }
+  ]
+}

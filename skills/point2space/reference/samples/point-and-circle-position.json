@@ -1,0 +1,159 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_1776745971954_zntehy7hj": {
+      "id": "slide_1776745971954_zntehy7hj",
+      "name": "Slide 1",
+      "expressions": [
+        "title_1=title(at(1,16.7),\"Position of a Point and a Circle\",type(reveal),fc(honeydew),pd(12),border(teal,radius(14),shadow(10)),fs(24),ff(\"Gill Sans\"),c(teal))",
+        "paragraph_1=paragraph(at(4.3,4.4),45.9,2.8,para_str_1,ff(\"Gill Sans\"),effect(expand))",
+        "graph_1=g2d(at(9.6,36.6),size(17.8),range(-2,8,2),type(geometry),snap(false),grid(noaxes))",
+        "fragment_1 = fragment(paragraph_1, range(12, 13), effect(highlight), c(black), fc(gold), t(1))",
+        "circle_1=circle(graph_1,\"x^2+y^2-6x-8y+12=0\",c(seagreen))",
+        "fragment_2 = fragment(paragraph_1, range(6, 6), effect(highlight), c(black), fc(gold), t(1))",
+        "point_1=point(graph_1,0,0,s(6))",
+        "highlight(fragment_1,fragment_2)",
+        "paragraph_2=paragraph(at(8.6,4.8),24.6,7.3,para_str_2,ff(\"Gill Sans\"),fc(lavender),pd(22),effect(fadein))",
+        "paragraph_3=paragraph(at(16.6,4.4),24.8,4.3,para_str_3,ff(\"Gill Sans\"),c(darkblue),effect(slideleft))",
+        "write_2=write(at(22.5,5),\"text(Given:)\",fs(22),c(black))",
+        "write_1=write(at(24.7,8.8),\"x^2+y^2−6x−8y+12=0\",fadein(0.5))",
+        "paragraph_4=paragraph(at(24.2,24.4),12.6,1.9,para_str_10,ff(\"Gill Sans\"),c(blue),effect(slideright))",
+        "write_3=write(at(27.3,8.9),\"( x ​ ,y ​ ) = (2,3)\",fadein(0.5))",
+        "",
+        "paragraph_5=paragraph(at(27.3,17.2),9.5,1.7,para_str_11,ff(\"Gill Sans\"),lh(0.1),c(blue),fs(24),effect(slideright))",
+        "paragraph_6=paragraph(at(29.6,4.4),24.4,2.2,para_str_12,ff(\"Gill Sans\"),c(darkblue))",
+        "select_1 = select(write_3, \"(2,3)\", 1)",
+        "outline_1 = outline(select_1)",
+        "write_4=write(at(32.7,8.8),\"xc^2+yd^2−6ax−8by+12=0\",sub(\"x\",\"(2)\"),sub(\"y\",\"(3)\"),exclude(\"a\",1),exclude(\"b\",1),exclude(\"c\",1),exclude(\"d\",1),fadein(0.5))",
+        "paragraph_7=paragraph(at(35.9,21.8),15.2,-0.2,para_str_13,ff(\"Gill Sans\"),c(blue),lh(0.1),effect(slideleft))",
+        "write_5=write(at(35.9,8.4),\"=4+9−12−24+12\",fadein(0.5))",
+        "",
+        "write_6=write(at(39,8.5),\"=−11\",notes(\"negative — the point is inside the circle\"))",
+        "paragraph_8=paragraph(at(38.7,12.3),15.3,1.8,para_str_14,ff(\"Gill Sans\"),lh(1),c(blue))",
+        "paragraph_9=paragraph(at(42.1,7),17.8,3.1,para_str_15,ff(\"Gill Sans\"),fs(25))",
+        "arect_1=annotationrect(at(42.1,6.4),at(42.1,24.4),at(45,24.4),at(45,6.4))",
+        "translate_1=translate(graph_1,point_1,2,3)",
+        "tip_1=tip(at(19,44),at(26.1,39.9),\"Hint\",\"Negative values proves that the point is inside the circle\",c(teal),fc(azure),ff(\"Gill Sans\"),border(teal,s(2),radius(8),shadow(10)))",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Examine the position of the point (2,3) with respect to the circle math(x^2+y^2−6x−8y+12=0)."
+        },
+        {
+          "name": "para_str_2",
+          "value": "Objective:\nWe need to tell where does the point (2,3) is present with respective to the circle."
+        },
+        {
+          "name": "para_str_3",
+          "value": "For that, first we need to substitute this point's coordinates on the circle equation."
+        },
+        {
+          "name": "para_str_4",
+          "value": "If the value is positive"
+        },
+        {
+          "name": "para_str_5",
+          "value": "(the point is outside the circle)"
+        },
+        {
+          "name": "para_str_6",
+          "value": "If the value is negtive"
+        },
+        {
+          "name": "para_str_7",
+          "value": "(the point is inside the circle)"
+        },
+        {
+          "name": "para_str_8",
+          "value": "If the value is zero"
+        },
+        {
+          "name": "para_str_9",
+          "value": "(the point is on the circle)"
+        },
+        {
+          "name": "para_str_10",
+          "value": "(circle equation)"
+        },
+        {
+          "name": "para_str_11",
+          "value": "(given point)"
+        },
+        {
+          "name": "para_str_12",
+          "value": "Let's substitute the x and y value on the given equation:"
+        },
+        {
+          "name": "para_str_13",
+          "value": "(simplifying each term)"
+        },
+        {
+          "name": "para_str_14",
+          "value": "(negative result)\n\n"
+        },
+        {
+          "name": "para_str_15",
+          "value": "The Point math((2,3)) lies inside the circle"
+        }
+      ]
+    },
+    "slide_1776748492559_0cgvhhlv3": {
+      "id": "slide_1776748492559_0cgvhhlv3",
+      "name": "Explanation",
+      "expressions": [
+        "graph_1=g2d(at(8.1,32.6),size(20.9),range(-5,8,2),type(geometry),snap(false),grid(noaxes))",
+        "circle_1=circle(graph_1,\"x^2+y^2-6x-8y+12=0\",c(seagreen))",
+        "paragraph_1=paragraph(at(7.3,4.2),26.4,4.6,para_str_1,ff(\"Trebuchet MS\"),effect(slidedown),c(darkgreen),notes(\"plug the point into the circle equation and check the sign\"))",
+        "paragraph_2=paragraph(at(10.5,6.4),9.7,2.6,para_str_2,ff(\"Gill Sans\"),effect(slideleft))",
+        "point_1=point(graph_1,0,0,s(6))",
+        "paragraph_3=paragraph(at(10.6,16.3),14.1,2.6,para_str_3,ff(\"Gill Sans\"),c(blue),fs(22),effect(slideright))",
+        "paragraph_4=paragraph(at(13,6.4),9.7,2.4,para_str_4,ff(\"Gill Sans\"),effect(slideleft))",
+        "translate_1=translate(graph_1,point_1,2,3)",
+        "paragraph_5=paragraph(at(13.1,16.3),12.6,1.9,para_str_5,ff(\"Gill Sans\"),c(blue),fs(22),effect(slideright))",
+        "paragraph_6=paragraph(at(15.4,6.3),9.5,3.6,para_str_6,ff(\"Gill Sans\"),effect(slideleft))",
+        "translate_2=translate(graph_1,point_1,-0.6,4)",
+        "paragraph_7=paragraph(at(15.5,16.2),11.5,2.1,para_str_7,ff(\"Gill Sans\"),fs(22),c(blue),effect(slideright))"
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "How do we determine the position of the point?"
+        },
+        {
+          "name": "para_str_2",
+          "value": "If the value is positive"
+        },
+        {
+          "name": "para_str_3",
+          "value": "(The Point is outside the circle)"
+        },
+        {
+          "name": "para_str_4",
+          "value": "If the value is negtive"
+        },
+        {
+          "name": "para_str_5",
+          "value": "(The Point is inside the circle)"
+        },
+        {
+          "name": "para_str_6",
+          "value": "If the value is 0"
+        },
+        {
+          "name": "para_str_7",
+          "value": "(The Point is on the circle)"
+        }
+      ]
+    }
+  },
+  "settings": {},
+  "slideOrder": [
+    "slide_1776745971954_zntehy7hj",
+    "slide_1776748492559_0cgvhhlv3"
+  ],
+  "activeSlideId": "slide_1776745971954_zntehy7hj",
+  "id": "60a48daf-f943-42cc-9461-fff1b3af6f59",
+  "name": "Point and Circle Position"
+}

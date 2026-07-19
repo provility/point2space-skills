@@ -1,0 +1,29 @@
+{
+  "expression": "taper",
+  "_requires": [],
+  "description": "Specifies taper scale for extrude3d. Controls how the cross-section scales along the extrusion height. Single argument tapers from 1 to the given scale; two arguments taper from start to end scale.",
+  "utility": "Set taper scale for extrusion solids",
+  "arguments": [
+    {"name": "startScale", "type": "number", "required": false, "description": "Taper start scale (defaults to 1 if only one argument given)"},
+    {"name": "endScale", "type": "number", "required": true, "description": "Taper end scale (0 = point/cone, 0.5 = half-size frustum, 1 = no taper)"}
+  ],
+  "alternates": [
+    {"variant": "Cone taper (one arg)", "syntax": "taper(0)", "description": "Tapers from full size (1) to a point (0)"},
+    {"variant": "Frustum taper (one arg)", "syntax": "taper(0.5)", "description": "Tapers from full size (1) to half size (0.5)"},
+    {"variant": "Explicit range (two args)", "syntax": "taper(1, 0.3)", "description": "Tapers from scale 1 to scale 0.3"}
+  ],
+  "examples": [
+    {
+      "scenario": "Cone-shaped extrusion",
+      "expression": "p = profile2d(\"rectangle\")\nE = extrude3d(at(4,4), view(14,14), p, 5, taper(0), c(navy), fc(lightyellow), fo(0.5))"
+    },
+    {
+      "scenario": "Frustum extrusion",
+      "expression": "p = profile2d(\"rectangle\")\nE = extrude3d(at(4,4), view(14,14), p, 4, taper(0.5), c(navy), fc(lightyellow), fo(0.5))"
+    },
+    {
+      "scenario": "Extrusion with explicit start and end taper",
+      "expression": "p = profile2d(\"circle\")\nE = extrude3d(at(4,4), view(14,14), p, 6, taper(1, 0.3), c(crimson), fc(pink), fo(0.4))"
+    }
+  ]
+}

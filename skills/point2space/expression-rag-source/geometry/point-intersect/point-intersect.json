@@ -1,0 +1,47 @@
+{
+  "expression": "intersect (point)",
+  "_requires": ["g2d"],
+  "description": "Creates a point at the intersection of two geometric objects such as lines, curves, circles, or plots.",
+  "utility": "Find the intersection point of two geometric objects",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "obj1",
+      "type": "object",
+      "required": true,
+      "description": "First geometric object (line, curve, circle, or plot)"
+    },
+    {
+      "name": "obj2",
+      "type": "object",
+      "required": true,
+      "description": "Second geometric object (line, curve, circle, or plot)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point from intersection",
+      "syntax": "intersect(G, obj1, obj2)",
+      "description": "Point at intersection of two lines, curves, circles, or plots"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Find y-axis intercept of a line for circle construction (axis intercepts lesson)",
+      "expression": "point_3 = intersect(graph_1, line_1, line_2, 1)"
+    },
+    {
+      "scenario": "Find x-axis intercept of a line (axis intercepts lesson)",
+      "expression": "point_5 = intersect(graph_1, line_3, line_1, 1)"
+    },
+    {
+      "scenario": "Find vertex of feasible region from constraint lines (linear programming lesson)",
+      "expression": "A = intersect(G, L1, L3)"
+    }
+  ]
+}

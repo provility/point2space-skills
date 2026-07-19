@@ -1,0 +1,14 @@
+{
+  "expression": "area3d",
+  "_requires": ["g3d", "point3d"],
+  "description": "Computes area of a polygon or parallelogram defined by 3 or more points in 3D space.",
+  "utility": "Calculate area of a 3D polygon",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "points", "type": "point3d...", "required": true, "description": "Three or more points defining the polygon"}
+  ],
+  "examples": [
+    {"scenario": "Triangle area", "expression": "G = g3d(at(4,23), view(30, 30))\nA = point3d(G, 0, 0, 0)\nB = point3d(G, 3, 0, 0)\nC = point3d(G, 0, 4, 0)\narea = area3d(G, A, B, C)"},
+    {"scenario": "Quadrilateral area", "expression": "area = area3d(G, point3d(G, 0, 0, 0), point3d(G, 3, 0, 0), point3d(G, 3, 4, 0), point3d(G, 0, 4, 0))"}
+  ]
+}

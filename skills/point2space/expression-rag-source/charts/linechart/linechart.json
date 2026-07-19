@@ -1,0 +1,17 @@
+{
+  "expression": "linechart",
+  "_requires": ["stattable"],
+  "description": "Standalone line chart container. References a stattable variable for data.",
+  "utility": "Create a line chart from statistical table data",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "table", "type": "stattable variable", "required": true, "description": "Reference to stattable"},
+    {"name": "col", "type": "col(n)", "required": false, "description": "Value column"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Line color"}
+  ],
+  "examples": [
+    {"scenario": "Line chart from cumulative data", "expression": "T = stattable(at(2,4), values(\"10\",\"20\",\"30\",\"25\",\"35\"), statcolumn(type(cumulativesum)))\nL = linechart(at(14,4), view(10,8), T, col(2), c(teal))"},
+    {"scenario": "Simple line chart", "expression": "L = linechart(at(14,4), T, c(navy))"}
+  ]
+}

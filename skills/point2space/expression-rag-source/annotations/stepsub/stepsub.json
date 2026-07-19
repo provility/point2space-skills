@@ -1,0 +1,49 @@
+{
+  "expression": "stepsub",
+  "_requires": ["g2d", "annotationstep"],
+  "description": "Creates a subscript annotation referencing a step annotation. Marks a subordinate or sub-step at a position that refers to a previously defined annotationstep, with optional comment text.",
+  "utility": "Reference steps as substeps in multi-level step solutions",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at() expression",
+      "required": true,
+      "description": "Position of the substep reference, specified as at(row, col)"
+    },
+    {
+      "name": "stepRef",
+      "type": "variable reference",
+      "required": true,
+      "description": "Reference to an annotationstep variable (e.g., astep_1)"
+    },
+    {
+      "name": "comment",
+      "type": "quoted string",
+      "required": false,
+      "description": "Optional comment text displayed with the substep"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with comment",
+      "syntax": "stepsub(at(r, c), stepVar, \"comment\")",
+      "description": "Substep with comment text"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Basic substep reference",
+      "expression": "astep_1 = annotationstep(at(1,1), size(2), \"1\"), stepsub(at(2,1), astep_1)"
+    },
+    {
+      "scenario": "Substep with comment",
+      "expression": "astep_1 = annotationstep(at(1,1), size(3), \"1\"), stepsub(at(3,1), astep_1, \"apply rule\")"
+    }
+  ]
+}

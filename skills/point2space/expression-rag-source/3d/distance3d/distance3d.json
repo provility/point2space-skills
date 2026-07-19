@@ -1,0 +1,70 @@
+{
+  "expression": "distance3d",
+  "_requires": ["g3d"],
+  "description": "Calculates distance or magnitude for 3D geometric objects",
+  "utility": "Compute numerical distance between points, lines, planes, or magnitude of vectors",
+  "arguments": [
+    {"name": "object1", "type": "geometry|number", "required": true, "description": "First object (vector3d, line3d, point3d, plane3d, or number for magnitude from origin)"}
+  ],
+  "alternates": [
+    {
+      "variant": "magnitude of vector",
+      "syntax": "distance3d(vector3d)",
+      "description": "Length of a 3D vector"
+    },
+    {
+      "variant": "length of line segment",
+      "syntax": "distance3d(line3d)",
+      "description": "Distance from start to end of line"
+    },
+    {
+      "variant": "distance from 6 numbers",
+      "syntax": "distance3d(x1, y1, z1, x2, y2, z2)",
+      "description": "Distance between two points using coordinates"
+    },
+    {
+      "variant": "magnitude from 3 numbers",
+      "syntax": "distance3d(x, y, z)",
+      "description": "Magnitude of vector from origin to (x, y, z)"
+    },
+    {
+      "variant": "distance between points",
+      "syntax": "distance3d(point1, point2)",
+      "description": "Distance between two point3d objects"
+    },
+    {
+      "variant": "point to line distance",
+      "syntax": "distance3d(point, line)",
+      "description": "Perpendicular distance from point to line"
+    },
+    {
+      "variant": "point to plane distance",
+      "syntax": "distance3d(point, plane)",
+      "description": "Perpendicular distance from point to plane"
+    },
+    {
+      "variant": "line to line distance",
+      "syntax": "distance3d(line1, line2)",
+      "description": "Distance between two lines (parallel or skew)"
+    },
+    {
+      "variant": "plane to plane distance",
+      "syntax": "distance3d(plane1, plane2)",
+      "description": "Distance between two parallel planes (0 if intersecting)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "magnitude of vector",
+      "expression": "distance3d(vector3d(g, 0, 0, 0, 3, 4, 0))"
+    },
+    {
+      "scenario": "distance between two points",
+      "expression": "distance3d(point3d(g, 0, 0, 0), point3d(g, 3, 4, 0))"
+    },
+    {
+      "scenario": "distance from 6 coordinates",
+      "expression": "distance3d(0, 0, 0, 3, 4, 5)"
+    }
+  ]
+}

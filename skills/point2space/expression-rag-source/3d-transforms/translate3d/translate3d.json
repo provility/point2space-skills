@@ -1,0 +1,62 @@
+{
+  "expression": "translate3d",
+  "_requires": ["g3d"],
+  "description": "Animates translating a 3D shape by a displacement vector (dx, dy, dz). Supports both g3d mode (creates a new translated shape with slide animation) and s3d mode (directly mutates the Three.js object position).",
+  "utility": "Translate 3D shapes by a displacement vector with animation.",
+  "arguments": [
+    {
+      "name": "container",
+      "type": "g3d | s3d",
+      "required": true,
+      "description": "The 3D graph or space context (g3d for animation mode, s3d for direct mutation)"
+    },
+    {
+      "name": "shape",
+      "type": "vector3d | line3d | point3d | polygon3d",
+      "required": true,
+      "description": "The shape to translate"
+    },
+    {
+      "name": "delta",
+      "type": "vector3d | point3d | three numbers (dx, dy, dz)",
+      "required": true,
+      "description": "The displacement vector or three coordinates for displacement"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "g3d with vector displacement",
+      "syntax": "translate3d(G, shape, vector3d)",
+      "description": "Translate shape by a vector's direction"
+    },
+    {
+      "variant": "g3d with point displacement",
+      "syntax": "translate3d(G, shape, point3d)",
+      "description": "Translate shape by coordinates given as a point3d"
+    },
+    {
+      "variant": "g3d with three numbers",
+      "syntax": "translate3d(G, shape, dx, dy, dz)",
+      "description": "Translate shape by three separate displacement values"
+    },
+    {
+      "variant": "s3d mode",
+      "syntax": "translate3d(S, shape, dx, dy, dz) or translate3d(S, shape, point3d(S,dx,dy,dz))",
+      "description": "Directly set Three.js object position"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Translate a vector by displacement values",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 3, 0, 0); translate3d(G, V, 1, 2, 3)"
+    },
+    {
+      "scenario": "Translate in s3d mode",
+      "expression": "S = s3d(at(4,20), 10, 10); g = group(); translate3d(S, g, 1, 0.5, 0)"
+    },
+    {
+      "scenario": "Translate using a vector as displacement",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V = vector3d(G, 0, 0, 0, 3, 0, 0); D = vector3d(G, 0, 0, 0, 1, 2, 3); translate3d(G, V, D)"
+    }
+  ]
+}

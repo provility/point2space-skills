@@ -1,0 +1,33 @@
+{
+  "expression": "polygon3d",
+  "_requires": ["g3d"],
+  "description": "Creates a 3D polygon as a planar surface from multiple vertices",
+  "utility": "Draw a filled polygon in 3D space by specifying vertices as point3d expressions",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "The 3D graph container (g3d or s3d)"},
+    {"name": "vertex1", "type": "point3d", "required": true, "description": "First vertex of the polygon"},
+    {"name": "vertex2", "type": "point3d", "required": true, "description": "Second vertex of the polygon"},
+    {"name": "vertex3", "type": "point3d", "required": true, "description": "Third vertex (minimum 3 vertices required)"}
+  ],
+  "alternates": [
+    {
+      "variant": "with additional vertices",
+      "syntax": "polygon3d(graph, point3d(...), point3d(...), point3d(...), point3d(...), ...)",
+      "description": "Add more vertices to create polygons with more sides"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Base parallelogram for scalar triple product",
+      "expression": "baseParallelogram = polygon3d(G, O, V, P_VW, W)"
+    },
+    {
+      "scenario": "Top face of parallelepiped",
+      "expression": "topFace = polygon3d(G, U, U_V, U_VW, U_W)"
+    },
+    {
+      "scenario": "triangle in 3D",
+      "expression": "polygon3d(g, point3d(g, 0, 0, 0), point3d(g, 1, 0, 0), point3d(g, 0, 1, 0))"
+    }
+  ]
+}

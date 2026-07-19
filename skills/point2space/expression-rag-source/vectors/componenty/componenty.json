@@ -1,0 +1,13 @@
+{
+  "expression": "componenty",
+  "_requires": ["g2d", "vector"],
+  "description": "Extracts the Y-component of a 2D vector, creating a vertical projection.",
+  "utility": "Extract Y-component of a vector",
+  "arguments": [
+    {"name": "graph", "type": "g2d", "required": true, "description": "2D graph container"},
+    {"name": "vector", "type": "vector variable", "required": true, "description": "Vector to decompose"}
+  ],
+  "examples": [
+    {"scenario": "Y-component of vector", "expression": "G = g2d(at(4,4), size(20), type(geometry))\nV = vector(G, (0,0), (3,4), c(black))\nVy = componenty(G, V, c(blue))"}
+  ]
+}

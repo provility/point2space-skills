@@ -1,0 +1,24 @@
+{
+  "expression": "transpose",
+  "_requires": [],
+  "description": "Swaps rows and columns of a matrix.",
+  "utility": "Transpose a matrix",
+  "arguments": [
+    {
+      "name": "matrix",
+      "type": "matrix",
+      "required": true,
+      "description": "A matrix variable"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Transpose a 2x2 matrix",
+      "expression": "M = [[1, 2], [3, 4]]\nT = transpose(M)"
+    },
+    {
+      "scenario": "Transpose a 2x3 matrix",
+      "expression": "M = [[1, 2, 3], [4, 5, 6]]\nT = transpose(M)"
+    }
+  ]
+}

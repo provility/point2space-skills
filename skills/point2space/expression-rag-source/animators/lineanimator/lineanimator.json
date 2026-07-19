@@ -1,0 +1,14 @@
+{
+  "expression": "lineanimator",
+  "description": "Interactive animator that transforms a line from its current state to a target line",
+  "utility": "Animate line transformations or movements with play/reset control",
+  "arguments": [
+    {"name": "sourceLine", "type": "variable reference", "required": true, "description": "Variable reference to an existing line to animate"},
+    {"name": "targetLine", "type": "line", "required": true, "description": "Target line expression (can be inline or variable reference)"},
+    {"name": "styles", "type": "style expressions", "required": false, "description": "Optional styling: c(), s(), t(), defer(), etc."}
+  ],
+  "examples": [
+    {"scenario": "Animate a line segment to a new position", "expression": "G = g2d(at(4,19), size(16), range(-5, 5), type(geometry))\nline_1 = line(G, point(G, -3, -2), point(G, 1, 2), type(segment))\nline_2 = line(G, point(G, 0, 0), point(G, 5, 5), type(segment))\nlnanim_1 = lineanimator(line_1, line_2)"},
+    {"scenario": "Animate line with inline target", "expression": "G = g2d(at(4,19), size(16), range(-5, 5), type(geometry))\nline_2 = line(G, point(G, -2, 1), point(G, 3, 4), type(segment))\nlnanim_1 = lineanimator(line_2, line(G, point(G, 0, 0), point(G, 5, 5)))"}
+  ]
+}

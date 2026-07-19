@@ -1,0 +1,75 @@
+{
+  "expression": "piecewiseplot",
+  "_requires": ["g2d"],
+  "description": "Renders a piecewise-defined function on a 2D graph with alternating expression-condition pairs. Each pair defines one piece: the expression to plot and the domain condition under which it applies.",
+  "utility": "Plot a piecewise-defined function on a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container to plot on"
+    },
+    {
+      "name": "expression1",
+      "type": "string",
+      "required": true,
+      "description": "First piece expression as a quoted ASCII math string - e.g., \"-x\""
+    },
+    {
+      "name": "condition1",
+      "type": "string",
+      "required": true,
+      "description": "Domain condition for the first piece - e.g., \"x < 0\""
+    },
+    {
+      "name": "expression2",
+      "type": "string",
+      "required": true,
+      "description": "Second piece expression as a quoted ASCII math string - e.g., \"x^2\""
+    },
+    {
+      "name": "condition2",
+      "type": "string",
+      "required": true,
+      "description": "Domain condition for the second piece - e.g., \"x >= 0\""
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color - e.g., c(purple)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Two-piece function",
+      "syntax": "piecewiseplot(G, \"expr1\", \"cond1\", \"expr2\", \"cond2\")",
+      "description": "Plot a two-piece piecewise function with alternating expression-condition pairs"
+    },
+    {
+      "variant": "Three-piece function",
+      "syntax": "piecewiseplot(G, \"expr1\", \"cond1\", \"expr2\", \"cond2\", \"expr3\", \"cond3\")",
+      "description": "Plot a three-piece piecewise function with more pairs"
+    },
+    {
+      "variant": "With color",
+      "syntax": "piecewiseplot(G, \"expr1\", \"cond1\", \"expr2\", \"cond2\", c(purple))",
+      "description": "Piecewise function with custom stroke color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Piecewise function: abs(x) equivalent",
+      "expression": "G4 = g2d(at(4,4), 20, 20, range(-5, 5), range(-1, 10), type(plotting))\npiecewiseplot(G4, \"-x\", \"x < 0\", \"x^2\", \"x >= 0\", c(purple))"
+    },
+    {
+      "scenario": "Step function (signum-like)",
+      "expression": "G6 = g2d(at(4,16), 20, 20, range(-5, 5), range(-3, 3), type(plotting))\npiecewiseplot(G6, \"-1\", \"x < 0\", \"1\", \"x >= 0\", c(brown))"
+    },
+    {
+      "scenario": "Three-piece piecewise function",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-5, 5), range(-5, 10), type(plotting))\npiecewiseplot(G, \"x + 2\", \"x < -1\", \"1\", \"-1 <= x <= 1\", \"x^2\", \"x > 1\", c(blue))"
+    }
+  ]
+}

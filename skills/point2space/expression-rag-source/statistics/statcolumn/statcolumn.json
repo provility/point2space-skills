@@ -1,0 +1,15 @@
+{
+  "expression": "statcolumn",
+  "_requires": ["stattable"],
+  "description": "Computed column definition for stattable. Uses type() to specify the calculator. Supported types: frequency, cumulativefrequency, grouped, percentage, relativefrequency, cumulativesum, difference, runningavg, runningmax, runningmin.",
+  "utility": "Define a computed statistics column",
+  "arguments": [
+    {"name": "type", "type": "type(calculatorName)", "required": true, "description": "Calculator type name"}
+  ],
+  "examples": [
+    {"scenario": "Frequency column", "expression": "statcolumn(type(frequency))"},
+    {"scenario": "Cumulative sum", "expression": "statcolumn(type(cumulativesum))"},
+    {"scenario": "Difference with column refs", "expression": "statcolumn(type(difference, 1, 2))"},
+    {"scenario": "Percentage column", "expression": "statcolumn(type(percentage))"}
+  ]
+}

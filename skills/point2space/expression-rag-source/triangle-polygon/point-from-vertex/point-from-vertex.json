@@ -1,0 +1,71 @@
+{
+  "expression": "point (from vertex)",
+  "_requires": ["g2d"],
+  "description": "Creates a visible point marker from vertex data extracted from a polygon or triangle. Renders the vertex as a drawable point with optional color and radius styling for marking corners in geometric constructions.",
+  "utility": "Draw visible point from polygon vertex extraction",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "vertex_data",
+      "type": "item(polygon, type(vertex), index)",
+      "required": true,
+      "description": "Vertex data extracted from polygon using item()"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point from vertex",
+      "syntax": "point(G, item(triangle, type(vertex), 1))",
+      "description": "Point at first vertex of triangle"
+    },
+    {
+      "variant": "Colored vertex point",
+      "syntax": "point(G, item(triangle, type(vertex), 1), c(red))",
+      "description": "Red point at vertex"
+    },
+    {
+      "variant": "Large vertex marker",
+      "syntax": "point(G, item(triangle, type(vertex), 1), c(blue), r(0.15))",
+      "description": "Larger blue point at vertex"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Create triangle and extract vertices",
+      "expression": "triangle_1 = sas(graph_1, 5, 40, 6, point(graph_1, 0, 0))"
+    },
+    {
+      "scenario": "Draw point at vertex A (first vertex)",
+      "expression": "point_A = point(graph_1, item(triangle_1, type(vertex), 1), c(red))"
+    },
+    {
+      "scenario": "Draw point at vertex B (second vertex)",
+      "expression": "point_B = point(graph_1, item(triangle_1, type(vertex), 2), c(red))"
+    },
+    {
+      "scenario": "Draw point at vertex C (third vertex)",
+      "expression": "point_C = point(graph_1, item(triangle_1, type(vertex), 3), c(red))"
+    },
+    {
+      "scenario": "Extract vertex for projection",
+      "expression": "point_c = item(triangle_1, type(vertex), 3)"
+    },
+    {
+      "scenario": "Project vertex onto opposite edge",
+      "expression": "point_projected_d = project(graph_1, line_c, point_c, s(0), fo(0), t(0))"
+    },
+    {
+      "scenario": "Label the vertex point",
+      "expression": "label_A = label(graph_1, at(point_A), \"A\", buff(0.5, 0.5))"
+    },
+    {
+      "scenario": "Use vertex in polygon construction",
+      "expression": "polygon_1 = polygon(graph_1, point_A, point_c, point_projected_d, s(0))"
+    }
+  ]
+}

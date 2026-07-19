@@ -1,0 +1,54 @@
+{
+  "expression": "integral",
+  "_requires": [],
+  "description": "Computes definite integrals using Algebrite symbolic computation with Simpson's rule fallback",
+  "utility": "Calculate definite integrals ∫[a,b] f(x)dx symbolically or numerically",
+  "arguments": [
+    {
+      "name": "expression",
+      "type": "string",
+      "required": true,
+      "description": "Integrand expression as quoted string (e.g., \"x^2\")"
+    },
+    {
+      "name": "variable",
+      "type": "string",
+      "required": true,
+      "description": "Integration variable (e.g., \"x\")"
+    },
+    {
+      "name": "lower",
+      "type": "number",
+      "required": true,
+      "description": "Lower integration bound"
+    },
+    {
+      "name": "upper",
+      "type": "number",
+      "required": true,
+      "description": "Upper integration bound"
+    }
+  ],
+  "alternates": [
+    "AsciiMath syntax: int_a^b expr dx → integral(expr, x, a, b)",
+    "Uses Algebrite for symbolic solution, Simpson's rule (1000 intervals) for numeric fallback"
+  ],
+  "examples": [
+    {
+      "scenario": "Integrate polynomial",
+      "expression": "area = integral(\"x^2\", \"x\", 0, 2)"
+    },
+    {
+      "scenario": "Using AsciiMath notation",
+      "expression": "A = int_0^2 x^2 dx"
+    },
+    {
+      "scenario": "Visualize on graph (routes to areaunder)",
+      "expression": "A = integral(\"x^2\", \"x\", 0, 2); write(g, \"Area =\", A)"
+    },
+    {
+      "scenario": "With context variables",
+      "expression": "b = 3; I = integral(\"x*sin(x)\", \"x\", 0, b)"
+    }
+  ]
+}

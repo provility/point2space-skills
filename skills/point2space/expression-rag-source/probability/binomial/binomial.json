@@ -1,0 +1,17 @@
+{
+  "expression": "binomial",
+  "_requires": [],
+  "description": "Displays a binomial distribution PMF with configurable number of trials and success probability. Standalone chart.",
+  "utility": "Create a binomial distribution chart",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "n", "type": "number", "required": false, "description": "Number of trials (default: 10)"},
+    {"name": "p", "type": "number", "required": false, "description": "Success probability 0-1 (default: 0.5)"},
+    {"name": "chartType", "type": "type(bar|lollipop)", "required": false, "description": "Chart display type"}
+  ],
+  "examples": [
+    {"scenario": "Binomial n=10, p=0.5", "expression": "B = binomial(at(4,4), view(10,16), 10, 0.5)"},
+    {"scenario": "Binomial n=20, p=0.3", "expression": "B = binomial(at(4,4), view(10,16), 20, 0.3)"}
+  ]
+}

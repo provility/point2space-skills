@@ -1,0 +1,21 @@
+{
+  "expression": "polydiv",
+  "description": "Animated polynomial long division visualization. Displays step-by-step long division of a dividend polynomial by a divisor polynomial.",
+  "utility": "Visualize polynomial long division step by step",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position" },
+    { "name": "dividend", "type": "string", "required": false, "description": "Polynomial string using * for multiplication. Defaults to \"x^3+2*x^2-5*x+6\"" },
+    { "name": "divisor", "type": "string", "required": false, "description": "Polynomial string. Defaults to \"x-1\"" },
+    { "name": "viewSize", "type": "view(rowHeight, colWidth)", "required": false, "description": "Cell sizing. Defaults: rowHeight=14, colWidth=42" },
+    { "name": "buff", "type": "buff(x)", "required": false, "description": "Buffer value" },
+    { "name": "styles", "type": "style expressions", "required": false, "description": "Optional styling" }
+  ],
+  "alternates": [
+    { "variant": "Basic division", "syntax": "polydiv(at(4, 4), \"x^3+2*x^2-5*x+6\", \"x-1\")", "description": "Divide cubic by linear" },
+    { "variant": "With custom view", "syntax": "polydiv(at(4, 4), \"2*x^4-3*x^3+x-5\", \"x^2+1\", view(14, 42))", "description": "Higher degree division with custom cell sizing" }
+  ],
+  "examples": [
+    { "scenario": "Cubic divided by linear", "expression": "polydiv(at(4, 4), \"x^3+2*x^2-5*x+6\", \"x-1\")" },
+    { "scenario": "Quartic divided by quadratic with custom view", "expression": "polydiv(at(4, 4), \"2*x^4-3*x^3+x-5\", \"x^2+1\", view(14, 42))" }
+  ]
+}

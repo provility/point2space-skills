@@ -1,0 +1,122 @@
+{
+  "assets": [],
+  "slides": {
+    "slide_1776344362912_9p36oyrag": {
+      "id": "slide_1776344362912_9p36oyrag",
+      "name": "Slide 1",
+      "expressions": [
+        "",
+        "title_1=title(at(1,19),\"Circle from a Diameter\",type(slideup),fc(wheat),pd(12),border(black,radius(10),shadow(22)),fs(24),ff(\"Gill Sans\"),c(black))",
+        "paragraph_1=paragraph(at(3.7,2.9),42.7,5.2,para_str_1,ff(\"Gill Sans\"),fs(27),lh(2),effect(slidedown))",
+        "fragment_1=fragment(paragraph_1,range(3,9),effect(highlight),c(black),fc(gold),t(1))",
+        "hidehighlight_1 = hidehighlight(fragment_1)",
+        "fragment_2=fragment(paragraph_1,range(11,15),effect(highlight),c(black),fc(gold),t(1))",
+        "fragment_3=fragment(paragraph_1,range(18,20),effect(highlight),c(black),fc(gold),t(1))",
+        "graph_2=g2d(at(5,38.7),size(17.2),range(-5,5,2),type(geometry))",
+        "graph_1=g2d(at(5,38.7),size(17.2),range(-5,5,2),type(geometry),grid(noaxes))",
+        "point_1=point(graph_1,-4,-2)",
+        "label_1=label(graph_1,at(point_1),\"(-4,-2)\",buff(-1.5,-1.5),rotation(0),c(black),fs(14))",
+        "point_2=point(graph_1,1,1)",
+        "label_2=label(graph_1,at(point_2),\"(1,1)\",buff(-1.5,-0.7),rotation(0),c(black),fs(14))",
+        "line_1=line(graph_1,point_1,point_2,type(segment),c(crimson))",
+        "circle_1 = circle(graph_1, point_1, point_2, type(diameter), c(mediumvioletred),notes(\"the diameter defines the circle completely\"))",
+        "hide_1 = hide(graph_2)",
+        "paragraph_2=paragraph(at(10.7,2.6),24,2.1,para_str_2,c(darkgreen),ff(\"Gill Sans\"),fs(25),lh(1.2),effect(slideleft))",
+        "write_1=write(at(14.4,6.9),\"(x-x_1)(x-x_2)+(y-y_1)(y-y_2) =0 \",fadein(0.5),comment(\"diameter end-points form\"))",
+        "arect_1=annotationrect(at(14,6),at(14,29.1),at(16.5,29.1),at(16.5,6),fc(lightblue))",
+        "write_2=write(at(17.7,3),\"text(Given points:) (−4,−2) and (1,1)\",fs(20),fadein(0.5))",
+        "paragraph_3=paragraph(at(19.7,30.7),14.3,2.3,para_str_4,effect(slideright),ff(\"Gill Sans\"),c(blue))",
+        "arect_3=annotationrect(at(17.6,8.9),at(17.6,13),at(19,13),at(19,8.9),defer())",
+        "arect_4=annotationrect(at(17.6,16.7),at(17.6,19.2),at(19,19.2),at(19,16.7),defer())",
+        "outline_1 = outline(arect_3, arect_4, arect_1)",
+        "write_3=write(at(20.4,6.4),\"(x-ax_1b)(x-x_2)+(y-cy_1d)(y-y_2) =0 \",sub(\"x_1\",\"(-4)\"),sub(\"x_2\",\"1\"),sub(\"y_1\",\"(-2)\"),sub(\"y_2\",\"1\"),exclude(\"a\",1),exclude(\"b\",1),exclude(\"c\",1),exclude(\"d\",1))",
+        "",
+        "select_5 = select(write_2, \"−4\", 1)",
+        "select_6 = select(write_2, \"−2\", 1)",
+        "select_7 = select(write_2, \"1\", 1)",
+        "select_8 = select(write_2, \"1\", 2)",
+        "",
+        "write_4=write(at(23.6,6.4),\"(x+4)(x−1)+(y+2)(y−1)=0\",fadein(0.5))",
+        "select_9 = select(write_4, \"(y+2)(y−1)\", 1)",
+        "select_10 = select(write_4, \"(x+4)(x−1)\", 1)",
+        "write_5=write(at(26.6,6.5),\"(x+4)(x−1)\",exclude(\"(x+4)(x−1)\",1))",
+        "outline_2 = outline(select_10)",
+        "text_copy_1 = textcopy(write_5_select_1, select_10)",
+        "paragraph_4=paragraph(at(25.7,23.2),12.6,2,para_str_5,ff(\"Gill Sans\"),c(blue),effect(slideright))",
+        "write_6=write(at(26.4,14.9),\"= x^2+3x-4\",fadein(0.5))",
+        "write_7=write(at(29.6,6.4),\"(y+2)(y−1)\",exclude(\"(y+2)(y−1)\",1))",
+        "outline_3 = outline(select_9)",
+        "text_copy_2 = textcopy(write_7_select_1, select_9)",
+        "paragraph_5=paragraph(at(29.4,23.2),12.9,2,para_str_6,ff(\"Gill Sans\"),c(blue),lh(1),effect(slideright))",
+        "write_8=write(at(29.6,14.9),\"= y^2+y-2\",fadein(0.5))",
+        "select_11 = select(write_6, \"x^2+3x-4\", 1)",
+        "select_12 = select(write_8, \"y^2+y-2\", 1)",
+        "write_9=write(at(32.3,6.1),\"(x^2+3x-4)+(y^2+y-2)=0\",exclude(\"x^2+3x-4\",1),exclude(\"y^2+y-2\",1),fadein(0.5))",
+        "paragraph_6=paragraph(at(31.6,23.5),19,2.6,para_str_7,ff(\"Gill Sans\"),c(blue),effect(slideright))",
+        "outline_4 = outline(select_11)",
+        "text_copy_3 = textcopy(write_9_select_1, select_11)",
+        "outline_5 = outline(select_12)",
+        "text_copy_4 = textcopy(write_9_select_2, select_12)",
+        "",
+        "write_10=write(at(35.6,6.4),\"x^2+y^2+3x+y-6=0\",fadein(0.5),notes(\"general equation of the circle\"))",
+        "arect_2 = annotationrect(at(35.2, 5.7), at(35.2, 20.2), at(37.8, 20.2), at(37.8, 5.7))",
+        "paragraph_7=paragraph(at(34.9,20.4),17.5,3.1,para_str_8,ff(\"Gill Sans\"),c(blue),effect(slideright))",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "paraVariables": [
+        {
+          "name": "para_str_1",
+          "value": "Example 5.4 - Find the general equation of the circle whose diameter is the line segment joining the points (−4,−2) and(1,1)."
+        },
+        {
+          "name": "para_str_2",
+          "value": "General form of circle with diameter endpoints:\n\n"
+        },
+        {
+          "name": "para_str_3",
+          "value": "Given points: math((−4,−2)) and math((1,1))"
+        },
+        {
+          "name": "para_str_4",
+          "value": "(substituting endpoints)"
+        },
+        {
+          "name": "para_str_5",
+          "value": "(expanding first product)"
+        },
+        {
+          "name": "para_str_6",
+          "value": "(explanding second product)"
+        },
+        {
+          "name": "para_str_7",
+          "value": "(combining both expanded expressions)"
+        },
+        {
+          "name": "para_str_8",
+          "value": "(general equation of circle)"
+        }
+      ]
+    }
+  },
+  "settings": {},
+  "slideOrder": [
+    "slide_1776344362912_9p36oyrag"
+  ],
+  "activeSlideId": "slide_1776344362912_9p36oyrag",
+  "id": "ef445dec-cd91-4c8e-962f-ea7e9c73a66f",
+  "name": "Circle from a Diameter"
+}

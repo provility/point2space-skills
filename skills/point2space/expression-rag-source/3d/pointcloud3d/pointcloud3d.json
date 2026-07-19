@@ -1,0 +1,48 @@
+{
+  "expression": "pointcloud3d",
+  "_requires": ["g3d"],
+  "description": "Scatters points on a 3D shape. Uses sunflower-spiral distribution on planes, evenly spaced on lines. Default count: 20.",
+  "utility": "Scatter a cloud of points on a 3D plane or line",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d reference",
+      "required": true,
+      "description": "The 3D graph container"
+    },
+    {
+      "name": "shape",
+      "type": "variable reference",
+      "required": true,
+      "description": "A plane3d or line3d to scatter points on"
+    },
+    {
+      "name": "count",
+      "type": "size(number)",
+      "required": false,
+      "description": "Number of points to scatter. Default: 20"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Default point cloud",
+      "syntax": "pointcloud3d(G, shape)",
+      "description": "Scatter 20 points on a shape"
+    },
+    {
+      "variant": "Custom count",
+      "syntax": "pointcloud3d(G, shape, size(count))",
+      "description": "Scatter a specific number of points"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Point cloud on a plane",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nP = plane3d(G, \"x + y + z = 3\")\npointcloud3d(G, P, size(50))"
+    },
+    {
+      "scenario": "Default point cloud on a line",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nL = line3d(G, point3d(G, 0, 0, 0), point3d(G, 3, 3, 3))\npointcloud3d(G, L)"
+    }
+  ]
+}

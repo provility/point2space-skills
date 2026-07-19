@@ -1,0 +1,22 @@
+{
+  "expression": "playinputanimator",
+  "description": "Button that sets input values then runs a variable animator animation. When only setvalue is provided, animation is derived from current value to new value. When animator ref is provided, uses the animator's from/to values.",
+  "utility": "Create a button that sets values then runs an animator animation",
+  "arguments": [
+    { "name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position" },
+    { "name": "setvalues", "type": "setvalue(target, value)...", "required": false, "description": "One or more setvalue() expressions to apply before animating" },
+    { "name": "animatorRef", "type": "variable reference", "required": false, "description": "Reference to an existing variable animator or shape animator. Uses the animator's from/to values" },
+    { "name": "display", "type": "display(\"label\", \"playingLabel\")", "required": false, "description": "Button text. Second string shown while playing" },
+    { "name": "duration", "type": "t(seconds)", "required": false, "description": "Animation duration" }
+  ],
+  "alternates": [
+    { "variant": "With setvalue only", "syntax": "playinputanimator(at(3, 4), setvalue(n, 10), display(\"Play\"), t(2))", "description": "Animate from current to new value" },
+    { "variant": "With animator ref", "syntax": "playinputanimator(at(3, 4), animRef, display(\"Play\"), t(2))", "description": "Use animator's from/to values" },
+    { "variant": "Animator ref with setvalue", "syntax": "playinputanimator(at(3, 4), animRef, setvalue(n, 10), display(\"Play\"))", "description": "Set value then use animator's animation" }
+  ],
+  "examples": [
+    { "scenario": "Animate vector using vectoranimator ref", "expression": "G = g2d(at(10, 10), size(25), range(-5, 5), type(geometry))\nV = vector(G, point(G, 0, 0), point(G, 3, 4))\nva = vectoranimator(V, vector(G, point(G, 0, 0), point(G, -2, 5)), defer())\nbtn_1 = playinputanimator(at(4, 16), va, t(5), display(\"Animate Vector A\"))" },
+    { "scenario": "Animate plot coefficient with setvalue", "expression": "G = g2d(at(10, 10), 25, 25, range(-5, 5), range(-5, 5), type(plotting))\na = 1\nf = plot(G, \"a*x^2\")\nbtn_1 = playinputanimator(at(6, 16), setvalue(a, 10), t(6), display(\"Animate\"))" },
+    { "scenario": "Animator ref with setvalue override", "expression": "playinputanimator(at(3, 4), var_anim_1, setvalue(n, 10), display(\"Play\"))" }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "expression": "buff (advanced)",
+  "description": "Advanced buff patterns for text operations, trace labels, marker offsets, and specialized positioning contexts like tangent, interval, and conic traces.",
+  "utility": "Buff offsets for text ops, traces, markers, and specialized contexts",
+  "arguments": [
+    {
+      "name": "col",
+      "type": "number",
+      "required": true,
+      "description": "Horizontal offset in logical units (positive = right, negative = left)"
+    },
+    {
+      "name": "row",
+      "type": "number",
+      "required": false,
+      "description": "Vertical offset in logical units (positive = down, negative = up). If omitted, col value is used as a single directional offset."
+    }
+  ],
+  "_requires": [],
+  "alternates": [
+    {
+      "variant": "Marker with buff",
+      "syntax": "callout(at(r1,c1), at(r1,c2), at(r2,c2), at(r2,c1), type(right), buff(0.5, 0))",
+      "description": "Callout offset from anchor"
+    },
+    {
+      "variant": "Trace with buff",
+      "syntax": "trace(G, V1, type(angle), V2, buff(-6, 0))",
+      "description": "Trace label offset from default position"
+    },
+    {
+      "variant": "Tangent with buff",
+      "syntax": "tangent(G, f, x, buff(0.3))",
+      "description": "Single-value buff for tangent rendering offset"
+    },
+    {
+      "variant": "Textswap with buff pairs",
+      "syntax": "textswap(sel1, sel2, \"new1\", \"new2\", buff(-0.1, 0.6), buff(0, 0))",
+      "description": "Each swapped selection gets its own buff offset"
+    },
+    {
+      "variant": "Textreplace with buff",
+      "syntax": "textreplace(label, select, buff(0, -2), type(replace))",
+      "description": "Replacement text offset"
+    },
+    {
+      "variant": "Textcopy with buff",
+      "syntax": "textcopy(write, select, buff(0.5, -0.5))",
+      "description": "Copied text offset from source"
+    },
+    {
+      "variant": "Textreveal with buff",
+      "syntax": "textreveal(select, buff(-0.4, -0.2), notes(\"text\"))",
+      "description": "Revealed text offset"
+    },
+    {
+      "variant": "Interval with buff",
+      "syntax": "interval(nl, 2, 6, type(closed), buff(-19))",
+      "description": "Single-value buff for interval positioning"
+    },
+    {
+      "variant": "Trace limit with buff",
+      "syntax": "trace(G, plot, type(limit), 1, buff(-1.6, -30))",
+      "description": "Trace limit label offset"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Marker offset from selection",
+      "expression": "callout_1 = callout(at(3,5), at(3,8), at(5,8), at(5,5), type(right), buff(0.5, 0))"
+    },
+    {
+      "scenario": "Trace label offset for angle readout",
+      "expression": "trace(G, V1, type(angle), V2, buff(-6, 0))"
+    },
+    {
+      "scenario": "Single-value buff on tangent",
+      "expression": "t = tangent(G, f, x, buff(0.3))"
+    },
+    {
+      "scenario": "Label with single-value buff",
+      "expression": "f(x) = x^2\nlabel(K, point(K, 2, f(2)), eq_s, buff(-2))"
+    },
+    {
+      "scenario": "Textreveal with buff offset",
+      "expression": "text_reveal_1 = textreveal(write_1_exclude_1, buff(-0.4, -0.2), notes(\"hello world\"))"
+    },
+    {
+      "scenario": "Textswap with paired buff offsets",
+      "expression": "text_swap_1 = textswap(select_10, select_11, \"theta\", \"a\", buff(0, 0), buff(0, 0))"
+    },
+    {
+      "scenario": "Textcopy with buff offset",
+      "expression": "text_replace_8 = textcopy(write_17, select_6, buff(0.5, -0.5))"
+    },
+    {
+      "scenario": "Trace conics focus with buff",
+      "expression": "trace_1 = trace(graph_2, parabola_1, type(focus), buff(-1, -1))"
+    }
+  ]
+}

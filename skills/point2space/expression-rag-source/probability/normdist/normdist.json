@@ -1,0 +1,19 @@
+{
+  "expression": "normdist",
+  "_requires": [],
+  "description": "Displays a normal distribution (bell curve) with configurable mean and standard deviation. Standalone chart with at() positioning.",
+  "utility": "Create a normal distribution curve",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "mean", "type": "number", "required": false, "description": "Mean of the distribution (default: 0)"},
+    {"name": "stddev", "type": "number", "required": false, "description": "Standard deviation (default: 1)"},
+    {"name": "xLabel", "type": "quoted string", "required": false, "description": "X-axis label"},
+    {"name": "yLabel", "type": "quoted string", "required": false, "description": "Y-axis label"}
+  ],
+  "examples": [
+    {"scenario": "Standard normal distribution", "expression": "N = normdist(at(4,4), view(12,16))"},
+    {"scenario": "Normal distribution with mean 5, stddev 2", "expression": "N = normdist(at(4,4), view(12,16), 5, 2)"},
+    {"scenario": "With axis labels", "expression": "N = normdist(at(4,4), view(12,16), 0, 1, \"Score\", \"Density\")"}
+  ]
+}

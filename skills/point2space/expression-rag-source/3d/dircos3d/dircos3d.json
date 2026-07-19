@@ -1,0 +1,14 @@
+{
+  "expression": "dircos3d",
+  "_requires": ["g3d", "vector3d"],
+  "description": "Computes and visualizes the direction cosines of a 3D vector.",
+  "utility": "Find direction cosines of a 3D vector",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "3D graph container"},
+    {"name": "vector", "type": "vector3d", "required": true, "description": "Vector to compute direction cosines for"}
+  ],
+  "examples": [
+    {"scenario": "Direction cosines of a vector", "expression": "G = g3d(at(4,23), view(30, 30))\nV = vector3d(G, 0, 0, 0, 1, 2, 3, c(red))\ndc = dircos3d(G, V)"},
+    {"scenario": "Direction cosines of unit vector", "expression": "V = vector3d(G, 0, 0, 0, 1, 0, 0)\ndc = dircos3d(G, V)"}
+  ]
+}

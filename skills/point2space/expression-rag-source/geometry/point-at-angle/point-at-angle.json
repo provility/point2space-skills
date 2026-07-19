@@ -1,0 +1,45 @@
+{
+  "expression": "pointatangle",
+  "_requires": ["g2d", "point"],
+  "description": "Creates a point at a given distance and angle (in degrees) from an existing point.",
+  "utility": "Place a point at a distance and angle from another point",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "P",
+      "type": "point",
+      "required": true,
+      "description": "Reference point"
+    },
+    {
+      "name": "r",
+      "type": "number",
+      "required": true,
+      "description": "Distance from the reference point"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": true,
+      "description": "Angle in degrees from the reference point"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Point at angle from point",
+      "syntax": "pointatangle(G, P, r, angle)",
+      "description": "Point at distance r and angle degrees from point P"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Point at distance and angle from another",
+      "expression": "Q = pointatangle(G, P, 4, 30)"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "expression": "histogram",
+  "_requires": ["stattable"],
+  "description": "Creates a histogram visualization from table data. Requires a stattable reference. Supports density normalization and column selection for categories and values.",
+  "utility": "Create a histogram from table data",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size (default: 10 rows, 8 cols)"},
+    {"name": "table", "type": "stattable variable", "required": true, "description": "Reference to a stattable expression"},
+    {"name": "xColumn", "type": "xcol(index)", "required": false, "description": "Category column index (default: 1). Optionally accepts a title: xcol(1, \"Category\")"},
+    {"name": "valueColumn", "type": "col(index)", "required": false, "description": "Value column index (default: 2). Optionally accepts a title: col(2, \"Frequency\")"},
+    {"name": "histType", "type": "type(density)", "required": false, "description": "Use density histogram normalization"}
+  ],
+  "examples": [
+    {"scenario": "Basic histogram from table", "expression": "T = stattable(at(4,4), view(8,12), values(10, 20, 15, 25, 30, 18, 22))\nH = histogram(at(14,4), view(10,16), T)"},
+    {"scenario": "Density histogram", "expression": "T = stattable(at(4,4), view(8,12), values(10, 20, 15, 25, 30, 18, 22))\nH = histogram(at(14,4), view(10,16), T, type(density))"},
+    {"scenario": "Histogram with column selection", "expression": "T = stattable(at(4,4), view(8,12), values(10, 20, 15, 25, 30, 18, 22))\nH = histogram(at(14,4), view(10,16), T, xcol(1), col(2))"}
+  ]
+}

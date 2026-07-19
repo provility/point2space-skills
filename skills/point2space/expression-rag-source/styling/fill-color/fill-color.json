@@ -1,0 +1,27 @@
+{
+  "expression": "fc",
+  "description": "Sets the fill color for shapes",
+  "utility": "Control shape interior color using color names or hex codes",
+  "arguments": [
+    {
+      "name": "color",
+      "type": "string or color name",
+      "required": true,
+      "description": "Color value as name (e.g., red, blue) or hex code (e.g., \"#ff0000\")"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Named color",
+      "expression": "circle(0, 1) | fc(red)"
+    },
+    {
+      "scenario": "Hex color",
+      "expression": "point(0, 1) | fc(\"#00ff00\")"
+    },
+    {
+      "scenario": "Custom color fill",
+      "expression": "square(0, 2) | fc(blue)"
+    }
+  ]
+}

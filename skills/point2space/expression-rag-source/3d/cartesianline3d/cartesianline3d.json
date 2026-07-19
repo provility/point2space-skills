@@ -1,0 +1,37 @@
+{
+  "expression": "cartesianline3d",
+  "_requires": ["g3d"],
+  "description": "Creates a 3D line as the intersection of two planes, given as two comma-separated Cartesian equations.",
+  "utility": "Create a 3D line from two-plane intersection",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g3d",
+      "required": true,
+      "description": "3D graph container created with g3d()"
+    },
+    {
+      "name": "equations",
+      "type": "string",
+      "required": true,
+      "description": "Two comma-separated plane equations - e.g., \"x + y + z = 3, 2x - y + z = 1\""
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Two-plane intersection",
+      "syntax": "cartesianline3d(G, \"x + y + z = 3, 2x - y + z = 1\")",
+      "description": "Line defined by intersection of two planes"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line from intersection of two planes",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = cartesianline3d(G, \"x + y + z = 3, 2x - y + z = 1\")"
+    },
+    {
+      "scenario": "Line from coordinate plane intersections with color",
+      "expression": "G = g3d(at(4,23), view(30, 30))\nL = cartesianline3d(G, \"x + y = 2, y + z = 3\", c(red))"
+    }
+  ]
+}

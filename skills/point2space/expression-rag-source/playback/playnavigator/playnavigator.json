@@ -1,0 +1,16 @@
+{
+  "expression": "playnavigator",
+  "description": "Toggle the playback navigation bar on or off. Controls visibility of the step-by-step playback navigation bar.",
+  "utility": "Toggle playback navigation bar visibility",
+  "arguments": [
+    { "name": "state", "type": "on | off", "required": true, "description": "Toggle state: on to show, off to hide" }
+  ],
+  "alternates": [
+    { "variant": "Show navigator", "syntax": "playnavigator(on)", "description": "Show the playback navigation bar" },
+    { "variant": "Hide navigator", "syntax": "playnavigator(off)", "description": "Hide the playback navigation bar" }
+  ],
+  "examples": [
+    { "scenario": "Enable playback navigation", "expression": "playnavigator(on)" },
+    { "scenario": "Disable playback navigation", "expression": "playnavigator(off)" }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "expression": "notes",
+  "description": "Attaches a popup text annotation to a shape or expression, displayed on user interaction. Content is in PLAIN TEXT mode by default — text renders as-is. Math expressions must be wrapped in math() to render as math. Supports custom text and background colors.",
+  "utility": "Attach popup text notes or media to shapes and expressions (plain text default, use math() for math)",
+  "arguments": [
+    {
+      "name": "content",
+      "type": "string",
+      "required": true,
+      "description": "Text content or media asset name in quotes"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Text color for the note - e.g., c(black), c(red)"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Background fill color - e.g., fc(orange), fc(yellow)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Simple text note on a point",
+      "syntax": "point(G, x, y, notes(\"text\"))",
+      "description": "Attach a text annotation to a point"
+    },
+    {
+      "variant": "Styled note with colors",
+      "syntax": "point(G, x, y, notes(\"text\", c(black), fc(orange)))",
+      "description": "Note with text color and background color"
+    },
+    {
+      "variant": "Note on textreveal",
+      "syntax": "textreveal(selectVar, buff(r, c), notes(\"explanation\"))",
+      "description": "Show note when text is revealed"
+    },
+    {
+      "variant": "Long note on a point",
+      "syntax": "point(G, x, y, notes(\"You can write a long sentence here\"))",
+      "description": "Detailed annotation text"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Standalone notes with timing, color and styled background (diameter through center lesson)",
+      "expression": "notes_1=notes(\"First we need to find the center of the circle\",0.54,c(black),fc(pink),fs(24),ff(\"Gill Sans\"),stay(0.5))"
+    },
+    {
+      "scenario": "Notes on a paragraph for slide navigation context (axis intercepts lesson)",
+      "expression": "paragraph_1=paragraph(at(5,6),44.1,4.4,para_str_3,ff(\"Gill Sans\"),effect(slideup),notes(\"Circle on a Line's Axis Intercepts\"))"
+    },
+    {
+      "scenario": "Notes on a circle for teaching context (circle from diameter lesson)",
+      "expression": "circle_1 = circle(graph_1, point_1, point_2, type(diameter), c(mediumvioletred),notes(\"the diameter defines the circle completely\"))"
+    },
+    {
+      "scenario": "Notes on a write expression for general equation result (circle from diameter lesson)",
+      "expression": "write_10=write(at(36,6),\"x^2+y^2+3x+y-6=0\",fadein(0.5),notes(\"general equation of the circle\"))"
+    },
+    {
+      "scenario": "Notes on a write result indicating point position (Point and Circle lesson)",
+      "expression": "write_6=write(at(39,8),\"=−11\",notes(\"negative — the point is inside the circle\"))"
+    }
+  ]
+}

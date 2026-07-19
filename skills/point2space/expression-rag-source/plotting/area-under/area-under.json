@@ -1,0 +1,87 @@
+{
+  "expression": "areaunder",
+  "_requires": ["g2d", "plot"],
+  "description": "Shades the region between a curve and the x-axis over a specified x-interval, representing the definite integral. Supports custom fill color and opacity for visualizing signed area and accumulation.",
+  "utility": "Shade the area under a curve between two x-values",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "plotVariable",
+      "type": "plot reference",
+      "required": true,
+      "description": "A previously assigned plot variable - e.g., f from f = plot(G, \"x^2\")"
+    },
+    {
+      "name": "xmin",
+      "type": "number",
+      "required": true,
+      "description": "Left bound of the shaded interval"
+    },
+    {
+      "name": "xmax",
+      "type": "number",
+      "required": true,
+      "description": "Right bound of the shaded interval"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Fill color using fc() expression - e.g., fc(blue), fc(red). Default is blue"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Fill opacity from 0 to 1 using fo() expression - e.g., fo(0.3). Default is 0.3"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic area under curve",
+      "syntax": "f = plot(G, \"f(x)\")\nareaunder(G, f, xmin, xmax)",
+      "description": "Shade area under f(x) between xmin and xmax with default blue fill"
+    },
+    {
+      "variant": "With custom fill color",
+      "syntax": "f = plot(G, \"f(x)\")\nareaunder(G, f, xmin, xmax, fc(red))",
+      "description": "Shade with a custom fill color"
+    },
+    {
+      "variant": "With custom fill color and opacity",
+      "syntax": "f = plot(G, \"f(x)\")\nareaunder(G, f, xmin, xmax, fc(green), fo(0.5))",
+      "description": "Shade with custom fill color and opacity"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Area under x=sin(y) from 0 to pi with yellow fill and opacity",
+      "expression": "g=g2d(at(4,21),20.4,17.7,range(-2*pi,2*pi,pi/2),range(-2,2,0.5),type(plotting))\np = plot(g, \"x=sin(y)\")\nar = areaunder(g, p, 0, 3.14, fc(yellow), fo(0.1))"
+    },
+    {
+      "scenario": "Area under x=sin(y) on a transposed-axis graph with yellow fill",
+      "expression": "G=g2d(at(4,19),21.6,19.6,range(-2,2,0.5),range(-2*pi,2*pi,pi/2),type(plotting))\nP = plot(G, \"x=sin(y)\")\nar = areaunder(G, P, 0, 3.14, fc(yellow), fo(0.2))"
+    },
+    {
+      "scenario": "Area under f(x) = 1+x squared from 0 to 2 with steelblue fill",
+      "expression": "graph_1 = g2d(at(3,6), 20, 20, range(-1, 5, 1), range(-1, 8, 1), type(plotting), grid())\nplot_2 = plot(graph_1, \"1+x^2\")\narea_1 = areaunder(graph_1, plot_2, 0, 2, fc(steelblue))"
+    },
+    {
+      "scenario": "Strip area between x=2 and x=2.8 with red fill for derivative proof",
+      "expression": "area_2 = areaunder(graph_1, plot_2, 2, 2.8, c(orange), s(2), so(0.8), fc(red))"
+    },
+    {
+      "scenario": "Area under x² with outline and focus for emphasis",
+      "expression": "graph_1 = g2d(at(4,22), 17.2, 16.8, range(-5, 5), range(-5, 5), type(plotting)); plot_1 = plot(graph_1, \"x^2\"); area_1=areaunder(graph_1,plot_1,-0.2,2.2); focus_1 = outline(desc_1, area_1)"
+    },
+    {
+      "scenario": "Two area-under regions on separate graphs for comparison",
+      "expression": "GA=g2d(at(6,2),16,16,range(-1,4,1),range(-1,8,1),type(plotting),grid()); fA = plot(GA, \"1 + x^2\", c(steelblue)); areaunder_1=areaunder(GA, fA, 0, 2, fc(steelblue), fo(0.3))"
+    }
+  ]
+}

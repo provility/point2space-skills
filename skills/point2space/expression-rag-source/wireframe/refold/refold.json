@@ -1,0 +1,24 @@
+{
+  "expression": "refold",
+  "_requires": ["unfold3d"],
+  "description": "Animates an unfolded net back into its 3D solid shape. Takes a reference to an unfold3d expression and reverses the unfolding animation (flat net reassembles into 3D solid).",
+  "utility": "Animate an unfolded net back into its 3D shape",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "unfoldRef", "type": "unfold3d variable", "required": true, "description": "Reference to the unfold3d expression to refold"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity (0-1)"}
+  ],
+  "examples": [
+    {
+      "scenario": "Unfold cube then refold",
+      "expression": "S = cube3d(at(4,4), view(14,14), 3, c(navy), fc(lightyellow), fo(0.5))\nnet = unfold3d(at(4,22), S, view(14,14), c(navy), fc(lightyellow), fo(0.5))\nrf = refold(at(4,40), net, c(navy), fc(lightyellow), fo(0.5))"
+    },
+    {
+      "scenario": "Unfold pyramid and refold",
+      "expression": "S = pyramid3d(at(4,4), view(14,14), 4, c(brown), fc(sandybrown), fo(0.5))\nnet = unfold3d(at(4,22), S, view(20,20), c(brown), fc(sandybrown), fo(0.5))\nrf = refold(at(4,44), net, view(14,14), c(brown), fc(sandybrown), fo(0.5))"
+    }
+  ]
+}

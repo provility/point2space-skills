@@ -1,0 +1,43 @@
+{
+  "expression": "measure3d",
+  "_requires": ["g3d"],
+  "description": "Renders a measurement indicator with text label between two 3D points",
+  "utility": "Show a labeled measurement line in 3D space with optional label offset",
+  "arguments": [
+    {"name": "graph", "type": "g3d", "required": true, "description": "The 3D graph container (g3d or s3d)"},
+    {"name": "start_x", "type": "number", "required": true, "description": "X coordinate of the start point"},
+    {"name": "start_y", "type": "number", "required": true, "description": "Y coordinate of the start point"},
+    {"name": "start_z", "type": "number", "required": true, "description": "Z coordinate of the start point"},
+    {"name": "end_x", "type": "number", "required": true, "description": "X coordinate of the end point"},
+    {"name": "end_y", "type": "number", "required": true, "description": "Y coordinate of the end point"},
+    {"name": "end_z", "type": "number", "required": true, "description": "Z coordinate of the end point"},
+    {"name": "text", "type": "string", "required": true, "description": "Label text (supports LaTeX)"}
+  ],
+  "alternates": [
+    {
+      "variant": "using point3d expressions",
+      "syntax": "measure3d(graph, point3d(start), point3d(end), \"text\")",
+      "description": "Use point3d expressions instead of separate coordinates"
+    },
+    {
+      "variant": "with perpendicular and label offset",
+      "syntax": "measure3d(graph, P1, P2, \"text\", buff(perpBuff, labelBuff))",
+      "description": "perpBuff = perpendicular distance of measurement line from shape, labelBuff = additional perpendicular offset for label"
+    },
+    {
+      "variant": "with perpBuff only",
+      "syntax": "measure3d(graph, P1, P2, \"text\", buff(2))",
+      "description": "Perpendicular offset only, no extra label offset"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "measurement from origin to (3, 4, 0)",
+      "expression": "measure3d(g, 0, 0, 0, 3, 4, 0, \"5 units\")"
+    },
+    {
+      "scenario": "measurement using point3d with label offset",
+      "expression": "measure3d(g, point3d(g, 0, 0, 0), point3d(g, 1, 1, 1), \"\\\\sqrt{3}\", buff(0.2))"
+    }
+  ]
+}

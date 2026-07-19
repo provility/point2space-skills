@@ -1,0 +1,75 @@
+{
+  "expression": "plot (styling)",
+  "_requires": ["g2d"],
+  "description": "Styling options for function plots: color, stroke width, dashed lines, and bounded range shading. For inequality fills use inequalityplot().",
+  "utility": "Style a plot with color, fill, opacity, or domain restriction",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container"
+    },
+    {
+      "name": "equation",
+      "type": "string | function | variable",
+      "required": true,
+      "description": "Function expression as a quoted ASCII math string, a function reference, or a string variable"
+    },
+    {
+      "name": "range",
+      "type": "range(min, max)",
+      "required": false,
+      "description": "Optional domain restriction for explicit plots (x range)"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color - e.g., c(blue), c(red)"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName)",
+      "required": false,
+      "description": "Fill color for polar plots - e.g., fc(yellow)"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(value)",
+      "required": false,
+      "description": "Fill opacity for inequality plots - e.g., fo(0.3)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "With domain restriction",
+      "syntax": "plot(G, \"f(x)\", range(min, max))",
+      "description": "Plot over a restricted x-domain"
+    },
+    {
+      "variant": "Inequality region",
+      "syntax": "inequalityplot(G, \"y > f(x)\", c(orange), fo(0.3))",
+      "description": "Shade the region satisfying the inequality. Use inequalityplot() for inequality regions"
+    },
+    {
+      "variant": "With color styling",
+      "syntax": "plot(G, \"f(x)\", c(blue))",
+      "description": "Plot with a custom stroke color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Plot with restricted domain",
+      "expression": "G = g2d(at(2,3), 30, 30, type(plotting))\nplot(G, \"x^2\", range(-2, 2))"
+    },
+    {
+      "scenario": "Inequality plot with fill opacity",
+      "expression": "G = g2d(at(4,3), 14, 14, type(plotting))\ninequalityplot(G, \"y < x^2 + 1\", c(orange), fo(0.3))"
+    },
+    {
+      "scenario": "Squeeze theorem: three curves together",
+      "expression": "G = g2d(at(2,3), 30, 30, range(-2, 2, 0.5), range(-2, 2, 1), type(plotting))\nplot(G, \"x^2\")\nplot(G, \"-x^2\")\nplot(G, \"(x^2)sin(1/x)\")"
+    }
+  ]
+}

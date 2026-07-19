@@ -1,0 +1,62 @@
+{
+  "expression": "textgather",
+  "_requires": [],
+  "description": "Gathers split text objects back to their original positions. Accepts split object labels (e.g., SP_split0) registered by TextSplitCommand, or a textsplit command label (e.g., SP) to gather all its splits at once. Reverses the textsplit animation to reunite text elements.",
+  "utility": "Animate text gathering — bring split elements back together",
+  "arguments": [
+    {
+      "name": "split_object",
+      "type": "variable",
+      "required": true,
+      "description": "Split object label(s) (SP_split0, SP_split1) or textsplit command label (SP). Multiple arguments allowed to gather specific splits or all from a textsplit."
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Animation duration in seconds"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Text color during gather animation"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Gather single split object",
+      "syntax": "textgather(SP_split0)",
+      "description": "Gather a specific split object back to original position"
+    },
+    {
+      "variant": "Gather specific splits",
+      "syntax": "textgather(SP_split0, SP_split1)",
+      "description": "Gather multiple specific split objects"
+    },
+    {
+      "variant": "Gather all from textsplit",
+      "syntax": "textgather(SP)",
+      "description": "Gather all split objects from a textsplit command by its label"
+    },
+    {
+      "variant": "With styling",
+      "syntax": "textgather(SP_split0, t(0.5), c(blue))",
+      "description": "Gather with custom duration and color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Gather split terms back together",
+      "expression": "text_gather_1 = textgather(text_split_1)"
+    },
+    {
+      "scenario": "Split then gather all",
+      "expression": "M = write(at(3,2), \"x^2 + y^2 = r^2\")\ns1 = select(M, \"x^2\", 1)\ns2 = select(M, \"y^2\", 1)\nSP = textsplit(s1, s2)\ntextgather(SP)"
+    },
+    {
+      "scenario": "Gather with custom duration",
+      "expression": "M = write(at(3,2), \"int f(x) dx\")\nsel = select(M, \"int\", 1)\nSP = textsplit((sel, buff(-2, 0)))\ntextgather(SP, t(1.0))"
+    }
+  ]
+}

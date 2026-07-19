@@ -1,0 +1,48 @@
+{
+  "expression": "nllabel",
+  "_requires": ["nl"],
+  "description": "Places a text label (rendered via MathText/LaTeX) spanning a range on the number line. Useful for annotating intervals, segments, or regions with custom text.",
+  "utility": "Label a range on a number line with text",
+  "arguments": [
+    {
+      "name": "numberLine",
+      "type": "nl variable",
+      "required": true,
+      "description": "Number line variable"
+    },
+    {
+      "name": "range",
+      "type": "range(start, end)",
+      "required": true,
+      "description": "Span on the number line to label"
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": true,
+      "description": "Label text (supports LaTeX via text processing)"
+    },
+    {
+      "name": "color",
+      "type": "c(color)",
+      "required": false,
+      "description": "Label color"
+    },
+    {
+      "name": "offset",
+      "type": "buff(y)",
+      "required": false,
+      "description": "Vertical offset from axis"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Label a unit segment",
+      "expression": "N = nl(at(5, 2), range(0, 5))\nnllabel(N, range(0, 1), \"1 unit\")"
+    },
+    {
+      "scenario": "Label with color and offset",
+      "expression": "nllabel(N, range(2, 5), \"3/4\", c(purple), buff(0.5))"
+    }
+  ]
+}

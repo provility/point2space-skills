@@ -1,0 +1,83 @@
+{
+  "expression": "absineq",
+  "_requires": ["nl"],
+  "description": "Visualizes absolute value inequalities on a number line by parsing and shading solution regions. Supports custom label text.",
+  "utility": "Automatically converts absolute value inequalities to intervals and displays single or dual regions with optional labels",
+  "arguments": [
+    {
+      "name": "numberLine",
+      "type": "nl",
+      "required": true,
+      "description": "The number line to visualize the inequality on"
+    },
+    {
+      "name": "expression",
+      "type": "string",
+      "required": true,
+      "description": "Absolute value inequality string: '|x| < 3', '|x - 2| <= 4', '|x + 1| > 2', etc."
+    },
+    {
+      "name": "color",
+      "type": "c()",
+      "required": false,
+      "description": "Optional color using c(colorName). Defaults to blue"
+    },
+    {
+      "name": "offset",
+      "type": "buff()",
+      "required": false,
+      "description": "Optional vertical offset from axis"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Custom label text (must be the second string, after the inequality string)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "absolute value centered at origin",
+      "syntax": "absineq(N, '|x| < b')",
+      "description": "Shades the interval (-b, b) or [-b, b] depending on operator"
+    },
+    {
+      "variant": "absolute value with shift",
+      "syntax": "absineq(N, '|x - a| < b')",
+      "description": "Shades the interval (a-b, a+b) or [a-b, a+b] around center a"
+    },
+    {
+      "variant": "greater-than inequality",
+      "syntax": "absineq(N, '|x| > b')",
+      "description": "Shades two regions: (-inf, -b) union (b, inf)"
+    },
+    {
+      "variant": "with color",
+      "syntax": "absineq(N, '|x - 2| <= 3', c(red))",
+      "description": "Apply custom shading color"
+    },
+    {
+      "variant": "with custom label",
+      "syntax": "absineq(N, '|x| < 3', c(blue), \"Solution\")",
+      "description": "Custom label text replacing auto-generated interval notation"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Show |x| < 3 (single region from -3 to 3)",
+      "expression": "N = nl(at(1,1), 2, 10, range(-5, 5)); absineq(N, '|x| < 3')"
+    },
+    {
+      "scenario": "Show |x - 2| <= 4 (region from -2 to 6)",
+      "expression": "N = nl(at(1,1), 2, 10, range(-5, 10)); absineq(N, '|x - 2| <= 4')"
+    },
+    {
+      "scenario": "Show |x + 1| > 2 (two regions: x < -3 or x > 1)",
+      "expression": "N = nl(at(1,1), 2, 10, range(-5, 5)); absineq(N, '|x + 1| > 2')"
+    },
+    {
+      "scenario": "Show |x| >= 5 in red",
+      "expression": "N = nl(at(1,1), 2, 10, range(-10, 10)); absineq(N, '|x| >= 5', c(red))"
+    }
+  ]
+}

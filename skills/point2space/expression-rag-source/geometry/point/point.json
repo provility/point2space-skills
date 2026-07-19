@@ -1,0 +1,104 @@
+{
+  "expression": "point",
+  "_requires": ["g2d"],
+  "description": "Places a point on a 2D graph using Cartesian coordinates. Accepts separate x,y values or a point tuple expression. For polar coordinates use polarpoint(), for ratio along shapes use ratiopoint(), for angle on circles use anglepoint(), for points on plots use plotpoint().",
+  "utility": "Place a point at Cartesian coordinates on a graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "x | tuple",
+      "type": "number | expression | tuple",
+      "required": true,
+      "description": "X coordinate, or a point tuple expression like (3, 4) or f(t)"
+    },
+    {
+      "name": "y",
+      "type": "number | expression",
+      "required": false,
+      "description": "Y coordinate (omit when passing a tuple)"
+    },
+    {
+      "name": "icon",
+      "type": "icon(dot | cross | open | plus | square)",
+      "required": false,
+      "description": "Point marker icon style. dot (default filled circle), cross (x), open (hollow circle), plus (+), square"
+    },
+    {
+      "name": "styles",
+      "type": "c() | fc() | s() | defer() | notes() | icon()",
+      "required": false,
+      "description": "Color, fill, size (s() controls point radius), visibility, notes, or marker icon"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Separate x, y coordinates",
+      "syntax": "point(G, 3, 5)",
+      "description": "Point at fixed (x, y) coordinates"
+    },
+    {
+      "variant": "Point from tuple expression",
+      "syntax": "point(G, (3, 4))",
+      "description": "Point from an inline point tuple"
+    },
+    {
+      "variant": "Point from function returning tuple",
+      "syntax": "point(G, f(0))",
+      "description": "Point from a function that returns a point tuple"
+    },
+    {
+      "variant": "Matrix-transformed point",
+      "syntax": "point(G, M * (4, 0))",
+      "description": "Point from a matrix multiplied with a point tuple"
+    },
+    {
+      "variant": "Marker styles",
+      "syntax": "point(G, x, y, icon(cross))",
+      "description": "Marker icons: icon(dot) (default), icon(cross), icon(open), icon(plus), icon(square)"
+    },
+    {
+      "variant": "Deferred reference",
+      "syntax": "point_1 = point(G, x, y, defer())",
+      "description": "Creates a point for reference but defers rendering"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Simple Cartesian point",
+      "expression": "point_1 = point(G, 0, 1)"
+    },
+    {
+      "scenario": "Point at center of a circle with size",
+      "expression": "point_1 = point(graph_2, -3, -4, s(4))"
+    },
+    {
+      "scenario": "Point using a parametric function",
+      "expression": "f(t) = (3cos(t), 3sin(t))\nP = point(G, f(0))"
+    },
+    {
+      "scenario": "Point with cross marker",
+      "expression": "Q = point(G, f(pi/4), icon(cross))"
+    },
+    {
+      "scenario": "Point from matrix-transformed tuple",
+      "expression": "M = [[cos(pi/4), -sin(pi/4)], [sin(pi/4), cos(pi/4)]]\nS = point(G, M * (4, 0))"
+    },
+    {
+      "scenario": "Point from variable tuple",
+      "expression": "B = 1.3 * (4, 2)\npt = point(graph_1, B)"
+    },
+    {
+      "scenario": "Point from tuple arithmetic",
+      "expression": "B = (4, 2)\nc = {2, 3}\npt2 = point(graph_1, B + c)"
+    },
+    {
+      "scenario": "Deferred point for reference",
+      "expression": "point_1 = point(graph_1, 0, 0, defer())"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "expression": "highlight",
+  "description": "Standalone command that animates stroke and/or fill properties of existing shapes. Applies highlight styling to individual shapes — for filling regions between shapes, use highlightfill (2D) or highlightfill3d (3D). For dashed outline highlights, use highlightdash. Takes shape variable references followed by any combination of style modifiers: c() for stroke color, fc() for fill color, so() for stroke opacity, fo() for fill opacity, s() for stroke width. Auto-clears after t() duration (default 5 seconds).",
+  "utility": "Animate stroke color, fill color, opacity, or width change on existing shapes",
+  "arguments": [
+    {
+      "name": "shapes",
+      "type": "variable references",
+      "required": true,
+      "description": "One or more variable references to existing shapes - e.g., A, B, L"
+    },
+    {
+      "name": "strokeColor",
+      "type": "c(colorName) | c(\"#hex\")",
+      "required": false,
+      "description": "Stroke color via c() - e.g., c(red), c(\"#ff0000\")"
+    },
+    {
+      "name": "fillColor",
+      "type": "fc(colorName) | fc(\"#hex\")",
+      "required": false,
+      "description": "Fill color via fc() - e.g., fc(blue), fc(\"#0000ff\")"
+    },
+    {
+      "name": "strokeOpacity",
+      "type": "so(number)",
+      "required": false,
+      "description": "Stroke opacity from 0 (transparent) to 1 (opaque) via so()"
+    },
+    {
+      "name": "fillOpacity",
+      "type": "fo(number)",
+      "required": false,
+      "description": "Fill opacity from 0 (transparent) to 1 (opaque) via fo()"
+    },
+    {
+      "name": "strokeWidth",
+      "type": "s(number)",
+      "required": false,
+      "description": "Stroke width in pixels via s()"
+    },
+    {
+      "name": "duration",
+      "type": "t(seconds)",
+      "required": false,
+      "description": "Auto-clear duration. t(0) = permanent. Defaults to 5 seconds."
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Stroke color only",
+      "syntax": "highlight(A, c(red))",
+      "description": "Change stroke color of a shape"
+    },
+    {
+      "variant": "Fill color only",
+      "syntax": "highlight(A, fc(blue))",
+      "description": "Change fill color of a shape"
+    },
+    {
+      "variant": "Stroke and fill together",
+      "syntax": "highlight(A, c(red), fc(blue))",
+      "description": "Change both stroke and fill color at once"
+    },
+    {
+      "variant": "Stroke color with opacity",
+      "syntax": "highlight(A, c(red), so(0.5))",
+      "description": "Change stroke color with 50% stroke opacity"
+    },
+    {
+      "variant": "Fill color with opacity",
+      "syntax": "highlight(A, fc(blue), fo(0.5))",
+      "description": "Change fill color with 50% fill opacity"
+    },
+    {
+      "variant": "Full combination",
+      "syntax": "highlight(A, c(red), fc(blue), fo(0.5))",
+      "description": "Stroke color + fill color + fill opacity together"
+    },
+    {
+      "variant": "Stroke opacity only",
+      "syntax": "highlight(A, so(0.5))",
+      "description": "Change only stroke opacity without changing color"
+    },
+    {
+      "variant": "Fill opacity only",
+      "syntax": "highlight(A, fo(0.5))",
+      "description": "Change only fill opacity without changing color"
+    },
+    {
+      "variant": "Stroke width",
+      "syntax": "highlight(A, s(3))",
+      "description": "Change stroke width of a shape"
+    },
+    {
+      "variant": "Multiple shapes",
+      "syntax": "highlight(A, B, C, c(red), fc(blue))",
+      "description": "Apply highlight to multiple shapes at once"
+    },
+    {
+      "variant": "Permanent highlight",
+      "syntax": "highlight(A, c(red), t(0))",
+      "description": "Highlight that stays permanently (no auto-clear)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Highlight equation part and shapes",
+      "expression": "effect_1 = highlight(select_1, line_1, vector_1, c(red), t(1))"
+    },
+    {
+      "scenario": "Highlight base line of triangle",
+      "expression": "stroke_line_c=highlight(line_c, s(8), notes(\"For this triangle We will treat this as base\"))"
+    },
+    {
+      "scenario": "Highlight a triangle with yellow fill",
+      "expression": "highlight(T, fc(yellow), fo(0.3))"
+    },
+    {
+      "scenario": "Highlight selected discriminant, line and vector in quadratic formula with timed auto-clear",
+      "expression": "select_1 = select(write_1, \"sqrt(b^2 - 4ac)\", 1)\neffect_1 = highlight(select_1, line_1, vector_1, c(red), t(1))"
+    },
+    {
+      "scenario": "Highlight two points across separate graphs with color and timer",
+      "expression": "effect_1 = highlight(point_4, point_3, c(red), t(1))"
+    }
+  ]
+}

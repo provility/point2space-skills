@@ -1,0 +1,19 @@
+{
+  "expression": "slice3d",
+  "_requires": [],
+  "description": "Cross-section slicer for ThreeJS solid shapes. Renders a ghost copy of the solid with a cutting plane and cross-section polygon.",
+  "utility": "Create cross-section of a 3D solid shape",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position for slice view"},
+    {"name": "solidRef", "type": "variable", "required": true, "description": "Reference to solid shape to slice"},
+    {"name": "crossplane", "type": "crossplane(axis, position)", "required": true, "description": "Cutting plane specification"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size (inherits from solid if omitted)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Cross-section edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Cross-section fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity"}
+  ],
+  "examples": [
+    {"scenario": "Slice cube horizontally at midpoint", "expression": "S = cube3d(at(4,4), view(14,14), 3, c(navy), fc(lightyellow), fo(0.5))\nslice_1 = slice3d(at(4,22), S, crossplane(y, 0.5), view(14,14), c(red), fc(lightcoral), fo(0.5))"},
+    {"scenario": "Oblique slice of cylinder", "expression": "S = cylinder3d(at(4,4), view(14,14), 2, 5)\nslice_1 = slice3d(at(4,22), S, crossplane(-1.3, -1.6, 0.9, 0.8))"}
+  ]
+}

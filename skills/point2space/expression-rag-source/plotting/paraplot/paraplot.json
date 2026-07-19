@@ -1,0 +1,19 @@
+{
+  "expression": "paraplot",
+  "_requires": ["g2d"],
+  "description": "Plots a parametric curve defined by x(t) and y(t) equations over a t range on a 2D graph.",
+  "utility": "Plot a 2D parametric curve",
+  "arguments": [
+    {"name": "graph", "type": "g2d reference", "required": true, "description": "The 2D graph container"},
+    {"name": "xExpr", "type": "string", "required": true, "description": "x(t) expression as quoted string"},
+    {"name": "yExpr", "type": "string", "required": true, "description": "y(t) expression as quoted string"},
+    {"name": "tMin", "type": "number", "required": false, "description": "Start of parameter range (default: 0)"},
+    {"name": "tMax", "type": "number", "required": false, "description": "End of parameter range (default: 2*pi)"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Curve color"}
+  ],
+  "examples": [
+    {"scenario": "Unit circle", "expression": "G = g2d(at(4,4), 20, 20, range(-2, 2), range(-2, 2), type(plotting))\nparaplot(G, \"cos(t)\", \"sin(t)\", 0, 2*pi, c(blue))"},
+    {"scenario": "Lissajous curve", "expression": "paraplot(G, \"sin(2*t)\", \"sin(3*t)\", 0, 2*pi, c(red))"},
+    {"scenario": "Spiral", "expression": "paraplot(G, \"t*cos(t)\", \"t*sin(t)\", 0, 6*pi, c(green))"}
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "expression": "protractorpoint",
+  "_requires": ["g2d", "point"],
+  "description": "Places a point at a specified angle from a baseline using the protractor instrument. The protractor auto-positions at the baseline midpoint. The result behaves as a point and can be used by line(), vector(), etc.",
+  "utility": "Construct a point at a measured angle from a reference line — result is reusable as a point geometry",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph to draw on"
+    },
+    {
+      "name": "P1 or lineOrVector",
+      "type": "point | line | vector",
+      "required": true,
+      "description": "First baseline endpoint (two-point form) or an existing line/vector as baseline"
+    },
+    {
+      "name": "P2",
+      "type": "point",
+      "required": false,
+      "description": "Second baseline endpoint (only in two-point form)"
+    },
+    {
+      "name": "angleDeg",
+      "type": "number",
+      "required": true,
+      "description": "The angle in degrees from the baseline to place the point"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "two-point baseline",
+      "syntax": "protractorpoint(G, P1, P2, angleDeg)",
+      "description": "Define baseline with two points, place point at angle from midpoint"
+    },
+    {
+      "variant": "line/vector baseline",
+      "syntax": "protractorpoint(G, lineOrVector, angleDeg)",
+      "description": "Use existing line or vector as baseline"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Place a point at 60° from a baseline defined by two points",
+      "expression": "G = g2d(at(-0.9, 6.6), 30, range(-3, 8), type(geometry)); P = protractorpoint(G, point(G, 2, 5), point(G, 4, 10), 60)"
+    },
+    {
+      "scenario": "Place two protractor points at 60° from different baselines",
+      "expression": "G = g2d(at(-0.9, 6.6), 30, range(-3, 8), type(geometry)); P = protractorpoint(G, point(G, 2, 5), point(G, 4, 10), 60); Q = protractorpoint(G, point(G, 4, 8), point(G, 4, 1), 60); line_1 = line(G, P, Q, type(line), c(steelblue), defer())"
+    },
+    {
+      "scenario": "Place a point at 60° from an existing line segment",
+      "expression": "G = g2d(at(2,11), size(21), range(-1, 6), type(geometry)); line_1 = line(G, point(G, 1.1, 3.8), point(G, 3.8, 1.7), type(segment), c(steelblue)); point_1 = protractorpoint(G, line_1, 60)"
+    }
+  ]
+}

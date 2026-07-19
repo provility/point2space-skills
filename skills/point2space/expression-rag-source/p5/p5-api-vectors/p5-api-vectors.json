@@ -1,0 +1,44 @@
+{
+  "expression": "p5-api-vectors",
+  "_context": "p5sheet",
+  "_requires": ["p5sheet"],
+  "description": "JavaScript vector and measurement marker API functions available inside p5sheet scripts. pvector creates transformable and animatable 2D vectors. distanceMarker, curveMarker, and angleMarker draw measurement annotations. NOT standalone expressions.",
+  "utility": "Draw vectors and measurement markers inside p5sheet scripts",
+  "arguments": [],
+  "alternates": [
+    {
+      "variant": "pvector",
+      "syntax": "let v = pvector(x1, y1, x2, y2)",
+      "description": "Creates a vector from (x1,y1) to (x2,y2). Properties: .x1, .y1, .x2, .y2. Geometric: .magnitude(), .angle(). Drawing: .draw(options), .drawAnimated(t, options) where t is 0-1 progress. Transformations (return new pvector): .placeAt(x, y), .forward(distance), .parallelShift(distance), .reverse(), .reverseAt(x, y), .chain(other), .add(other), .subtract(other), .scale(scalar). Animated transitions: .drawPlaceAt(x, y, t, options), .drawForward(dist, t, options), .drawParallelShift(dist, t, options), .drawChain(other, t, options). Draw options: { strokeWeight, color }."
+    },
+    {
+      "variant": "distanceMarker",
+      "syntax": "distanceMarker(x1, y1, x2, y2, options)",
+      "description": "Draws a straight distance marker between two points with optional arrows and label. Options: { markerLength (tick size), arrowAt ('start'|'end'|'both'), label (text to display), buff (offset from line), strokeWeight, textSize }."
+    },
+    {
+      "variant": "curveMarker",
+      "syntax": "curveMarker(x1, y1, x2, y2, options)",
+      "description": "Draws a curved arc marker between two points. Options: { radius, arrowAt ('start'|'end'|'both'), sweepType ('min'|'max'), reflex (boolean), label, buff, strokeWeight, textSize }."
+    },
+    {
+      "variant": "angleMarker",
+      "syntax": "angleMarker(vx, vy, p1x, p1y, p2x, p2y, options)",
+      "description": "Draws an angle marker at vertex (vx,vy) between rays to point1 and point2. Options: { radius, arrowAt ('start'|'end'|'both'), label, buff, strokeWeight, fill, fillOpacity, type ('interior'|'right'|'exterior-first'|'exterior-second'|'reflex'|'opposite'), textSize }."
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Two vectors with parallelogram construction",
+      "expression": "function setup() { canvas(); }\nfunction draw() {\n  background(255);\n  let vecStyle = { color: color(200, 0, 0) };\n  let v1 = pvector(100, 300, 300, 200);\n  let v2 = pvector(100, 300, 200, 100);\n  v1.draw(vecStyle);\n  v2.draw(vecStyle);\n  let v1copy = v1.placeAt(200, 100);\n  v1copy.draw({ color: color(100, 100, 100) });\n}"
+    },
+    {
+      "scenario": "Animated vector with phaseStepper",
+      "expression": "let stepper;\nfunction setup() { canvas(); stepper = phaseStepper(2); }\nfunction draw() {\n  background(255);\n  let v = pvector(100, 300, 300, 150);\n  let t1 = stepper.phaseT(1);\n  if (t1 > 0) v.drawAnimated(t1, { color: color(200, 0, 0) });\n  let t2 = stepper.phaseT(2);\n  if (t2 > 0) v.drawPlaceAt(200, 100, t2, { color: color(100, 100, 100) });\n  stepper.draw();\n}\nfunction mousePressed() { stepper.handleClick(); }"
+    },
+    {
+      "scenario": "Distance and angle markers",
+      "expression": "function setup() { canvas(); }\nfunction draw() {\n  background(255);\n  stroke(0);\n  distanceMarker(50, 200, 350, 200, { arrowAt: 'both', label: 'a', textSize: 14 });\n  distanceMarker(50, 200, 50, 50, { arrowAt: 'both', label: 'b', textSize: 14 });\n  angleMarker(50, 200, 350, 200, 50, 50, { radius: 40, label: '90', type: 'right' });\n}"
+    }
+  ]
+}

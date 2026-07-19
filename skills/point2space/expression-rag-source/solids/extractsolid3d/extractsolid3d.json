@@ -1,0 +1,19 @@
+{
+  "expression": "extractsolid3d",
+  "_requires": ["slice3d"],
+  "description": "Extracts one part from a sliced solid. Part 0 = negative side, Part 1 = positive side of the cutting plane.",
+  "utility": "Extract a part from a cross-sectioned solid",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "sliceRef", "type": "variable", "required": true, "description": "Reference to slice3d expression"},
+    {"name": "part", "type": "part(index)", "required": false, "description": "Part to extract: part(0) = negative side, part(1) = positive side"},
+    {"name": "viewSize", "type": "view(h, w)", "required": false, "description": "Container size"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Edge color"},
+    {"name": "fillColor", "type": "fc(color)", "required": false, "description": "Fill color"},
+    {"name": "fillOpacity", "type": "fo(number)", "required": false, "description": "Fill opacity"}
+  ],
+  "examples": [
+    {"scenario": "Extract positive side of sliced cube", "expression": "S = cube3d(at(4,4), view(14,14), 3)\nslice_1 = slice3d(at(4,22), S, crossplane(y, 0.5))\nextract_1 = extractsolid3d(at(4,40), slice_1, part(1), view(14,14))"},
+    {"scenario": "Extract negative side", "expression": "extract_0 = extractsolid3d(at(20,40), slice_1, part(0), view(14,14), c(red))"}
+  ]
+}

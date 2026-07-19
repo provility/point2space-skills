@@ -1,0 +1,67 @@
+{
+  "expression": "textcopy",
+  "description": "Animate copying content from a source text object to a destination position, preserving both originals. A clone moves from source to destination over 2 seconds.",
+  "utility": "Copy content from source to target position, target stays visible",
+  "arguments": [
+    {
+      "name": "target",
+      "type": "variable",
+      "required": true,
+      "description": "Destination text object or position variable"
+    },
+    {
+      "name": "source",
+      "type": "variable",
+      "required": true,
+      "description": "Source text object variable"
+    },
+    {
+      "name": "buff",
+      "type": "buff(row, col)",
+      "required": false,
+      "description": "Position offset for copied content"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic copy",
+      "syntax": "textcopy(target, source)",
+      "description": "Copy source content to target position"
+    },
+    {
+      "variant": "With offset",
+      "syntax": "textcopy(target, source, buff(row, col))",
+      "description": "Copy with position adjustment"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Copy label equation to write position for working (axis intercepts lesson)",
+      "expression": "text_copy_1=textcopy(write_1,label_1,buff(-0.1,-0.1))"
+    },
+    {
+      "scenario": "Copy expanded product into combined expression with deferred parallel play (diameter through center lesson)",
+      "expression": "text_copy_1=textcopy(write_3_select_1,select_1,buff(-0.3,-0.3),defer())\ntext_copy_2=textcopy(write_3_select_2,select_2,buff(-0.3,-0.1),defer())\nplay_1 = play(text_copy_1, text_copy_2, type(parallel))"
+    },
+    {
+      "scenario": "Copy expanded first product into combined form (circle from diameter lesson)",
+      "expression": "text_copy_3 = textcopy(write_9_select_1, select_11)"
+    },
+    {
+      "scenario": "Copy expanded second product into combined form (circle from diameter lesson)",
+      "expression": "text_copy_4 = textcopy(write_9_select_2, select_12)"
+    },
+    {
+      "scenario": "Copy coefficient values into vertex formula with font size override",
+      "expression": "text_copy_1=textcopy(write_7_select_2,select_1,fs(18))\ntext_copy_2=textcopy(write_7_select_1,select_2,buff(-0.3,-0.2),fs(20))"
+    },
+    {
+      "scenario": "Copy 6 triangle labels to anchor positions in parallel with deferred play",
+      "expression": "text_copy_1=textcopy(anchor_4,select_4,buff(-0.1,-0.2),defer())\ntext_copy_2=textcopy(anchor_5,select_2,buff(-0.1,-0.1),defer())\ntext_copy_3=textcopy(anchor_6,select_5,buff(-0.1,-0.1),defer())\nplay_1 = play(text_copy_1, text_copy_2, text_copy_3, type(parallel))"
+    },
+    {
+      "scenario": "Copy rearranged terms into new equation using deferred parallel play",
+      "expression": "text_copy_1=textcopy(write_3_select_1,select_3,buff(-0.2,-0.1),defer())\ntext_copy_2=textcopy(write_3_select_3,select_1,buff(-0.3,-0.1),defer())\ntext_copy_3=textcopy(write_3_select_2,select_2,buff(-0.5,-0.1),defer())\nplay_1 = play(text_copy_1, text_copy_2, text_copy_3, type(parallel))"
+    }
+  ]
+}

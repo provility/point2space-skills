@@ -1,0 +1,22 @@
+{
+  "expression": "diff",
+  "_requires": ["g2d"],
+  "description": "Computes the difference of clippable shapes. Returns shape1 minus all subsequent shapes. Useful for creating cutouts, holes, and subtractive geometric designs.",
+  "utility": "Remove one or more shapes from a base shape",
+  "arguments": [
+    { "name": "G", "type": "g2d reference", "required": true, "description": "The 2D grapher container" },
+    { "name": "shape1", "type": "clippable shape", "required": true, "description": "Base shape from which others will be subtracted" },
+    { "name": "shape2", "type": "clippable shape", "required": true, "description": "Shape to subtract from shape1" },
+    { "name": "shapeN", "type": "clippable shape", "required": false, "description": "Additional shapes to subtract (optional)" }
+  ],
+  "alternates": [
+    { "variant": "Circle cut from rectangle", "syntax": "diff(G, R, C)", "description": "Rectangle with circular hole" },
+    { "variant": "Square cut from square", "syntax": "diff(G, S1, S2)", "description": "Larger square with smaller square hole" },
+    { "variant": "Multiple subtractions", "syntax": "diff(G, base, cut1, cut2)", "description": "Base shape with multiple cutouts" }
+  ],
+  "examples": [
+    { "scenario": "Rectangle with circular cutout", "expression": "G = g2d()\nR = rect(G, -5, -5, 10, 10)\nC = circle(G, 3, 0, 0)\nD = diff(G, R, C)" },
+    { "scenario": "Square with square hole", "expression": "G = g2d()\nS = square(G, 0, 0, 8)\nS2 = square(G, 2, 2, 4)\nD = diff(G, S, S2)" },
+    { "scenario": "Multiple cutouts from rectangle", "expression": "G = g2d()\nR = rect(G, -6, -6, 12, 12)\nC1 = circle(G, 2, -3, -3)\nC2 = circle(G, 2, 3, 3)\nD = diff(G, R, C1, C2)" }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "expression": "loc3d",
+  "_requires": [],
+  "description": "Positions a point on a surface or solid face using UV coordinates (0-100 range). When assigned to a variable, renders as a visible sphere. Used standalone or inside solidmeasure, solidangle, solidrightangle, solidsector, solidface.",
+  "utility": "Position a 3D point on a surface or solid face via UV coordinates",
+  "arguments": [
+    {
+      "name": "shape",
+      "type": "variable reference",
+      "required": true,
+      "description": "A surface (plot3d, paraplot3d) or solid shape variable reference"
+    },
+    {
+      "name": "faceIndex",
+      "type": "number",
+      "required": false,
+      "description": "Face index on a solid (0-based). Required for solids, omitted for surfaces"
+    },
+    {
+      "name": "u",
+      "type": "number (0–100)",
+      "required": true,
+      "description": "U coordinate (0-100)"
+    },
+    {
+      "name": "v",
+      "type": "number (0–100)",
+      "required": true,
+      "description": "V coordinate (0-100)"
+    },
+    {
+      "name": "color",
+      "type": "c(color)",
+      "required": false,
+      "description": "Point color when rendered as a sphere"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Position on a surface",
+      "syntax": "loc3d(surface, u, v)",
+      "description": "Point on a surface via UV coordinates"
+    },
+    {
+      "variant": "Position on a solid face",
+      "syntax": "loc3d(solid, faceIndex, u, v)",
+      "description": "Point on a specific face of a solid via UV coordinates"
+    },
+    {
+      "variant": "Standalone rendered point",
+      "syntax": "P = loc3d(solid, faceIndex, u, v, c(color))",
+      "description": "Renders a visible sphere at the UV position on the solid"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Visible point on a solid face",
+      "expression": "C = cube3d(at(10,10), view(25,25), 3)\nP = loc3d(C, 0, 50, 50, c(magenta))"
+    },
+    {
+      "scenario": "Corner point on face 0",
+      "expression": "C = cube3d(at(10,10), view(25,25), 3)\nP = loc3d(C, 0, 0, 0, c(magenta))"
+    },
+    {
+      "scenario": "Use loc3d variables in solidmeasure",
+      "expression": "C = cube3d(at(10,10), view(25,25), 3)\nP1 = loc3d(C, 0, 0, 0, c(magenta))\nP2 = loc3d(C, 0, 100, 0, c(magenta))\nM = solidmeasure(C, P1, P2, \"3 cm\")"
+    },
+    {
+      "scenario": "Point on a surface at UV (30, 70)",
+      "expression": "G = g3d(at(10,10), view(30, 30))\nS = plot3d(G, \"x^2 + y^2\")\nloc3d(S, 30, 70)"
+    }
+  ]
+}

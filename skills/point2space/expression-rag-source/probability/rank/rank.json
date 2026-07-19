@@ -1,0 +1,14 @@
+{
+  "expression": "rank",
+  "_requires": ["cards"],
+  "description": "Tests if an outcome contains a card of a specified rank. Used as a predicate inside event() with card sample spaces. The rank is matched after stripping suit symbols from card values.",
+  "utility": "Filter by card rank",
+  "arguments": [
+    {"name": "rankValue", "type": "string or number", "required": true, "description": "Card rank: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, or K"}
+  ],
+  "examples": [
+    {"scenario": "Aces only", "expression": "S = sspace(at(4,4), view(14,20), cards())\nE = event(S, rank(\"A\"), fc(gold))"},
+    {"scenario": "Kings only", "expression": "S = sspace(at(4,4), view(14,20), cards())\nE = event(S, rank(\"K\"), fc(purple))"},
+    {"scenario": "Tens from a suit", "expression": "S = sspace(at(4,4), view(14,20), cards(hearts))\nE = event(S, rank(10), fc(tomato))"}
+  ]
+}

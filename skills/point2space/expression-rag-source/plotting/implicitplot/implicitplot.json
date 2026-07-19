@@ -1,0 +1,16 @@
+{
+  "expression": "implicitplot",
+  "_requires": ["g2d"],
+  "description": "Plots an implicit equation f(x,y)=0 on a 2D graph using marching squares.",
+  "utility": "Plot an implicit equation",
+  "arguments": [
+    {"name": "graph", "type": "g2d reference", "required": true, "description": "The 2D graph container"},
+    {"name": "equation", "type": "string", "required": true, "description": "Implicit equation as quoted string (e.g., \"x^2 + y^2 - 4\")"},
+    {"name": "color", "type": "c(color)", "required": false, "description": "Curve color"}
+  ],
+  "examples": [
+    {"scenario": "Circle x^2 + y^2 = 4", "expression": "G = g2d(at(4,4), 20, 20, range(-3, 3), range(-3, 3), type(plotting))\nimplicitplot(G, \"x^2 + y^2 - 4\", c(blue))"},
+    {"scenario": "Hyperbola", "expression": "implicitplot(G, \"x^2 - y^2 - 1\", c(red))"},
+    {"scenario": "Lemniscate", "expression": "implicitplot(G, \"(x^2 + y^2)^2 - 2*(x^2 - y^2)\", c(purple))"}
+  ]
+}

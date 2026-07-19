@@ -1,0 +1,69 @@
+{
+  "expression": "translate",
+  "_requires": ["g2d"],
+  "description": "Translates a geometric shape by a displacement vector (dx, dy), moving every point the same distance in the same direction.",
+  "utility": "Shift a shape by a displacement vector (dx, dy)",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The graph container"
+    },
+    {
+      "name": "shape",
+      "type": "point | line | circle | polygon | plot | image",
+      "required": true,
+      "description": "The shape to translate"
+    },
+    {
+      "name": "dx",
+      "type": "number",
+      "required": true,
+      "description": "Horizontal displacement (positive = right)"
+    },
+    {
+      "name": "dy",
+      "type": "number",
+      "required": true,
+      "description": "Vertical displacement (positive = up)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Translate with numeric values",
+      "syntax": "translate(G, shape, dx, dy)",
+      "description": "Shift shape by (dx, dy)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Translate a point to show it moving inside a circle (Point and Circle lesson)",
+      "expression": "translate_1=translate(graph_1,point_1,2,3)"
+    },
+    {
+      "scenario": "Translate a line to pass through circle center (diameter through center lesson)",
+      "expression": "translate_1=translate(graph_1,line_1,-1.28,0)"
+    },
+    {
+      "scenario": "Translate a point to show it on the circle boundary (Point and Circle explanation)",
+      "expression": "translate_2=translate(graph_1,point_1,-0.6,4)"
+    },
+    {
+      "scenario": "Translate a polygon to create a copy",
+      "expression": "T = sas(G, 5, 60, 5, point(G, 0, 0))\nT2 = translate(G, T, 6, 0)"
+    },
+    {
+      "scenario": "Translate a line segment vertically",
+      "expression": "A = point(G, 0, 0)\nB = point(G, 3, 2)\nL = line(G, A, B)\nL2 = translate(G, L, 0, 4)"
+    },
+    {
+      "scenario": "Translate a point in a plane-tracking scene",
+      "expression": "G = g2d(at(2,30), size(20), type(geometry)); plane_point = point(G, p, fi(flight)); trans_1=translate(G,plane_point,4,3)"
+    },
+    {
+      "scenario": "Translate a secant line to become tangent",
+      "expression": "trans_1 = translate(G, secant_line, 0, 3)"
+    }
+  ]
+}

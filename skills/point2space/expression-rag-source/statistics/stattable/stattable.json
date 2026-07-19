@@ -1,0 +1,16 @@
+{
+  "expression": "stattable",
+  "_requires": [],
+  "description": "Statistical table with raw data values and computed columns. Used as data source for chart expressions (barchart, linechart, scatter, piechart, cdfchart). Standalone container using at().",
+  "utility": "Create a statistical data table with computed columns",
+  "arguments": [
+    {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position"},
+    {"name": "values", "type": "values(...)", "required": true, "description": "Raw data values"},
+    {"name": "statcolumn", "type": "statcolumn(...)", "required": true, "description": "One or more computed column definitions"},
+    {"name": "header", "type": "header(...)", "required": false, "description": "Column header titles"}
+  ],
+  "examples": [
+    {"scenario": "Frequency table", "expression": "T = stattable(at(2,4), values(\"5\",\"3\",\"7\",\"5\",\"3\",\"5\",\"7\",\"3\",\"5\",\"3\"), statcolumn(type(frequency)), header(\"Value\", \"Frequency\"))"},
+    {"scenario": "Multi-column statistics", "expression": "T = stattable(at(2,4), values(\"10\",\"20\",\"30\",\"40\",\"50\"), statcolumn(type(cumulativesum)), statcolumn(type(percentage)), header(\"Value\", \"Cumulative\", \"Pct\"))"}
+  ]
+}

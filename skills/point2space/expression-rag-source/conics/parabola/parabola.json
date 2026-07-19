@@ -1,0 +1,111 @@
+{
+  "expression": "parabola",
+  "_requires": ["g2d"],
+  "description": "Draws a parabola on a 2D graph from a vertex point and focal parameter, or from an equation string. Vertex takes a point() expression or variable. Rotation uses the rotation() expression.",
+  "utility": "Draw a parabola on a 2D graph by vertex+focal-distance or equation",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The 2D graph container to draw on"
+    },
+    {
+      "name": "vertex",
+      "type": "point expression",
+      "required": false,
+      "description": "Vertex of the parabola as a point() expression or point variable. Defaults to origin if omitted"
+    },
+    {
+      "name": "p",
+      "type": "number",
+      "required": true,
+      "description": "Focal parameter - distance from vertex to focus. Must be non-zero. Positive opens in rotation direction, negative opens opposite"
+    },
+    {
+      "name": "rotation",
+      "type": "rotation(angle)",
+      "required": false,
+      "description": "Rotation angle using rotation() expression - e.g., rotation(pi/2). Default is 0 (opens right)"
+    },
+    {
+      "name": "equation",
+      "type": "string",
+      "required": false,
+      "description": "Alternative to parametric args - equation string e.g. \"y = x^2\" or \"x^2 = 4y\""
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Vertex point + focal parameter",
+      "syntax": "parabola(G, point(G, h, k), p)",
+      "description": "Parabola at vertex with focal distance p"
+    },
+    {
+      "variant": "Focal parameter only (origin vertex)",
+      "syntax": "parabola(G, p)",
+      "description": "Parabola at origin with focal distance p"
+    },
+    {
+      "variant": "With rotation",
+      "syntax": "parabola(G, point(G, h, k), p, rotation(angle))",
+      "description": "Rotated parabola using rotation() expression"
+    },
+    {
+      "variant": "From equation string",
+      "syntax": "parabola(G, \"y = x^2 - 4x + 3\")",
+      "description": "Parabola defined by equation"
+    },
+    {
+      "variant": "Standard form equation",
+      "syntax": "parabola(G, \"x^2 = 4y\")",
+      "description": "Parabola in standard x^2 = 4py form"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Parabola from equation x^2 = 4y",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nparabola_1 = parabola(G, \"x^2=4y\")"
+    },
+    {
+      "scenario": "Parabola from quadratic equation",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nparabola_1 = parabola(G, \"y = x^2 - 4x + 3\")"
+    },
+    {
+      "scenario": "Parabola at vertex with focal distance",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nparabola_1 = parabola(G, point(G, 0, 0), 1)"
+    },
+    {
+      "scenario": "Parabola from point variable",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nV = point(G, 2, 3)\nparabola_1 = parabola(G, V, 1.5)"
+    },
+    {
+      "scenario": "Rotated parabola opening upward",
+      "expression": "G = g2d(at(2,2), 20, type(geometry))\nparabola_1 = parabola(G, point(G, 0, 0), 1, rotation(pi/2))"
+    },
+    {
+      "scenario": "Extract and draw focus",
+      "expression": "F = point(G, p(parabola_1, type(foci, 1)), c(red))"
+    },
+    {
+      "scenario": "Extract and draw directrix line",
+      "expression": "D = line(G, p(parabola_1, type(directrix, 1)))"
+    },
+    {
+      "scenario": "Sample point on parabola at ratio",
+      "expression": "P = ratiopoint(G, parabola_1, 0.5)"
+    },
+    {
+      "scenario": "Animate focus-directrix equidistance trace",
+      "expression": "trace_1 = trace(G, parabola_1, type(focus), buff(-1, -1))"
+    },
+    {
+      "scenario": "Animate parallel ray reflection through focus",
+      "expression": "trace_1 = trace(G, parabola_1, type(rays), buff(-1, -1))"
+    },
+    {
+      "scenario": "Plot parabola using function definition for ray-tracing through focus",
+      "expression": "G=g2d(at(3,11),size(23),range(-6,6),type(geometry)); f(x) = x^2/6 - 0.5; P = plot(G, f, -7, 7); F = point(G, 0, 1); H1=intersect(G,P,vline(G,point(G,-2,0)),defer()); l1=line(G, point(G, -2, 6), H1, defer()); l2=line(G, H1, F, type(segment), defer())"
+    }
+  ]
+}

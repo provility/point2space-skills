@@ -1,0 +1,14 @@
+{
+  "expression": "color",
+  "_requires": ["sspace"],
+  "description": "Tests if an outcome contains a specified color label. Used as a predicate inside event(). Can optionally target a specific factor position. When no position is given, matches any factor with the color value.",
+  "utility": "Filter by color label in outcomes",
+  "arguments": [
+    {"name": "position", "type": "number", "required": false, "description": "1-indexed factor position to check (optional; if omitted, checks all positions)"},
+    {"name": "colorName", "type": "string", "required": true, "description": "Color label string to match against outcome values"}
+  ],
+  "examples": [
+    {"scenario": "Red outcomes", "expression": "S = sspace(at(4,4), view(14,20), outcomes(\"red\", \"blue\", \"green\"), repeat(2))\nE = event(S, color(\"red\"), fc(red))"},
+    {"scenario": "First position is blue", "expression": "S = sspace(at(4,4), view(14,20), outcomes(\"red\", \"blue\", \"green\"), repeat(2))\nE = event(S, color(1, \"blue\"), fc(steelblue))"}
+  ]
+}

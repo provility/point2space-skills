@@ -1,0 +1,19 @@
+{
+    "expression": "eventresult",
+    "_requires": ["event"],
+    "description": "Displays the computed probability of an event at a given canvas position. Shows the result as a fraction. Supports type() to select which probability to display: event, given, intersection, conditional, or sample.",
+    "utility": "Display event probability result",
+    "arguments": [
+        {"name": "event", "type": "event variable", "required": true, "description": "Reference to an event() expression"},
+        {"name": "position", "type": "at(row, col)", "required": true, "description": "Canvas position for the result text"},
+        {"name": "type", "type": "type(conditional|given|intersection|event|sample)", "required": false, "description": "Result type: conditional (P(E|F), default), given (P(F)), intersection (P(E∩F)), event (P(E)), sample (1/|S|)"},
+        {"name": "display", "type": "display(\"label\")", "required": false, "description": "Custom AsciiMath label for the left-hand side"},
+        {"name": "color", "type": "c(color)", "required": false, "description": "Text color (defaults to the event's highlight color)"},
+        {"name": "fontSize", "type": "fs(size)", "required": false, "description": "Font size"}
+    ],
+    "examples": [
+        {"scenario": "Show P(E)", "expression": "S = sspace(coin(3), at(4,10), view(10,10))\nE = event(S, \"at least 2 H\", fc(red))\neventresult(E, at(16,10), type(event), display(\"P(E)\"))"},
+        {"scenario": "Conditional probability breakdown", "expression": "E = event(S, \"all same\", given(\"sum > 5\", c(steelblue)), fc(red))\neventresult(E, at(16,10), type(given), display(\"P(F)\"))\neventresult(E, at(18,10), type(intersection), display(\"P(E nn F)\"))\neventresult(E, at(20,10), type(conditional), display(\"P(E|F)\"))"},
+        {"scenario": "Sample point probability", "expression": "eventresult(E, at(14,10), type(sample), display(\"P(omega)\"))"}
+    ]
+}

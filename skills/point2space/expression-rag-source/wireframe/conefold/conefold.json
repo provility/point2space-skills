@@ -1,0 +1,13 @@
+{
+  "expression": "conefold",
+  "_requires": [],
+  "description": "Cone net unfolding pattern",
+  "utility": "Display cone as flat sector",
+  "arguments": [
+    {"name": "radius", "type": "number", "required": false, "description": "Base radius"},
+    {"name": "height", "type": "number", "required": false, "description": "Height"}
+  ],
+  "examples": [
+    {"scenario": "Cone net", "expression": "conefold(2, 3)"}
+  ]
+}

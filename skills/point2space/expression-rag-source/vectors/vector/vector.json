@@ -1,0 +1,92 @@
+{
+  "expression": "vector",
+  "_requires": ["g2d"],
+  "description": "Creates a 2D directed arrow between two points. Accepts point() expressions, point variables, or point tuples for endpoints. Supports position vectors via type(position) and polar form via type(polar). Can also use vector literals {x,y} for position with tuple arithmetic.",
+  "utility": "Create a 2D vector (arrow) between two points, tuples, or using position/polar form",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "point1",
+      "type": "point",
+      "required": true,
+      "description": "Start point expression (point() or point variable)"
+    },
+    {
+      "name": "point2",
+      "type": "point",
+      "required": true,
+      "description": "End point expression (point() or point variable)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "From two points",
+      "syntax": "vector(G, point1, point2)",
+      "description": "Vector from point1 to point2. Each must be a point() expression or a point variable."
+    },
+    {
+      "variant": "Position vector from origin to a point",
+      "syntax": "vector(G, point, type(position))",
+      "description": "Position vector from origin (0,0) to the given point"
+    },
+    {
+      "variant": "Position vector from origin to coordinates",
+      "syntax": "vector(G, x, y, type(position))",
+      "description": "Position vector from origin (0,0) to (x, y)"
+    },
+    {
+      "variant": "Polar vector from origin",
+      "syntax": "vector(G, length, angle, type(polar))",
+      "description": "Vector from origin with given length and angle in degrees"
+    },
+    {
+      "variant": "Polar vector from a point",
+      "syntax": "vector(G, length, angle, type(polar), point)",
+      "description": "Vector starting at given point with given length and angle in degrees"
+    },
+    {
+      "variant": "Polar vector from coordinates",
+      "syntax": "vector(G, length, angle, type(polar), ox, oy)",
+      "description": "Vector starting at (ox, oy) with given length and angle in degrees"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Force vector F1 applied to a box in physics problem",
+      "expression": "graph_1 = g2d(at(2,29), 23.9, 29.1, range(-10, 10), range(-5, 5), type(plotting), grid(noaxes, nolines)); vector_1 = vector(graph_1, point(graph_1, -8, 1.1), point(graph_1, -3.6, 1.1))"
+    },
+    {
+      "scenario": "Second force vector F2 with label",
+      "expression": "vector_2 = vector(graph_1, point(graph_1, -7.9, -0.7), point(graph_1, -3.6, -0.7)); label_2 = label(graph_1, at(vector_2), \"F_2 = 2\\hat{i} + \\hat{j} - \\hat{k}\", buff(-1.5, -0.5), fs(18), c(black))"
+    },
+    {
+      "scenario": "Resultant force vector F = F1 + F2",
+      "expression": "vector_3 = vector(graph_1, point(graph_1, -0.2, 0.6), point(graph_1, 4.3, 0.6)); label_3 = label(graph_1, at(vector_3), \"F = F_1 + F_2\", buff(-1.5, 1), fs(18), c(black))"
+    },
+    {
+      "scenario": "Three vectors forming a triangle between points",
+      "expression": "graph_1=g2d(at(5,21),25,25,range(-1,5,1),range(-1,5,1),type(uniform))\npoint_1 = point(graph_1, 1, 1)\npoint_2 = point(graph_1, 4, 1)\npoint_3 = point(graph_1, 2, 2.3)\nvector_1 = vector(graph_1, point_1, point_3, mid)\nvector_2 = vector(graph_1, point_3, point_2, mid)\nvector_3 = vector(graph_1, point_2, point_1, mid)"
+    },
+    {
+      "scenario": "Position vector from origin",
+      "expression": "V3 = vector(G, A, type(position))"
+    },
+    {
+      "scenario": "Polar vector with length and angle",
+      "expression": "V5 = vector(G, 5, 45, type(polar))"
+    },
+    {
+      "scenario": "Vector from tuple arithmetic using vector literals",
+      "expression": "c = {2, 3}\nv = vector(graph_1, c)"
+    },
+    {
+      "scenario": "Vector using point tuples and vector function",
+      "expression": "v(t) = {cos(t), sin(t)}\nW = vector(G, (0,0), (0,0) + v(pi/2))"
+    }
+  ]
+}

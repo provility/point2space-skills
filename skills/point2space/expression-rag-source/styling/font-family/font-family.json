@@ -1,0 +1,27 @@
+{
+  "expression": "ff",
+  "description": "Sets the font family for text elements",
+  "utility": "Control font typeface by name or family identifier",
+  "arguments": [
+    {
+      "name": "family",
+      "type": "string or identifier",
+      "required": true,
+      "description": "Font family name (quoted string like \"Arial\" or bare identifier like monospace)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Serif font",
+      "expression": "text(\"Title\") | ff(\"Georgia\")"
+    },
+    {
+      "scenario": "Sans-serif font",
+      "expression": "text(\"Body\") | ff(\"Arial\")"
+    },
+    {
+      "scenario": "Monospace font",
+      "expression": "text(\"Code\") | ff(monospace)"
+    }
+  ]
+}

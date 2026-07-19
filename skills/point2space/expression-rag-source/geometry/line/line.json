@@ -1,0 +1,87 @@
+{
+  "expression": "line",
+  "_requires": ["g2d", "point"],
+  "description": "Creates a line on a 2D graph as an infinite line, finite segment, or ray between two points. Supports color and dashed styling. Points are point() expressions or point variables.",
+  "utility": "Draw a line, segment, or ray between two points",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "P1",
+      "type": "point",
+      "required": true,
+      "description": "First point (a point() expression or point variable)"
+    },
+    {
+      "name": "P2",
+      "type": "point",
+      "required": true,
+      "description": "Second point (a point() expression or point variable)"
+    },
+    {
+      "name": "lineType",
+      "type": "type(line) | type(segment) | type(ray)",
+      "required": false,
+      "description": "Line type: line (infinite, default), segment (finite), ray (half-infinite)"
+    },
+    {
+      "name": "options",
+      "type": "c(color) | dash() | stroke(width)",
+      "required": false,
+      "description": "Color, dashed style, or stroke width"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Infinite line through two points",
+      "syntax": "line(G, P1, P2)",
+      "description": "Line extending infinitely through both points"
+    },
+    {
+      "variant": "Line segment between two points",
+      "syntax": "line(G, P1, P2, type(segment))",
+      "description": "Finite segment from P1 to P2"
+    },
+    {
+      "variant": "Ray from first through second point",
+      "syntax": "line(G, P1, P2, type(ray))",
+      "description": "Half-line starting at P1, passing through P2"
+    },
+    {
+      "variant": "Colored line",
+      "syntax": "line(G, P1, P2, c(red))",
+      "description": "Line rendered in specified color"
+    },
+    {
+      "variant": "Dashed line",
+      "syntax": "line(G, P1, P2, type(segment), dash())",
+      "description": "Dashed line segment between points"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Line segment as diameter between two points with color (circle from a diameter lesson)",
+      "expression": "line_1=line(graph_1,point_1,point_2,type(segment),c(crimson))"
+    },
+    {
+      "scenario": "Line between two inline points for linear programming constraint",
+      "expression": "L3 = line(G, point(G,0, 3), point(G,4, 0))"
+    },
+    {
+      "scenario": "Deferred line through axis points (axis intercepts lesson)",
+      "expression": "line_2=line(graph_1,point_1,point_2,type(line),c(steelblue),defer())"
+    },
+    {
+      "scenario": "Line segment between two inline points for triangle construction (two-tables lesson)",
+      "expression": "line_2 = line(graph_1, point(graph_1, -2.2, -2.3), point(graph_1, 2.8, -1.5), type(segment))"
+    },
+    {
+      "scenario": "Infinite line through two inline points extending across graph",
+      "expression": "line_1 = line(graph_1, point(graph_1, -3.9, 1.5), point(graph_1, -1.5, 2.5))"
+    }
+  ]
+}

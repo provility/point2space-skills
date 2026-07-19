@@ -1,0 +1,93 @@
+{
+  "expression": "sas",
+  "_requires": ["g2d"],
+  "description": "Construct a triangle from two sides and the included angle between them (Side-Angle-Side). Vertex A is at the base point (or origin if omitted). Side b goes from A to C, side c goes from A to B, and angleA is the angle at vertex A.",
+  "utility": "Create triangle from two sides and the included angle between them",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "b",
+      "type": "number",
+      "required": true,
+      "description": "Length of side from A to C (opposite vertex B). Must be positive."
+    },
+    {
+      "name": "angleA",
+      "type": "number (degrees)",
+      "required": true,
+      "description": "Angle at vertex A in degrees (must be between 0 and 180, exclusive)"
+    },
+    {
+      "name": "c",
+      "type": "number",
+      "required": true,
+      "description": "Length of side from A to B (opposite vertex C). Must be positive."
+    },
+    {
+      "name": "basePoint",
+      "type": "point",
+      "required": false,
+      "description": "Position for vertex A (defaults to origin). Must be a point variable or point(G, x, y)."
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": false,
+      "description": "Rotation angle in degrees for the entire triangle around vertex A"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic SAS triangle",
+      "syntax": "sas(G, b, angleA, c)",
+      "description": "Triangle at origin with two sides and included angle"
+    },
+    {
+      "variant": "Positioned triangle",
+      "syntax": "sas(G, 5, 40, 6, point(G, 0, 0))",
+      "description": "Triangle positioned at specific point"
+    },
+    {
+      "variant": "Right triangle",
+      "syntax": "sas(G, 4, 90, 3)",
+      "description": "Right triangle using 90-degree included angle"
+    },
+    {
+      "variant": "Isosceles with angle",
+      "syntax": "sas(G, 5, 60, 5)",
+      "description": "Isosceles triangle with equal sides and 60-degree angle"
+    },
+    {
+      "variant": "Rotated triangle",
+      "syntax": "sas(G, 5, 40, 6, P, 30)",
+      "description": "Triangle rotated 30 degrees from horizontal"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "SAS triangle for sine law proof with sides 5 and 6 at 40°",
+      "expression": "graph_1 = g2d(at(-10, 11.4), size(25), range(-1, 8), grid(noaxes), type(geometry)); triangle_1 = sas(graph_1, 5, 40, 6, point(graph_1, 0, 0))"
+    },
+    {
+      "scenario": "Extract edges as lines for labeling and measurement",
+      "expression": "line_c = line(graph_1, item(triangle_1, type(edge), 1), type(segment), c(blue), defer()); line_a = line(graph_1, item(triangle_1, type(edge), 2), type(segment), c(blue), defer()); line_b = line(graph_1, item(triangle_1, type(edge), 3), type(segment), c(blue), defer())"
+    },
+    {
+      "scenario": "Extract and label all three angles in a sine law proof",
+      "expression": "angle_A = angle(graph_1, item(triangle_1, type(angle), 1)); label_A = label(graph_1, at(angle_A), \"A\", buff(-1.0, 1.0)); angle_B = angle(graph_1, item(triangle_1, type(angle), 2)); label_B = label(graph_1, at(angle_B), \"B\", buff(-1, -2.3))"
+    },
+    {
+      "scenario": "Animated SAS triangle with variable angle",
+      "expression": "mathexpr_1 = variableanimator(at(1,4), \"t\", 20, 120); graph_1 = g2d(at(2,18), size(25.9), range(-6, 7), type(geometry)); triangle_1 = sas(graph_1, 5, t, 6, point(graph_1, 0, 0)); playanim_1 = playanimator(mathexpr_1, t(3))"
+    },
+    {
+      "scenario": "Measure sides with measure expression",
+      "expression": "measure_a = measure(graph_1, line_a, buff(0.7, -1.2), c(black)); measure_b = measure(graph_1, line_b, buff(0.6, -0.4))"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "expression": "hline",
+  "_requires": ["g2d", "line"],
+  "description": "Creates a horizontal line passing through a point or at a given y-coordinate.",
+  "utility": "Create a horizontal line through a point or y-coordinate",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "point",
+      "type": "point | number",
+      "required": true,
+      "description": "Point to pass through, or y-coordinate for the horizontal line"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Horizontal line through point",
+      "syntax": "hline(G, point)",
+      "description": "Horizontal line passing through a point (or hline(G, y) for y-coordinate)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Horizontal line through a point",
+      "expression": "H = hline(G, A)"
+    }
+  ]
+}

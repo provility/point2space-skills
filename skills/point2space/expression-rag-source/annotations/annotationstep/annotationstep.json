@@ -1,0 +1,66 @@
+{
+  "expression": "annotationstep",
+  "_requires": ["g2d"],
+  "description": "Creates a numbered step annotation at a specified position with a given logical length. Used to mark steps in step-by-step solutions with an optional label and styling.",
+  "utility": "Annotate logical steps in solutions with numbered markers",
+  "arguments": [
+    {
+      "name": "position",
+      "type": "at() expression",
+      "required": true,
+      "description": "Position of the step, specified as at(row, col)"
+    },
+    {
+      "name": "length",
+      "type": "size() expression",
+      "required": true,
+      "description": "Logical length of the step, specified as size(N) where N > 0"
+    },
+    {
+      "name": "label",
+      "type": "quoted string",
+      "required": false,
+      "description": "Optional step label as a quoted string, defaults to '?'"
+    },
+    {
+      "name": "style",
+      "type": "color | style() | dash() | fadeout()",
+      "required": false,
+      "description": "Optional styling modifiers (c for color, s() for style, dash, fadeout, etc.)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "with label",
+      "syntax": "annotationstep(at(r, c), size(N), \"1\")",
+      "description": "Step with custom label"
+    },
+    {
+      "variant": "with styling",
+      "syntax": "annotationstep(at(r, c), size(N), \"label\", c(blue))",
+      "description": "Step with label and color"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Step 1 marker for center verification (diameter through center lesson)",
+      "expression": "astep_1=annotationstep(at(8,18),size(3.3),\"1\")"
+    },
+    {
+      "scenario": "Step 2 marker for line substitution check (diameter through center lesson)",
+      "expression": "astep_2=annotationstep(at(11,26),size(3.3),\"2\")"
+    },
+    {
+      "scenario": "Step 1 marker for function definition in solve lesson",
+      "expression": "step_1=annotationstep(at(10,15),size(2),\"1\",c(steelblue))"
+    },
+    {
+      "scenario": "Step marker in quadratic equation lesson with size and stroke",
+      "expression": "astep_1=annotationstep(at(16,17),size(4.5),\"1\",s(1.5))"
+    },
+    {
+      "scenario": "Two step markers for trig substitution derivation combined with stepcombine",
+      "expression": "astep_1 = annotationstep(at(4,12), size(11.8), \"1\")\nastep_2 = annotationstep(at(9,22), size(4.7), \"1\")\nscomb_1 = stepcombine(at(3,37), astep_1, \"+\",astep_2,\"text(result)\")"
+    }
+  ]
+}

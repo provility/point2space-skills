@@ -1,0 +1,30 @@
+{
+  "expression": "place",
+  "description": "Moves a container (g2d, mathtext, or g3d) to absolute logical coordinates",
+  "utility": "Reposition containers on the canvas using row-column coordinates",
+  "arguments": [
+    {
+      "name": "container",
+      "type": "variable",
+      "required": true,
+      "description": "Variable reference to a g2d, mathtext, or g3d container"
+    },
+    {
+      "name": "position",
+      "type": "at(row, col)",
+      "required": true,
+      "description": "Target position as at() expression with row and column"
+    }
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "Move g2d to row 5, column 3",
+      "expression": "G = g2d(0, 0, 16, 8, -10, 10, -10, 10); place(G, at(5,3))"
+    },
+    {
+      "scenario": "Move mathtext container",
+      "expression": "place(myMathText, at(4,4))"
+    }
+  ]
+}

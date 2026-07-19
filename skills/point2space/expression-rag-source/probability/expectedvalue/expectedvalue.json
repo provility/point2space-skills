@@ -1,0 +1,43 @@
+{
+    "expression": "expectedvalue",
+    "_requires": [
+        "pmf",
+        "binomial"
+    ],
+    "description": "Draws a vertical dashed line at the expected value E(X) on a PMF or binomial chart. Computes E(X) = sum of x * P(x) and displays the mean as a label.",
+    "utility": "Show expected value line on a chart",
+    "arguments": [
+        {
+            "name": "chart",
+            "type": "pmf/binomial variable",
+            "required": true,
+            "description": "Reference to a PMF or binomial chart"
+        },
+        {
+            "name": "fillColor",
+            "type": "fc(color)",
+            "required": false,
+            "description": "Color for the mean line and label (default: red)"
+        },
+        {
+            "name": "label",
+            "type": "quoted string",
+            "required": false,
+            "description": "Custom label override"
+        }
+    ],
+    "examples": [
+        {
+            "scenario": "Expected value on PMF",
+            "expression": "S = sspace(dice(2), at(4,10), view(12,12))\nP = pmf(S, sum, at(4,24), view(10,10))\nexpectedvalue(P, fc(red))"
+        },
+        {
+            "scenario": "Expected value on binomial",
+            "expression": "B = binomial(20, 0.3, at(4,10), view(10,10))\nexpectedvalue(B, fc(red))"
+        },
+        {
+            "scenario": "With custom label",
+            "expression": "expectedvalue(P, fc(red), \"Mean = 7\")"
+        }
+    ]
+}

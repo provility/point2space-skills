@@ -1,0 +1,35 @@
+{
+  "expression": "chain3d",
+  "_requires": ["g3d"],
+  "description": "Positions vector B so its tail is at vector A's tip, creating a tail-to-tip chaining effect. The result is vector B repositioned and can be used in further operations.",
+  "utility": "Chain one 3D vector to another in tail-to-tip configuration.",
+  "arguments": [
+    {
+      "name": "vecA",
+      "type": "vector3d | line3d",
+      "required": true,
+      "description": "The anchor vector whose tip defines the chain point"
+    },
+    {
+      "name": "vecB",
+      "type": "vector3d | line3d",
+      "required": true,
+      "description": "The vector to chain, repositioned so its tail is at vecA's tip"
+    }
+  ],
+  "alternates": [],
+  "examples": [
+    {
+      "scenario": "Chain two vectors",
+      "expression": "G = g3d(at(4,20), view(20, 20)); VA = vector3d(G, 0, 0, 0, 1, 0, 0); VB = vector3d(G, 0, 0, 0, 0, 1, 0); VC = chain3d(VA, VB)"
+    },
+    {
+      "scenario": "Build a vector sum using chaining",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V1 = vector3d(G, 0, 0, 0, 1, 1, 0); V2 = vector3d(G, 0, 0, 0, 0, 1, 1); V3 = chain3d(V1, V2)"
+    },
+    {
+      "scenario": "Chain with shifted vectors",
+      "expression": "G = g3d(at(4,20), view(20, 20)); V1 = vector3d(G, 0, 0, 0, 1, 0, 0); V2 = forward3d(V1); V3 = chain3d(V1, V2)"
+    }
+  ]
+}

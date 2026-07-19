@@ -1,0 +1,26 @@
+{
+  "expression": "point (start of line)",
+  "_requires": ["g2d", "line"],
+  "description": "Extracts the start point from an existing line.",
+  "syntax": "point(G, p(L, type(start)))",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "Graph container created with g2d()"
+    },
+    {
+      "name": "L",
+      "type": "line",
+      "required": true,
+      "description": "Line to extract the start point from"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Get start point of a line",
+      "expression": "P1 = point(G, p(L, type(start)))"
+    }
+  ]
+}

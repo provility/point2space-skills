@@ -1,0 +1,40 @@
+{
+  "expression": "simplify",
+  "_requires": [],
+  "description": "Simplifies algebraic expressions using Algebrite symbolic computation",
+  "utility": "Reduce expressions to simplest form: 2*x+3*x → 5*x, x^2/x → x, 6/8 → 3/4",
+  "arguments": [
+    {
+      "name": "expression",
+      "type": "string",
+      "required": true,
+      "description": "Quoted mathematical expression to simplify, may contain variables from context"
+    }
+  ],
+  "alternates": [
+    "simplify(\"a*x + a*x\") - uses current value of variable a",
+    "simplify(\"x^2/x\") - cancel common factors"
+  ],
+  "examples": [
+    {
+      "scenario": "Combine like terms",
+      "expression": "S = simplify(\"2*x + 3*x\")"
+    },
+    {
+      "scenario": "Cancel common factors",
+      "expression": "S = simplify(\"x^2/x\")"
+    },
+    {
+      "scenario": "Reduce fractions",
+      "expression": "S = simplify(\"6/8\")"
+    },
+    {
+      "scenario": "With context variables",
+      "expression": "a = 2; S = simplify(\"a*x + a*x\")"
+    },
+    {
+      "scenario": "Display as LaTeX",
+      "expression": "S = simplify(\"2*x + 3*x\"); desc(0, 0, S)"
+    }
+  ]
+}

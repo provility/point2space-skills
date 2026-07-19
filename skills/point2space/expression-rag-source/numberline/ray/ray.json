@@ -1,0 +1,78 @@
+{
+  "expression": "ray",
+  "_requires": ["nl"],
+  "description": "Creates a ray on a number line extending infinitely in one direction from a point",
+  "utility": "Visualizes open-ended inequalities (x > a, x ≤ b) with customizable endpoints and styling",
+  "arguments": [
+    {
+      "name": "numberLine",
+      "type": "nl",
+      "required": true,
+      "description": "The number line to place the ray on"
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "required": true,
+      "description": "The starting position of the ray"
+    },
+    {
+      "name": "type",
+      "type": "type()",
+      "required": false,
+      "description": "Ray direction and endpoint type: type(rightclosed), type(rightopen), type(leftclosed), type(leftopen)"
+    },
+    {
+      "name": "color",
+      "type": "c()",
+      "required": false,
+      "description": "Optional color using c(colorName). Defaults to blue"
+    },
+    {
+      "name": "offset",
+      "type": "buff()",
+      "required": false,
+      "description": "Optional vertical offset from axis using buff(pixels)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "right-pointing closed",
+      "syntax": "ray(N, x, type(rightclosed))",
+      "description": "Ray from x toward +infinity with filled endpoint: [x, ∞)"
+    },
+    {
+      "variant": "right-pointing open",
+      "syntax": "ray(N, x, type(rightopen))",
+      "description": "Ray from x toward +infinity with hollow endpoint: (x, ∞)"
+    },
+    {
+      "variant": "left-pointing closed",
+      "syntax": "ray(N, x, type(leftclosed))",
+      "description": "Ray from x toward -infinity with filled endpoint: (-∞, x]"
+    },
+    {
+      "variant": "left-pointing open",
+      "syntax": "ray(N, x, type(leftopen))",
+      "description": "Ray from x toward -infinity with hollow endpoint: (-∞, x)"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Show x ≥ 3 (right ray, closed)",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); ray(N, 3, type(rightclosed))"
+    },
+    {
+      "scenario": "Show x < 5 (left ray, open)",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); ray(N, 5, type(leftopen))"
+    },
+    {
+      "scenario": "Red right ray starting at 2",
+      "expression": "N = nl(at(1,1), 2, 8, range(-5, 5)); ray(N, 2, type(rightclosed), c(red))"
+    },
+    {
+      "scenario": "Ray with vertical offset",
+      "expression": "N = nl(at(1,1), 2, 8, range(0, 10)); ray(N, 4, type(rightopen), buff(10))"
+    }
+  ]
+}

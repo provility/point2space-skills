@@ -1,0 +1,23 @@
+{
+  "expression": "overbrace",
+  "description": "Draws a curly brace above a region defined by two at() position arguments.",
+  "utility": "Draw a curly brace above a target region with optional label",
+  "arguments": [
+    { "name": "from", "type": "at(row, col)", "required": true, "description": "Left anchor point of the brace" },
+    { "name": "to", "type": "at(row, col)", "required": true, "description": "Right anchor point of the brace" },
+    { "name": "label", "type": "string", "required": false, "description": "Text label above the brace" },
+    { "name": "buff", "type": "buff(value)", "required": false, "description": "Label offset from brace" },
+    { "name": "color", "type": "c(colorName)", "required": false, "description": "Brace color" },
+    { "name": "strokeWidth", "type": "s(width)", "required": false, "description": "Brace stroke width" }
+  ],
+  "alternates": [
+    { "variant": "Basic overbrace", "syntax": "overbrace(at(r1, c1), at(r1, c2))", "description": "Brace spanning between two points" },
+    { "variant": "With label", "syntax": "overbrace(at(r1, c1), at(r1, c2), \"sum\")", "description": "Brace with text label above" },
+    { "variant": "With styling", "syntax": "overbrace(at(r1, c1), at(r1, c2), \"sum\", c(blue), s(2))", "description": "Styled brace with label" }
+  ],
+  "examples": [
+    { "scenario": "Overbrace spanning a region", "expression": "overbrace(at(3,5), at(3,12))" },
+    { "scenario": "Overbrace with label", "expression": "overbrace(at(3,5), at(3,12), \"n terms\")" },
+    { "scenario": "Blue overbrace", "expression": "overbrace(at(3,5), at(3,12), \"sum\", c(blue))" }
+  ]
+}

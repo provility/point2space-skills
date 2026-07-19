@@ -1,0 +1,77 @@
+{
+  "expression": "paraplot",
+  "_requires": ["g2d"],
+  "description": "Renders a parametric curve defined by x(t) and y(t) component expressions over a parameter interval. Suited for spirals, cycloids, Lissajous figures, and other curves not expressible as y = f(x).",
+  "utility": "Plot a parametric curve x(t), y(t) on a 2D graph",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d reference",
+      "required": true,
+      "description": "The 2D graph container to plot on"
+    },
+    {
+      "name": "xExpr",
+      "type": "string",
+      "required": true,
+      "description": "x-component as ASCII math string using variable t - e.g., \"cos(t)\""
+    },
+    {
+      "name": "yExpr",
+      "type": "string",
+      "required": true,
+      "description": "y-component as ASCII math string using variable t - e.g., \"sin(t)\""
+    },
+    {
+      "name": "range",
+      "type": "range(tMin, tMax)",
+      "required": false,
+      "description": "Parameter interval - e.g., range(0, 2*pi). Defaults to 0 to 2*pi"
+    },
+    {
+      "name": "color",
+      "type": "c(colorName)",
+      "required": false,
+      "description": "Stroke color - e.g., c(green)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Basic parametric curve",
+      "syntax": "paraplot(G, \"x(t)\", \"y(t)\", range(tMin, tMax))",
+      "description": "Plot a parametric curve over the given t interval. Both expressions use t as the parameter"
+    },
+    {
+      "variant": "With color",
+      "syntax": "paraplot(G, \"x(t)\", \"y(t)\", range(tMin, tMax), c(green))",
+      "description": "Parametric curve with custom stroke color"
+    },
+    {
+      "variant": "From function definitions",
+      "syntax": "xf(t) = cos(t)\nyf(t) = sin(t)\nparaplot(G, xf, yf, range(0, 2*pi))",
+      "description": "Parametric curve using function definitions"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Rose curve with parametric form",
+      "expression": "G3 = g2d(at(4,4), 20, 20, range(-5, 5), range(-5, 5), type(plotting))\nparaplot(G3, \"4cos(7*t)*cos(t)\", \"4cos(7*t)*sin(t)\", range(0, 2*pi), c(green))"
+    },
+    {
+      "scenario": "Unit circle as parametric curve",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-2, 2), range(-2, 2), type(plotting))\nparaplot(G, \"cos(t)\", \"sin(t)\", range(0, 2*pi))"
+    },
+    {
+      "scenario": "Ellipse with parameters a and b",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-4, 4), range(-3, 3), type(plotting))\na = 3\nb = 2\nparaplot(G, \"a*cos(t)\", \"b*sin(t)\", range(0, 2*pi), c(green))"
+    },
+    {
+      "scenario": "Cycloid curve",
+      "expression": "G = g2d(at(4,4), 20, 20, range(0, 14), range(-1, 3), type(plotting))\nparaplot(G, \"t - sin(t)\", \"1 - cos(t)\", range(0, 4*pi))"
+    },
+    {
+      "scenario": "Spiral curve",
+      "expression": "G = g2d(at(4,4), 20, 20, range(-20, 20), range(-20, 20), type(plotting))\nparaplot(G, \"t*cos(t)\", \"t*sin(t)\", range(0, 6*pi))"
+    }
+  ]
+}

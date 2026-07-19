@@ -1,0 +1,24 @@
+{
+  "expression": "clear",
+  "description": "Removes shapes/components or restores original styles and transforms. Can clear annotations (spotlight, surround, overbrace, underbrace, mcancel, callout), graphers (g2d, g3d), text components (print, write, label), SVG shapes (point, line, circle, vector, polygon, arc, angle), and collections (seq, para). Also restores original styles from stroke/fill/stroke-width configs and reverses canvas pan transformations.",
+  "utility": "Remove shapes or restore original styling and transforms",
+  "arguments": [
+    { "name": "targets", "type": "variable references | config references", "required": true, "description": "One or more variable references to shapes to clear, or config references (from stroke(), fill(), pan()) to restore original state" }
+  ],
+  "alternates": [
+    { "variant": "Clear single shape", "syntax": "clear(A)", "description": "Remove shape A" },
+    { "variant": "Clear multiple shapes", "syntax": "clear(A, B, C)", "description": "Remove multiple shapes at once" },
+    { "variant": "Restore stroke style", "syntax": "cfg = stroke(A, B, red)\nclear(cfg)", "description": "Restore original stroke color" },
+    { "variant": "Restore fill style", "syntax": "cfg = fill(C, yellow)\nclear(cfg)", "description": "Restore original fill color" },
+    { "variant": "Restore stroke width", "syntax": "cfg = stroke(A, type(width), 8)\nclear(cfg)", "description": "Restore original stroke width" },
+    { "variant": "Reverse pan", "syntax": "cfg = pan(at(M))\nclear(cfg)", "description": "Animate canvas back to original position" }
+  ],
+  "examples": [
+    { "scenario": "Clear a shape", "expression": "A = point(G, 1, 2)\nclear(A)" },
+    { "scenario": "Clear multiple shapes", "expression": "A = point(G, 0, 0)\nB = circle(G, 2, 1, 1)\nclear(A, B)" },
+    { "scenario": "Restore stroke color", "expression": "cfg = stroke(L1, L2, red)\nclear(cfg)" },
+    { "scenario": "Restore fill color", "expression": "cfg = fill(C, yellow)\nclear(cfg)" },
+    { "scenario": "Clear annotation", "expression": "ann = spotlight(G, C, 5)\nclear(ann)" },
+    { "scenario": "Reverse pan transformation", "expression": "cfg = pan(at(M))\nclear(cfg)" }
+  ]
+}

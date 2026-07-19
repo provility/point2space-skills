@@ -1,0 +1,77 @@
+{
+  "expression": "rotate",
+  "_requires": ["g2d"],
+  "description": "Rotates a geometric shape around a center point by a specified angle in degrees, with positive angles rotating counter-clockwise.",
+  "utility": "Rotate a shape around a center point by a specified angle in degrees",
+  "arguments": [
+    {
+      "name": "graph",
+      "type": "g2d",
+      "required": true,
+      "description": "The graph container"
+    },
+    {
+      "name": "shape",
+      "type": "point | line | circle | polygon | image",
+      "required": true,
+      "description": "The shape to rotate"
+    },
+    {
+      "name": "angle",
+      "type": "number",
+      "required": true,
+      "description": "Rotation angle in degrees (positive = counter-clockwise)"
+    },
+    {
+      "name": "cx, cy",
+      "type": "number, number",
+      "required": false,
+      "description": "Center of rotation as x, y coordinates (default: origin)"
+    },
+    {
+      "name": "centerPoint",
+      "type": "point",
+      "required": false,
+      "description": "Center of rotation as a point expression (alternative to cx, cy)"
+    }
+  ],
+  "alternates": [
+    {
+      "variant": "Rotate around origin",
+      "syntax": "rotate(G, shape, angle)",
+      "description": "Rotate shape around origin (0,0) by angle degrees"
+    },
+    {
+      "variant": "Rotate around coordinates",
+      "syntax": "rotate(G, shape, angle, cx, cy)",
+      "description": "Rotate shape around explicit center point (cx, cy)"
+    },
+    {
+      "variant": "Rotate around point expression",
+      "syntax": "rotate(G, shape, angle, centerPoint)",
+      "description": "Rotate shape around a point expression"
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "Animate rotation of a line segment from 0° to 90° using variable animator",
+      "expression": "mathexpr_1 = variableanimator(at(1,3), \"a\", 0, 90); graph_1 = g2d(at(4,19), size(16), range(-5, 5), type(geometry)); line_1 = line(graph_1, point(graph_1, -2.5, -1), point(graph_1, 1.2, 1.4), type(segment)); rotate_1 = rotate(graph_1, line_1, a); playanim_1 = playanimator(mathexpr_1, t(2))"
+    },
+    {
+      "scenario": "Full 360° rotation of a line segment from origin",
+      "expression": "mathexpr_1 = variableanimator(at(1,3), \"a\", 0, 360); graph_1 = g2d(at(4,19), size(16), range(-6, 6), type(geometry)); line_1 = line(graph_1, point(graph_1, 0, 0), point(graph_1, 3, 0), type(segment), c(blue)); rotate_1 = rotate(graph_1, line_1, a); playanim_1 = playanimator(mathexpr_1, t(3))"
+    },
+    {
+      "scenario": "Rotate a line segment by 45 degrees on a plotting graph",
+      "expression": "graph_1 = g2d(at(4,19), 13.8, 20.3, range(-5, 5), range(-5, 5), type(plotting)); line_1 = line(graph_1, point(graph_1, -2.5, -3.6), point(graph_1, 1.2, -1.4), type(segment)); rotate_1 = rotate(graph_1, line_1, 45)"
+    },
+    {
+      "scenario": "Rotate a point P by 60 degrees around the origin on unit circle",
+      "expression": "G = g2d(at(2,30), size(20), type(geometry)); origin = point(G, 0, 0); P = point(G, 1, 0, c(red)); rot_1 = rotate(G, P, 60, origin)"
+    },
+    {
+      "scenario": "Rotate a polygon around a point",
+      "expression": "graph_1 = g2d(at(4,22), size(13.3), range(-5, 5), type(geometry)); triangle_1 = polygon(graph_1, point(graph_1, -3.4, 1.2), point(graph_1, -3.2, -1.7), point(graph_1, -1.3, -0.9)); point_1 = point(graph_1, 3.3, 2.4); rotate_1 = rotate(graph_1, triangle_1, 45, point_1)"
+    }
+  ]
+}
