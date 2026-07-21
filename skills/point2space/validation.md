@@ -6,7 +6,7 @@ Assume there are problems. Your job is to find them.
 
 ### Validate
 
-Use the MCP `validate_expressions` tool to validate every expression you generate:
+**If the `validate_expressions` MCP tool is available**, use it to validate every expression:
 
 ```
 validate_expressions({ expressions: ["expr1", "expr2", ...] })
@@ -22,7 +22,15 @@ Response format:
 }
 ```
 
-**This step is mandatory.** Never present expressions to the user without validating them first.
+**If MCP is NOT available**, self-validate each expression by checking:
+1. **Function exists** — every function name must appear in the `expression-rag-source/` docs. If unsure, search: `find expression-rag-source -name "*.json" | grep -i "<name>"`
+2. **Arguments match docs** — check the `arguments` and `alternates` fields in the JSON doc for correct parameter order and types
+3. **Graph argument rule** — all 2D shape/plot functions must have a graph variable as their first argument
+4. **Dependency order** — every referenced variable must be defined in a preceding expression
+5. **Styling modifiers** — only use documented short modifiers (`c()`, `fc()`, `s()`, etc.), never `fill()`, `color()`, etc.
+6. **Text wrapping** — `text()` in math-mode expressions, `math()` in plain-text expressions
+
+**Validation is mandatory.** Never present expressions to the user without validating them first — whether via MCP or self-check.
 
 ### Classify and Fix Errors
 
@@ -37,9 +45,9 @@ For each failed expression, classify by error type:
 
 ### Correction Loop
 
-1. Call `validate_expressions` with all expressions
+1. Validate all expressions (MCP tool if available, otherwise self-check against docs)
 2. For each error: read the relevant documentation from `expression-rag-source/`, understand WHY it failed, fix with correct syntax from the docs
-3. Call `validate_expressions` again with the corrected expressions
+3. Re-validate the corrected expressions
 4. Repeat up to **3 rounds**
 
 **Don't retry blindly** — understand WHY each error occurred and fix using the docs.
@@ -113,7 +121,7 @@ For each slide, verify that every variable referenced is defined in a preceding 
 
 ## Verification Loop
 
-1. Generate expressions → `validate_expressions` → Fix errors → Re-validate
+1. Generate expressions → Validate (MCP or self-check) → Fix errors → Re-validate
 2. Run text best-practices check
 3. Run structural QA checklist (for lessons)
 4. Fix any issues found

@@ -51,11 +51,14 @@ Create DSL expressions for each slide:
 
 ### 5. Validate
 
-Call the MCP `validate_expressions` tool on ALL expressions. Read [validation.md](validation.md) for the full error correction loop and QA checklist.
+Read [validation.md](validation.md) for the full error correction loop and QA checklist.
 
+If the `validate_expressions` MCP tool is available, call it on ALL expressions:
 ```
 validate_expressions({ expressions: ["expr1", "expr2", ...] })
 ```
+
+If MCP is not available, self-validate each expression against the DSL grammar in [foundation.md](foundation.md) and the expression docs in `expression-rag-source/`.
 
 **Do not declare success until validation passes. Fix errors and re-validate.**
 

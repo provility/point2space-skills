@@ -132,21 +132,24 @@ When planning code, read the docs for **every function you plan to use** plus th
 
 ## Validation
 
-**Mandatory:** Call the MCP `validate_expressions` tool on every expression before presenting to the user. Read [validation.md](validation.md) for the full error correction loop and QA checklist.
+Read [validation.md](validation.md) for the full error correction loop and QA checklist.
 
+If the `validate_expressions` MCP tool is available, call it on every expression before presenting to the user:
 ```
 validate_expressions({ expressions: ["expr1", "expr2", ...] })
 ```
 
+If MCP is not available, self-validate against the DSL grammar (see [foundation.md](foundation.md)) and the expression documentation in `expression-rag-source/`.
+
 ---
 
-## MCP Tools Available
+## MCP Tools (Optional)
 
-This skill is designed to work with the Point2Space MCP server. Use these tools:
+This skill works standalone using the DSL grammar and expression docs. When the Point2Space MCP server is connected, these additional tools become available:
 
 | Tool | Purpose |
 |------|---------|
-| `validate_expressions` | Validate DSL expressions against the grammar — **must be called before presenting any expressions** |
+| `validate_expressions` | Validate DSL expressions against the server-side grammar |
 | `create_lesson` | Create a new lesson (title, tags, content) |
 | `update_lesson` | Update an existing lesson (title, tags, content, visibility) |
 | `delete_lesson` | Delete a lesson by ID |

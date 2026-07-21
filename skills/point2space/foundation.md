@@ -202,21 +202,28 @@ Draw inspiration from math textbook illustrations (e.g., James Stewart) and tool
 3. **Plan the complete construction** — list every geometric element needed (no missing components)
 4. **Calculate exact coordinates** — derive positions from the math, never guess or approximate positions
 5. **Generate code** — only after steps 1-4 are done
-6. **Validate** — call `validate_expressions` MCP tool on every expression
-7. **Display** — show the final validated expressions in a ```dsl block
+6. **Validate** — if the `validate_expressions` MCP tool is available, call it on every expression; otherwise, self-check against the DSL grammar and expression docs
+7. **Display** — show the final expressions in a ```dsl block
 
 **NEVER guess syntax.** Only use functions and arguments shown in the expression documentation JSON files. If you don't see a function documented, do NOT invent it.
 
 ## Mandatory Display & Validation
 
-**These two steps are NON-NEGOTIABLE for every response that produces DSL expressions:**
+**These steps are NON-NEGOTIABLE for every response that produces DSL expressions:**
 
 ### Step 1: Validate FIRST
-Before showing ANY expressions to the user, call the MCP `validate_expressions` tool with every expression:
+
+**If the `validate_expressions` MCP tool is available**, call it on every expression before showing them:
 ```
 validate_expressions({ expressions: ["expr1", "expr2", ...] })
 ```
-If validation returns errors, fix them using the correction loop in [validation.md](validation.md) and re-validate. Do NOT show unvalidated expressions to the user.
+If validation returns errors, fix them using the correction loop in [validation.md](validation.md) and re-validate.
+
+**If MCP is NOT available**, self-validate by checking each expression against:
+- The DSL grammar rules in this file (allowed constructs, graph argument rule, styling modifiers)
+- The expression documentation JSON files in `expression-rag-source/` (correct function names, argument order, required params)
+- Dependency ordering (every referenced variable must be defined in a preceding expression)
+- Text wrapping rules (text() in math-mode, math() in plain-text mode)
 
 ### Step 2: Display in a ```dsl block
 After all expressions pass validation, display them in a fenced ```dsl code block so the user can see exactly what was generated:
@@ -226,9 +233,32 @@ G = g2d(at(4,16), size(25), range(-10,10))
 A = point(G, 3, 4)
 ```
 
-**ALWAYS show the expressions.** Never silently pass them to a tool without displaying them. The user must see what was generated.
+**Formatting rules:**
+- **One expression per line** — NEVER concatenate expressions into a single string separated by `\n`. Each expression must appear on its own line in the code block.
+- **ALWAYS show the expressions.** Never silently pass them to a tool without displaying them. The user must see what was generated.
+- Only the content inside ```dsl ... ``` is parsed by the frontend.
 
-Only the content inside ```dsl ... ``` is parsed by the frontend.
+### Step 3: Show Changes When Editing
+When editing existing expressions (not creating from scratch), display the complete expression set with **change markers** so the user can see what was added, modified, or removed at a glance. Use a ```diff code block:
+
+```diff
+  G = g2d(at(4,16), size(25), range(-10,10))
+  A = point(G, 3, 4)
+- B = point(G, 6, 1)
++ B = point(G, 7, 2)
+  L = line(G, A, B, c(red))
++ C = point(G, 0, 3, c(blue))
++ M = midpoint(G, A, C)
+```
+
+**Rules:**
+- `+` prefix (green) = new expression added
+- `-` prefix (red) = expression removed or the old version of a modified expression
+- ` ` prefix (no change) = unchanged expression
+- For **modified** expressions, show the old line with `-` immediately followed by the new line with `+`
+- Show ALL expressions (unchanged included) so the user sees the full context
+
+After the diff block, also show the final clean ```dsl block with just the resulting expressions (no markers) — this is what the frontend parses.
 
 ## When you need clarification
 Ask the user with your question. Examples: multiple possible targets ("Which line — L1 or L2?"), missing parameters, ambiguous request.
